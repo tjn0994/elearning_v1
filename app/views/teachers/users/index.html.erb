@@ -1,0 +1,26 @@
+<% provide :title, t("list_user") %>
+<div class="row manage_user">
+  <div class="col-md-12">
+    <div class="table-responsive">
+    <table class="table table-bordered table-hover">
+      <thead>
+        <tr class="active">
+          <th><%= t ".index" %></th>
+          <th><%=  t("employee_code") %></th>
+          <th><%=  t("name") %></th>
+          <th><%= t "email" %></th>
+          <th><%=  t("contract_date") %>
+          <th><%= t "staff_type" %></th>
+          <th class="text-center"><%= t "status" %></th>
+          <th class="text-center"><%= t "action" %></th>
+        </tr>
+      </thead>
+      <tbody>
+        <%= render(@users, users: @users) || t(".data_not_find") %>
+      </tbody>
+    </table>
+    </div>
+    <center><%= paginate @users %></center>
+  </div>
+</div>
+<div class="loader hide hide-load-modal"></div>

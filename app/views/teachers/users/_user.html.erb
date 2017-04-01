@@ -1,0 +1,12 @@
+<tr>
+  <td>
+    <%= current_index @users.current_page, Settings.per_page.teachers.user,
+      user_counter %>
+  </td>
+  <td><%= user.employee_code %></td>
+  <td><%= user.name %></td>
+  <td><%= user.email %></td>
+  <td><%= user.birthday %></td>
+  <td><%= user.number_of_phone %></td>
+  <td><%= user.address %></td>
+</tr>
