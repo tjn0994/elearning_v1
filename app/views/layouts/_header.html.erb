@@ -1,6 +1,6 @@
 <div id="page-container">
   <!-- Site Header -->
-  <header>
+  <header style="position: static; background: #d22020">
     <div class="container">
       <!-- Site Logo -->
       <a href="index.html" class="site-logo">
@@ -27,7 +27,7 @@
           </li>
           <!-- END Menu Toggle -->
           <li>
-            <a href="javascript:void(0)" class="site-nav-sub"><i class="fa fa-angle-down site-nav-arrow"></i>Home</a>
+            <a href="javascript:void(0)" class="site-nav-sub active"><i class="fa fa-angle-down site-nav-arrow" ></i >Home</a>
             <ul>
               <li>
                 <a href="index.html">Full Width</a>
@@ -120,7 +120,7 @@
             <a href="#">Contact</a>
           </li>
           <li>
-            <a href="#" class="active">About</a>
+            <%= link_to "Manager", students_users_path%>
           </li>
           <% if user_signed_in?%>
             <li>
@@ -145,19 +145,3 @@
   </header>
   <!-- END Site Header -->
 </div>
-<script>
-$(document).ready(function(){
-    // Show the Modal on load
-
-$("#kkk").click(function(){
-  alert("sss111s");
-        $("#signin_modal").modal("hide");
-         $("#signin_modal1").modal("show");
-    });
- $("#kkk1").click(function(){
-  alert("ssss");
-        $("#signin_modal").modal("show");
-         $("#signin_modal1").modal("hide");
-    });
-});
-</script>

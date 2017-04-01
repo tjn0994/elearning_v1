@@ -1,4 +1,4 @@
-class Students::UsersController < ApplicationController
+class Students::UsersController < DashboardController
   # load_and_authorize_resource
   before_action :authenticate_user!
   before_action :load_user, except: [:index, :new]

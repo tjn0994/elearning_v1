@@ -26,7 +26,6 @@
 body {
     font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
     color: #353535;
-    background-color: rgba(205, 226, 43, 0.68);
 }
 
 #page-container {
@@ -49,9 +48,8 @@ header {
     top: 0;
     left: 0;
     right: 0;
-    padding: 25px 0;
+    padding: 10px 0;
     color: #ffffff;
-    background: url('../img/template/ie8_opacity_dark_20.png');
     background: rgba(0, 0, 0, 0.2);
     z-index: 1000;
     -webkit-transition: all ease-out 0.25s;
@@ -60,7 +58,6 @@ header {
 
 header.header-scroll {
     padding: 10px 0;
-    background: url('../img/template/ie8_opacity_dark_60.png');
     background: rgba(0, 0, 0, 0.6);
 }
 
@@ -180,9 +177,6 @@ header nav {
 */
 
 /* Main Structure */
-.site-section {
-    padding: 50px 0;
-}
 
 .site-block {
     margin-bottom: 49px;
@@ -291,14 +285,12 @@ header nav {
 /* Footer */
 .site-footer {
     color: #656565;
-    padding-top: 11px;
-    padding-bottom: 40px;
     background-color: #252525;
 }
 
 .footer-heading {
     color: #ffffff;
-    font-size: 19px;
+    font-size: 14px;
     margin: 29px 0 15px;
 }
 
@@ -1793,6 +1785,7 @@ p, .table, .alert, .carousel {
         color: #333333;
         background: #ffffff;
         text-decoration: none;
+        z-index: 100px;
     }
 
     .site-nav a.site-nav-sub {
@@ -1816,6 +1809,7 @@ p, .table, .alert, .carousel {
         border-top-left-radius: 0;
         -webkit-box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
         box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+        z-index: 10;
     }
 
     .site-nav li:last-child ul {

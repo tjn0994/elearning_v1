@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     root to: "devise/sessions#new"
   end
 
+  get 'home' => 'static_pages#home'
   namespace :students do
     resources :users
   end
