@@ -1,20 +1,19 @@
 Rails.application.routes.draw do
   devise_for :users
   #scope "(:locale)", locale: /en|vi|ja/ do
-  root "static_pages#home"
+  devise_scope :user do
+    root to: "devise/sessions#new"
+  end
 
   namespace :students do
-    root "static_pages#home"
     resources :users
   end
 
   namespace :teachers do
-    root "static_pages#home"
     resources :users
   end
 
   namespace :admins do
-    root "static_pages#home"
     resources :users
   end
 

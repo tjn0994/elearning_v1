@@ -4,3 +4,9 @@ per_page:
     user: 10
   students:
     user: 10
+max_size_image_avatar: 5
+image_types:
+  jpg: "jpg"
+  jpeg: "jpeg"
+  gif: "gif"
+  png: "png"

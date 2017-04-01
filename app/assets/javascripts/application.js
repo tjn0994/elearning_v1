@@ -16,6 +16,8 @@
 //= require_tree .
 //= require bootstrap-sprockets
 
+//= require user
+
 $(document).ready(function() {
   $('#flash-message').delay(2000).slideUp(500, function() {
     $(this).remove();
