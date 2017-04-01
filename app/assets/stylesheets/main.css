@@ -26,7 +26,7 @@
 body {
     font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
     color: #353535;
-    background-color: #151515;
+    background-color: rgba(205, 226, 43, 0.68);
 }
 
 #page-container {

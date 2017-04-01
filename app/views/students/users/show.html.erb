@@ -1,0 +1,100 @@
+<% provide :title, t("information_user") %>
+<div class="container">
+  <div class="panel panel-info">
+    <div class="panel-heading">
+      <h3 class="panel-title">
+        <%= t"dashboard.users.title_profile" %>
+      </h3>
+    </div>
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-md-4" align="center">
+          <%= image_tag @user.avatar.url, class: "height-250 width-250" %>
+        </div>
+        <div class="col-md-8 ">
+          <table class="table table-hover">
+            <tbody>
+              <tr>
+                <td>
+                  <strong>
+                    <i class="gi gi-user"></i> <%= t "name" %>
+                  </strong>
+                </td>
+                <td><%= @user.name %></td>
+              </tr>
+              <tr>
+                <td>
+                  <strong>
+                    <i class="gi gi-envelope"></i> <%= t "email" %>
+                  </strong>
+                </td>
+                <td><%= @user.email %></td>
+              </tr>
+              <tr>
+                <td>
+                  <strong>
+                    <% if @user.male? %>
+                      <i class="gi gi-male"></i>
+                    <% elsif @user.female? %>
+                      <i class="gi gi-female"></i>
+                    <% end %>
+                    <%= t "gender" %>
+                  </strong>
+                </td>
+                <td><%= t "#{@user.gender}" %></td>
+              </tr>
+              <tr>
+                <td>
+                  <strong>
+                    <i class="gi gi-credit_card"></i> <%= t "employee_code" %>
+                  </strong>
+                </td>
+                <td><%= @user.employee_code %></td>
+              </tr>
+              <tr>
+                <td>
+                  <strong>
+                    <i class="hi hi-earphone"></i> <%= t "number_of_phone" %>
+                  </strong>
+                </td>
+                <td><%= @user.number_of_phone %></td>
+              </tr>
+              <tr>
+                <td>
+                  <strong>
+                    <i class="gi gi-home"></i> <%= t "address" %>
+                  </strong>
+                </td>
+                <td><%= @user.address %></td>
+              </tr>
+              <tr>
+                <td>
+                  <strong>
+                    <i class="gi gi-group"></i> <%= t "role" %>
+                  </strong>
+                </td>
+                <td><%= @user.role %></td>
+              </tr>
+              <tr>
+                <td>
+                  <strong>
+                    <i class="gi gi-calendar"></i> <%= t "account_creation_date" %>
+                  </strong>
+                </td>
+                <td><%= @user.account_creation_date %></td>
+              </tr>
+              <tr>
+                <td>
+                  <strong>
+                    <i class="gi gi-birthday_cake"></i> <%= t "birthday" %>
+                  </strong>
+                </td>
+                <td><%= @user.birthday %></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
