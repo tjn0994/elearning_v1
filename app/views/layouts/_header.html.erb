@@ -111,17 +111,32 @@
             </ul>
           </li>
           <li>
-            <a href="features.html">Features</a>
+            <a href="#">Features</a>
           </li>
           <li>
-            <a href="pricing.html">Pricing</a>
+            <a href="#">Pricing</a>
           </li>
           <li>
-            <a href="contact.html">Contact</a>
+            <a href="#">Contact</a>
           </li>
           <li>
-            <a href="about.html" class="active">About</a>
+            <a href="#" class="active">About</a>
           </li>
+          <% if user_signed_in?%>
+            <li>
+              <%= link_to destroy_user_session_path,method: :delete,
+              data: {toggle: "tooltip", placement: "bottom"} do %>
+              <i class="gi gi-exit"></i>
+            <% end %>
+            </li>
+          <% else %>
+            <li>
+              <%= link_to t(".btn_sign_in"), "#", class: "btn-lines dark light wow
+            fadeInUp animated smooth-scroll btn btn-default btn-green",
+            data: {toggle: "modal", target: "#signin_modal"} %>
+            </li>
+          <% end %>
+
         </ul>
         <!-- END Main Menu -->
       </nav>
@@ -130,3 +145,19 @@
   </header>
   <!-- END Site Header -->
 </div>
+<script>
+$(document).ready(function(){
+    // Show the Modal on load
+
+$("#kkk").click(function(){
+  alert("sss111s");
+        $("#signin_modal").modal("hide");
+         $("#signin_modal1").modal("show");
+    });
+ $("#kkk1").click(function(){
+  alert("ssss");
+        $("#signin_modal").modal("show");
+         $("#signin_modal1").modal("hide");
+    });
+});
+</script>

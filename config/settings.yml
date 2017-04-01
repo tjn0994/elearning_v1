@@ -1,0 +1,6 @@
+image_format_accept: "image/jpeg,image/gif,image/png"
+per_page:
+  admins:
+    user: 10
+  students:
+    user: 10
