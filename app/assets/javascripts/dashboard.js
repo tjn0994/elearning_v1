@@ -14,11 +14,12 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require bootstrap-sprockets
-//= require plugins
-//= require modernizr-2.7.1-respond-1.4.2.min
-//= require jquery-1.11.1.min
-//= require app
-//= require portfolio
+//= require portfolio.js
+//= require ./dashboard/app.js
+//= require ./dashboard/plugins.js
+//= require ./dashboard/vendor/bootstrap.min.js
+//= require ./dashboard/vendor/jquery-1.11.1.min.js
+//= require ./dashboard/vendor/modernizr-2.7.1-respond-1.4.2.min.js
 
 //= require user
 

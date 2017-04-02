@@ -440,6 +440,7 @@ var App = function() {
         var chatMsg         = '';
 
 
+
         // If a chat user is clicked show the chat talk
         $('a', chatUsers).click(function(){
             chatUsers.slideUp();
