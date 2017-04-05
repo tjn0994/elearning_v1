@@ -6,16 +6,25 @@ Rails.application.routes.draw do
   end
 
   get 'home' => 'static_pages#home'
+
   namespace :students do
     resources :users
   end
 
   namespace :teachers do
     resources :users
+    resources :courses do
+      resources :lessons
+    end
   end
 
   namespace :admins do
     resources :users
+    resources :categories
+  end
+
+  namespace :publish do
+    resources :posts
   end
 
 

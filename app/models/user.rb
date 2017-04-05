@@ -4,6 +4,10 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  has_many :posts, dependent: :destroy
+  has_many :user_courses
+  has_many :courses, through: :user_courses
+
   scope :recent, ->{order created_at: :desc}
 
   mount_uploader :avatar, AvatarUploader
