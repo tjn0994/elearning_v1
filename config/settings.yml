@@ -2,8 +2,15 @@ image_format_accept: "image/jpeg,image/gif,image/png"
 per_page:
   admins:
     user: 10
+    category: 10
   students:
     user: 10
+  teachers:
+    user: 10
+    course: 10
+    lesson: 10
+  publish:
+    post: 10
 max_size_image_avatar: 5
 image_types:
   jpg: "jpg"
