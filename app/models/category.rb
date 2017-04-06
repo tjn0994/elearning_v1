@@ -5,6 +5,7 @@ class Category < ApplicationRecord
 
   scope :recent, ->{order created_at: :desc}
 
-  validates :name, presence: true
+  validates :name, presence: true, length: {maximum: 255, minimum: 2}
 
+  scope :recent, ->{order created_at: :desc}
 end
