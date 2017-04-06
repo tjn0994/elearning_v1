@@ -21,6 +21,8 @@ gem "animate-rails"
 gem "config"
 gem "figaro"
 gem "kaminari"
+gem "paranoia", "~> 2.2"
+gem "kaminari-bootstrap", "~> 3.0.1"
 
 # Use Capistrano for deployment
 # gem "capistrano-rails", group: :development

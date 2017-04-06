@@ -1,0 +1,20 @@
+<tr>
+  <td>
+    <%= current_index @categories.current_page, Settings.per_page.admins.category,
+      category_counter %>
+  </td>
+  <td><%= category.name %></td>
+  <td><%= category.description %></td>
+  <td>
+    <div class="btn-group btn-group-xs">
+      <%= render "shared/btn_show", object: category %>
+      <%= link_to edit_admins_category_path(category), class: "btn btn-warning" do %>
+        <i class="fa fa-pencil"></i>
+      <% end %>
+      <%= link_to admins_category_path(category),
+        method: :delete, class: "btn btn-danger", data: {confirm: t("are_you_sure")} do %>
+        <i class="fa fa-trash"></i>
+      <% end %>
+      </div>
+  </td>
+</tr>
