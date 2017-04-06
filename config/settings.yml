@@ -3,6 +3,7 @@ per_page:
   admins:
     user: 10
     category: 10
+    course: 10
   students:
     user: 10
   teachers:
@@ -17,3 +18,7 @@ image_types:
   jpeg: "jpeg"
   gif: "gif"
   png: "png"
+status:
+  discard: "reject"
+  pending: "pending"
+  approver: "approver"

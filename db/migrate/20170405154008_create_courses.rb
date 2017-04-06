@@ -7,6 +7,7 @@ class CreateCourses < ActiveRecord::Migration[5.0]
       t.string :image
       t.integer :owner_id
       t.integer :approver_id
+      t.integer :status, default: 0
       t.timestamps
     end
   end
