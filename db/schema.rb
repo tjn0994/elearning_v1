@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170405155921) do
+ActiveRecord::Schema.define(version: 20170406081015) do
 
   create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
@@ -27,6 +27,8 @@ ActiveRecord::Schema.define(version: 20170405155921) do
     t.integer  "owner_id"
     t.integer  "approver_id"
     t.integer  "status",      default: 0
+    t.date     "date_from"
+    t.date     "date_to"
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
     t.index ["category_id"], name: "index_courses_on_category_id", using: :btree
@@ -51,6 +53,16 @@ ActiveRecord::Schema.define(version: 20170405155921) do
     t.datetime "updated_at",  null: false
     t.index ["category_id"], name: "index_posts_on_category_id", using: :btree
     t.index ["user_id"], name: "index_posts_on_user_id", using: :btree
+  end
+
+  create_table "timesheets", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "course_id"
+    t.time     "time_from"
+    t.time     "time_to"
+    t.integer  "day_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["course_id"], name: "index_timesheets_on_course_id", using: :btree
   end
 
   create_table "user_courses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -92,6 +104,7 @@ ActiveRecord::Schema.define(version: 20170405155921) do
   add_foreign_key "lessons", "courses"
   add_foreign_key "posts", "categories"
   add_foreign_key "posts", "users"
+  add_foreign_key "timesheets", "courses"
   add_foreign_key "user_courses", "courses"
   add_foreign_key "user_courses", "users"
 end

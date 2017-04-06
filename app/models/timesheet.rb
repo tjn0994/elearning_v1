@@ -1,6 +1,4 @@
-class UserCourse < ApplicationRecord
-
-  belongs_to :user
+class Timesheet < ApplicationRecord
   belongs_to :course
 
   scope :recent, ->{order created_at: :desc}
