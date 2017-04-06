@@ -1,0 +1,34 @@
+<% provide :title, t("list_user") %>
+<%= link_to new_teachers_course_path,
+  class: "btn btn-md btn-success" do %>
+  <i class="glyphicon glyphicon-plus"></i> add course
+<% end %>
+<br>
+<br>
+<div class="row manage_user">
+  <div class="col-md-12">
+    <div class="table-responsive">
+    <table class="table table-bordered table-hover">
+      <thead>
+        <tr class="active">
+          <th> index </th>
+          <th> name </th>
+          <th> description</th>
+          <th> iamge </th>
+          <th> owner </th>
+          <th> approver </th>
+          <th> status </th>
+          <th> action </th>
+        </tr>
+      </thead>
+      <tbody>
+        <%= render(@courses, courses: @courses) || "data_not_find" %>
+      </tbody>
+    </table>
+    </div>
+    <center><%= paginate @courses %></center>
+  </div>
+</div>
+<div class="modal_show_details">
+  <%= render "shared/model_show" %>
+</div>

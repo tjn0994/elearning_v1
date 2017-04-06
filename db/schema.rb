@@ -26,8 +26,9 @@ ActiveRecord::Schema.define(version: 20170405155921) do
     t.string   "image"
     t.integer  "owner_id"
     t.integer  "approver_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.integer  "status",      default: 0
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
     t.index ["category_id"], name: "index_courses_on_category_id", using: :btree
   end
 
