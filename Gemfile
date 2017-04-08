@@ -23,6 +23,7 @@ gem "figaro"
 gem "kaminari"
 gem "paranoia", "~> 2.2"
 gem "kaminari-bootstrap", "~> 3.0.1"
+gem 'bootstrap-datepicker-rails'
 
 # Use Capistrano for deployment
 # gem "capistrano-rails", group: :development

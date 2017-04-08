@@ -38,9 +38,9 @@ ActiveRecord::Schema.define(version: 20170406081015) do
     t.integer  "course_id"
     t.string   "name"
     t.string   "description"
-    t.string   "content"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.text     "content",     limit: 65535
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
     t.index ["course_id"], name: "index_lessons_on_course_id", using: :btree
   end
 
@@ -48,9 +48,9 @@ ActiveRecord::Schema.define(version: 20170406081015) do
     t.integer  "category_id"
     t.integer  "user_id"
     t.string   "title"
-    t.string   "content"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.text     "content",     limit: 65535
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
     t.index ["category_id"], name: "index_posts_on_category_id", using: :btree
     t.index ["user_id"], name: "index_posts_on_user_id", using: :btree
   end

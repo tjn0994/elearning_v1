@@ -19,8 +19,10 @@
 //= require jquery-1.11.1.min
 //= require app
 //= require portfolio
+//= require bootstrap-datepicker
 
-//= require user
+//= require user.js
+//= require date.js
 
 $(document).ready(function() {
   $('#flash-message').delay(2000).slideUp(500, function() {

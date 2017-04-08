@@ -9,29 +9,13 @@
 
   <body>
     <%= render "layouts/header" %>
-    <%= yield %>
+      <div class="container">
+        <%= yield %>
+      </div>
     <% unless user_signed_in? %>
       <%= render "layouts/sign_in_modal" %>
     <% end %>
-    <br>
-    </br>
-    <br>
-    </br>
-<br>
-    <br><br><br><br>
-    <br><br>
-    <br>
-    <br><br>
-    <br><br>
-    <br>
-    <br><br>
-    <br><br>
-    <br><br>
-    <br>
-    <br>
 
-    <br>
-    </br>
     <%= render "layouts/footer" %>
   </body>
 </html>
