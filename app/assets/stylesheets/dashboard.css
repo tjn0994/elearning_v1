@@ -17,6 +17,7 @@
  *= require ./dashboard/themes.css
  *= require custom
  *= require layout_size
+*= require bootstrap-datepicker3
  */
 
 @import "bootstrap-sprockets";

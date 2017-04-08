@@ -1,0 +1,33 @@
+<% provide :title, t("list_user") %>
+<br>
+<div class="row">
+  <div class="col-md-9" style="box-shadow: 0 10px 10px 10px rgba(0, 0, 0, 0.3)">
+    <br>
+    <div class="row">
+      <%= link_to new_publish_post_path,
+        class: "btn btn-md btn-success col-md-offset-1" do %>
+        <i class="gi gi-plus"></i> add post
+      <% end %>
+    </div>
+    <br>
+    <br>
+    <ul style="list-style-type: none">
+      <%= render(@posts, posts: @posts) || "data_not_find" %>
+    </ul>
+    <center><%= paginate @posts %></center>
+  </div>
+  <div class="col-md-3">
+    <div style="border: solid 1px #a79f9f; border-radius: 5px">
+      <div class="container" style="padding-top: 5px; padding-bottom: 5px">
+        <div>Posts: <b>12</b></div>
+        <div>Following users: <b>15</b></div>
+        <div>Following: <b>5</b></div>
+      </div>
+    </div>
+    <br>
+    <br>
+    POSTS TENDENCY
+  </div>
+</div>
+<br>
+<br>

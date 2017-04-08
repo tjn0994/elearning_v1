@@ -11,7 +11,7 @@ per_page:
     course: 10
     lesson: 10
   publish:
-    post: 10
+    post: 8
 max_size_image_avatar: 5
 image_types:
   jpg: "jpg"

@@ -17,6 +17,7 @@
  *= require themes.css
  *= require custom.scss
  *= require layout_size.css
+ *= require bootstrap-datepicker3
  */
 
 @import "bootstrap-sprockets";

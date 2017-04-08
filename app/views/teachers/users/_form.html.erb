@@ -1,4 +1,4 @@
-
+<%= javascript_include_tag "date", "data-turbolinks-track": true %>
 <div class="container form-horizontal">
   <div class="clearfix"></div>
   <div class="row">
@@ -83,7 +83,7 @@
             class: "col-md-3 control-label" %>
           <div class="col-md-5 select-container">
             <% User.genders.keys.each do |key| %>
-              <%= f.radio_button :gender, t("dashboard.users.value_#{key}") %>
+              <%= f.radio_button :gender, key %>
               <%= t "dashboard.users.#{key}" %>
               &nbsp;&nbsp;&nbsp;&nbsp;
             <% end %>
@@ -97,16 +97,10 @@
               <div class="input-group-addon">
                 <i class="gi gi-birthday_cake"></i>
               </div>
-              <% if @user.birthday.nil? %>
                 <%= f.text_field :birthday,
-                  class: "form-control date-month-year-picker",
+                 value:(l @user.birthday, format: :date_month_year_v1 if @user.birthday.present?),
+                  class: "form-control datepicker",
                   placeholder: t("year_month_date_picker") %>
-              <% else %>
-                <%= f.text_field :birthday,
-                  value: @user.birthday,
-                  class: "form-control date-month-year-picker",
-                  placeholder: t("year_month_date_picker") %>
-              <% end %>
             </div>
           </div>
         </div>

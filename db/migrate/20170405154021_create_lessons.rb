@@ -4,7 +4,7 @@ class CreateLessons < ActiveRecord::Migration[5.0]
       t.references :course, foreign_key: true
       t.string :name
       t.string :description
-      t.string :content
+      t.text :content
       t.timestamps
     end
   end
