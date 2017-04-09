@@ -26,6 +26,10 @@
 //= require custom_dashboard.js
 //= require date.js
 
+// gem validate
+//= require login.js
+//= require jquery.validate
+
 $(document).ready(function() {
   $('#flash-message').delay(2000).slideUp(500, function() {
     $(this).remove();

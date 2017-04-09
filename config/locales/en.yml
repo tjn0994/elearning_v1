@@ -21,3 +21,9 @@
 
 en:
   hello: "Hello world"
+  enter_email: "Enter email"
+  password_confirmation: "Enter password confirmation"
+  Password: "Enter password"
+  send_mail: "Send mail"
+  reset_password: "Reset password"
+  new_password: "New password"
