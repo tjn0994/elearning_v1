@@ -4,6 +4,9 @@ class Admins::SetStatusCoursesController < DashboardController
     if course.present?
       if course.update status: params[:status].to_i, approver_id: current_user.id
         flash[:success] = "success"
+        if course.approver?
+          UserNotifierMailer.send_email_after_approver(course.owner).deliver_later
+        end
       else
         flash[:errors] = "errors"
       end

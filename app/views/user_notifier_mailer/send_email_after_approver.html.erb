@@ -1,0 +1,30 @@
+<div class="container-mailer">
+  <div class="container-body-mailer">
+    <div class="backgroup-mailer">
+      <div class="body-mailer">
+        <h2><%= @user.name %></h2>
+        <br>
+        <p><h3><%= t "mailer.title" %></h3></p>
+        <div>
+          <center>
+            <table>
+              <tr>
+                <td><strong><%= t "mailer.email" %></strong></td>
+                <td><%= @user.email %></td>
+              </tr>
+              <tr>
+                <td><strong><%= t "mailer.password" %></strong></td>
+              </tr>
+            </table>
+          </center>
+          <h3>
+            <%= t "mailer.link" %>
+            <%= link_to ENV["ADDRESS_WEB"], ENV["ADDRESS_WEB"] %>
+          </h3>
+        </div>
+      </div>
+      <div class="footer-mailer">
+      </div>
+    </div>
+  </div>
+</div>

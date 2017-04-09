@@ -30,3 +30,5 @@ format_date_name:
   Friday: 4
   Saturday: 5
   Sunday: 6
+mailer:
+  email: "elearning.v1.info@gmail.com"

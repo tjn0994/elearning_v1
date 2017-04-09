@@ -8,5 +8,5 @@
     class: "btn btn-danger btn-xs" %>
 <% elsif request.reject? %>
   <%= link_to "appove", admins_set_status_courses_path(id: request.id, status: 1),
-    class: "btn btn-danger btn-xs" %>
+    class: "btn btn-success btn-xs" %>
 <% end %>
