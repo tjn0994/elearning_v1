@@ -10,14 +10,14 @@ class Course < ApplicationRecord
   has_many :timesheets, dependent: :destroy
   accepts_nested_attributes_for :timesheets, allow_destroy: true,
     reject_if: :all_blank
+  has_one :room, dependent: :destroy
 
   scope :recent, ->{order created_at: :desc}
   scope :by_author, ->(owner_id){where owner_id: owner_id}
 
   mount_uploader :image, ImageUploader
 
-  enum status: {pending: 0, approver: 1, reject: 2}
+  enum status: {pending: 0, active: 1, block: 2}
 
   validates :name, presence: true, length: {maximum: 255, minimum: 2}
-
 end

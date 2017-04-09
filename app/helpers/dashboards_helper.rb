@@ -5,11 +5,11 @@ module DashboardsHelper
 
   def label_css request
     case request.status
-    when Settings.status.discard
+    when Settings.status.block
       "label-danger"
     when Settings.status.pending
       "label-warning"
-    when Settings.status.approver
+    when Settings.status.active
       "label-success"
     end
   end
