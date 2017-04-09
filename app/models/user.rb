@@ -17,6 +17,18 @@ class User < ApplicationRecord
 
   validate :image_size
 
+  def is_user? user
+    id == user.id
+  end
+
+  # def is_manager?
+  #   is_owner? || is_owner_workspace?
+  # end
+
+  # def is_owner?
+  #   id == company.owner_id if company.present?
+  # end
+
   private
 
   def image_size

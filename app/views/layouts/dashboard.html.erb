@@ -43,66 +43,6 @@
                     <img src="img/placeholders/avatars/avatar15.jpg" alt="avatar" class="img-circle">
                   </a>
                 </li>
-                <li>
-                  <a href="javascript:void(0)" class="chat-user-online">
-                    <span></span>
-                    <img src="img/placeholders/avatars/avatar10.jpg" alt="avatar" class="img-circle">
-                  </a>
-                </li>
-                <li>
-                  <a href="javascript:void(0)" class="chat-user-online">
-                    <span></span>
-                    <img src="img/placeholders/avatars/avatar4.jpg" alt="avatar" class="img-circle">
-                  </a>
-                </li>
-                <li>
-                  <a href="javascript:void(0)" class="chat-user-away">
-                    <span></span>
-                    <img src="img/placeholders/avatars/avatar7.jpg" alt="avatar" class="img-circle">
-                  </a>
-                </li>
-                <li>
-                  <a href="javascript:void(0)" class="chat-user-away">
-                    <span></span>
-                    <img src="img/placeholders/avatars/avatar9.jpg" alt="avatar" class="img-circle">
-                  </a>
-                </li>
-                <li>
-                  <a href="javascript:void(0)" class="chat-user-busy">
-                    <span></span>
-                    <img src="img/placeholders/avatars/avatar16.jpg" alt="avatar" class="img-circle">
-                  </a>
-                </li>
-                <li>
-                  <a href="javascript:void(0)">
-                    <span></span>
-                    <img src="img/placeholders/avatars/avatar1.jpg" alt="avatar" class="img-circle">
-                  </a>
-                </li>
-                <li>
-                  <a href="javascript:void(0)">
-                    <span></span>
-                    <img src="img/placeholders/avatars/avatar4.jpg" alt="avatar" class="img-circle">
-                  </a>
-                </li>
-                <li>
-                  <a href="javascript:void(0)">
-                    <span></span>
-                    <img src="img/placeholders/avatars/avatar3.jpg" alt="avatar" class="img-circle">
-                  </a>
-                </li>
-                <li>
-                  <a href="javascript:void(0)">
-                    <span></span>
-                    <img src="img/placeholders/avatars/avatar13.jpg" alt="avatar" class="img-circle">
-                  </a>
-                </li>
-                <li>
-                  <a href="javascript:void(0)">
-                    <span></span>
-                    <img src="img/placeholders/avatars/avatar5.jpg" alt="avatar" class="img-circle">
-                  </a>
-                </li>
               </ul>
               <!-- END Chat Users -->
 
@@ -229,14 +169,19 @@
               <!-- User Info -->
               <div class="sidebar-section sidebar-user clearfix sidebar-nav-mini-hide">
                 <div class="sidebar-user-avatar">
-                  <a href="page_ready_user_profile.html">
-                    <img src="img/placeholders/avatars/avatar2.jpg" alt="avatar">
-                  </a>
+                  <%= link_to admins_user_path(current_user),
+                    data: {toggle: "tooltip", placement: "bottom"} do %>
+                    <%= image_tag current_user.avatar.url, class: "height-250 width-250" %>
+                  <% end %>
                 </div>
-                <div class="sidebar-user-name">John Doe</div>
+                <div class="sidebar-user-name"><%= current_user.name %></div>
                 <div class="sidebar-user-links">
-                  <a href="page_ready_user_profile.html" data-toggle="tooltip" data-placement="bottom"
-                  title="Profile"><i class="gi gi-user"></i></a>
+                  <%= link_to admins_user_path(current_user),
+                    data: {toggle: "tooltip", placement: "bottom"} do %>
+                    <i class="gi gi-user"></i>
+                  <% end %>
+
+
                   <a href="page_ready_inbox.html" data-toggle="tooltip" data-placement="bottom" title="Messages"><i class="gi gi-envelope"></i>
                   </a>
                   <!-- Opens the user settings modal that can be found at the bottom of each page (page_footer.html in PHP version) -->

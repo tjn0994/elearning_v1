@@ -57,6 +57,22 @@ Rails.application.configure do
   # config.active_job.queue_name_prefix = "elearning_v1_#{Rails.env}"
   config.action_mailer.perform_caching = false
 
+
+  #confirm mail
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.default_url_options = {host: ENV["HOST"]}
+  config.action_mailer.smtp_settings = {
+    address: ENV["ADDRESS"],
+    port: ENV["PORT_MAILER"],
+    authentication: ENV["AUTHENTICAION"],
+    user_name: ENV["EMAIL_USERNAME"],
+    password: ENV["EMAIL_PASSWORD"],
+    domain: ENV["DOMAIN"],
+    enable_starttls_auto: true
+  }
+
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   # config.action_mailer.raise_delivery_errors = false

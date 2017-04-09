@@ -23,6 +23,10 @@ class ApplicationController < ActionController::Base
   end
 
   def layout
-    is_a?(Devise::SessionsController) ? false : "application"
+    if current_user.present?
+      is_a?(Devise::RegistrationsController) ? "dashboard" : false
+    else
+      is_a?(Devise::SessionsController) ? false : "application"
+    end
   end
 end
