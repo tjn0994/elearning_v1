@@ -19,9 +19,9 @@ image_types:
   gif: "gif"
   png: "png"
 status:
-  discard: "reject"
+  block: "block"
   pending: "pending"
-  approver: "approver"
+  active: "active"
 format_date_name:
   Monday: 0
   Tuesday: 1

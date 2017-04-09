@@ -27,6 +27,7 @@ Rails.application.routes.draw do
 
   namespace :publish do
     resources :posts
+    resources :rooms
   end
 
 

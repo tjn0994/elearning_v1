@@ -28,7 +28,7 @@
           method: :delete, class: "btn btn-danger", data: {confirm: t("are_you_sure")} do %>
           <i class="fa fa-trash"></i>
         <% end %>
-      <% elsif course.approver? %>
+      <% elsif course.active? %>
         <%= link_to teachers_course_lessons_path(course), class: "btn btn-info" do %>
           <i class="fa fa-plus"></i>
         <% end %>

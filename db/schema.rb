@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170406081015) do
+ActiveRecord::Schema.define(version: 20170409064407) do
 
   create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
@@ -53,6 +53,17 @@ ActiveRecord::Schema.define(version: 20170406081015) do
     t.datetime "updated_at",                null: false
     t.index ["category_id"], name: "index_posts_on_category_id", using: :btree
     t.index ["user_id"], name: "index_posts_on_user_id", using: :btree
+  end
+
+  create_table "rooms", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "course_id"
+    t.string   "name"
+    t.string   "session_id"
+    t.integer  "owner_id"
+    t.integer  "status",     default: 0
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.index ["course_id"], name: "index_rooms_on_course_id", using: :btree
   end
 
   create_table "timesheets", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -104,6 +115,7 @@ ActiveRecord::Schema.define(version: 20170406081015) do
   add_foreign_key "lessons", "courses"
   add_foreign_key "posts", "categories"
   add_foreign_key "posts", "users"
+  add_foreign_key "rooms", "courses"
   add_foreign_key "timesheets", "courses"
   add_foreign_key "user_courses", "courses"
   add_foreign_key "user_courses", "users"

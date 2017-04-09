@@ -1,11 +1,12 @@
+require "opentok"
+
 class Admins::SetStatusCoursesController < DashboardController
   def index
     course = Course.find_by id: params[:id]
     if course.present?
       if course.update status: params[:status].to_i, approver_id: current_user.id
-        flash[:success] = "success"
-        if course.approver?
-          UserNotifierMailer.send_email_after_approver(course.owner).deliver_later
+        if course.active?
+          create_room course
         end
       else
         flash[:errors] = "errors"
@@ -14,5 +15,27 @@ class Admins::SetStatusCoursesController < DashboardController
       flash[:danger] = "not found"
     end
     redirect_to admins_courses_path
+  end
+
+  private
+
+  def config_opentok
+    if @opentok.nil?
+     @opentok = OpenTok::OpenTokSDK.new(ENV["KEY_OPENTOK"], ENV["TOKEN"])
+    end
+  end
+
+  def create_room course
+    config_opentok
+    session =  @opentok.create_session
+    @room = Room.create owner_id: course.owner.id, course_id: course.id,
+      name: course.name, session_id: session.session_id, status: 0
+    if @room.blank?
+      course.update status: 2
+      flash[:errors] = "create room not success"
+    else
+      UserNotifierMailer.send_email_after_approver(course.owner).deliver_later
+      flash[:success] = "success"
+    end
   end
 end
