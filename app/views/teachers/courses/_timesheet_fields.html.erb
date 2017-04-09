@@ -1,0 +1,22 @@
+<div class="timesheets-form-update">
+  <div class="form-group">
+    <%= f.label :day_name, class: "col-md-3  control-label" %>
+    <div class="col-md-5">
+      <%= f.select :day_name, Settings.format_date_name, {},
+        class: "form-control selectpicker" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :time_from, class: "col-md-3  control-label" %>
+    <div class="col-md-2 form-inline">
+      <%= f.time_select :time_from, {ignore_date: true}, {class: "form-control"} %>
+    </div>
+
+    <div class="col-md-1">Time to</div>
+    <div class="col-md-2 form-inline">
+      <%= f.time_select :time_to, {ignore_date: true}, {class: "form-control"} %>
+    </div>
+    <%= link_to_remove_fields "remove", f %>
+  </div>
+</div>

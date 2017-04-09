@@ -9,6 +9,7 @@ class Teachers::CoursesController < DashboardController
 
   def new
     @course = Course.new
+    @timesheet = @course.timesheets.build
   end
 
   def create
@@ -51,7 +52,8 @@ class Teachers::CoursesController < DashboardController
   private
 
   def course_params
-    params.require(:course).permit(:category_id, :name, :description, :image)
+    params.require(:course).permit(:category_id, :name, :description, :image,
+      :date_from, :date_to, timesheets_attributes: [:id, :time_from, :time_to, :day_name, :_destroy])
       .merge! owner_id: current_user.id
   end
 
