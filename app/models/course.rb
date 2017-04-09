@@ -1,4 +1,5 @@
 class Course < ApplicationRecord
+
   belongs_to :category
   belongs_to :owner, class_name: User.name
   belongs_to :approver, class_name: User.name, optional: true
@@ -7,6 +8,8 @@ class Course < ApplicationRecord
   has_many :user_courses, dependent: :destroy
   has_many :users, through: :user_courses
   has_many :timesheets, dependent: :destroy
+  accepts_nested_attributes_for :timesheets, allow_destroy: true,
+    reject_if: :all_blank
 
   scope :recent, ->{order created_at: :desc}
   scope :by_author, ->(owner_id){where owner_id: owner_id}
