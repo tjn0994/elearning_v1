@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= full_title yield :title %></title>
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag "application", media: "all",
+      "data-turbolinks-track": "reload" %>
+    <%= javascript_include_tag "application",
+      "data-turbolinks-track": "reload" %>
+
+  </head>
+  <body>
+    <div id="login-background">
+      <%= image_tag "framgia.jpg", class: "animation-pulseSlow" %>
+    </div>
+
+    <div id="login-container" class="animation-fadeIn">
+      <%= render "shared/flash" if flash[:alert] || flash[:notice] %>
+      <%=  yield %>
+      <!-- Footer -->
+      <footer class="text-muted text-center">
+        <small><%= t "year" %><%= t "inc_all_rights_reserved" %></small>
+      </footer>
+      <!-- END Footer -->
+    </div>
+  </body>
+</html>

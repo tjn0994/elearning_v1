@@ -23,10 +23,12 @@ class ApplicationController < ActionController::Base
   end
 
   def layout
-    if current_user.present?
-      is_a?(Devise::RegistrationsController) ? "dashboard" : false
+    if current_user.present? && is_a?(Devise::RegistrationsController)
+      "dashboard"
+    elsif is_a?(Devise::SessionsController) || is_a?(Devise::PasswordsController)
+      "devise"
     else
-      is_a?(Devise::SessionsController) ? false : "application"
+      "application"
     end
   end
 end
