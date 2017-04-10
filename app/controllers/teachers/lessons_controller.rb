@@ -22,10 +22,6 @@ class Teachers::LessonsController < DashboardController
   end
 
   def show
-    @lesson = @course.lessons.find_by id: params[:id]
-    respond_to do |format|
-      format.html{render partial: "details_information", local: {lesson: @lesson}}
-    end
   end
 
   def edit; end

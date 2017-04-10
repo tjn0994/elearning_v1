@@ -28,6 +28,7 @@ gem "cancancan", "~> 1.10"
 gem "sidekiq"
 gem "opentok"
 gem "jquery-validation-rails"
+gem "ckeditor"
 
 # Use Capistrano for deployment
 # gem "capistrano-rails", group: :development

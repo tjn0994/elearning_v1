@@ -22,6 +22,9 @@
 //= require ./dashboard/vendor/modernizr-2.7.1-respond-1.4.2.min.js
 //= require bootstrap-datepicker
 
+//= require ckeditor/init
+//= require ckeditor_custom
+
 //= require user.js
 //= require custom_dashboard.js
 //= require date.js
