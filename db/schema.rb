@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170410230930) do
+ActiveRecord::Schema.define(version: 20170410230940) do
+
+  create_table "answers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "question_id"
+    t.string   "name"
+    t.boolean  "is_correct"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["question_id"], name: "index_answers_on_question_id", using: :btree
+  end
 
   create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
@@ -49,6 +58,20 @@ ActiveRecord::Schema.define(version: 20170410230930) do
     t.index ["category_id"], name: "index_courses_on_category_id", using: :btree
   end
 
+  create_table "exams", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "user_id"
+    t.integer  "lesson_id"
+    t.string   "name"
+    t.time     "time"
+    t.integer  "score"
+    t.integer  "number_question"
+    t.integer  "status",          default: 0
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.index ["lesson_id"], name: "index_exams_on_lesson_id", using: :btree
+    t.index ["user_id"], name: "index_exams_on_user_id", using: :btree
+  end
+
   create_table "lessons", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "course_id"
     t.string   "name"
@@ -68,6 +91,25 @@ ActiveRecord::Schema.define(version: 20170410230930) do
     t.datetime "updated_at",                null: false
     t.index ["category_id"], name: "index_posts_on_category_id", using: :btree
     t.index ["user_id"], name: "index_posts_on_user_id", using: :btree
+  end
+
+  create_table "questions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "lesson_id"
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["lesson_id"], name: "index_questions_on_lesson_id", using: :btree
+  end
+
+  create_table "results", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "exam_id"
+    t.integer  "question_id"
+    t.integer  "answer_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["answer_id"], name: "index_results_on_answer_id", using: :btree
+    t.index ["exam_id"], name: "index_results_on_exam_id", using: :btree
+    t.index ["question_id"], name: "index_results_on_question_id", using: :btree
   end
 
   create_table "rooms", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -126,10 +168,17 @@ ActiveRecord::Schema.define(version: 20170410230930) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "answers", "questions"
   add_foreign_key "courses", "categories"
+  add_foreign_key "exams", "lessons"
+  add_foreign_key "exams", "users"
   add_foreign_key "lessons", "courses"
   add_foreign_key "posts", "categories"
   add_foreign_key "posts", "users"
+  add_foreign_key "questions", "lessons"
+  add_foreign_key "results", "answers"
+  add_foreign_key "results", "exams"
+  add_foreign_key "results", "questions"
   add_foreign_key "rooms", "courses"
   add_foreign_key "timesheets", "courses"
   add_foreign_key "user_courses", "courses"
