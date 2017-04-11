@@ -1,5 +1,5 @@
 class Teachers::CoursesController < DashboardController
-  before_action :load_course, except: [:index, :new, :create]
+  before_action :load_course, only: [:edit, :update, :destroy]
   before_action :load_category, except: [:index, :show, :destroy]
 
   def index

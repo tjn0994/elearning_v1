@@ -12,11 +12,3 @@ $(document).on('click', '.add-relax', function() {
 $(document).on('click', '.remove-relax', function() {
   change_label_relax('.relax-form');
 });
-
-$(document).on('click', '.add-timesheet', function() {
-  change_label_relax('.timesheets-form');
-});
-
-$(document).on('click', '.remove-relax-update', function() {
-  change_label_relax('.timesheets-form');
-});

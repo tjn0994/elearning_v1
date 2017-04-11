@@ -6,12 +6,16 @@ per_page:
     course: 10
   students:
     user: 10
+    exam: 10
+    result: 10
   teachers:
     user: 10
     course: 10
     lesson: 10
+    question: 10
   publish:
     post: 8
+    room: 8
 max_size_image_avatar: 5
 image_types:
   jpg: "jpg"
