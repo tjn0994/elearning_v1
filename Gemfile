@@ -29,7 +29,7 @@ gem "sidekiq"
 gem "opentok"
 gem "jquery-validation-rails"
 gem "ckeditor"
-
+gem 'jquery-turbolinks'
 # Use Capistrano for deployment
 # gem "capistrano-rails", group: :development
 

@@ -11,8 +11,8 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery.turbolinks
 //= require jquery_ujs
-//= require turbolinks
 //= require bootstrap-sprockets
 //= require portfolio.js
 //= require ./dashboard/app.js
@@ -28,6 +28,7 @@
 //= require user.js
 //= require custom_dashboard.js
 //= require date.js
+//= require ./teachers/questions.js
 
 // gem validate
 //= require login.js
@@ -47,5 +48,10 @@ function add_fields(link, association, content) {
 
 function remove_fields(link) {
   $(link).prev("input[type=hidden]").val("true");
-  $(link).closest('.form-group').hide();
+  $(link).closest('.timesheets-form').hide();
+}
+
+function remove_fields_answer(link) {
+  $(link).prev("input[type=hidden]").val("true");
+  $(link).closest('.answers-form').hide();
 }
