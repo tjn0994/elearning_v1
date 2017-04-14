@@ -29,6 +29,9 @@
           <i class="fa fa-trash"></i>
         <% end %>
       <% elsif course.active? %>
+        <%= link_to edit_teachers_course_path(course), class: "btn btn-warning" do %>
+          <i class="fa fa-pencil"></i>
+        <% end %>
         <%= link_to teachers_course_lessons_path(course), class: "btn btn-info" do %>
           <i class="fa fa-plus"></i>
         <% end %>
