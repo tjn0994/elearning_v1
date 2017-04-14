@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 
   namespace :students do
     resources :users
+    resources :user_courses
     resources :courses do
       resources :lessons do
         resources :exams

@@ -8,9 +8,10 @@ class Course < ApplicationRecord
   has_many :user_courses, dependent: :destroy
   has_many :users, through: :user_courses
   has_many :timesheets, dependent: :destroy
+  has_one :room, dependent: :destroy
+
   accepts_nested_attributes_for :timesheets, allow_destroy: true,
     reject_if: :all_blank
-  has_one :room, dependent: :destroy
 
   scope :recent, ->{order created_at: :desc}
   scope :by_author, ->(owner_id){where owner_id: owner_id}

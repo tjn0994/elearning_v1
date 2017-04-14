@@ -1,0 +1,39 @@
+<% provide :title, t(".title") %>
+<div class="container custom_width">
+  <h3 class="text-center"><%= t ".list_workspace" %></h3>
+  <div class="row">
+    <% @lessons.each do |lesson| %>
+      <div class="col-sm-6 col-md-4 ">
+        <div class="thumbnail product">
+          <div class="caption">
+            <%= lesson.name%>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<section class="site-content site-section">
+  <div class="container">
+    <div class="site-block text-center">
+      <div class="btn-group portfolio-filter">
+        <a href="javascript:void(0)" class="btn btn-primary active" data-category="all">All</a>
+        <a href="javascript:void(0)" class="btn btn-primary" data-category="design">Design</a>
+        <a href="javascript:void(0)" class="btn btn-primary" data-category="development">Development</a>
+        <a href="javascript:void(0)" class="btn btn-primary" data-category="logo">Logo</a>
+      </div>
+    </div>
+
+    <div class="row portfolio">
+      <% @lessons.each do |lesson| %>
+        <div class="col-sm-3 portfolio-item animation-fadeInQuick" data-category="design">
+          <%= link_to students_course_lesson_path(@course, lesson), class: "btn btn-warning" do %>
+            <%= lesson.name %>
+          <% end %>
+          <p><%= lesson.description %></p>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,26 @@
+<% provide :title, t(".title") %>
+<div class="container custom_width">
+  <h3 class="text-center"><%= t ".list_workspace" %></h3>
+  <div class="row">
+      <% @user_courses.each do |course| %>
+        <div class="col-sm-6 col-md-4 ">
+          <div class="thumbnail product">
+            <div class="caption">
+              <div class="img-caption">
+                  <%= link_to image_tag(course.image.url),
+                    students_course_lessons_path(course),
+                    class: "widget widget-hover-effect4 themed-background" %>
+                <p class="desc">
+                  <%= t ".description" %>
+                  <%= course.description %>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+  </div>
+</div>
+
+
+

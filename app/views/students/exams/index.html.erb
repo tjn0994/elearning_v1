@@ -1,0 +1,17 @@
+<% provide :title, t(".title") %>
+<div class="container custom_width">
+  <h3 class="text-center"><%= t ".list_workspace" %></h3>
+  <div class="row">
+    <ul>
+      <% @exams.each do |exam| %>
+        <%= link_to students_course_lesson_exam_path(@course, @lesson, exam),
+            class: "btn btn-lg btn-primary btn-block" do %>
+          <i class="fa fa-play"></i> Start Learning</a>
+        <% end %>
+      <% end %>
+    </ul>
+  </div>
+</div>
+
+
+

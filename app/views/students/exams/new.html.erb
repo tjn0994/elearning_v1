@@ -1,0 +1,40 @@
+<div class="panel panel-info">
+      <div class="panel-heading">
+        <h3 class="panel-title">exam</h3>
+      </div>
+      <div class="panel-body">
+        <div>
+          <%= form_for [:students, @course, @lesson, @exam] do |f| %>
+            <div class="form-group">
+              <div>
+                <%= render "shared/error_messages", object: f.object %>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <%= @exam.name %>
+            </div>
+
+
+            <%= f.fields_for :results do |ff| %>
+              <div class="clear-fix answers-form">
+                <div class="form-group">
+                    <%= ff.object.question.name %>
+                    <% ff.object.question.answers.each do |answer| %>
+                      <%= ff.radio_button :answer_id, answer.id  %>
+                      <%= answer.name %>
+                    <% end %>
+                </div>
+              </div>
+            <% end %>
+
+            <div class="form-group" >
+              <div class="col-md-5 col-md-offset-3">
+                <%= f.submit "submit",
+                  class: "btn btn-primary form-control" %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
