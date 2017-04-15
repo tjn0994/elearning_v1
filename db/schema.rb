@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170410230940) do
+ActiveRecord::Schema.define(version: 20170415014506) do
 
   create_table "answers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "question_id"
@@ -64,10 +64,9 @@ ActiveRecord::Schema.define(version: 20170410230940) do
     t.string   "name"
     t.time     "time"
     t.integer  "score"
-    t.integer  "number_question"
-    t.integer  "status",          default: 0
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
+    t.integer  "status",     default: 0
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
     t.index ["lesson_id"], name: "index_exams_on_lesson_id", using: :btree
     t.index ["user_id"], name: "index_exams_on_user_id", using: :btree
   end
@@ -121,6 +120,15 @@ ActiveRecord::Schema.define(version: 20170410230940) do
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
     t.index ["course_id"], name: "index_rooms_on_course_id", using: :btree
+  end
+
+  create_table "time_for_exams", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "lesson_id"
+    t.time     "time"
+    t.integer  "number_question"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.index ["lesson_id"], name: "index_time_for_exams_on_lesson_id", using: :btree
   end
 
   create_table "timesheets", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -180,6 +188,7 @@ ActiveRecord::Schema.define(version: 20170410230940) do
   add_foreign_key "results", "exams"
   add_foreign_key "results", "questions"
   add_foreign_key "rooms", "courses"
+  add_foreign_key "time_for_exams", "lessons"
   add_foreign_key "timesheets", "courses"
   add_foreign_key "user_courses", "courses"
   add_foreign_key "user_courses", "users"

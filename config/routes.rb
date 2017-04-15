@@ -23,6 +23,7 @@ Rails.application.routes.draw do
     resources :courses do
       resources :lessons do
         resources :questions
+        resources :time_for_exams
       end
     end
   end

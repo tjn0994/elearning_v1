@@ -8,9 +8,14 @@ class Students::ExamsController < ApplicationController
   end
 
   def new
-    @exam = @lesson.exams.create name: @lesson.name, number_question: 10, user_id: current_user.id
-    @exam.save
-    @exam.question_ids = @lesson.questions.limit(10).pluck(:id)
+    if @lesson.time_for_exam.present?
+      @exam = @lesson.exams.create name: @lesson.name, user_id: current_user.id
+      @exam.save
+      @exam.question_ids = @lesson.questions.limit( @lesson.time_for_exam.number_question).pluck(:id)
+    else
+      flash[:error] = "exam not exist"
+      redirect_to students_course_lesson_path(@course, @lesson)
+    end
   end
 
   def update
