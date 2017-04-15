@@ -19,6 +19,16 @@
           </div>
         </div>
 
+        <%= f.fields_for :post_types do |ff| %>
+          <div class="form-group">
+            <%= ff.label :type, class: "col-md-3 control-label" %>
+            <div class="col-md-5">
+              <%= ff.select :type_id, @categories.first.types.collect {|c| [c.name, c.id]},
+                {}, {class: "form-control select2-input"} %>
+            </div>
+          </div>
+        <% end %>
+
         <div class="form-group">
           <%= f.label :title, class: "col-md-3 control-label" %>
           <div class="col-md-5">
@@ -29,7 +39,7 @@
         <div class="form-group">
           <%= f.label :content, class: "col-md-3  control-label" %>
           <div class="col-md-5">
-            <%= f.text_area :content, class: "form-control" %>
+            <%= f.text_area :content, class: "form-control ckeditor" %>
           </div>
         </div>
 

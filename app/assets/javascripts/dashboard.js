@@ -55,3 +55,8 @@ function remove_fields_answer(link) {
   $(link).prev("input[type=hidden]").val("true");
   $(link).closest('.answers-form').hide();
 }
+
+function remove_fields_type(link) {
+  $(link).prev("input[type=hidden]").val("true");
+  $(link).closest('.types-form').hide();
+}

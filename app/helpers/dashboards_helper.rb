@@ -31,6 +31,10 @@ module DashboardsHelper
     f.hidden_field(:_destroy) + link_to_function(name, "remove_fields_answer(this)")
   end
 
+  def link_to_remove_fields_type(name, f)
+    f.hidden_field(:_destroy) + link_to_function(name, "remove_fields_type(this)")
+  end
+
   def link_to_function(name, *args, &block)
     html_options = args.extract_options!.symbolize_keys
     function = block_given? ? update_page(&block) : args[0] || ""

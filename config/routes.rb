@@ -30,7 +30,9 @@ Rails.application.routes.draw do
 
   namespace :admins do
     resources :users
-    resources :categories
+    resources :categories do
+      resources :types
+    end
     resources :courses
     resources :set_status_courses, only: :index
   end
