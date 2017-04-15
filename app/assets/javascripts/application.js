@@ -24,6 +24,10 @@
 //= require user.js
 //= require date.js
 
+//gem ckeditor
+//= require ckeditor/init
+//= require ckeditor_custom
+
 // gem validate
 //= require login.js
 //= require jquery.validate

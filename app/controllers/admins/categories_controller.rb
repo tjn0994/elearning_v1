@@ -8,6 +8,7 @@ class Admins::CategoriesController < DashboardController
 
   def new
     @category = Category.new
+    @type = @category.types.build
   end
 
   def create
@@ -50,7 +51,7 @@ class Admins::CategoriesController < DashboardController
   private
 
   def category_params
-    params.require(:category).permit(:name, :description)
+    params.require(:category).permit(:name, :description, types_attributes: [:id, :name, :_destroy])
   end
 
   def load_category

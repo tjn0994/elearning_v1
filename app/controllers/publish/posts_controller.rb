@@ -9,6 +9,7 @@ class Publish::PostsController < ApplicationController
 
   def new
     @post = current_user.posts.new
+    @post.post_types.build
   end
 
   def create
@@ -48,7 +49,8 @@ class Publish::PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:category_id, :title, :content)
+    params.require(:post).permit(:category_id, :title, :content,
+      post_types_attributes: [:id, :type_id, :_destroy])
   end
 
   def load_post
