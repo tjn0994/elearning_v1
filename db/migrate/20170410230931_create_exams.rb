@@ -6,7 +6,6 @@ class CreateExams < ActiveRecord::Migration[5.0]
       t.string :name
       t.time :time
       t.integer :score
-      t.integer :number_question
       t.integer :status, default: 0
       t.timestamps
     end

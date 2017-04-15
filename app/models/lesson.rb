@@ -3,6 +3,7 @@ class Lesson < ApplicationRecord
 
   has_many :exams, dependent: :destroy
   has_many :questions, dependent: :destroy
+  has_one :time_for_exam, dependent: :destroy
 
   scope :recent, ->{order created_at: :desc}
 

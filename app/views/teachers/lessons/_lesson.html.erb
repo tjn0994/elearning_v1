@@ -8,6 +8,11 @@
   <td><%= lesson.content %></td>
   <td>
     <div class="btn-group btn-group-xs">
+      <% if lesson.time_for_exam.blank? %>
+        <%= link_to teachers_course_lesson_time_for_exams_path(course, lesson), class: "btn btn-warning" do %>
+          <i class="fa fa-plus"></i>
+        <% end %>
+      <% end %>
       <%= link_to teachers_course_lesson_questions_path(course, lesson), class: "btn btn-info" do %>
         <i class="fa fa-plus"></i>
       <% end %>
