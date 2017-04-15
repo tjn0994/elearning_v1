@@ -7,6 +7,8 @@ class User < ApplicationRecord
   has_many :posts, dependent: :destroy
   has_many :user_courses
   has_many :courses, through: :user_courses
+  has_many :activities
+  has_many :notifications
 
   scope :recent, ->{order created_at: :desc}
 

@@ -11,6 +11,7 @@ class Teachers::TimeForExamsController < ApplicationController
     @time_for_exam = TimeForExam.new time_for_exam_params
     @time_for_exam.update lesson_id: @lesson.id
     if @time_for_exam.save
+      create_activity_for_time_exam
       flash[:success] = t "devise.registrations.signed_up"
      redirect_to teachers_course_lessons_path(@course)
     else
@@ -22,6 +23,7 @@ class Teachers::TimeForExamsController < ApplicationController
 
   def update
     if @time_for_exam.update_attributes time_for_exam_params
+      create_activity_for_time_exam
       flash[:success] = t "devise.registrations.updated"
      redirect_to teachers_course_lessons_path(@course)
     else
@@ -54,5 +56,9 @@ class Teachers::TimeForExamsController < ApplicationController
     return if @question
     flash[:error] = t "dashboard.users.not_found"
     redirect_to teachers_course_lessons_path(@course)
+  end
+
+  def create_activity_for_time_exam
+    create_activity TimeForExam.name, @time_for_exam, @_action_name
   end
 end

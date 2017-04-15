@@ -11,10 +11,10 @@
   <td><%= user.address %></td>
   <td>
     <div class="btn-group btn-group-xs">
-      <%= link_to edit_teachers_user_path(user), class: "btn btn-warning" do %>
+      <%= link_to edit_students_user_path(user), class: "btn btn-warning" do %>
         <i class="fa fa-pencil"></i>
       <% end %>
-      <%= link_to teachers_user_path(user),
+      <%= link_to students_user_path(user),
         method: :delete, class: "btn btn-danger", data: {confirm: t("are_you_sure")} do %>
         <i class="fa fa-trash"></i>
       <% end %>

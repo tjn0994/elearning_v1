@@ -16,6 +16,7 @@ class Students::UsersController < DashboardController
   def create
     @user = User.new user_params
     if @user.save
+      create_activity_for_user
       flash[:success] = t "devise.registrations.signed_up"
       redirect_to students_users_path
     else
@@ -31,6 +32,7 @@ class Students::UsersController < DashboardController
 
   def update
     if @user.update_attributes user_params
+      create_activity_for_user
       flash[:success] = t "devise.registrations.updated"
       redirect_to students_users_path
     else
@@ -40,6 +42,7 @@ class Students::UsersController < DashboardController
 
   def destroy
     if @user.destroy
+      create_activity_for_user
       flash[:success] = t "devise.registrations.destroyed"
     else
       flash[:warning] = t "delete_not_success"

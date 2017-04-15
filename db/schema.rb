@@ -10,7 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170415062504) do
+ActiveRecord::Schema.define(version: 20170415093134) do
+
+  create_table "activities", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "trackable_type"
+    t.integer  "trackable_id"
+    t.string   "owner_type"
+    t.integer  "owner_id"
+    t.string   "key"
+    t.text     "parameters",     limit: 65535
+    t.string   "recipient_type"
+    t.integer  "recipient_id"
+    t.boolean  "read",                         default: false
+    t.boolean  "enable",                       default: true
+    t.integer  "activity_type",                default: 0
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["owner_id", "owner_type"], name: "index_activities_on_owner_id_and_owner_type", using: :btree
+    t.index ["recipient_id", "recipient_type"], name: "index_activities_on_recipient_id_and_recipient_type", using: :btree
+    t.index ["trackable_id", "trackable_type"], name: "index_activities_on_trackable_id_and_trackable_type", using: :btree
+  end
 
   create_table "answers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "question_id"
@@ -51,6 +71,8 @@ ActiveRecord::Schema.define(version: 20170415062504) do
     t.integer  "owner_id"
     t.integer  "approver_id"
     t.integer  "status",      default: 0
+    t.date     "date_open"
+    t.date     "date_close"
     t.date     "date_from"
     t.date     "date_to"
     t.datetime "created_at",              null: false

@@ -15,6 +15,7 @@ class Publish::PostsController < ApplicationController
   def create
     @post = current_user.posts.new post_params
     if @post.save
+      create_activity Post.name, @post, "post.create"
       flash[:success] = t "devise.registrations.signed_up"
       redirect_to publish_posts_path
     else
