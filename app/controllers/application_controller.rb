@@ -2,6 +2,8 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   layout :layout
 
+  include ApplicationHelper
+
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   protected
@@ -29,5 +31,9 @@ class ApplicationController < ActionController::Base
     else
       "application"
     end
+  end
+
+  def create_activity_for_user
+    create_activity User.name, @user, @_action_name
   end
 end

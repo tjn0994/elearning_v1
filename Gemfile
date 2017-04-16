@@ -31,7 +31,7 @@ gem "jquery-validation-rails"
 gem "ckeditor"
 gem "jquery-turbolinks"
 gem "simple_form"
-
+gem "public_activity"
 
 # Use Capistrano for deployment
 # gem "capistrano-rails", group: :development

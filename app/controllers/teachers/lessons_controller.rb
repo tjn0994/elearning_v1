@@ -14,6 +14,7 @@ class Teachers::LessonsController < DashboardController
   def create
     @lesson = @course.lessons.new lesson_params
     if @lesson.save
+      create_activity_for_lesson
       flash[:success] = t "devise.registrations.signed_up"
       redirect_to teachers_course_lessons_path
     else
@@ -28,6 +29,7 @@ class Teachers::LessonsController < DashboardController
 
   def update
     if @lesson.update_attributes lesson_params
+      create_activity_for_lesson
       flash[:success] = t "devise.registrations.updated"
       redirect_to teachers_course_lessons_path
     else
@@ -37,6 +39,7 @@ class Teachers::LessonsController < DashboardController
 
   def destroy
     if @lesson.destroy
+      create_activity_for_lesson
       flash[:success] = t "devise.registrations.destroyed"
     else
       flash[:warning] = t "delete_not_success"
@@ -62,5 +65,9 @@ class Teachers::LessonsController < DashboardController
     return if @course
     flash[:error] = t "dashboard.users.not_found"
     redirect_to teachers_courses_path
+  end
+
+  def create_activity_for_lesson
+    create_activity Lesson.name, @lesson, @_action_name
   end
 end

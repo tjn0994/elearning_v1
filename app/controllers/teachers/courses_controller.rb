@@ -15,6 +15,7 @@ class Teachers::CoursesController < DashboardController
   def create
     @course = Course.new course_params
     if @course.save
+      create_activity_for_course
       flash[:success] = t "devise.registrations.signed_up"
       redirect_to teachers_courses_path
     else
@@ -33,6 +34,7 @@ class Teachers::CoursesController < DashboardController
 
   def update
     if @course.update_attributes course_params
+      create_activity_for_course
       flash[:success] = t "devise.registrations.updated"
       redirect_to teachers_courses_path
     else
@@ -42,6 +44,7 @@ class Teachers::CoursesController < DashboardController
 
   def destroy
     if @course.destroy
+      create_activity_for_course
       flash[:success] = t "devise.registrations.destroyed"
     else
       flash[:warning] = t "delete_not_success"
@@ -66,5 +69,9 @@ class Teachers::CoursesController < DashboardController
 
   def load_category
     @categories = Category.all
+  end
+
+  def create_activity_for_course
+    create_activity Course.name, @course, @_action_name
   end
 end

@@ -14,6 +14,7 @@ class Admins::CategoriesController < DashboardController
   def create
     @category = Category.new category_params
     if @category.save
+      create_activity_for_category
       flash[:success] = t "devise.registrations.signed_up"
       redirect_to admins_categories_path
     else
@@ -32,6 +33,7 @@ class Admins::CategoriesController < DashboardController
 
   def update
     if @category.update_attributes category_params
+      create_activity_for_category
       flash[:success] = t "devise.registrations.updated"
       redirect_to admins_categories_path
     else
@@ -41,6 +43,7 @@ class Admins::CategoriesController < DashboardController
 
   def destroy
     if @category.destroy
+      create_activity_for_category
       flash[:success] = t "devise.registrations.destroyed"
     else
       flash[:warning] = t "delete_not_success"
@@ -59,5 +62,9 @@ class Admins::CategoriesController < DashboardController
     return if @category
     flash[:error] = t "dashboard.users.not_found"
     redirect_to admins_categories_path
+  end
+
+  def create_activity_for_category
+    create_activity Category.name, @category, @_action_name
   end
 end

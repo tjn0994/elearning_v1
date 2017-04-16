@@ -5,6 +5,7 @@ class Admins::SetStatusCoursesController < DashboardController
     course = Course.find_by id: params[:id]
     if course.present?
       if course.update status: params[:status].to_i, approver_id: current_user.id
+        create_activity_accept_course course, "#{course.status} #{Course.name}"
         if course.active?
           create_room course
         end
@@ -21,7 +22,7 @@ class Admins::SetStatusCoursesController < DashboardController
 
   def config_opentok
     if @opentok.nil?
-     @opentok = OpenTok::OpenTokSDK.new(ENV["KEY_OPENTOK"], ENV["TOKEN"])
+     @opentok = OpenTok::OpenTok.new(ENV["KEY_OPENTOK"], ENV["TOKEN"])
     end
   end
 
@@ -37,5 +38,9 @@ class Admins::SetStatusCoursesController < DashboardController
       UserNotifierMailer.send_email_after_approver(course.owner).deliver_later
       flash[:success] = "success"
     end
+  end
+
+  def create_activity_accept_course course, message
+    create_activity Course.name, course, message
   end
 end
