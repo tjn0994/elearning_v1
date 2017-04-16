@@ -24,10 +24,13 @@ module ApplicationHelper
   end
 
   #notification
-  def create_notification_for_member model, object, name, receiver, user_receiver
-    current_user.notifications.create trackable_type: model, trackable_id: object.id,
+  def create_notification_for_member model, object, name
+    Notification.create trackable_type: model, trackable_id: object.id,
       owner_type: current_user.role, owner_id: current_user.id, key: name,
-      recipient_type: receiver, recipient_id: user_receiver.id,
-      activity_type: Notification.activity_types[:notice]
+      activity_type: Notification.activity_types[:notice], user_id: object.owner_id
+  end
+
+  def bg_unread notification
+    "unread" unless notification.read
   end
 end

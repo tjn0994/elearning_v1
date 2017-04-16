@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
   include ApplicationHelper
 
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :load_notifications, if: :user_signed_in?
 
   protected
 
@@ -35,5 +36,11 @@ class ApplicationController < ActionController::Base
 
   def create_activity_for_user
     create_activity User.name, @user, @_action_name
+  end
+
+  def load_notifications
+    @notifications = current_user.notifications
+      .by_notification(Notification.activity_types[:notice]).recent
+    @count_unread_notification =  @notifications.unread.count
   end
 end

@@ -20,6 +20,7 @@
 //= require app
 //= require portfolio
 //= require bootstrap-datepicker
+//= require cable
 
 //= require user.js
 //= require date.js

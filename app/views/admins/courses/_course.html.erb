@@ -10,7 +10,8 @@
       <%= image_tag course.image.url, class: "height-80" %>
     <% end %>
   </td>
-  <td></td>
+  <td><%= course.owner_name %></td>
+  <td><%= course.approver_name %></td>
   <td>
     <span class="label <%= label_css(course) %>">
       <%= course.status %>

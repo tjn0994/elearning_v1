@@ -3,6 +3,7 @@
   <head>
     <title>ElearningV1</title>
     <%= csrf_meta_tags %>
+    <%= action_cable_meta_tag %>
     <%= stylesheet_link_tag "dashboard", media: "all", "data-turbolinks-track": "reload" %>
     <%= javascript_include_tag "dashboard", "data-turbolinks-track": "reload" %>
   </head>
@@ -624,6 +625,36 @@
                       <a href="javascript:void(0)" class="btn btn-primary" id="options-main-style-alt">Alternative</a>
                     </div>
                   </li>
+                </ul>
+              </li>
+
+              <!-- notice -->
+              <li class="dropdown notifications-menu">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                  <i class="fa fa-bell-o"></i>
+                  <span class="label label-warning" id="notification-counter">
+                    <%= render partial: "layouts/count_notification",
+                      locals: {count_notification: @count_unread_notification} %>
+                  </span>
+                </a>
+                <ul class="dropdown-menu notifications" role="menu" aria-labelledby="dLabel">
+                  <div class="notification-heading">
+                    <span class="menu-title">
+                      <%= t "dashboard.notification.your_notification" %>
+                    </span>
+                    <span class="pull-right">
+                      <input type="button" onclick="mark_read_all_notifications()"
+                      value="<%= t "dashboard.notification.read_all" %>"
+                      class="btn btn-success btn-xs">
+                    </span>
+                  </div>
+                  <div class="notifications-wrapper notifications-view">
+                   <!--  render partial: "layouts/notification", collection: @notifications -->
+                  </div>
+                  <div class="seeall">
+                    <%= link_to "kk", "#",
+                      class: "content" %>
+                  </div>
                 </ul>
               </li>
               <!-- END Template Options -->
