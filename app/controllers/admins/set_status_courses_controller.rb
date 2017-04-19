@@ -6,9 +6,10 @@ class Admins::SetStatusCoursesController < DashboardController
     if course.present?
       if course.update status: params[:status].to_i, approver_id: current_user.id
         create_activity_accept_course course, "#{course.status} #{Course.name}"
-        if course.active?
-          create_room course
-        end
+        create_notification_for_member Course.name, course, "#{course.status} #{Course.name}"
+        # if course.active?
+        #   create_room course
+        # end
       else
         flash[:errors] = "errors"
       end

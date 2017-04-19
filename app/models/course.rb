@@ -21,4 +21,7 @@ class Course < ApplicationRecord
   enum status: {pending: 0, active: 1, block: 2}
 
   validates :name, presence: true, length: {maximum: 255, minimum: 2}
+
+  delegate :name, to: :owner, prefix: true, allow_nil: true
+  delegate :name, to: :approver, prefix: true, allow_nil: true
 end

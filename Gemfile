@@ -32,6 +32,7 @@ gem "ckeditor"
 gem "jquery-turbolinks"
 gem "simple_form"
 gem "public_activity"
+gem "redis"
 
 # Use Capistrano for deployment
 # gem "capistrano-rails", group: :development
