@@ -33,6 +33,7 @@ gem "jquery-turbolinks"
 gem "simple_form"
 gem "public_activity"
 gem "redis"
+gem "ratyrate"
 
 # Use Capistrano for deployment
 # gem "capistrano-rails", group: :development
