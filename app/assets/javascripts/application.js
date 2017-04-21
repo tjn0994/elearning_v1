@@ -40,6 +40,10 @@
 // gem social-share-button
 //= require social-share-button
 
+// gem "chartkick"
+
+//= require chartkick
+
 //= require ./publish/posts.js
 //= require ./publish/comments.js
 
