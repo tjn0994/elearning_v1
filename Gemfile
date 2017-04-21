@@ -35,6 +35,7 @@ gem "public_activity"
 gem "redis"
 gem "ratyrate"
 gem "social-share-button"
+gem "chartkick"
 
 # Use Capistrano for deployment
 # gem "capistrano-rails", group: :development

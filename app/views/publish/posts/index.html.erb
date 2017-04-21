@@ -1,4 +1,5 @@
 <% provide :title, t("list_user") %>
+<%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
 <br>
 <div class="row">
   <div class="col-md-9" style="box-shadow: 0 10px 10px 10px rgba(0, 0, 0, 0.3)">
@@ -27,6 +28,9 @@
     <br>
     <br>
     POSTS TENDENCY
+    <div>
+      <%= pie_chart @posts.group(:id).count %>
+    </div>
   </div>
 </div>
 <br>
