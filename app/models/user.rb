@@ -4,11 +4,14 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  ratyrate_rater
+
   has_many :posts, dependent: :destroy
   has_many :user_courses
   has_many :courses, through: :user_courses
   has_many :activities
   has_many :notifications
+  has_many :comments
 
   scope :recent, ->{order created_at: :desc}
 

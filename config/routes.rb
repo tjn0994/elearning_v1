@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  post '/rate' => 'rater#create', :as => 'rate'
   mount Ckeditor::Engine => '/ckeditor'
   devise_for :users
   #scope "(:locale)", locale: /en|vi|ja/ do
@@ -40,7 +41,9 @@ Rails.application.routes.draw do
   end
 
   namespace :publish do
-    resources :posts
+    resources :posts do
+      resources :comments
+    end
     resources :rooms
   end
 

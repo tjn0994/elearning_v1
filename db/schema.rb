@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170415093134) do
+ActiveRecord::Schema.define(version: 20170421095216) do
 
   create_table "activities", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "trackable_type"
@@ -41,6 +41,15 @@ ActiveRecord::Schema.define(version: 20170415093134) do
     t.index ["question_id"], name: "index_answers_on_question_id", using: :btree
   end
 
+  create_table "average_caches", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "rater_id"
+    t.string   "rateable_type"
+    t.integer  "rateable_id"
+    t.float    "avg",           limit: 24, null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
     t.string   "description"
@@ -63,6 +72,16 @@ ActiveRecord::Schema.define(version: 20170415093134) do
     t.index ["assetable_type", "type", "assetable_id"], name: "idx_ckeditor_assetable_type", using: :btree
   end
 
+  create_table "comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "user_id"
+    t.integer  "post_id"
+    t.text     "content",    limit: 65535
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.index ["post_id"], name: "index_comments_on_post_id", using: :btree
+    t.index ["user_id"], name: "index_comments_on_user_id", using: :btree
+  end
+
   create_table "courses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "category_id"
     t.string   "name"
@@ -71,8 +90,8 @@ ActiveRecord::Schema.define(version: 20170415093134) do
     t.integer  "owner_id"
     t.integer  "approver_id"
     t.integer  "status",      default: 0
-    t.date     "date_open"
-    t.date     "date_close"
+    t.datetime "date_open"
+    t.datetime "date_close"
     t.date     "date_from"
     t.date     "date_to"
     t.datetime "created_at",              null: false
@@ -103,6 +122,14 @@ ActiveRecord::Schema.define(version: 20170415093134) do
     t.index ["course_id"], name: "index_lessons_on_course_id", using: :btree
   end
 
+  create_table "overall_averages", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "rateable_type"
+    t.integer  "rateable_id"
+    t.float    "overall_avg",   limit: 24, null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "post_types", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "post_id"
     t.integer  "type_id"
@@ -129,6 +156,29 @@ ActiveRecord::Schema.define(version: 20170415093134) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["lesson_id"], name: "index_questions_on_lesson_id", using: :btree
+  end
+
+  create_table "rates", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "rater_id"
+    t.string   "rateable_type"
+    t.integer  "rateable_id"
+    t.float    "stars",         limit: 24, null: false
+    t.string   "dimension"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["rateable_id", "rateable_type"], name: "index_rates_on_rateable_id_and_rateable_type", using: :btree
+    t.index ["rater_id"], name: "index_rates_on_rater_id", using: :btree
+  end
+
+  create_table "rating_caches", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "cacheable_type"
+    t.integer  "cacheable_id"
+    t.float    "avg",            limit: 24, null: false
+    t.integer  "qty",                       null: false
+    t.string   "dimension"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["cacheable_id", "cacheable_type"], name: "index_rating_caches_on_cacheable_id_and_cacheable_type", using: :btree
   end
 
   create_table "results", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -216,6 +266,8 @@ ActiveRecord::Schema.define(version: 20170415093134) do
   end
 
   add_foreign_key "answers", "questions"
+  add_foreign_key "comments", "posts"
+  add_foreign_key "comments", "users"
   add_foreign_key "courses", "categories"
   add_foreign_key "exams", "lessons"
   add_foreign_key "exams", "users"
