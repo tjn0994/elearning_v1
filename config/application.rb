@@ -1,6 +1,7 @@
 require_relative 'boot'
 
 require 'rails/all'
+require 'wicked_pdf'
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -14,5 +15,6 @@ module ElearningV1
     config.i18n.default_locale = :en
     config.i18n.available_locales = [:vi, :en, :ja]
     config.active_job.queue_adapter = :sidekiq
+    config.middleware.use WickedPdf::Middleware
   end
 end

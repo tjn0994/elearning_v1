@@ -18,3 +18,5 @@ Rails.application.config.assets.precompile += %w(dashboard.js)
 Rails.application.config.assets.precompile += %w(date.js)
 Rails.application.config.assets.precompile += %w(login.js)
 Rails.application.config.assets.precompile += %w(ckeditor/filebrowser/images/gal_del.png)
+
+config.assets.precompile += ['pdf.css', 'pdf.js']

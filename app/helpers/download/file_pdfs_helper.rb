@@ -1,0 +1,2 @@
+module Download::FilePdfsHelper
+end

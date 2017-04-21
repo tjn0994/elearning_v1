@@ -47,6 +47,10 @@ Rails.application.routes.draw do
     resources :rooms
   end
 
+  namespace :download do
+    resources :file_pdfs
+  end
+
 
     # resources :workspaces do
     #   resource :user_workspaces, except: [:show]
