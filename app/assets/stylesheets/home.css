@@ -18,7 +18,9 @@
  *= require custom.scss
  *= require layout_size.css
  *= require bootstrap-datepicker3
+ *= require social-share-button
  */
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "social-share-button";
