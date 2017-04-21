@@ -1,0 +1,22 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+//@import "mixin";
+//@import "flexslider";
+
+@include make-grid(sm);
+@include make-grid(md);
+@include make-grid(lg);
+
+#users {
+  .alwaysbreak {
+    page-break-before: always;
+  }
+
+  .nobreak:before {
+    clear:both;
+  }
+
+  .nobreak {
+    page-break-inside: avoid;
+  }
+}

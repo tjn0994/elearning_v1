@@ -209,10 +209,11 @@
         <div class="block">
           <!-- About Content -->
           <div class="block-section">
-            <%= link_to publish_room_path(@course.room),
-                  class: "btn btn-lg btn-primary btn-block" do %>
-                <i class="fa fa-play"></i> Into room</a>
-              <% end %>
+          <!--   publish_room_path(@course.room) -->
+            <%= link_to "#",
+                class: "btn btn-lg btn-primary btn-block" do %>
+              <i class="fa fa-play"></i> Into room</a>
+            <% end %>
 
             <!-- btn  exam-->
               <%= link_to new_students_course_lesson_exam_path(@course, @lesson),
@@ -225,7 +226,10 @@
               <% end %>
           </div>
           <div class="block-section">
-            <a href="javascript:void(0)" class="btn btn-lg btn-default btn-block"><i class="fa fa-download"></i> Download files</a>
+            <%= link_to download_file_pdfs_path,
+                  class: "btn btn-lg btn-default btn-block" do %>
+                <i class="fa fa-downloady"></i> Download files</a>
+              <% end %>
           </div>
           <!-- END About Content -->
         </div>
