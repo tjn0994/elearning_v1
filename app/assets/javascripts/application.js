@@ -37,6 +37,9 @@
 //= require jquery.raty
 //= require ratyrate
 
+// gem social-share-button
+//= require social-share-button
+
 //= require ./publish/posts.js
 //= require ./publish/comments.js
 
