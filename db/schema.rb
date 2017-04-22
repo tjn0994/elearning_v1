@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170421095216) do
+ActiveRecord::Schema.define(version: 20170422042608) do
 
   create_table "activities", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "trackable_type"
@@ -239,6 +239,16 @@ ActiveRecord::Schema.define(version: 20170421095216) do
     t.index ["user_id"], name: "index_user_courses_on_user_id", using: :btree
   end
 
+  create_table "user_settings", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "user_id"
+    t.boolean  "notification_setting", default: true
+    t.boolean  "email_setting",        default: true
+    t.string   "language"
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+    t.index ["user_id"], name: "index_user_settings_on_user_id", using: :btree
+  end
+
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "email",                                default: "", null: false
     t.string   "encrypted_password",                   default: "", null: false
@@ -286,4 +296,5 @@ ActiveRecord::Schema.define(version: 20170421095216) do
   add_foreign_key "types", "categories"
   add_foreign_key "user_courses", "courses"
   add_foreign_key "user_courses", "users"
+  add_foreign_key "user_settings", "users"
 end

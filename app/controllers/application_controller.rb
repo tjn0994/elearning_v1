@@ -44,4 +44,13 @@ class ApplicationController < ActionController::Base
       .by_notification(Notification.activity_types[:notice]).recent
     @count_unread_notification =  @notifications.unread.count
   end
+
+  def set_boolean str, type
+    case str
+    when "true"
+      "#{type}_on"
+    when "false"
+      "#{type}_off"
+    end
+  end
 end

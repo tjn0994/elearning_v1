@@ -31,6 +31,7 @@ Rails.application.routes.draw do
       resources :user_courses,  only: [:index, :create]
       resource :user_courses, only: :destroy
     end
+    resource :user_settings, only: :show
   end
 
   namespace :admins do
@@ -40,6 +41,7 @@ Rails.application.routes.draw do
     end
     resources :courses
     resources :set_status_courses, only: :index
+    resource :user_settings, only: :show
   end
 
   namespace :publish do

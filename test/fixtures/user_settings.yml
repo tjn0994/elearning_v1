@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  notification_setting: false
+  email_setting: false
+  language: MyString
+
+two:
+  user: two
+  notification_setting: false
+  email_setting: false
+  language: MyString

@@ -93,6 +93,12 @@
               </tr>
             </tbody>
           </table>
+          <% if @user.is_user? current_user %>
+            <%= link_to t("dashboard.users.edit_password"), edit_user_registration_path,
+              class: "btn btn-primary" %>
+            <%= link_to t("dashboard.users.edit_profile"),
+              edit_teachers_user_path(current_user), class: "btn btn-primary" %>
+          <% end %>
         </div>
       </div>
     </div>
