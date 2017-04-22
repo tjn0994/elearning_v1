@@ -1,0 +1,29 @@
+<div id="add-users-into-special-type" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;
+        </button>
+        <h4 class="modal-title">list member</h4>
+      </div>
+      <br>
+      <div class="c-search col-md-8 col-md-offset-2">
+        <input type="text" class="form-control"
+          id="assign-user-to-special-type-search">
+      </div>
+      <div class="clear-float">
+        <%= form_for [:teachers, @course, @user_course] do |f| %>
+          <div class="modal-body member-modal-body">
+            <ul class="list-group" id="add-member">
+              <%= render "collection_check_box", users: @user_outside_courses, object: f %>
+            </ul>
+          </div>
+          <div class="modal-footer">
+            <%= f.submit "add member",
+              class: "btn btn-primary btn-add-member-into-course" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

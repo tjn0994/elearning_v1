@@ -1,0 +1,15 @@
+<div id="check-box-all-checked">
+  <%= collection_check_boxes(:user_courses, :list_user, users, :id, :email) do |f| %>
+    <li class="list-group-item hide-class-user-course">
+      <div class="col-xs-12 col-sm-9">
+        <div class="checkbox new-user-course">
+          <%= f.label {f.check_box + f.text} %>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-3">
+        <%= image_tag f.object.avatar.url, class: "img-scale img-circle" %>
+      </div>
+      <div class="clearfix"></div>
+    </li>
+  <% end %>
+</div>

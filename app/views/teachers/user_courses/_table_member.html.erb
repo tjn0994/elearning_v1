@@ -1,0 +1,22 @@
+<div class="row manage_user">
+  <div class="col-md-12">
+    <div class="table-responsive">
+    <table class="table table-bordered table-hover checkbox-member">
+      <thead>
+        <tr class="active">
+          <th><%= t ".index" %></th>
+          <th><%= t ".employee_code" %></th>
+          <th><%= t ".name" %></th>
+          <th><%= t ".email" %></th>
+          <th><%= t ".action" %></th>
+        </tr>
+      </thead>
+      <tbody>
+        <%= render partial: "list_member", collection: @user_inside_courses,
+          as: :user %>
+      </tbody>
+    </table>
+    </div>
+    <center><%= paginate @user_inside_courses %></center>
+  </div>
+</div>

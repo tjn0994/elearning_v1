@@ -36,6 +36,7 @@ gem "redis"
 gem "ratyrate"
 gem "social-share-button"
 gem "chartkick"
+gem "activerecord-import", "~> 0.15.0"
 
 # Use Capistrano for deployment
 # gem "capistrano-rails", group: :development

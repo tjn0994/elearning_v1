@@ -14,11 +14,12 @@
 //= require jquery.turbolinks
 //= require jquery_ujs
 //= require bootstrap-sprockets
+//= require bootstrap/modal
 //= require portfolio.js
 //= require ./dashboard/app.js
 //= require ./dashboard/plugins.js
-//= require ./dashboard/vendor/bootstrap.min.js
 //= require ./dashboard/vendor/jquery-1.11.1.min.js
+//= require ./dashboard/vendor/bootstrap.min.js
 //= require ./dashboard/vendor/modernizr-2.7.1-respond-1.4.2.min.js
 //= require bootstrap-datepicker
 //= require cable
@@ -30,6 +31,7 @@
 //= require custom_dashboard.js
 //= require date.js
 //= require ./teachers/questions.js
+//= require ./teachers/user_courses.js
 
 // gem validate
 //= require login.js

@@ -7,13 +7,16 @@ class User < ApplicationRecord
   ratyrate_rater
 
   has_many :posts, dependent: :destroy
-  has_many :user_courses
+  has_many :user_courses, dependent: :destroy
   has_many :courses, through: :user_courses
   has_many :activities
   has_many :notifications
   has_many :comments
 
   scope :recent, ->{order created_at: :desc}
+  scope :not_in_course, ->course_id do
+    where "id NOT IN (select user_id from user_courses where course_id = ?)", course_id
+  end
 
   mount_uploader :avatar, AvatarUploader
 
