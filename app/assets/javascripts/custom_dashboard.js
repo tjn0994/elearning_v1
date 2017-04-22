@@ -1,4 +1,5 @@
 $(document).ready(function() {
+  // model show
   $('.btn-show-request').on('click', function(e) {
     $.ajax({
       dataType: 'html',
@@ -16,6 +17,37 @@ $(document).ready(function() {
 
   $('.close-modal').on('click', function(e){
     $('.show-request').hide();
+  });
+
+  // user seting
+  $('#notification_setting').on('change', function(e) {
+    $.ajax({
+      dataType: 'json',
+      url: location.pathname,
+      method: 'get',
+      data: {notify_setting: this.checked},
+      success: function(data) {
+
+      },
+      error: function(){
+        alert("error");
+      }
+    })
+  });
+
+  $('#email_setting').on('change', function(e) {
+    $.ajax({
+      dataType: 'json',
+      url: location.pathname,
+      method: 'get',
+      data: {email_setting: this.checked},
+      success: function(data) {
+
+      },
+      error: function(){
+        alert("error");
+      }
+    })
   });
 });
 
@@ -36,4 +68,3 @@ function search_add_user(_search_input, class_name, class_hide_name){
     });
   });
 }
-

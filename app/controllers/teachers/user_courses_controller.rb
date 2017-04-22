@@ -1,6 +1,5 @@
 class Teachers::UserCoursesController < DashboardController
   before_action :load_course
-  # before_action :load_lesson, except: [:index, :new, :create]
 
   def index
     init_variables
@@ -26,7 +25,6 @@ class Teachers::UserCoursesController < DashboardController
     redirect_to teachers_course_user_courses_path @course
   end
 
-
   def destroy
     user_ids = params[:user_courses][:list_user].reject(&:blank?).map(&:to_i)
     @course.user_ids -= user_ids
@@ -45,7 +43,6 @@ class Teachers::UserCoursesController < DashboardController
       .per Settings.per_page.teachers.user
     @user_course = @course.user_courses.build
   end
-
 
   def load_course
     @course = Course.find_by id: params[:course_id]

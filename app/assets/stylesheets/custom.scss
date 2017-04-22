@@ -515,3 +515,85 @@ a.list-group-item.active > .badge {
   max-height: calc(100vh - 210px);
   overflow-y: auto;
 }
+
+/* user setting */
+
+.onoffswitch {
+  position: relative;
+  width: 46px;
+}
+
+.display-flex {
+  display: flex;
+}
+
+.onoffswitch-checkbox {
+  display: none;
+}
+
+.onoffswitch-label {
+  border: 2px solid #999;
+  border-radius: 50px;
+  cursor: pointer;
+  display: block;
+  overflow: hidden;
+}
+
+.onoffswitch-inner {
+  display: block;
+  margin-left: -100%;
+  transition: margin .3s ease-in 0s;
+  width: 200%;
+}
+
+.onoffswitch-inner::before,
+.onoffswitch-inner::after {
+  box-sizing: border-box;
+  color: white;
+  display: block;
+  float: left;
+  font-family: Trebuchet, Arial, sans-serif;
+  font-size: 10px;
+  font-weight: bold;
+  height: 15px;
+  line-height: 15px;
+  padding: 0;
+  width: 50%;
+}
+
+.onoffswitch-inner::before {
+  background-color: #34a7c1;
+  color: white;
+  content: 'ON';
+  padding-left: 5px;
+}
+
+.onoffswitch-inner::after {
+  background-color: #eee;
+  color: #999;
+  content: 'OFF';
+  padding-right: 5px;
+  text-align: right;
+}
+
+.onoffswitch-switch {
+  background: white;
+  border: 2px solid #999;
+  border-radius: 50px;
+  bottom: 0;
+  display: block;
+  margin: 1px;
+  position: absolute;
+  right: 27px;
+  top: 0;
+  transition: all .3s ease-in 0s;
+  width: 17px;
+}
+
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner {
+  margin-left: 0;
+}
+
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
+  right: 0;
+}

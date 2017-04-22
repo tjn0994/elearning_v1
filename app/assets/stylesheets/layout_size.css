@@ -10,6 +10,11 @@
   height: 80px;
 }
 
+.height-22 {
+  height: 22px !important;
+}
+
 .width-500 {
   width: 500px;
 }
+

@@ -6,12 +6,16 @@ class User < ApplicationRecord
 
   ratyrate_rater
 
+  after_create :create_user_setting
+
   has_many :posts, dependent: :destroy
   has_many :user_courses, dependent: :destroy
   has_many :courses, through: :user_courses
   has_many :activities
   has_many :notifications
   has_many :comments
+
+  has_one :user_setting
 
   scope :recent, ->{order created_at: :desc}
   scope :not_in_course, ->course_id do
@@ -29,13 +33,9 @@ class User < ApplicationRecord
     id == user.id
   end
 
-  # def is_manager?
-  #   is_owner? || is_owner_workspace?
-  # end
-
-  # def is_owner?
-  #   id == company.owner_id if company.present?
-  # end
+  def create_user_setting
+    UserSetting.create user_id: self.id
+  end
 
   private
 
