@@ -28,6 +28,8 @@ Rails.application.routes.draw do
         resources :questions
         resources :time_for_exams
       end
+      resources :user_courses,  only: [:index, :create]
+      resource :user_courses, only: :destroy
     end
   end
 
