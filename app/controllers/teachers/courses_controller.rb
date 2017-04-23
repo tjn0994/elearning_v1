@@ -1,6 +1,6 @@
 class Teachers::CoursesController < DashboardController
   before_action :load_course, only: [:edit, :update, :destroy]
-  before_action :load_category, except: [:index, :show, :destroy]
+  before_action :load_category
 
   def index
     @courses = Course.by_author(current_user.id).recent.page(params[:page])
@@ -10,6 +10,7 @@ class Teachers::CoursesController < DashboardController
   def new
     @course = Course.new
     @timesheet = @course.timesheets.build
+    @types = @categories.first.types
   end
 
   def create
@@ -19,6 +20,8 @@ class Teachers::CoursesController < DashboardController
       flash[:success] = t "devise.registrations.signed_up"
       redirect_to teachers_courses_path
     else
+      @types = @course.type.category.types
+      @category_ = @course.type.category
       render :new
     end
   end
@@ -30,7 +33,10 @@ class Teachers::CoursesController < DashboardController
     end
   end
 
-  def edit; end
+  def edit
+    @types = @course.type.category.types
+    @category_ = @course.type.category
+  end
 
   def update
     if @course.update_attributes course_params
@@ -38,6 +44,8 @@ class Teachers::CoursesController < DashboardController
       flash[:success] = t "devise.registrations.updated"
       redirect_to teachers_courses_path
     else
+      @types = @course.type.category.types
+      @category_ = @course.type.category
       render :edit
     end
   end
@@ -55,7 +63,7 @@ class Teachers::CoursesController < DashboardController
   private
 
   def course_params
-    params.require(:course).permit(:category_id, :name, :description, :image,
+    params.require(:course).permit(:type_id, :name, :description, :image,
       :date_from, :date_to, timesheets_attributes: [:id, :time_from, :time_to, :day_name, :_destroy])
       .merge! owner_id: current_user.id
   end

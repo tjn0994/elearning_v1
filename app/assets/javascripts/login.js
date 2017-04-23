@@ -66,9 +66,6 @@ $(document).ready(function() {
               required: true,
               email: true
             },
-            'user[employee_code]': {
-              required: true
-            },
             'user[password]': {
               required: true,
               minlength: 6
@@ -136,10 +133,6 @@ $(document).ready(function() {
             'user[email]': {
               required: true,
               email: true
-            },
-            'user[employee_code]': {
-              required: true,
-              maxlength: 7
             }
           }
         });

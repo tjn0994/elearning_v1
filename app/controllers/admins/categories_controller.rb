@@ -24,8 +24,14 @@ class Admins::CategoriesController < DashboardController
 
   def show
     @category = Category.find_by id: params[:id]
-    respond_to do |format|
-      format.html{render partial: "details_information", local: {category: @category}}
+    if params[:name].eql? Course.name
+      render partial: "teachers/courses/type", local: {types: @category.types}
+    elsif  params[:name].eql? Post.name
+      render partial: "publish/posts/type", local: {types: @category.types}
+    else
+      respond_to do |format|
+        format.html{render partial: "details_information", local: {category: @category}}
+      end
     end
   end
 

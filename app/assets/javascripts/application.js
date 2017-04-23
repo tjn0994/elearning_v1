@@ -23,6 +23,7 @@
 
 //= require user.js
 //= require date.js
+//= require custom_application.js
 
 //gem ckeditor
 //= require ckeditor/init

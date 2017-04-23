@@ -6,9 +6,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.0]
       t.string :encrypted_password, null: false, default: ""
 
       # custom
-      t.string :employee_code
       t.string :name
-      t.date :account_creation_date
       t.text :address
       t.string :number_of_phone
       t.integer :gender, default: 0
