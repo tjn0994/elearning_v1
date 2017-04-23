@@ -1,4 +1,20 @@
 $(document).ready(function() {
+
+  // category course
+  $('#category-id').on('change', function(e) {
+    $.ajax({
+      type: 'GET',
+      url: '/admins/categories/' + this.value,
+      data: {id: this.value, name: "Course"},
+      success: function(data) {
+        $('#types').html(data);
+      },
+      error: function(){
+        alert("error");
+      }
+    })
+  });
+
   // model show
   $('.btn-show-request').on('click', function(e) {
     $.ajax({

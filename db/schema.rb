@@ -83,7 +83,7 @@ ActiveRecord::Schema.define(version: 20170422042608) do
   end
 
   create_table "courses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "category_id"
+    t.integer  "type_id"
     t.string   "name"
     t.string   "description"
     t.string   "image"
@@ -96,7 +96,7 @@ ActiveRecord::Schema.define(version: 20170422042608) do
     t.date     "date_to"
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
-    t.index ["category_id"], name: "index_courses_on_category_id", using: :btree
+    t.index ["type_id"], name: "index_courses_on_type_id", using: :btree
   end
 
   create_table "exams", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -130,23 +130,14 @@ ActiveRecord::Schema.define(version: 20170422042608) do
     t.datetime "updated_at"
   end
 
-  create_table "post_types", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "post_id"
-    t.integer  "type_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["post_id"], name: "index_post_types_on_post_id", using: :btree
-    t.index ["type_id"], name: "index_post_types_on_type_id", using: :btree
-  end
-
   create_table "posts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "category_id"
+    t.integer  "type_id"
     t.integer  "user_id"
     t.string   "title"
-    t.text     "content",     limit: 65535
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
-    t.index ["category_id"], name: "index_posts_on_category_id", using: :btree
+    t.text     "content",    limit: 65535
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.index ["type_id"], name: "index_posts_on_type_id", using: :btree
     t.index ["user_id"], name: "index_posts_on_user_id", using: :btree
   end
 
@@ -252,9 +243,7 @@ ActiveRecord::Schema.define(version: 20170422042608) do
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "email",                                default: "", null: false
     t.string   "encrypted_password",                   default: "", null: false
-    t.string   "employee_code"
     t.string   "name"
-    t.date     "account_creation_date"
     t.text     "address",                limit: 65535
     t.string   "number_of_phone"
     t.integer  "gender",                               default: 0
@@ -278,13 +267,11 @@ ActiveRecord::Schema.define(version: 20170422042608) do
   add_foreign_key "answers", "questions"
   add_foreign_key "comments", "posts"
   add_foreign_key "comments", "users"
-  add_foreign_key "courses", "categories"
+  add_foreign_key "courses", "types"
   add_foreign_key "exams", "lessons"
   add_foreign_key "exams", "users"
   add_foreign_key "lessons", "courses"
-  add_foreign_key "post_types", "posts"
-  add_foreign_key "post_types", "types"
-  add_foreign_key "posts", "categories"
+  add_foreign_key "posts", "types"
   add_foreign_key "posts", "users"
   add_foreign_key "questions", "lessons"
   add_foreign_key "results", "answers"

@@ -9,7 +9,7 @@ class Publish::PostsController < ApplicationController
 
   def new
     @post = current_user.posts.new
-    @post.post_types.build
+    @types = @categories.first.types
   end
 
   def create
@@ -19,6 +19,8 @@ class Publish::PostsController < ApplicationController
       flash[:success] = t "devise.registrations.signed_up"
       redirect_to publish_posts_path
     else
+      @types = @post.type.category.types
+      @category_ = @post.type.category
       render :new
     end
   end
@@ -28,13 +30,18 @@ class Publish::PostsController < ApplicationController
     @comments = @post.comments
   end
 
-  def edit; end
+  def edit
+    @types = @post.type.category.types
+    @category_ = @post.type.category
+  end
 
   def update
     if @post.update_attributes post_params
       flash[:success] = t "devise.registrations.updated"
       redirect_to publish_posts_path
     else
+      @types = @post.type.category.types
+      @category_ = @post.type.category
       render :edit
     end
   end
@@ -51,8 +58,7 @@ class Publish::PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:category_id, :title, :content,
-      post_types_attributes: [:id, :type_id, :_destroy])
+    params.require(:post).permit(:type_id, :title, :content)
   end
 
   def load_post

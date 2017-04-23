@@ -11,11 +11,30 @@
           </div>
         </div>
 
-        <div class="form-group">
-          <%= f.label :category, class: "col-md-3 control-label" %>
+        <div class="row" style="margin-bottom: 13px">
+          <div class="col-md-3">
+            <label class="pull-right" style="line-height: 34px; height: 34px">category</label>
+          </div>
           <div class="col-md-5">
-            <%= f.select :category_id, @categories.collect {|c| [c.name, c.id]},
-              {}, {class: "form-control"} %>
+            <select id="category-id" class="form-control">
+              <% @categories.each do |category|  %>
+                <option value="<%= category.id %>"
+                  <% if @category_.present? && @category_.id == category.id %>
+                    selected="selected"
+                  <% end %>
+                  ><%= category.name %></option>
+              <% end %>
+            </select>
+          </div>
+        </div>
+
+        <div id="types">
+          <div class="form-group">
+            <%= f.label :type, class: "col-md-3 control-label" %>
+            <div class="col-md-5">
+              <%= f.select :type_id, @types.collect {|c| [c.name, c.id]},
+                {}, {class: "form-control"} %>
+            </div>
           </div>
         </div>
 
@@ -46,7 +65,7 @@
             <%= f.text_field :date_from, class: "form-control datepicker" %>
           </div>
 
-          <div class="col-md-1" style="text-center">Date to</div>
+          <div class="col-md-1" style="text-center"><strong>Date to</strong></div>
           <div class="col-md-2">
             <%= f.text_field :date_to, class: "form-control datepicker" %>
           </div>
@@ -57,10 +76,11 @@
             <div class="form-group">
               <%= ff.label :day_name, class: "col-md-3  control-label" %>
               <div class="col-md-5">
-                <%= ff.select :day_name, Settings.format_date_name, {},
-                  class: "form-control selectpicker" %>
+                <%= ff.select :day_name, Timesheet.day_names.collect{|k| [k[0], k[0]]},
+                  {}, class: "form-control selectpicker" %>
               </div>
             </div>
+
 
             <div class="form-group">
               <%= ff.label :time_from, class: "col-md-3  control-label" %>
