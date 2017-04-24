@@ -1,4 +1,4 @@
-class Teachers::TimeForExamsController < ApplicationController
+class Teachers::TimeForExamsController < DashboardController
   before_action :load_course
   before_action :load_lesson
   before_action :load_time_for_exam, except: [:index, :new, :create]

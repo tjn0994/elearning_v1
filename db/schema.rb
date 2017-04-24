@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170422042608) do
+ActiveRecord::Schema.define(version: 20170424145314) do
 
   create_table "activities", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "trackable_type"
@@ -90,8 +90,6 @@ ActiveRecord::Schema.define(version: 20170422042608) do
     t.integer  "owner_id"
     t.integer  "approver_id"
     t.integer  "status",      default: 0
-    t.datetime "date_open"
-    t.datetime "date_close"
     t.date     "date_from"
     t.date     "date_to"
     t.datetime "created_at",              null: false
@@ -170,6 +168,15 @@ ActiveRecord::Schema.define(version: 20170422042608) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.index ["cacheable_id", "cacheable_type"], name: "index_rating_caches_on_cacheable_id_and_cacheable_type", using: :btree
+  end
+
+  create_table "register_courses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "course_id"
+    t.datetime "date_open"
+    t.datetime "date_close"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["course_id"], name: "index_register_courses_on_course_id", using: :btree
   end
 
   create_table "results", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -274,6 +281,7 @@ ActiveRecord::Schema.define(version: 20170422042608) do
   add_foreign_key "posts", "types"
   add_foreign_key "posts", "users"
   add_foreign_key "questions", "lessons"
+  add_foreign_key "register_courses", "courses"
   add_foreign_key "results", "answers"
   add_foreign_key "results", "exams"
   add_foreign_key "results", "questions"
