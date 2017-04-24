@@ -44,9 +44,6 @@ $(document).ready(function() {
       data: {notify_setting: this.checked},
       success: function(data) {
 
-      },
-      error: function(){
-        alert("error");
       }
     })
   });
@@ -58,10 +55,6 @@ $(document).ready(function() {
       method: 'get',
       data: {email_setting: this.checked},
       success: function(data) {
-
-      },
-      error: function(){
-        alert("error");
       }
     })
   });

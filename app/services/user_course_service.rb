@@ -11,7 +11,7 @@ class UserCourseService
     rescue StandardError
       {success: false}
     end
-
+  end
 
   def destroy user_ids, object
     object.user_ids -= user_ids.map(&:to_i)
