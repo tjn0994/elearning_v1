@@ -41,8 +41,10 @@
 //= require social-share-button
 
 // gem "chartkick"
-
 //= require chartkick
+
+// gem
+//= require simplemde.min
 
 //= require ./publish/posts.js
 //= require ./publish/comments.js
@@ -52,3 +54,5 @@ $(document).ready(function() {
     $(this).remove();
   });
 });
+
+

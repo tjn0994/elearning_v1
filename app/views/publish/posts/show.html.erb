@@ -13,8 +13,8 @@
         <% end %>
       </div>
     </div>
-    <div class="clear-float row">
-      <%= @post.content %>
+    <div class="clear-float row markdown">
+      <%= markdown @post.content %>
     </div>
     <%= form_for [:publish, @post, @comment], remote: true do |f| %>
       <div class="form-group">

@@ -3,7 +3,6 @@
     <%= current_index @users.current_page, Settings.per_page.admins.user,
       user_counter %>
   </td>
-  <td><%= user.employee_code %></td>
   <td><%= user.name %></td>
   <td><%= user.email %></td>
   <td><%= l user.birthday, format: :date_month_year_v1 if user.birthday.present? %></td>
