@@ -1,20 +1,19 @@
 <tr>
   <td>
-    <%= current_index @users.current_page, Settings.per_page.students.user,
+    <%= current_index @users.current_page, Settings.per_page.admins.user,
       user_counter %>
   </td>
   <td><%= user.name %></td>
   <td><%= user.email %></td>
-  <td><%= l user.birthday, format: :date_month_year_v1 if user.birthday.present? %></td>
   <td><%= user.number_of_phone %></td>
-  <td><%= user.address %></td>
-  <td>
+  <td><%= user.role %></td>
+  <td >
     <div class="btn-group btn-group-xs">
       <%= link_to edit_students_user_path(user), class: "btn btn-warning" do %>
         <i class="fa fa-pencil"></i>
       <% end %>
       <%= link_to students_user_path(user),
-        method: :delete, class: "btn btn-danger", data: {confirm: t("are_you_sure")} do %>
+        method: :delete, class: "btn btn-danger", data: {confirm: "Bạn có chắc chắn muốn xóa không ?"} do %>
         <i class="fa fa-trash"></i>
       <% end %>
     </div>

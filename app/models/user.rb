@@ -11,11 +11,12 @@ class User < ApplicationRecord
   has_many :posts, dependent: :destroy
   has_many :user_courses, dependent: :destroy
   has_many :courses, through: :user_courses
+  has_many :exams, dependent: :destroy
   has_many :activities
   has_many :notifications
   has_many :comments
 
-  has_one :user_setting
+  has_one :user_setting, dependent: :destroy
 
   scope :recent, ->{order created_at: :desc}
   scope :not_in_course, ->course_id do
@@ -27,6 +28,7 @@ class User < ApplicationRecord
   enum gender: {female: 0, male: 1, other: 2}
   enum role: {admin: 0, teacher: 1, student: 2}
 
+  validates :name, :number_of_phone, presence: true, on: :update
   validate :image_size
 
   def is_user? user

@@ -133,6 +133,9 @@ $(document).ready(function() {
             'user[email]': {
               required: true,
               email: true
+            },
+            'user[number_of_phone]': {
+              required: true
             }
           }
         });

@@ -1,11 +1,13 @@
-<% provide :title, t("information_user") %>
-<div class="container">
+<% provide :title, "Thông tin người dùng" %>
+<div class="panel-content">
   <div class="panel panel-info">
     <div class="panel-heading">
       <h3 class="panel-title">
-        <%= t"dashboard.users.title_profile" %>
+        Thông tin người dùng
       </h3>
     </div>
+    <br>
+    <br>
     <div class="panel-body">
       <div class="row">
         <div class="col-md-4" align="center">
@@ -70,18 +72,10 @@
               <tr>
                 <td>
                   <strong>
-                    <i class="gi gi-calendar"></i> <%= t "account_creation_date" %>
-                  </strong>
-                </td>
-                <td><%= @user.account_creation_date %></td>
-              </tr>
-              <tr>
-                <td>
-                  <strong>
                     <i class="gi gi-birthday_cake"></i> <%= t "birthday" %>
                   </strong>
                 </td>
-                 <td><%= l @user.birthday, format: :date_month_year_v1 if @user.birthday.present? %></td>
+                <td><%= l @user.birthday, format: :date_month_year_v1 if @user.birthday.present? %></td>
               </tr>
             </tbody>
           </table>
@@ -89,7 +83,7 @@
             <%= link_to t("dashboard.users.edit_password"), edit_user_registration_path,
               class: "btn btn-primary" %>
             <%= link_to t("dashboard.users.edit_profile"),
-              edit_teachers_user_path(current_user), class: "btn btn-primary" %>
+              edit_teacherss_user_path(current_user), class: "btn btn-primary" %>
           <% end %>
         </div>
       </div>
