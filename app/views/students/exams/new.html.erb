@@ -19,11 +19,12 @@
             <%= f.fields_for :results do |ff| %>
               <div class="clear-fix answers-form">
                 <div class="form-group">
-                    <%= ff.object.question.name %>
-                    <% ff.object.question.answers.each do |answer| %>
-                      <%= ff.radio_button :answer_id, answer.id  %>
-                      <%= answer.name %>
-                    <% end %>
+                  <%= ff.object.question.name %>
+                  <% ff.object.question.answers.each do |answer| %>
+                    <% binding.pry %>
+                    <%= ff.radio_button :answer_id, answer.id  %>
+                    <%= answer.name %>
+                  <% end %>
                 </div>
               </div>
             <% end %>
