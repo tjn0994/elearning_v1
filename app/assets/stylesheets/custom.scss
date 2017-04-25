@@ -597,3 +597,23 @@ a.list-group-item.active > .badge {
 .onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
   right: 0;
 }
+
+.color-red {
+  color: red;
+}
+
+.field-compulsory:after {
+  content: " *";
+  color: red;
+  font-weight: bold;
+}
+
+.field-compulsory-before:before {
+  content: "* ";
+  color: red;
+  font-weight: bold;
+}
+
+.table-center > tr > td, .table-center > th {
+  text-align: center;
+}

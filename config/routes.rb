@@ -10,8 +10,8 @@ Rails.application.routes.draw do
   mount ActionCable.server => '/cable'
 
   get 'home' => 'static_pages#home'
-
   namespace :students do
+    root 'static_pages#home'
     resources :users
     resources :user_courses
     resources :courses do

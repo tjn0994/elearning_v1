@@ -5,16 +5,15 @@
   </td>
   <td><%= user.name %></td>
   <td><%= user.email %></td>
-  <td><%= l user.birthday, format: :date_month_year_v1 if user.birthday.present? %></td>
   <td><%= user.number_of_phone %></td>
-  <td><%= user.address %></td>
+  <td><%= user.role %></td>
   <td >
     <div class="btn-group btn-group-xs">
       <%= link_to edit_admins_user_path(user), class: "btn btn-warning" do %>
         <i class="fa fa-pencil"></i>
       <% end %>
       <%= link_to admins_user_path(user),
-        method: :delete, class: "btn btn-danger", data: {confirm: t("are_you_sure")} do %>
+        method: :delete, class: "btn btn-danger", data: {confirm: "Bạn có chắc chắn muốn xóa không ?"} do %>
         <i class="fa fa-trash"></i>
       <% end %>
     </div>

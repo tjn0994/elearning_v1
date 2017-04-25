@@ -1,11 +1,13 @@
-<% provide :title, t("information_user") %>
-<div class="container">
+<% provide :title, "Thông tin người dùng" %>
+<div class="panel-content">
   <div class="panel panel-info">
     <div class="panel-heading">
       <h3 class="panel-title">
-        <%= t"dashboard.users.title_profile" %>
+        Thông tin người dùng
       </h3>
     </div>
+    <br>
+    <br>
     <div class="panel-body">
       <div class="row">
         <div class="col-md-4" align="center">
@@ -66,14 +68,6 @@
                   </strong>
                 </td>
                 <td><%= @user.role %></td>
-              </tr>
-              <tr>
-                <td>
-                  <strong>
-                    <i class="gi gi-calendar"></i> <%= t "account_creation_date" %>
-                  </strong>
-                </td>
-                <td><%= @user.account_creation_date %></td>
               </tr>
               <tr>
                 <td>

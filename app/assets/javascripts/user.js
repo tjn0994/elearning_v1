@@ -10,6 +10,7 @@ $(document).ready(function() {
   $("#user_avatar").change(function(){
     $('#img_prev').removeClass('hidden');
     readURL(this);
+    $('#img_prev').addClass('width-250 height-250');
   });
 });
 

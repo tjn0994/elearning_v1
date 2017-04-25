@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-  skip_before_filter  :verify_authenticity_token
+  # skip_before_filter  :verify_authenticity_token
   layout :layout
 
   include ApplicationHelper
@@ -51,6 +51,16 @@ class ApplicationController < ActionController::Base
       "#{type}_on"
     when "false"
       "#{type}_off"
+    end
+  end
+
+  def after_sign_in_path_for _resource
+    if current_user.admin?
+      admins_users_path
+    elsif current_user.teacher?
+      teachers_users_path
+    else
+      "/home"
     end
   end
 end

@@ -11,10 +11,13 @@
 }
 
 .height-22 {
-  height: 22px !important;
+  height: 22px;
 }
 
 .width-500 {
   width: 500px;
 }
 
+.width-250 {
+  width: 250px;
+}

@@ -1,73 +1,90 @@
-<%= javascript_include_tag "date", "data-turbolinks-track": true %>
-<div class="container form-horizontal">
-  <div class="clearfix"></div>
+<div class="clearfix form-horizontal">
+  <br>
+  <br>
   <div class="row">
-    <%= form_for [:students, @user] do |f| %>
-      <div class="col-md-4 col-sm-6 col-xs-12 row">
+    <%= form_for [:admins, @user] do |f| %>
+      <div class="col-md-offset-1 col-md-3 row">
         <div class="text-center col-md-12">
-          <%= image_tag @user.avatar.url, class: "height-250" %>
+          <%= image_tag @user.avatar.url, class: "height-250 width-250", id: "img_prev" %>
           <%= f.file_field :avatar, accept: Settings.image_format_accept %>
         </div>
       </div>
-      <div class="col-md-8 col-sm-6 col-xs-12 personal-info">
-        <div class="form-group">
-          <%= f.label :name,  t("dashboard.users.name"),
-            class: "col-md-3 control-label" %>
-          <div class="col-md-5">
+      <div class="col-md-offset-1 col-md-7 personal-info">
+        <div class="clear-fix form-group row">
+          <%= f.label :name, "Tên",
+            class: "col-md-3 control-label field-compulsory-before" %>
+          <div class="col-md-7">
             <div class="input-group">
               <div class="input-group-addon">
                 <i class="gi gi-user"></i>
               </div>
               <%= f.text_field :name, class: "form-control",
-                placeholder: t("name") %>
+                placeholder: "Tên" %>
             </div>
           </div>
         </div>
 
-        <div class="form-group">
-          <%= f.label :email,  t(".email"),
-            class: "col-md-3 control-label" %>
-          <div class="col-md-5">
+        <ul class="clear-fix  col-md-offset-3">
+          <% @user.errors[:name].each do |msg| %>
+            <li class="color-red"><%= msg %></li>
+          <% end %>
+        </ul>
+
+        <div class="clearfix form-group row">
+          <%= f.label :email,  "Email",
+            class: "col-md-3 control-label field-compulsory-before" %>
+          <div class="col-md-7">
             <div class="input-group">
               <div class="input-group-addon">
                 <i class="gi gi-envelope"></i>
               </div>
               <%= f.text_field :email, class: "form-control",
-                placeholder: t("email") %>
+                placeholder: "Email" %>
             </div>
           </div>
         </div>
+        <ul class="clear-fix  col-md-offset-3">
+          <% @user.errors[:email].each do |msg| %>
+            <li class="color-red"><%= msg %></li>
+          <% end %>
+        </ul>
 
-        <div class="fix-clear form-group">
-          <%= f.label :number_of_phone, t(".number_of_phone"), class: "col-md-3 control-label field-compulsory-before" %>
-          <div class="col-md-5">
+        <div class="clear-fix form-group">
+          <%= f.label :number_of_phone, "Số điện thoại",
+            class: "col-md-3 control-label field-compulsory-before" %>
+          <div class="col-md-7">
             <div class="input-group">
               <div class="input-group-addon">
                 <i class="hi hi-earphone"></i>
               </div>
               <%= f.text_field :number_of_phone, class: "form-control",
-                placeholder: t("number_of_phone") %>
+                placeholder: "Số điện thoại" %>
             </div>
           </div>
         </div>
+        <ul class="clear-fix col-md-offset-3">
+          <% @user.errors[:number_of_phone].each do |msg| %>
+            <li class="color-red"><%= msg %></li>
+          <% end %>
+        </ul>
 
-        <div class="fix-clear form-group">
-          <%= f.label :address, t(".address"), class: "col-md-3 control-label field-compulsory-before" %>
-          <div class="col-md-5">
+        <div class="clear-fix form-group">
+          <%= f.label :address, "Địa chỉ", class: "col-md-3 control-label" %>
+          <div class="col-md-7">
             <div class="input-group">
               <div class="input-group-addon">
                 <i class="gi gi-home"></i>
               </div>
               <%= f.text_field :address, class: "form-control",
-                placeholder: t("address") %>
+                placeholder: "Địa chỉ" %>
             </div>
           </div>
         </div>
 
-        <div class="fix-clear form-group">
-          <%= f.label :gender, t("dashboard.users.gender"),
+        <div class="clear-fix form-group">
+          <%= f.label :gender, "Giới tính",
             class: "col-md-3 control-label" %>
-          <div class="col-md-5 select-container">
+          <div class="col-md-7 select-container">
             <% User.genders.keys.each do |key| %>
               <%= f.radio_button :gender, key %>
               <%= t "dashboard.users.#{key}" %>
@@ -75,10 +92,23 @@
             <% end %>
           </div>
         </div>
-        <div class="form-group">
-          <%= f.label :birthday, t("dashboard.users.birthday"),
+
+        <div class="clear-fix form-group">
+          <%= f.label :role,"Quyền",
             class: "col-md-3 control-label" %>
-          <div class="col-md-5">
+          <div class="col-md-7 select-container">
+            <% User.roles.keys.each do |key| %>
+              <%= f.radio_button :role, key %>
+              <%= t "dashboard.users.#{key}" %>
+              &nbsp;&nbsp;&nbsp;&nbsp;
+            <% end %>
+          </div>
+        </div>
+
+        <div class="clear-fix form-group">
+          <%= f.label :birthday, "Ngày sinh",
+            class: "col-md-3 control-label" %>
+          <div class="col-md-7">
             <div class="input-group">
               <div class="input-group-addon">
                 <i class="gi gi-birthday_cake"></i>
@@ -86,14 +116,14 @@
                 <%= f.text_field :birthday,
                   value:(l @user.birthday, format: :date_month_year_v1 if @user.birthday.present?),
                   class: "form-control datepicker",
-                  placeholder: t("year_month_date_picker") %>
+                  placeholder: "Ngày sinh" %>
             </div>
           </div>
         </div>
-        <div class="fix-clear form-group row">
+        <div class="clear-fix form-group row">
           <label class="col-md-3 control-label"></label>
           <div class="col-md-5">
-            <%= f.submit "create", class: "btn btn-primary" %>
+            <%= f.submit yield(:button_text), class: "btn btn-primary" %>
           </div>
         </div>
       </div>

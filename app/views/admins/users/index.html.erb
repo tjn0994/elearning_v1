@@ -1,20 +1,19 @@
-<% provide :title, t("list_user") %>
+<% provide :title, "Danh sách người dùng" %>
 <div class="row manage_user">
   <div class="col-md-12">
     <div class="table-responsive">
     <table class="table table-bordered table-hover">
       <thead>
-        <tr class="active">
-          <th><%= t ".index" %></th>
-          <th><%=  t("name") %></th>
-          <th><%= t "email" %></th>
-          <th><%=  t("contract_date") %>
-          <th><%= t "staff_type" %></th>
-          <th class="text-center"><%= t "status" %></th>
-          <th class="text-center"><%= t "action" %></th>
+        <tr class="table-center">
+          <th>Stt</th>
+          <th>Tên</th>
+          <th>Email</th>
+          <th>Số điện thoại</th>
+          <th>quyền</th>
+          <th class="text-center">Thao tác</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody class="table-center">
         <%= render(@users, users: @users) || t(".data_not_find") %>
       </tbody>
     </table>
@@ -22,4 +21,3 @@
     <center><%= paginate @users %></center>
   </div>
 </div>
-<div class="loader hide hide-load-modal"></div>
