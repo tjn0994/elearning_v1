@@ -5,29 +5,81 @@
 <% end %>
 <br>
 <br>
-<div class="row manage_user">
-  <div class="col-md-12">
-    <div class="table-responsive">
-    <table class="table table-bordered table-hover">
-      <thead>
-        <tr class="active">
-          <th> index </th>
-          <th> name </th>
-          <th> description</th>
-          <th> iamge </th>
-          <th> approver </th>
-          <th> status </th>
-          <th> action </th>
-        </tr>
-      </thead>
-      <tbody>
-        <%= render(@courses, courses: @courses) || "data_not_find" %>
-      </tbody>
-    </table>
-    </div>
-    <center><%= paginate @courses %></center>
-  </div>
-</div>
+
 <div class="modal_show_details">
   <%= render "shared/model_show" %>
 </div>
+
+<div class="row">
+  <% @courses.each do |course| %>
+    <div class="col-sm-6 col-md-4 ">
+      <div class="thumbnail product">
+        <div class="caption">
+          <div class="img-caption" >
+            <%= link_to image_tag(course.image.url),
+              teachers_course_lessons_path(course),
+              class: "widget widget-hover-effect4 themed-background" %>
+          </div>
+          <div class="desc">
+            <%= course.name %>
+          </div>
+          <div class="row">
+            <%= link_to "Danh sách học viên",
+              teachers_course_user_courses_path(course),
+                class: "btn btn-primary btn-sm col-md-5" %>
+            <span class="col-md-1"></span>
+            <button type="button" class="register-course btn btn-warning col-md-5 btn-sm"
+              data-toggle="modal" data-target="#add-time-register-course"
+              data-id="<%= course.id %>">
+              <i class="gi gi-plus"></i>
+              Thời gian mở lớp
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<div id="add-time-register-course" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;
+        </button>
+        <h4 class="modal-title">list member</h4>
+      </div>
+      <br>
+      <div class="clear-float">
+        <%= form_for [:teachers, @register_course], remote: true do |f| %>
+          <%= render "shared/error_messages", object: @register_course %>
+          <div class="form-group">
+            <%= f.label :course, "course", class: "field-compulsory-before" %>
+            <div>
+              <%= f.text_field :course_id,
+                class: "form-control", required: true %>
+            </div>
+          </div>
+          <div class="form-group">
+            <%= f.label :date, t(".date_open"), class: "field-compulsory-before" %>
+            <div>
+              <%= f.text_field :date_open,
+                class: "form-control datepicker", required: true %>
+            </div>
+          </div>
+          <div class="form-group">
+            <%= f.label :date, t(".date_close"), class: "field-compulsory-before" %>
+            <div>
+              <%= f.text_field :date_close,
+                class: "form-control datepicker", required: true %>
+            </div>
+          </div>
+          <div class="form-group">
+            <%= f.submit "Tạo", class: "btn btn-primary" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
