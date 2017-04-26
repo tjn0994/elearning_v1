@@ -32,6 +32,7 @@
 //= require date.js
 //= require ./teachers/questions.js
 //= require ./teachers/user_courses.js
+//= require ./teachers/register_courses.js
 
 // gem validate
 //= require login.js

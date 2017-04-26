@@ -5,6 +5,7 @@ class Teachers::CoursesController < DashboardController
   def index
     @courses = Course.by_author(current_user.id).recent.page(params[:page])
       .per Settings.per_page.teachers.course
+    @register_course = RegisterCourse.new
   end
 
   def new

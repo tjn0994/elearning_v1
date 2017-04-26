@@ -19,7 +19,7 @@
               <tr>
                 <td>
                   <strong>
-                    <i class="gi gi-user"></i> <%= t "name" %>
+                    <i class="gi gi-user"></i> Tên
                   </strong>
                 </td>
                 <td><%= @user.name %></td>
@@ -27,7 +27,7 @@
               <tr>
                 <td>
                   <strong>
-                    <i class="gi gi-envelope"></i> <%= t "email" %>
+                    <i class="gi gi-envelope"></i> Email
                   </strong>
                 </td>
                 <td><%= @user.email %></td>
@@ -40,15 +40,15 @@
                     <% elsif @user.female? %>
                       <i class="gi gi-female"></i>
                     <% end %>
-                    <%= t "gender" %>
+                    Giới tính
                   </strong>
                 </td>
-                <td><%= t "#{@user.gender}" %></td>
+                <td><%= @user.gender %></td>
               </tr>
               <tr>
                 <td>
                   <strong>
-                    <i class="hi hi-earphone"></i> <%= t "number_of_phone" %>
+                    <i class="hi hi-earphone"></i> Số điện thoại
                   </strong>
                 </td>
                 <td><%= @user.number_of_phone %></td>
@@ -56,7 +56,7 @@
               <tr>
                 <td>
                   <strong>
-                    <i class="gi gi-home"></i> <%= t "address" %>
+                    <i class="gi gi-home"></i> Địa chỉ
                   </strong>
                 </td>
                 <td><%= @user.address %></td>
@@ -64,7 +64,7 @@
               <tr>
                 <td>
                   <strong>
-                    <i class="gi gi-group"></i> <%= t "role" %>
+                    <i class="gi gi-group"></i> Quyền
                   </strong>
                 </td>
                 <td><%= @user.role %></td>
@@ -72,7 +72,7 @@
               <tr>
                 <td>
                   <strong>
-                    <i class="gi gi-birthday_cake"></i> <%= t "birthday" %>
+                    <i class="gi gi-birthday_cake"></i> Ngày sinh
                   </strong>
                 </td>
                 <td><%= l @user.birthday, format: :date_month_year_v1 if @user.birthday.present? %></td>

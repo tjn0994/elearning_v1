@@ -63,4 +63,10 @@ class ApplicationController < ActionController::Base
       "/home"
     end
   end
+
+  JsonResponse::STATUS_CODE.keys.each do |status|
+    define_method "response_#{status}" do |message = "", content = {}|
+      render json: JsonResponse.send(status, message, content)
+    end
+  end
 end

@@ -32,6 +32,7 @@ Rails.application.routes.draw do
       resource :user_courses, only: :destroy
     end
     resource :user_settings, only: :show
+    resources :register_courses
   end
 
   namespace :admins do
