@@ -14,8 +14,8 @@ class Teachers::RegisterCoursesController < ApplicationController
     else
       render :new
     end
-
   end
+
   private
 
   def register_course_params
