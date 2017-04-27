@@ -33,6 +33,7 @@
 //= require ./teachers/questions.js
 //= require ./teachers/user_courses.js
 //= require ./teachers/register_courses.js
+//= require ./teachers/lessons.js
 
 // gem validate
 //= require login.js

@@ -5,6 +5,7 @@ class Teachers::LessonsController < DashboardController
   def index
     @lessons = @course.lessons.recent.page(params[:page])
       .per Settings.per_page.teachers.lesson
+    @time_for_exam = TimeForExam.new
   end
 
   def new
