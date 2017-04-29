@@ -15,9 +15,23 @@
 
 <!-- Login Block -->
 <div class="block push-bit">
-    <!-- Login Form -->
-  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
+<!-- Login Form -->
+  <%= form_for(resource, html: {class: "form-bordered form-control-borderless" },
+    as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= devise_error_messages! %>
+    <div class="form-group">
+      <div class="col-xs-12">
+        <div class="input-group">
+          <span class="input-group-addon">
+            <i class="gi gi-envelope"></i>
+          </span>
+          <div>
+          <%= f.text_field :name, autofocus: true,
+            class: "form-control", placeholder: "name" %>
+          </div>
+        </div>
+      </div>
+    </div>
     <div class="form-group">
       <div class="col-xs-12">
         <div class="input-group">
@@ -26,7 +40,7 @@
           </span>
           <div>
           <%= f.email_field :email, autofocus: true,
-            class: "form-control", placeholder: "email" %>
+            class: "form-control", placeholder: t("email") %>
           </div>
         </div>
       </div>
@@ -37,8 +51,10 @@
           <span class="input-group-addon">
             <i class="gi gi-asterisk"></i>
           </span>
+          <% if @minimum_password_length %>
           <%= f.password_field :password, autocomplete: "off",
-            class: "form-control", placeholder: "password" %>
+            class: "form-control", placeholder: "Password (#{@minimum_password_length} characters minimum)" %>
+           <% end %><br />
         </div>
       </div>
     </div>
@@ -49,16 +65,29 @@
             <i class="gi gi-asterisk"></i>
           </span>
           <%= f.password_field :password_confirmation, autocomplete: "off",
-            class: "form-control", placeholder: "password" %>
+            class: "form-control", placeholder: "Password confirmation" %>
         </div>
       </div>
     </div>
-    <div class="form-group form-actions">
-      <div class="col-xs-4 text-right">
-        <%= f.submit "login", class: "btn btn-sm btn-primary" %>
+    <div>
+      <div class="col-xs-4">
+        <label class="switch switch-primary" data-toggle="tooltip" title="Remember Me?">
+          <%= f.check_box :remember_me %>
+          <span></span>
+        </label>
+      </div>
+      <div class="col-xs-8 text-right">
+        <%= f.submit "Sign up", class: "btn btn-sm btn-primary" %>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-xs-12 text-center">
+        <%= link_to new_user_session_path() do %>
+          <small><%= t "login" %></small>
+        <% end %>
       </div>
     </div>
   <% end %>
-    <!-- END Login Form -->
+<!-- END Login Form -->
 </div>
 <!-- END Login Block -->
