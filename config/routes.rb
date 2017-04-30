@@ -19,6 +19,8 @@ Rails.application.routes.draw do
         resources :exams
       end
     end
+    resources :activities
+    resource :user_settings, only: :show
   end
 
   namespace :teachers do
@@ -50,6 +52,12 @@ Rails.application.routes.draw do
       resources :comments
     end
     resources :rooms
+  end
+
+  namespace :member do
+    resources :posts do
+      resources :comments
+    end
   end
 
 

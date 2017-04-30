@@ -1,0 +1,19 @@
+<% provide :title, "Danh sách người dùng" %>
+<div class="row manage_user">
+  <div class="col-md-12">
+    <div class="table-responsive">
+    <table class="table table-bordered table-hover">
+      <thead>
+        <tr class="table-center">
+          <th>Stt</th>
+          <th>trackable_type</th>
+        </tr>
+      </thead>
+      <tbody class="table-center">
+        <%= render(@activities, activities: @activities) || t(".data_not_find") %>
+      </tbody>
+    </table>
+    </div>
+    <center><%= paginate @activities %></center>
+  </div>
+</div>

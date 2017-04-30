@@ -4,6 +4,7 @@ class Activity < PublicActivity::Activity
 
   scope :load_by_user, ->user_id{where(owner_id: user_id, owner_type: "User")}
   scope :recent, ->{order created_at: :desc}
+  scope :load_active, ->{where activity_type: :active}
 
   enum activity_type: {active: 0, notice: 1}
 end

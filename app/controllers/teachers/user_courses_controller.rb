@@ -1,5 +1,7 @@
 class Teachers::UserCoursesController < DashboardController
+  before_action :authenticate_user!
   before_action :load_course
+  load_and_authorize_resource
 
   def index
     init_variables

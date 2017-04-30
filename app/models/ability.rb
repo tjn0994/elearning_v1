@@ -1,32 +1,39 @@
 class Ability
   include CanCan::Ability
 
-  def initialize(user)
-    # Define abilities for the passed in user here. For example:
-    #
-    #   user ||= User.new # guest user (not logged in)
-    #   if user.admin?
-    #     can :manage, :all
-    #   else
-    #     can :read, :all
-    #   end
-    #
-    # The first argument to `can` is the action you are giving the user
-    # permission to do.
-    # If you pass :manage it will apply to every action. Other common actions
-    # here are :read, :create, :update and :destroy.
-    #
-    # The second argument is the resource the user can perform the action on.
-    # If you pass :all it will apply to every resource. Otherwise pass a Ruby
-    # class of the resource.
-    #
-    # The third argument is an optional hash of conditions to further filter the
-    # objects.
-    # For example, here the user can only update published articles.
-    #
-    #   can :update, Article, :published => true
-    #
-    # See the wiki for details:
-    # https://github.com/CanCanCommunity/cancancan/wiki/Defining-Abilities
+  def initialize user
+    user ||= User.new
+    case
+    when user.admin?
+      admin_permission user
+    when user.teacher?
+      teacher_permission user
+    when user.student?
+      student_permission user
+    end
+  end
+
+  def student_permission user
+    can :create, Post
+    cannot [:read, :update], User
+    can [:read, :update], User, id: user.id
+    can :read, UserCourse, user_id: user.id
+    can :read, Lesson, user.courses.include?(:course_id)
+    can [:read, :create, :update], Exam
+  end
+
+  def admin_permission user
+    can :manage, :all
+  end
+
+  def teacher_permission user
+    # cannot [:read, :update], User
+    can [:read, :update], User, id: user.id
+    can [:read, :create, :update], Course, owner_id: user.id
+    can [:read, :create, :update], Lesson
+    can [:read, :create, :update], Question
+    can [:read, :create, :update], TimeForExam
+    can [:read, :create, :update], RegisterCourse
   end
 end
+

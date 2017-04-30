@@ -1,6 +1,9 @@
 class Teachers::CoursesController < DashboardController
   before_action :load_course, only: [:edit, :update, :destroy]
   before_action :load_category
+  before_action :authenticate_user!
+  load_and_authorize_resource
+
 
   def index
     @courses = Course.by_author(current_user.id).recent.page(params[:page])

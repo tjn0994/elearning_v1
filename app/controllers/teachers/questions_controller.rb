@@ -1,7 +1,9 @@
 class Teachers::QuestionsController < DashboardController
+  before_action :authenticate_user!
   before_action :load_course
   before_action :load_lesson
   before_action :load_question, except: [:index, :new, :create]
+  load_and_authorize_resource
 
   def index
     @questions = @lesson.questions.recent.page(params[:page])

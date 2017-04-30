@@ -1,4 +1,6 @@
 class Students::LessonsController < ApplicationController
+  before_action :authenticate_user!
+  load_and_authorize_resource
   before_action :load_course
   before_action :load_lesson, only: :show
 
