@@ -16,13 +16,19 @@
       <div class="thumbnail product">
         <div class="caption">
           <div class="img-caption" >
-            <%= link_to image_tag(course.image.url),
-              teachers_course_lessons_path(course),
-              class: "widget widget-hover-effect4 themed-background" %>
+            <% if course.image.present? %>
+              <%= link_to image_tag(course.image.url),
+                teachers_course_lessons_path(course),
+                class: "widget widget-hover-effect4 themed-background" %>
+            <% end %>
           </div>
           <div class="desc">
             <%= course.name %>
             <%= render "shared/btn_show", object: course %>
+            <%= link_to teachers_course_path(course),
+              method: :delete, class: "btn btn-danger", data: {confirm: "Bạn có chắc chắn muốn xóa không ?"} do %>
+              <i class="fa fa-trash"></i>
+            <% end %>
           </div>
           <div class="row">
             <%= link_to "Danh sách học viên",

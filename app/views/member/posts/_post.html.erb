@@ -15,10 +15,10 @@
         <i class="fa fa-comment"></i> 72
       </div>
       <div class="btn-group-sm">
-        <%= link_to edit_publish_post_path(post), class: "btn btn-info" do %>
+        <%= link_to edit_member_post_path(post), class: "btn btn-info" do %>
           Edit
         <% end %>
-        <%= link_to publish_post_path(post),
+        <%= link_to member_post_path(post),
           method: :delete, class: "btn btn-default", data: {confirm: t("are_you_sure")} do %>
           Delete
         <% end %>

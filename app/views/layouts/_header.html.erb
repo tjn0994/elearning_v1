@@ -85,28 +85,22 @@
             </ul>
           </li>
           <li>
-            <a href="javascript:void(0)" class="site-nav-sub"><i class="fa fa-angle-down site-nav-arrow"></i>eCommerce</a>
+            <a href="javascript:void(0)" class="site-nav-sub"><i class="fa fa-angle-down site-nav-arrow"></i>Account</a>
             <ul>
               <li>
-                <a href="ecom_home.html">Home</a>
+                <%= link_to "Thông tin cá nhân", students_user_path(current_user) %>
               </li>
               <li>
-                <a href="ecom_search_results.html">Search Results</a>
+                <%= link_to "Hoạt động", students_activities_path %>
               </li>
               <li>
-                <a href="ecom_product_list.html">Product List</a>
+                <%= link_to "Danh sách khóa học", students_user_courses_path %>
               </li>
               <li>
-                <a href="ecom_product.html">Product</a>
+                <%= link_to "Cài đặt", students_user_settings_path %>
               </li>
               <li>
-                <a href="ecom_product_comparison.html">Product Comparison</a>
-              </li>
-              <li>
-                <a href="ecom_shopping_cart.html">Shopping Cart</a>
-              </li>
-              <li>
-                <a href="ecom_checkout.html">Checkout</a>
+                <%= link_to "Bài viết", member_posts_path %>
               </li>
             </ul>
           </li>

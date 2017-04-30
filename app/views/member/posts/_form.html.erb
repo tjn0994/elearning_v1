@@ -4,7 +4,7 @@
   </div>
   <div class="panel-body">
     <div class="container form-horizontal">
-      <%= form_for [:publish, @post] do |f| %>
+      <%= form_for [:member, @post] do |f| %>
         <div class="form-group">
           <div class="col-md-offset-3">
             <%= render "shared/error_messages", object: f.object %>

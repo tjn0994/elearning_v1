@@ -8,6 +8,7 @@ per_page:
     user: 10
     exam: 10
     result: 10
+    activity: 10
   teachers:
     user: 10
     course: 10
@@ -16,6 +17,8 @@ per_page:
   publish:
     post: 8
     room: 8
+  member:
+    post: 10
 max_size_image_avatar: 5
 image_types:
   jpg: "jpg"

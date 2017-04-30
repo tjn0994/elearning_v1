@@ -16,7 +16,7 @@
     <div class="clear-float row markdown">
       <%= markdown @post.content %>
     </div>
-    <%= form_for [:publish, @post, @comment], remote: true do |f| %>
+    <%= form_for [:member, @post, @comment], remote: true do |f| %>
       <div class="form-group">
         <div class="col-md-offset-3">
           <%= render "shared/error_messages", object: f.object %>

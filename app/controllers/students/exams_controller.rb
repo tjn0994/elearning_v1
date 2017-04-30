@@ -1,4 +1,6 @@
 class Students::ExamsController < ApplicationController
+  before_action :authenticate_user!
+  load_and_authorize_resource
   before_action :load_course
   before_action :load_lesson
   before_action :load_exam, only: [:update, :show]

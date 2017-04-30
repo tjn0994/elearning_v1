@@ -2,7 +2,7 @@
   <li class="comment-content-<%= comment.id %>">
     <%= comment.content %>
     <button class="btn btn-info btn-edit-comment" id="<%= comment.id %>">edit</button>
-     <%= link_to publish_post_comment_path(@post, comment),
+     <%= link_to member_post_comment_path(@post, comment),
           method: :delete, class: "btn btn-default", data: {confirm: t("are_you_sure")} do %>
           Delete
         <% end %>

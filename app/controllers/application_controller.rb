@@ -8,6 +8,11 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :load_notifications, if: :user_signed_in?
 
+  rescue_from CanCan::AccessDenied do
+    flash[:alert] = "sdsadasdsa"
+    redirect_to root_path
+  end
+
   protected
 
   def configure_permitted_parameters
@@ -19,6 +24,7 @@ class ApplicationController < ActionController::Base
       user_params.permit :password, :password_confirmation, :current_password
     end
   end
+
 
   def after_sign_in_path_for _resource
     students_users_path
