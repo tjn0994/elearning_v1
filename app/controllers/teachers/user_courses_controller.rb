@@ -8,7 +8,7 @@ class Teachers::UserCoursesController < DashboardController
   end
 
   def create
-    user_ids = params[:user_courses][:list_user].reject(&:blank?).map(&:to_i)
+    user_ids = params[:courses][:list_user].reject(&:blank?).map(&:to_i)
     array_user_id_temp = []
     user_ids.each do |user_id|
       array_user_id_temp << UserCourse.new(course_id: @course.id, user_id: user_id)
@@ -28,7 +28,7 @@ class Teachers::UserCoursesController < DashboardController
   end
 
   def destroy
-    user_ids = params[:user_courses][:list_user].reject(&:blank?).map(&:to_i)
+    user_ids = params[:courses][:list_user].reject(&:blank?).map(&:to_i)
     @course.user_ids -= user_ids
     user_ids.each do |user_id|
       create_notification_for_member UserCourse.name, @course, "remove_course", user_id

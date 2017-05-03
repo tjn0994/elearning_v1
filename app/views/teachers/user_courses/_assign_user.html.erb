@@ -15,7 +15,7 @@
         <%= form_for [:teachers, @course, @user_course] do |f| %>
           <div class="modal-body member-modal-body">
             <ul class="list-group" id="add-member">
-              <%= render "collection_check_box", users: @user_outside_courses, object: f %>
+              <%= render "collection_check_box", users: @user_outside_courses %>
             </ul>
           </div>
           <div class="modal-footer">

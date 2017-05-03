@@ -29,11 +29,12 @@ class Ability
   def teacher_permission user
     # cannot [:read, :update], User
     can [:read, :update], User, id: user.id
-    can [:read, :create, :update], Course, owner_id: user.id
-    can [:read, :create, :update], Lesson
-    can [:read, :create, :update], Question
-    can [:read, :create, :update], TimeForExam
-    can [:read, :create, :update], RegisterCourse
+    can :manage, Course, owner_id: user.id
+    can :manage, Lesson
+    can :manage, Question
+    can :manage, TimeForExam
+    can :manage, RegisterCourse
+    can :manage, UserCourse, user.courses.include?(:course_id)
   end
 end
 

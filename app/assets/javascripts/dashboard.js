@@ -22,6 +22,8 @@
 //= require ./dashboard/vendor/bootstrap.min.js
 //= require ./dashboard/vendor/modernizr-2.7.1-respond-1.4.2.min.js
 //= require bootstrap-datepicker
+//= require moment
+//= require bootstrap-datetimepicker
 //= require cable
 
 //= require ckeditor/init

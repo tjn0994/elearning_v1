@@ -76,4 +76,7 @@ function search_add_user(_search_input, class_name, class_hide_name){
       }
     });
   });
+
+  $('.datetimepicker').datetimepicker({
+  });
 }

@@ -32,9 +32,9 @@ Rails.application.routes.draw do
       resources :time_for_exams
       resources :user_courses,  only: [:index, :create]
       resource :user_courses, only: :destroy
+      resources :register_courses
     end
     resource :user_settings, only: :show
-    resources :register_courses
   end
 
   namespace :admins do

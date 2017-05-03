@@ -42,4 +42,8 @@ module DashboardsHelper
     href = html_options[:href] || "#"
     content_tag(:a, name, html_options.merge(href: href, onclick: onclick))
   end
+
+  def load_register_course course
+    @register_course = course.register_course.present? ? course.register_course : RegisterCourse.new
+  end
 end

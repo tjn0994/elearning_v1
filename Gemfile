@@ -24,6 +24,8 @@ gem "kaminari"
 gem "paranoia", "~> 2.2"
 gem "kaminari-bootstrap", "~> 3.0.1"
 gem "bootstrap-datepicker-rails"
+gem "momentjs-rails"
+gem "bootstrap3-datetimepicker-rails"
 gem "cancancan", "~> 1.10"
 gem "sidekiq"
 gem "opentok"
@@ -40,6 +42,7 @@ gem "activerecord-import", "~> 0.15.0"
 gem "pygments.rb", "~> 0.6.3"
 gem "redcarpet", "~> 3.3", ">= 3.3.4"
 gem "simplemde-rails"
+gem "delayed_job_active_record"
 
 # Use Capistrano for deployment
 # gem "capistrano-rails", group: :development
