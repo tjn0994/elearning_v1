@@ -4,6 +4,7 @@ class CreateRegisterCourses < ActiveRecord::Migration[5.0]
       t.references :course, foreign_key: true
       t.datetime :date_open
       t.datetime :date_close
+      t.integer :status, default: 1
 
       t.timestamps
     end

@@ -55,6 +55,8 @@ GEM
     bootstrap-sass (3.3.7)
       autoprefixer-rails (>= 5.2.1)
       sass (>= 3.3.4)
+    bootstrap3-datetimepicker-rails (4.17.47)
+      momentjs-rails (>= 2.8.1)
     builder (3.2.3)
     byebug (9.0.6)
     cancancan (1.16.0)
@@ -85,6 +87,11 @@ GEM
       deep_merge (~> 1.1.1)
     connection_pool (2.2.1)
     deep_merge (1.1.1)
+    delayed_job (4.1.2)
+      activesupport (>= 3.0, < 5.1)
+    delayed_job_active_record (4.1.1)
+      activerecord (>= 3.0, < 5.1)
+      delayed_job (>= 3.0, < 5)
     devise (4.2.1)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -279,6 +286,8 @@ GEM
     mini_magick (4.5.1)
     mini_portile2 (2.1.0)
     minitest (5.10.1)
+    momentjs-rails (2.17.1)
+      railties (>= 3.1)
     multi_json (1.12.1)
     multi_xml (0.6.0)
     mysql2 (0.4.5)
@@ -417,6 +426,7 @@ DEPENDENCIES
   animate-rails
   bootstrap-datepicker-rails
   bootstrap-sass (~> 3.3.6)
+  bootstrap3-datetimepicker-rails
   byebug
   cancancan (~> 1.10)
   carrierwave (= 0.11.2)
@@ -424,6 +434,7 @@ DEPENDENCIES
   ckeditor
   coffee-rails (~> 4.2)
   config
+  delayed_job_active_record
   devise
   figaro
   fog (= 1.38.0)
@@ -437,6 +448,7 @@ DEPENDENCIES
   kaminari-bootstrap (~> 3.0.1)
   listen (~> 3.0.5)
   mini_magick (= 4.5.1)
+  momentjs-rails
   mysql2 (>= 0.3.18, < 0.5)
   opentok
   paranoia (~> 2.2)

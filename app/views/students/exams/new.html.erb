@@ -21,7 +21,6 @@
                 <div class="form-group">
                   <%= ff.object.question.name %>
                   <% ff.object.question.answers.each do |answer| %>
-                    <% binding.pry %>
                     <%= ff.radio_button :answer_id, answer.id  %>
                     <%= answer.name %>
                   <% end %>
