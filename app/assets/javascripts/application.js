@@ -46,8 +46,8 @@
 // gem
 //= require simplemde.min
 
-//= require ./publish/posts.js
-//= require ./publish/comments.js
+//= require ./member/posts.js
+//= require ./member/comments.js
 
 $(document).ready(function() {
   $('#flash-message').delay(2000).slideUp(500, function() {

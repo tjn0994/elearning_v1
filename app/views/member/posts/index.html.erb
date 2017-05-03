@@ -29,7 +29,7 @@
     <br>
     POSTS TENDENCY
     <div>
-      <%= pie_chart @posts.group(:id).count %>
+      <%= pie_chart  @posts.joins(:type).group('types.name').count %>
     </div>
   </div>
 </div>

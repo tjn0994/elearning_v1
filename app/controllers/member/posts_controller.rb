@@ -3,7 +3,7 @@ class Member::PostsController < ApplicationController
   before_action :load_category
 
   def index
-    @posts = current_user.posts.recent.page(params[:page])
+    @posts = current_user.posts.page(params[:page])
       .per Settings.per_page.member.post
   end
 
