@@ -1,37 +1,34 @@
-<div class="row">
-  <div class="col-md-offset-1 col-md-10">
-    <div class="panel panel-info">
-      <div class="panel-heading">
-        <h3 class="panel-title text-center">
-          <%= t ".list_member" %>
-        </h3>
+<div class="panel-content">
+  <div class="panel panel-info">
+    <div class="panel-heading">
+      <h3 class="panel-title text-center">Danh sách học viên</h3>
+    </div>
+    <div class="row">
+      <br>
+      <div class="col-md-12 row">
+        <div class="col-md-offset-1 col-md-2">
+          <button type="button" class="btn btn-primary col-md-offset-1 btn-sm"
+            data-toggle="modal" data-target="#add-users-into-special-type"
+            data-backdrop="static" data-keyboard="false">
+            <i class="gi gi-plus"></i>Thêm học viên
+          </button>
+        </div>
+        <div class="col-md-2">
+          <%= form_for [:teachers, @course, @user_course], method: :delete do |f| %>
+            <%= f.submit "Xóa học viên", id: "new_user_special_type",
+              class: "btn btn-danger btn-sm btn-delete-member" %>
+        </div>
       </div>
+    </div>
+    <div class="panel-body">
       <div class="row">
-        <br>
-        <div class="col-md-12 row">
-          <div class="col-md-offset-1 col-md-2">
-            <button type="button" class="btn btn-primary col-md-offset-1 btn-sm"
-              data-toggle="modal" data-target="#add-users-into-special-type">
-              <i class="gi gi-plus"></i>
-              add member
-            </button>
-          </div>
-          <div class="col-md-2">
-            <%= form_for [:teachers, @course, @user_course], method: :delete do |f| %>
-              <%= f.submit "remove member", id: "new_user_special_type",
-                class: "btn btn-danger btn-sm btn-delete-member" %>
-          </div>
+        <div id="list-users-workspaces">
+          <%= render "table_member" %>
         </div>
-      </div>
-      <div class="panel-body">
-        <div class="row">
-          <div id="list-users-workspaces">
-            <%= render "table_member" %>
-          </div>
-          <% end %>
-        </div>
+        <% end %>
       </div>
     </div>
   </div>
 </div>
+
 <%= render "teachers/user_courses/assign_user" %>

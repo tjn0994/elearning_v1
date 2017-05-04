@@ -1,9 +1,9 @@
-.height-250 {
-  height: 250px;
+.height-300 {
+  height: 300px;
 }
 
-.width-250 {
-  width: 250px;
+.height-250 {
+  height: 250px;
 }
 
 .height-80 {
@@ -18,6 +18,18 @@
   width: 500px;
 }
 
+.width-300 {
+  width: 300px;
+}
+
 .width-250 {
   width: 250px;
+}
+
+.color-blue {
+  color: blue;
+}
+
+.color-red-brick {
+  color: rgba(224, 33, 30, 0.81);
 }

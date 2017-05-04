@@ -3,7 +3,7 @@
     <div class="table-responsive">
     <table class="table table-bordered table-hover checkbox-member">
       <thead>
-        <tr>
+        <tr class="table-center">
           <th>#</th>
           <th>Tên</th>
           <th>Email</th>
@@ -11,7 +11,7 @@
           <th>Thao tác</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody class="table-center">
         <%= render partial: "list_member", collection: @user_inside_courses,
           as: :user %>
       </tbody>

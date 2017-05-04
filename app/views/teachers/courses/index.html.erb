@@ -1,7 +1,7 @@
 <% provide :title, t("list_user") %>
 <%= link_to new_teachers_course_path,
   class: "btn btn-md btn-success" do %>
-  <i class="gi gi-plus"></i> add course
+  <i class="gi gi-plus"></i>Thêm khóa học
 <% end %>
 <br>
 <br>
@@ -11,36 +11,41 @@
 </div>
 
 <div class="row">
-  <% @courses.each do |course| %>
-    <div class="col-sm-6 col-md-4 ">
+  <% @courses.each_with_index do |course, index| %>
+    <% if index%3 == 0 %>
+      <div class="clear-fix"> </div>
+    <% end %>
+    <div class="col-md-4">
       <div class="thumbnail product">
         <div class="caption">
           <div class="img-caption" >
-            <% if course.image.present? %>
-              <%= link_to image_tag(course.image.url),
-                teachers_course_lessons_path(course),
-                class: "widget widget-hover-effect4 themed-background" %>
-            <% end %>
+            <%= link_to image_tag(course.image.url, style: "height:300px; width: 300px"),
+              teachers_course_lessons_path(course),
+              class: "widget widget-hover-effect4 themed-background height-300 width-300" %>
           </div>
           <div class="desc">
-            <%= course.name %>
-            <%= render "shared/btn_show", object: course %>
-           <%= link_to edit_teachers_course_path(course), class: "btn btn-warning btn-sm" do %>
-              <i class="fa fa-pencil">Chỉnh sửa</i>
-            <% end %>
-            <%= link_to teachers_course_path(course),
-              method: :delete, class: "btn btn-danger", data: {confirm: "Bạn có chắc chắn muốn xóa không ?"} do %>
-              <i class="fa fa-trash"></i>
-            <% end %>
+            <div class="color-blue"><%= course.name %></div>
+            <span class="color-red-brick">Thao tác:</span>
+            <div class="btn-group btn-group-sm">
+              <%= render "shared/btn_show", object: course %>
+              <%= link_to edit_teachers_course_path(course), class: "btn btn-warning" do %>
+                <i class="fa fa-pencil"></i>
+              <% end %>
+              <%= link_to teachers_course_path(course),
+                method: :delete, class: "btn btn-danger", data: {confirm: "Bạn có chắc chắn muốn xóa không ?"} do %>
+                <i class="fa fa-trash"></i>
+              <% end %>
+            </div>
           </div>
-          <div class="row">
+          <div class="row" style="margin-left: 0; margin-top: 5px">
             <%= link_to "Danh sách học viên",
               teachers_course_user_courses_path(course),
                 class: "btn btn-primary btn-sm col-md-5" %>
             <span class="col-md-1"></span>
             <% if course.active? %>
               <button type="button" class="register-course btn btn-warning col-md-5 btn-sm"
-                data-toggle="modal" data-target="#add-time-register-course-<%= course.id %>">
+                data-toggle="modal" data-target="#add-time-register-course-<%= course.id %>"
+                data-backdrop="static" data-keyboard="false">
                 <i class="gi gi-plus"></i>
                 Thời gian mở lớp
               </button>
@@ -51,30 +56,32 @@
                       <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;
                         </button>
-                        <h4 class="modal-title">list member</h4>
+                        <h4 class="modal-title"><center>Thời gian đăng ký</center></h4>
                       </div>
                       <br>
-                      <div class="clear-float">
+                      <div class="clear-float row">
                         <%= form_for [:teachers, course, load_register_course(course)], remote: true do |f| %>
-                          <%= render "shared/error_messages", object: load_register_course(course) %>
-                          <div class="form-group">
-                            <%= f.label :date_open, t(".date_open"), class: "field-compulsory-before" %>
-                            <div>
-                              <%= f.text_field :date_open,
-                                value: (l @register_course.date_open, format: :format_datetime_picker_rb if @register_course.date_open.present?),
-                                class: "form-control datetimepicker", required: true %>
+                          <div class="col-md-10 col-md-offset-1">
+                            <%= render "shared/error_messages", object: load_register_course(course) %>
+                            <div class="form-group">
+                              <%= f.label :date_open, value: "Ngày bắt đầu", class: "field-compulsory-before" %>
+                              <div>
+                                <%= f.text_field :date_open,
+                                  value: (l @register_course.date_open, format: :format_datetime_picker_rb if @register_course.date_open.present?),
+                                  class: "form-control datetimepicker", required: true %>
+                              </div>
                             </div>
-                          </div>
-                          <div class="form-group">
-                            <%= f.label :date_close, t(".date_close"), class: "field-compulsory-before" %>
-                            <div>
-                               <%= f.text_field :date_close,
-                                value: (l @register_course.date_open, format: :format_datetime_picker_rb if @register_course.date_open.present?),
-                                class: "form-control datetimepicker", required: true %>
+                            <div class="form-group">
+                              <%= f.label :date_close, value: "Ngày kết thúc", class: "field-compulsory-before" %>
+                              <div>
+                                 <%= f.text_field :date_close,
+                                  value: (l @register_course.date_open, format: :format_datetime_picker_rb if @register_course.date_open.present?),
+                                  class: "form-control datetimepicker", required: true %>
+                              </div>
                             </div>
-                          </div>
-                          <div class="form-group">
-                            <%= f.submit "Tạo", class: "btn btn-primary" %>
+                            <div class="form-group">
+                              <center><%= f.submit "Tạo", class: "btn btn-primary" %></center>
+                            </div>
                           </div>
                         <% end %>
                       </div>

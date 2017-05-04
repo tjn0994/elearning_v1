@@ -1,6 +1,6 @@
 <div class="panel panel-info">
   <div class="panel-heading">
-    <h3 class="panel-title">new course</h3>
+    <h3 class="panel-title"><center><%= yield(:title) %></center></h3>
   </div>
   <div class="panel-body">
     <div class="container form-horizontal">
@@ -13,7 +13,7 @@
 
         <div class="row" style="margin-bottom: 13px">
           <div class="col-md-3">
-            <label class="pull-right" style="line-height: 34px; height: 34px">category</label>
+            <label class="pull-right" style="line-height: 34px; height: 34px">Danh mục</label>
           </div>
           <div class="col-md-5">
             <select id="category-id" class="form-control">
@@ -30,7 +30,7 @@
 
         <div id="types">
           <div class="form-group">
-            <%= f.label :type, class: "col-md-3 control-label" %>
+            <%= f.label :type, value: "Loại", class: "col-md-3 control-label" %>
             <div class="col-md-5">
               <%= f.select :type_id, @types.collect {|c| [c.name, c.id]},
                 {}, {class: "form-control"} %>
@@ -39,33 +39,33 @@
         </div>
 
         <div class="form-group">
-          <%= f.label :name, class: "col-md-3 control-label" %>
+          <%= f.label :name, value: "Tên",class: "col-md-3 control-label" %>
           <div class="col-md-5">
             <%= f.text_field :name, class: "form-control" %>
           </div>
         </div>
 
         <div class="form-group">
-          <%= f.label :description, class: "col-md-3  control-label" %>
+          <%= f.label :description, value: "Mô tả", class: "col-md-3  control-label" %>
           <div class="col-md-5">
             <%= f.text_area :description, class: "form-control" %>
           </div>
         </div>
 
         <div class="form-group">
-          <%= f.label :image, class: "col-md-3  control-label" %>
+          <%= f.label :image, value: "Ảnh", class: "col-md-3  control-label" %>
           <div class="col-md-5">
             <%= f.file_field :image, class: "form-control" %>
           </div>
         </div>
 
         <div class="form-group">
-          <%= f.label :date_from, class: "col-md-3  control-label" %>
+          <%= f.label :date_from, value: "Từ ngày", class: "col-md-3  control-label" %>
           <div class="col-md-2">
             <%= f.text_field :date_from, class: "form-control datepicker" %>
           </div>
 
-          <div class="col-md-1" style="text-center"><strong>Date to</strong></div>
+          <div class="col-md-1 center-text-by-form"><strong>Đến ngày</strong></div>
           <div class="col-md-2">
             <%= f.text_field :date_to, class: "form-control datepicker" %>
           </div>
@@ -74,34 +74,35 @@
         <%= f.fields_for :timesheets do |ff| %>
           <div class="timesheets-form">
             <div class="form-group">
-              <%= ff.label :day_name, class: "col-md-3  control-label" %>
+              <%= ff.label :day_name, value: "Thứ", class: "col-md-3  control-label" %>
               <div class="col-md-5">
-                <%= ff.select :day_name, Timesheet.day_names.collect{|k| [k[0], k[0]]},
+                <%= ff.select :day_name,
+                  Timesheet.day_names.collect{|k| [I18n.t("form.date_name.#{k[0]}"), k[0]]},
                   {}, class: "form-control selectpicker" %>
               </div>
             </div>
 
-
             <div class="form-group">
-              <%= ff.label :time_from, class: "col-md-3  control-label" %>
+              <%= ff.label :time_from, value: "Thời gian từ", class: "col-md-3  control-label" %>
               <div class="col-md-2 form-inline">
                 <%= ff.time_select :time_from, {ignore_date: true}, {class: "form-control"} %>
               </div>
 
-              <div class="col-md-1">Time to</div>
+              <div class="col-md-1"><strong>Thời gian đến</strong></div>
               <div class="col-md-2 form-inline">
                 <%= ff.time_select :time_to, {ignore_date: true}, {class: "form-control"} %>
               </div>
-              <%= link_to_remove_fields "remove", ff %>
+              <span class="center-text-by-form"><%= link_to_remove_fields "Xóa", ff %></span>
             </div>
           </div>
         <% end %>
 
-        <div class="form-group add-timesheet">
-          <%= link_to_add_fields "add", f, :timesheets,
-            class: "btn btn-primary fa fa-plus" %>
+        <div class="form-group add-timesheet row">
+          <div class="col-md-offset-2">
+            <%= link_to_add_fields "Thêm", f, :timesheets,
+              class: "btn btn-primary fa fa-plus" %>
+          </div>
         </div>
-
 
         <div class="form-group" >
           <div class="col-md-5 col-md-offset-3">

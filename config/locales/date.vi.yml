@@ -1,12 +1,10 @@
-en:
+vi:
   date:
     formats:
       default: "%m/%d/%Y"
       month_year: "%m/%Y"
       date_month_year: "%Y-%m-%d"
       date_month_year_v1: "%d-%m-%Y"
-    month_names: [~, January, Febuary, March, April, May, June, July, August, September, October, November, December]
-    abbr_day_names: [Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday]
   time:
     formats:
       long: "%d/%m/%Y %H:%M"
