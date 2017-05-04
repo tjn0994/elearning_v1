@@ -1,27 +1,27 @@
 <% if @course.present? %>
   <div class="panel panel-info">
     <div class="panel-heading">
-      <h3 class="panel-title"><%= t ".detail_information" %></h3>
+      <h3 class="panel-title">Thông tin khóa học</h3>
     </div>
     <div class="panel-body">
       <div class="row">
         <table class="table table-user-information">
           <tbody>
             <tr>
-              <td>name</td>
+              <td>Tên</td>
               <td><%= @course.name %></td>
             </tr>
             <tr>
-              <td>description</td>
+              <td>Mô tả</td>
               <td><%= @course.description %></td>
             </tr>
             <tr>
-              <td>approve</td>
-              <td><%= @course.approver_id %></td>
+              <td>Người xác nhận</td>
+              <td><%= @course.approver.name if @course.approver_id.present? %></td>
             </tr>
             <tr>
-              <td>owner</td>
-              <td><%= @course.owner_id %></td>
+              <td>Người tạo khóa học</td>
+              <td><%= @course.owner.name %></td>
             </tr>
           </tbody>
         </table>
@@ -29,5 +29,5 @@
     </div>
   </div>
 <% else %>
-  Error not found
+  Lỗi không tìm thấy
 <% end %>

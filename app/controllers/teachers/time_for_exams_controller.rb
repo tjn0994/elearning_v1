@@ -6,7 +6,8 @@ class Teachers::TimeForExamsController < DashboardController
   end
 
   def create
-    @time_for_exam = TimeForExam.new time_for_exam_params
+    @lesson = Lesson.find_by id: params[:lesson_id]
+    @time_for_exam = TimeForExam.new time_for_exam_params.merge! lesson_id: @lesson.id
     if @time_for_exam.save
       respond_to do |format|
         format.js{}
@@ -16,10 +17,23 @@ class Teachers::TimeForExamsController < DashboardController
     end
   end
 
+  def edit; end
+
+  def update
+    @lesson = Lesson.find_by id: params[:lesson_id]
+    if @lesson.time_for_exam.update_attributes time_for_exam_params.merge! lesson_id: @lesson.id
+      respond_to do |format|
+        format.js{}
+      end
+    else
+      render :edit
+    end
+  end
+
   private
 
   def time_for_exam_params
-    params.require(:time_for_exam).permit(:lesson_id, :time, :number_question)
+    params.require(:time_for_exam).permit(:time, :number_question)
   end
 
   def create_activity_for_time_exam

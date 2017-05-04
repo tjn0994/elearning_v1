@@ -1,4 +1,3 @@
-<% provide :title, t("list_user") %>
 <%= link_to new_teachers_course_path,
   class: "btn btn-md btn-success" do %>
   <i class="gi gi-plus"></i>Thêm khóa học
@@ -37,20 +36,22 @@
               <% end %>
             </div>
           </div>
-          <div class="row" style="margin-left: 0; margin-top: 5px">
-            <%= link_to "Danh sách học viên",
-              teachers_course_user_courses_path(course),
-                class: "btn btn-primary btn-sm col-md-5" %>
-            <span class="col-md-1"></span>
-            <% if course.active? %>
-              <button type="button" class="register-course btn btn-warning col-md-5 btn-sm"
-                data-toggle="modal" data-target="#add-time-register-course-<%= course.id %>"
-                data-backdrop="static" data-keyboard="false">
-                <i class="gi gi-plus"></i>
-                Thời gian mở lớp
-              </button>
+          <% if course.active? %>
+            <div class="row" style="margin-left: 0; margin-top: 5px">
+              <%= link_to "Danh sách học viên",
+                teachers_course_user_courses_path(course),
+                class: "btn btn-primary btn-sm col-md-5 widget widget-hover-effect1" %>
+              <span class="col-md-1"></span>
+              <a class="widget widget-hover-effect1">
+                <button type="button" class="register-course btn btn-warning col-md-5 btn-sm"
+                  data-toggle="modal" data-target="#add-time-register-course-<%= course.id %>"
+                  data-backdrop="static" data-keyboard="false">
+                  <i class="gi gi-plus"></i>
+                  Thời gian mở lớp
+                </button>
+              </a>
               <!-- modal -->
-                <div id="add-time-register-course-<%= course.id%>" class="modal fade" role="dialog">
+                <div id="add-time-register-course-<%= course.id %>" class="modal fade" role="dialog">
                   <div class="modal-dialog">
                     <div class="modal-content">
                       <div class="modal-header">
@@ -75,12 +76,13 @@
                               <%= f.label :date_close, value: "Ngày kết thúc", class: "field-compulsory-before" %>
                               <div>
                                  <%= f.text_field :date_close,
-                                  value: (l @register_course.date_open, format: :format_datetime_picker_rb if @register_course.date_open.present?),
+                                  value: (l @register_course.date_close, format: :format_datetime_picker_rb if @register_course.date_close.present?),
                                   class: "form-control datetimepicker", required: true %>
                               </div>
                             </div>
                             <div class="form-group">
-                              <center><%= f.submit "Tạo", class: "btn btn-primary" %></center>
+                              <center><%= f.submit  button_submit_f(@register_course.date_close),
+                                class: "btn btn-primary" %></center>
                             </div>
                           </div>
                         <% end %>
@@ -89,12 +91,10 @@
                   </div>
                 </div>
               <!-- modal end -->
-            <% end %>
-          </div>
+            </div>
+          <% end %>
         </div>
       </div>
     </div>
   <% end %>
 </div>
-
-
