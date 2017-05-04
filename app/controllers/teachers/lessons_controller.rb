@@ -5,7 +5,7 @@ class Teachers::LessonsController < DashboardController
   load_and_authorize_resource
 
   def index
-    @lessons = @course.lessons.recent.page(params[:page])
+    @lessons = @course.lessons.page(params[:page])
       .per Settings.per_page.teachers.lesson
     @time_for_exam = TimeForExam.new
   end

@@ -46,4 +46,12 @@ module DashboardsHelper
   def load_register_course course
     @register_course = course.register_course.present? ? course.register_course : RegisterCourse.new
   end
+
+  def load_time_for_exam lesson
+    @time_for_exam = lesson.time_for_exam.present? ? lesson.time_for_exam : TimeForExam.new
+  end
+
+  def button_submit_f object
+    object.present? ? "Cập nhật" : "Tạo"
+  end
 end
