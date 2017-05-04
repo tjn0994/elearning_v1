@@ -6,9 +6,7 @@
   <td><%= course.name %></td>
   <td><%= course.description %></td>
   <td>
-    <% if course.image.present? %>
-      <%= image_tag course.image.url, class: "height-80" %>
-    <% end %>
+    <%= image_tag course.image.url, class: "height-80" %>
   </td>
   <td><%= course.approver_name %></td>
   <td>

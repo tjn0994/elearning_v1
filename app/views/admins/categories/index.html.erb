@@ -10,15 +10,15 @@
     <div class="table-responsive">
     <table class="table table-bordered table-hover">
       <thead>
-        <tr class="active">
-          <th> index </th>
-          <th> name </th>
-          <th> description</th>
-          <th> action </th>
+        <tr class="table-center">
+          <th> Stt </th>
+          <th> Tên </th>
+          <th style="min-width: 250px; max-width: 300px"> Mô tả </th>
+          <th> Thao tác </th>
         </tr>
       </thead>
-      <tbody>
-        <%= render(@categories, categories: @categories) || "data_not_find" %>
+      <tbody class="table-center">
+        <%= render(@categories, categories: @categories) || "Dữ liệu không tồn tại" %>
       </tbody>
     </table>
     </div>
