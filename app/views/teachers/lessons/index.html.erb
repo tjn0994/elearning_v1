@@ -74,10 +74,12 @@
                       <center><h4 class="modal-title">Đề kiểm tra</h4></center>
                     </div>
                     <br>
-                    <div class="clear-float row">
+                    <div class="clear-float row btn-submit-time-for-exam-<%= lesson.id %>">
                       <%= form_for [:teachers, @course, lesson, load_time_for_exam(lesson)], remote: true do |f| %>
                         <div class="col-md-10 col-md-offset-1">
-                          <%= render "shared/error_messages", object: load_time_for_exam(lesson) %>
+                          <div class="form-group row">
+                            <div class="add-time-for-exam-<%= lesson.id %>"></div>
+                          </div>
                           <div class="form-group row">
                               <%= f.label :time, value: "Thời gian", class: "col-md-4 control-label" %>
                               <div class="col-md-4 form-inline">
@@ -94,8 +96,10 @@
                             </div>
                           </div>
                           <div class="form-group">
-                            <center><%= f.submit button_submit_f(@time_for_exam.number_question),
-                              class: "btn btn-primary" %></center>
+                            <center>
+                              <%= f.submit button_submit_f(@time_for_exam.number_question),
+                                class: "btn btn-primary" %>
+                            </center>
                           </div>
                         </div>
                       <% end %>

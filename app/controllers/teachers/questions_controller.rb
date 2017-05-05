@@ -69,14 +69,14 @@ class Teachers::QuestionsController < DashboardController
   def load_lesson
     @lesson = Lesson.find_by id: params[:lesson_id]
     return if @lesson
-    flash[:error] = t "Không tìm thấy khóa học"
+    flash[:error] = "Không tìm thấy khóa học"
     redirect_to teachers_course_lessons_path(@course)
   end
 
   def load_question
     @question = Question.find_by id: params[:id]
     return if @question
-    flash[:error] = t "Không tìm thấy bài học"
+    flash[:error] = "Không tìm thấy bài học"
     redirect_to teachers_course_lesson_questions_path(@course, @lesson)
   end
 

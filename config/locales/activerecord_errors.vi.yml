@@ -6,6 +6,17 @@ vi:
       question:
         name: "Câu hỏi"
         answers: "Đáp án"
+      time_for_exam:
+        number_question: "Số câu hỏi"
+      lesson:
+        name: "Tên"
+        content: "Nội dung"
+        description: "Mô tả"
+      course:
+        name: "Tên"
+        date_from: "Từ ngày"
+        date_to: "Đến ngày"
+        description: "Mô tả"
     errors:
       models:
         question:
@@ -14,3 +25,32 @@ vi:
               blank: *blank
             answers:
               blank: *blank
+        time_for_exam:
+          attributes:
+            number_question:
+              not_a_number: "không được để trống, vui lòng nhập số"
+              greater_than: "phải lớn hơn 0"
+        lesson:
+          attributes:
+            name:
+              blank: *blank
+              too_short: "ít nhất 2 ký tự"
+              too_long: "Không quá 255 ký tự"
+            content:
+              blank: *blank
+            description:
+              too_long: "Không quá 255 ký tự"
+        course:
+          attributes:
+            name:
+              blank: *blank
+              too_short: "ít nhất 2 ký tự"
+              too_long: "Không quá 255 ký tự"
+            date_from:
+              blank: *blank
+            date_to:
+              blank: *blank
+            description:
+              too_long: "Không quá 255 ký tự"
+            timesheets:
+              blank: "Thời gian đăng lý phải ít nhất 1 ngày trong tuần"

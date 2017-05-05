@@ -1,6 +1,7 @@
 class Teachers::UserCoursesController < DashboardController
   before_action :authenticate_user!
   before_action :load_course
+  before_action :authenticate_course_actice!
   load_and_authorize_resource
 
   def index
@@ -56,5 +57,11 @@ class Teachers::UserCoursesController < DashboardController
   def message_notice object
     return flash[:error] = "not success" unless object[:success]
     flash[:success] = "success"
+  end
+
+  def authenticate_course_actice!
+    return if @course.active?
+    flash[:error] = "Khóa học chưa được cho phép hoạt động"
+    redirect_to teachers_courses_path
   end
 end

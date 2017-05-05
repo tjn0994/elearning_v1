@@ -21,11 +21,12 @@ class Teachers::CoursesController < DashboardController
     @course = Course.new course_params
     if @course.save
       create_activity_for_course
-      flash[:success] = t "devise.registrations.signed_up"
+      flash[:success] = "Tạo khóa học thành công"
       redirect_to teachers_courses_path
     else
       @types = @course.type.category.types
       @category_ = @course.type.category
+      @timesheet = @course.timesheets.build if @course.timesheets.blank?
       render :new
     end
   end
@@ -44,7 +45,7 @@ class Teachers::CoursesController < DashboardController
   def update
     if @course.update_attributes course_params
       create_activity_for_course
-      flash[:success] = t "devise.registrations.updated"
+      flash[:success] = "Cập nhật khóa học thành công"
       redirect_to teachers_courses_path
     else
       @types = @course.type.category.types
@@ -56,9 +57,9 @@ class Teachers::CoursesController < DashboardController
   def destroy
     if @course.destroy
       create_activity_for_course
-      flash[:success] = t "devise.registrations.destroyed"
+      flash[:success] = "Xóa khóa học thành công"
     else
-      flash[:warning] = t "delete_not_success"
+      flash[:warning] = "Xóa khóa học không thành công"
     end
     redirect_to teachers_courses_path
   end
@@ -74,7 +75,7 @@ class Teachers::CoursesController < DashboardController
   def load_course
     @course = Course.find_by id: params[:id]
     return if @course
-    flash[:error] = t "dashboard.users.not_found"
+    flash[:error] = "Không tìm thấy khóa học"
     redirect_to teachers_courses_path
   end
 

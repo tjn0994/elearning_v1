@@ -23,6 +23,14 @@
               <td>Người tạo khóa học</td>
               <td><%= @course.owner.name %></td>
             </tr>
+            <tr>
+              <td>Từ ngày</td>
+              <td><%= l @course.date_from, format: :date_month_year_v1 %></td>
+            </tr>
+            <tr>
+              <td>Đến ngày</td>
+              <td><%= l @course.date_to, format: :date_month_year_v1 %></td>
+            </tr>
           </tbody>
         </table>
       </div>

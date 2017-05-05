@@ -1,6 +1,6 @@
 <div class="panel panel-info">
   <div class="panel-heading">
-    <h3 class="panel-title">new lesson</h3>
+    <center><h3 class="panel-title"><%= yield(:title) %></h3></center>
   </div>
   <div class="panel-body">
     <div class="container form-horizontal">
@@ -12,23 +12,23 @@
         </div>
 
         <div class="form-group">
-          <%= f.label :name, class: "col-md-3 control-label" %>
-          <div class="col-md-5">
+          <%= f.label :name, value: "Tên", class: "col-md-2 control-label" %>
+          <div class="col-md-8">
             <%= f.text_field :name, class: "form-control" %>
           </div>
         </div>
 
         <div class="form-group">
-          <%= f.label :description, class: "col-md-3  control-label" %>
-          <div class="col-md-5">
+          <%= f.label :description, value: "Mô tả", class: "col-md-2 control-label" %>
+          <div class="col-md-8">
             <%= f.text_field :description, class: "form-control" %>
           </div>
         </div>
 
         <div class="form-group">
-          <%= f.label :content, class: "col-md-3  control-label" %>
-          <div class="col-md-5">
-            <%= f.text_area :content, class: "form-control ckeditor", rows: 40 %>
+          <%= f.label :content, value: "Nội dung", class: "col-md-2 control-label" %>
+          <div class="col-md-8">
+            <%= f.text_area :content, class: "form-control ckeditor" %>
           </div>
         </div>
 

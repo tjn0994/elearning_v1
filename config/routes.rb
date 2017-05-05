@@ -24,7 +24,8 @@ Rails.application.routes.draw do
   end
 
   namespace :teachers do
-    resources :users
+    root 'courses#index'
+    resources :users, only: [:show, :edit, :update]
     resources :courses do
       resources :lessons do
         resources :questions
