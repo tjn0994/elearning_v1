@@ -6,16 +6,13 @@
   <td><%= question.name %></td>
   <td>
     <div class="btn-group btn-group-xs">
-      <%= link_to teachers_course_lesson_question_path(course, lesson, question),
-        class: "btn btn-default" do %>
-        <i class="fa fa-eye"></i>
-      <% end %>
+      <%= render "shared/btn_show", object: question %>
       <%= link_to edit_teachers_course_lesson_question_path(course, lesson, question),
         class: "btn btn-warning" do %>
         <i class="fa fa-pencil"></i>
       <% end %>
       <%= link_to teachers_course_lesson_question_path(course, lesson, question),
-        method: :delete, class: "btn btn-danger", data: {confirm: t("are_you_sure")} do %>
+        method: :delete, class: "btn btn-danger", data: {confirm: "Bạn có chắc chắn muốn xóa không ?"} do %>
         <i class="fa fa-trash"></i>
       <% end %>
     </div>

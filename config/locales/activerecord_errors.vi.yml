@@ -1,0 +1,16 @@
+vi:
+  dictionary:
+    blank: &blank "không được để trống"
+  activerecord:
+    attributes:
+      question:
+        name: "Câu hỏi"
+        answers: "Đáp án"
+    errors:
+      models:
+        question:
+          attributes:
+            name:
+              blank: *blank
+            answers:
+              blank: *blank
