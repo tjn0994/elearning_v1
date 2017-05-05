@@ -1,6 +1,6 @@
 function change_label_relax(class_form_relax) {
-  $(class_form_relax).not('[style]').find('.kakaka ').each(function(index){
-    label = 'Answer ' + (index + 1);
+  $(class_form_relax).not('[style]').find('.kakaka').each(function(index){
+    label = 'Đáp án ' + (index + 1);
     $(this).text(label)
   });
 }

@@ -9,4 +9,15 @@ class Question < ApplicationRecord
     reject_if: proc { |attributes| attributes[:name].blank? }
 
   scope :recent, ->{order created_at: :desc}
+
+  validates :name, presence: true
+  validates :answers, presence: true
+  validate :have_answer_true, if: ->{self.answers.present?}
+
+  private
+
+  def have_answer_true
+    answer = self.answers.find{|k| k.is_correct.present?}
+    errors.add :base, "Phải có ít nhất 1 đáp án đúng" if answer.blank?
+  end
 end
