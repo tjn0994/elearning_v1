@@ -5,11 +5,6 @@
   <div class="panel-body">
     <div class="container form-horizontal">
       <%= form_for [:teachers, @course] do |f| %>
-        <div class="form-group">
-          <div class="col-md-offset-3">
-            <%= render "shared/error_messages", object: f.object %>
-          </div>
-        </div>
 
         <div class="row" style="margin-bottom: 13px">
           <div class="col-md-3">
@@ -45,12 +40,32 @@
           </div>
         </div>
 
+        <% if f.object.errors[:name].present? %>
+          <% f.object.errors[:name].each do |error| %>
+            <div class="form-group">
+              <div class="col-md-offset-3 color-red padding-left-15">
+                Tên <%= error %>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+
         <div class="form-group">
           <%= f.label :description, value: "Mô tả", class: "col-md-3  control-label" %>
           <div class="col-md-5">
             <%= f.text_area :description, class: "form-control" %>
           </div>
         </div>
+
+        <% if f.object.errors[:description].present? %>
+          <% f.object.errors[:description].each do |error| %>
+            <div class="form-group">
+              <div class="col-md-offset-3 color-red padding-left-15">
+                Mô tả <%= error %>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
 
         <div class="form-group">
           <%= f.label :image, value: "Ảnh", class: "col-md-3  control-label" %>
@@ -70,6 +85,22 @@
             <%= f.text_field :date_to, class: "form-control datepicker" %>
           </div>
         </div>
+
+        <% if f.object.errors[:date_register_blank].present? %>
+          <div class="form-group">
+            <div class="col-md-offset-3 color-red padding-left-15">
+              <%= f.object.errors[:date_register_blank][0] %>
+            </div>
+          </div>
+        <% end %>
+
+        <% if f.object.errors[:errors].present? %>
+          <div class="form-group">
+            <div class="col-md-offset-3 color-red padding-left-15">
+              <%= f.object.errors[:errors][0] %>
+            </div>
+          </div>
+        <% end %>
 
         <%= f.fields_for :timesheets do |ff| %>
           <div class="timesheets-form">
@@ -94,6 +125,22 @@
               </div>
               <span class="center-text-by-form"><%= link_to_remove_fields "Xóa", ff %></span>
             </div>
+
+            <% if f.object.errors[:time].present? && f.object.errors[:time][0].present? %>
+              <div class="form-group">
+                <span class="col-md-offset-3 col-md-5 color-red"><%= f.object.errors[:time][0][ff.index] if f.object.errors[:time][0][ff.index].present? %></span>
+              </div>
+            <% end %>
+
+            <% if f.object.errors[:time_register].present? && f.object.errors[:time_register][0].present? %>
+              <% if f.object.errors[:time_register][0][1] == ff.index %>
+                <div class="form-group">
+                  <span class="col-md-offset-3 col-md-5 color-red">
+                    <%= f.object.errors[:time_register][0][0] %>
+                  </span>
+                </div>
+              <% end %>
+            <% end %>
           </div>
         <% end %>
 

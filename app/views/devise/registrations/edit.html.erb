@@ -1,10 +1,8 @@
 <div class="page-content">
-  <div class="container form-horizontal">
+  <div class="form-horizontal">
     <div class="panel panel-info">
       <div class="panel-heading">
-        <h3 class="panel-title">
-          <%= t "devise.mailer.password_change.subject" %>
-        </h3>
+        <center><h3 class="panel-title">Thay đổi mật khẩu</h3></center>
       </div>
       <div class="panel-body">
         <%= form_for resource, as: resource_name,
@@ -16,20 +14,20 @@
             <% end %>
           </ul>
           <div class="form-group">
-            <%= f.label :password, class: "col-md-3 control-label" %>
+            <%= f.label :password, value: "Mật khẩu mới", class: "col-md-4 control-label" %>
             <div class="col-md-5 inputGroupContainer">
               <div class="input-group">
                 <span class="input-group-addon">
                   <i class="gi gi-asterisk"></i>
                 </span>
                 <%= f.password_field :password, autocomplete: "off",
-                  class: "form-control", placeholder: t("password") %>
+                  class: "form-control", placeholder: "Nhập mật khẩu mới" %>
               </div>
             </div>
           </div>
           <div class="form-group">
-            <%= f.label :password_confirmation,
-              class: "col-md-3 control-label" %>
+            <%= f.label :password_confirmation, value: "Nhập lại mật khẩu",
+              class: "col-md-4 control-label" %>
             <div class="col-md-5 inputGroupContainer">
               <div class="input-group">
                 <span class="input-group-addon">
@@ -37,12 +35,12 @@
                 </span>
                 <%= f.password_field :password_confirmation,
                   autocomplete: "off", class: "form-control",
-                  placeholder: t("retype_password") %>
+                  placeholder: "Nhập lại mật khẩu" %>
               </div>
             </div>
           </div>
           <div class="form-group">
-            <%= f.label :current_password, class: "col-md-3 control-label" %>
+            <%= f.label :current_password, value: "Mật khẩu hiện tại", class: "col-md-4 control-label" %>
             <div class="col-md-5 inputGroupContainer">
               <div class="input-group">
                 <span class="input-group-addon">
@@ -50,13 +48,14 @@
                 </span>
                 <%= f.password_field :current_password,
                   autocomplete: "off", class: "form-control",
-                  placeholder: t("current_password") %>
+                  placeholder: "Nhập mật khẩu hiện tại" %>
               </div>
             </div>
           </div>
           <div class="form-group row">
-            <%= f.submit t("update"),
-              class: "btn btn-primary col-md-offset-4 col-md-3" %>
+            <div class="col-md-offset-4">
+              <%= f.submit "Thay đổi mật khẩu", class: "btn btn-primary col-md-5" %>
+            </div>
           </div>
         <% end %>
       </div>

@@ -64,7 +64,7 @@ class ApplicationController < ActionController::Base
     if current_user.admin?
       admins_users_path
     elsif current_user.teacher?
-      teachers_users_path
+      teachers_courses_path
     else
       "/home"
     end

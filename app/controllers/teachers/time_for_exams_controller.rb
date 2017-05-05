@@ -17,7 +17,11 @@ class Teachers::TimeForExamsController < DashboardController
     end
   end
 
-  def edit; end
+  def edit
+    respond_to do |format|
+      format.js{}
+    end
+  end
 
   def update
     @lesson = Lesson.find_by id: params[:lesson_id]
@@ -26,6 +30,7 @@ class Teachers::TimeForExamsController < DashboardController
         format.js{}
       end
     else
+      @time_for_exam = @lesson.time_for_exam
       render :edit
     end
   end
