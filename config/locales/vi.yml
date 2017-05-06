@@ -1,4 +1,7 @@
 vi:
+  exam:
+    not_completed: "Chưa hoàn thành"
+    completed: "Hoàn thành"
   date:
     formats:
       default: "%m/%d/%Y"

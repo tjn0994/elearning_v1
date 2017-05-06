@@ -35,9 +35,9 @@ ActiveRecord::Schema.define(version: 20170503062123) do
   create_table "answers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "question_id"
     t.string   "name"
-    t.boolean  "is_correct"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.boolean  "is_correct",  default: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
     t.index ["question_id"], name: "index_answers_on_question_id", using: :btree
   end
 
@@ -200,10 +200,10 @@ ActiveRecord::Schema.define(version: 20170503062123) do
   create_table "results", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "exam_id"
     t.integer  "question_id"
-    t.integer  "answer_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.index ["answer_id"], name: "index_results_on_answer_id", using: :btree
+    t.string   "answer_ids"
+    t.boolean  "is_correct",  default: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
     t.index ["exam_id"], name: "index_results_on_exam_id", using: :btree
     t.index ["question_id"], name: "index_results_on_question_id", using: :btree
   end
@@ -300,7 +300,6 @@ ActiveRecord::Schema.define(version: 20170503062123) do
   add_foreign_key "posts", "users"
   add_foreign_key "questions", "lessons"
   add_foreign_key "register_courses", "courses"
-  add_foreign_key "results", "answers"
   add_foreign_key "results", "exams"
   add_foreign_key "results", "questions"
   add_foreign_key "rooms", "courses"

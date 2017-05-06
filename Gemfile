@@ -43,6 +43,7 @@ gem "pygments.rb", "~> 0.6.3"
 gem "redcarpet", "~> 3.3", ">= 3.3.4"
 gem "simplemde-rails"
 gem "delayed_job_active_record"
+gem "validates_serialized"
 
 # Use Capistrano for deployment
 # gem "capistrano-rails", group: :development

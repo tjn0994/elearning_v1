@@ -211,19 +211,35 @@
           <div class="block-section">
             <!-- publish_room_path(@course.room) -->
             <%= link_to "#",
-                  class: "btn btn-lg btn-info btn-block" do %>
-                <i class="fa fa-play"></i>  Vào phòng học</a>
-              <% end %>
+                class: "btn btn-lg btn-info btn-block" do %>
+              <i class="fa fa-play"></i>  Vào phòng học</a>
+            <% end %>
 
             <!-- btn  exam-->
+            <% if @lesson.time_for_exam.blank? %>
               <%= link_to new_students_course_lesson_exam_path(@course, @lesson),
-                  class: "btn btn-lg btn-warning btn-block" do %>
+                class: "btn btn-lg btn-warning btn-block not-active-a" do %>
                 <i class="fa fa-newspaper-o"></i>  Làm bài kiểm tra</a>
               <% end %>
+            <% else %>
+              <%= link_to new_students_course_lesson_exam_path(@course, @lesson),
+                class: "btn btn-lg btn-warning btn-block" do %>
+                <i class="fa fa-newspaper-o"></i>  Làm bài kiểm tra</a>
+              <% end %>
+            <% end %>
+
+            <!-- btn  result-->
+            <% if @lesson.exams.blank? %>
               <%= link_to students_course_lesson_exams_path(@course, @lesson),
-                  class: "btn btn-lg btn-success btn-block" do %>
+                class: "btn btn-lg btn-success btn-block not-active-a" do %>
                 <i class="fa fa-credit-card fa-fw"></i>  Kết quả</a>
               <% end %>
+            <% else %>
+              <%= link_to students_course_lesson_exams_path(@course, @lesson),
+                class: "btn btn-lg btn-success btn-block" do %>
+                <i class="fa fa-credit-card fa-fw"></i>  Kết quả</a>
+              <% end %>
+            <% end %>
           </div>
           <div class="block-section">
             <a href="javascript:void(0)" class="btn btn-lg btn-default btn-block"><i class="fa fa-file-pdf-o"></i>  Tải xuống</a>
@@ -277,7 +293,7 @@
               <tbody>
                 <tr>
                   <td class="text-right" style="width: 30%;">
-                    <img src="img/placeholders/avatars/avatar2.jpg" alt="avatar" class="img-circle">
+                    <img src="" alt="avatar" class="img-circle">
                   </td>
                   <td><a href="page_ready_user_profile.html"><strong>John Doe</strong></a>
                     <br><em>e-Learner</em>

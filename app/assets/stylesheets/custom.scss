@@ -631,3 +631,10 @@ a.list-group-item.active > .badge {
 .lesson-frame-name:hover {
   font-size: 20px;
 }
+
+ol.upper-alpha {list-style-type: upper-alpha;}
+
+.not-active-a {
+   pointer-events: none;
+   cursor: default;
+}
