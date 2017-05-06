@@ -16,12 +16,12 @@ class Teachers::UserCoursesController < DashboardController
     end
     begin
       UserCourse.import array_user_id_temp
-      flash[:success] = "add member success"
+      flash[:success] = "Thêm học viên thành công"
       user_ids.each do |user_id|
         create_notification_for_member UserCourse.name, @course, "add_course", user_id
       end
     rescue StandardError
-      flash[:error] = "add member not success"
+      flash[:error] = "Thêm học viên không thành công"
     end
     # user_course = UserCourseService.new.create user_ids, @course
     # message_notice user_course
@@ -34,7 +34,7 @@ class Teachers::UserCoursesController < DashboardController
     user_ids.each do |user_id|
       create_notification_for_member UserCourse.name, @course, "remove_course", user_id
     end
-    flash[:success] = "delete success"
+    flash[:success] = "Xóa học viên thành công"
     redirect_to teachers_course_user_courses_path @course
   end
 
@@ -50,7 +50,7 @@ class Teachers::UserCoursesController < DashboardController
   def load_course
     @course = Course.find_by id: params[:course_id]
     return if @course
-    flash[:error] = t "dashboard.users.not_found"
+    flash[:error] = "Khóa học không tìm thấy"
     redirect_to teachers_courses_path
   end
 

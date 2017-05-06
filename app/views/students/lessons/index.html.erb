@@ -1,39 +1,46 @@
-<% provide :title, t(".title") %>
-<div class="container custom_width">
-  <h3 class="text-center"><%= t ".list_workspace" %></h3>
-  <div class="row">
-    <% @lessons.each do |lesson| %>
-      <div class="col-sm-6 col-md-4 ">
-        <div class="thumbnail product">
-          <div class="caption">
-            <%= lesson.name%>
-          </div>
-        </div>
-      </div>
-    <% end %>
-  </div>
-</div>
-
+<br>
+<br>
 <section class="site-content site-section">
   <div class="container">
     <div class="site-block text-center">
       <div class="btn-group portfolio-filter">
-        <a href="javascript:void(0)" class="btn btn-primary active" data-category="all">All</a>
-        <a href="javascript:void(0)" class="btn btn-primary" data-category="design">Design</a>
-        <a href="javascript:void(0)" class="btn btn-primary" data-category="development">Development</a>
-        <a href="javascript:void(0)" class="btn btn-primary" data-category="logo">Logo</a>
+        <a href="javascript:void(0)" class="btn btn-primary active" data-category="all">Tất cả</a>
+        <a href="javascript:void(0)" class="btn btn-primary" data-category="read">Đã đọc</a>
+        <a href="javascript:void(0)" class="btn btn-primary" data-category="not_read">Chưa đọc</a>
       </div>
-    </div>
-
-    <div class="row portfolio">
-      <% @lessons.each do |lesson| %>
-        <div class="col-sm-3 portfolio-item animation-fadeInQuick" data-category="design">
-          <%= link_to students_course_lesson_path(@course, lesson), class: "btn btn-warning" do %>
-            <%= lesson.name %>
-          <% end %>
-          <p><%= lesson.description %></p>
-        </div>
-      <% end %>
     </div>
   </div>
 </section>
+
+
+<div>
+  <%= link_to students_user_courses_path,
+    class: "btn btn-default" do %>
+    <i class="fa fa-chevron-left"></i> Khóa học
+  <% end %>
+</div>
+<br>
+
+
+<div class="row">
+  <% @lessons.each_with_index do |lesson, index| %>
+    <div class="col-sm-6 col-md-4 portfolio">
+      <div class="thumbnail product portfolio-item animation-fadeInQuick" data-category="read">
+        <div class="caption">
+          <div>
+            <!-- Widget -->
+            <%= link_to students_course_lesson_path(@course, lesson), class: "widget widget-hover-effect3" do %>
+              <div class="widget-simple">
+                <div class="widget-icon pull-left themed-background-autumn animation-fadeIn">
+                  <i class="fa fa-file-text"></i>
+                </div>
+                <span>Bài : <%= lesson.name %></span>
+              </div>
+            <% end %>
+            <!-- END Widget -->
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
