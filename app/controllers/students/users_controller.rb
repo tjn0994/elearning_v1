@@ -65,8 +65,7 @@ class Students::UsersController < ApplicationController
 
   def user_params
     params.require(:user)
-    .permit(:email, :name, :employee_code, :gender, :avatar, :birthday,
-      :role, :account_creation_date, :address, :number_of_phone)
+    .permit(:email, :name, :gender, :avatar, :birthday, :address, :number_of_phone)
   end
 
   def load_user

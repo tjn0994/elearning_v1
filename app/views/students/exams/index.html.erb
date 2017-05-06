@@ -1,17 +1,28 @@
-<% provide :title, t(".title") %>
 <div class="container custom_width">
-  <h3 class="text-center"><%= t ".list_workspace" %></h3>
+  <h3 class="text-center">Danh sách bài kiểm tra</h3>
   <div class="row">
-    <ul>
-      <% @exams.each do |exam| %>
-        <%= link_to students_course_lesson_exam_path(@course, @lesson, exam),
-            class: "btn btn-lg btn-primary btn-block" do %>
-          <i class="fa fa-play"></i> Start Learning</a>
-        <% end %>
-      <% end %>
-    </ul>
+    <div class="row ">
+      <div class="col-md-12">
+        <div class="table-responsive">
+          <table class="table table-bordered table-hover">
+            <thead>
+              <tr class="table-center">
+                <th>Stt</th>
+                <th>Tên</th>
+                <th>Thời gian</th>
+                <th>Điểm</th>
+                <th>Ngày</th>
+                <th class="text-center">Kết quả</th>
+              </tr>
+            </thead>
+            <tbody class="table-center">
+              <%= render(@exams, exams: @exams) || "Dữ liệu không tồn tại" %>
+            </tbody>
+          </table>
+          </div>
+          <center><%= paginate @exams %></center>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
-
-
-

@@ -93,17 +93,6 @@
         </div>
 
         <div class="clear-fix form-group">
-          <%= f.label :role, "Quyền", class: "col-md-3 control-label" %>
-          <div class="col-md-7 select-container">
-            <% User.roles.keys.each do |key| %>
-              <%= f.radio_button :role, key %>
-              <%= t "dashboard.users.#{key}" %>
-              &nbsp;&nbsp;&nbsp;&nbsp;
-            <% end %>
-          </div>
-        </div>
-
-        <div class="clear-fix form-group">
           <%= f.label :birthday, "Ngày sinh", class: "col-md-3 control-label" %>
           <div class="col-md-7">
             <div class="input-group">

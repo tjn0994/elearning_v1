@@ -18,7 +18,9 @@ class Ability
     cannot [:read, :update], User
     can [:read, :update], User, id: user.id
     can :read, UserCourse, user_id: user.id
-    can :read, Lesson, user.courses.include?(:course_id)
+    can :read, Lesson do |lesson|
+      user.course_ids.include?(lesson.course_id) && user.courses.present?
+    end
     can [:read, :create, :update], Exam
   end
 
