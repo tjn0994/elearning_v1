@@ -3,10 +3,10 @@
     <%= current_index @exams.current_page, Settings.per_page.students.exam,
       exam_counter %>
   </td>
-  <td><%= exam.name %></td>
   <td><%= l exam.lesson.time_for_exam.time, format: :format_time %></td>
-  <td><%= exam.score %></td>
+  <td><%= exam.score %>/<%= exam.lesson.time_for_exam.number_question %></td>
   <td><%= l exam.created_at, format: :date_month_year_v1 %></td>
+  <td><%= I18n.t "exam.#{exam.status}" %></td>
   <td>
     <%= link_to students_course_lesson_exam_path(@course, @lesson, exam) do %>
       <i class="fa fa-newspaper-o"></i>
