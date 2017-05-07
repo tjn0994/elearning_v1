@@ -1,6 +1,9 @@
 class Member::CommentsController < ApplicationController
   before_action :load_post
 
+  def index
+  end
+
   def create
     @comment = @post.comments.build comment_params
     if @comment.save
@@ -27,7 +30,7 @@ class Member::CommentsController < ApplicationController
   def load_post
     @post = Post.find_by id: params[:post_id]
     return if @post
-    flash[:error] = t "dashboard.users.not_found"
+    flash[:error] = "Không tìm thấy bài viết"
     redirect_to publish_posts_path
   end
 end

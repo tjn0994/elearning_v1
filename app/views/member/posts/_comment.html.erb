@@ -1,11 +1,22 @@
-<% if comment.content.present? %>
-  <li class="comment-content-<%= comment.id %>">
-    <%= comment.content %>
-    <button class="btn btn-info btn-edit-comment" id="<%= comment.id %>">edit</button>
-     <%= link_to member_post_comment_path(@post, comment),
-        method: :delete, remote: :true, class: "btn btn-default",
-        data: {confirm: t("are_you_sure")} do %>
-        Delete
-      <% end %>
-  </li>
-<% end %>
+
+  <div class="comment-content-<%= comment.id %> row">
+    <div class="col-md-1">
+      <%= image_tag comment.user.avatar.url, class: "width-50 height-50 img-circle" %>
+    </div>
+    <div class="col-md-10">
+      <div>
+        <%= link_to comment.user.name, "#" %>
+      </div>
+      <div>
+        <%= comment.content if comment.content.present? %>
+        <% if current_user.is_user?(comment.user) %>
+          <%= link_to member_post_comment_path(@post, comment),
+            method: :delete, remote: :true, class: "btn btn-default btn-xs",
+            data: {confirm: "Bạn có chắc chắn muốn xóa không ?"} do %>
+            Xóa
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+

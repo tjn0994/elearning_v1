@@ -2,12 +2,7 @@
   <!-- Page content -->
   <div id="page-content">
     <!-- Courses Header -->
-    <div class="content-header">
-      <div class="header-section">
-        <h1>
-                                    <i class="fa fa-globe"></i>Intro to <strong>HTML5</strong><br><small>15 Lessons</small>
-                                </h1>
-      </div>
+    <br>
     <div>
       <%= link_to students_course_lessons_path(@course),
         class: "btn btn-default" do %>
@@ -25,14 +20,10 @@
           <div class="widget-advanced">
             <!-- Widget Header -->
             <div class="widget-header text-center themed-background-dark">
-              <div class="widget-options">
-                <button class="btn btn-xs btn-default" data-toggle="tooltip" title="Love it!"><i class="fa fa-heart text-danger"></i>
-                </button>
-              </div>
               <h3 class="widget-content-light">
-                                                <a href="page_ready_elearning_course_lessons.html">Intro to HTML5</a><br>
-                                                <small>Web Design</small>
-                                            </h3>
+                <div> <%=  @course.type.category.name %></div>
+                <div><h4>Khóa học <%= @course.name %><h4></div>
+              </h3>
             </div>
             <!-- END Widget Header -->
 
@@ -42,169 +33,30 @@
               <a href="javascript:void(0)" class="widget-image-container animation-fadeIn">
                 <span class="widget-icon themed-background"><i class="fa fa-globe"></i></span>
               </a>
-              <a href="javascript:void(0)" class="btn btn-sm btn-default pull-right">
-                                                15 lessons,
-                                                <i class="fa fa-clock-o"></i> 8 hours
-                                            </a>
-              <a href="javascript:void(0)" class="btn btn-sm btn-success">Free with Subscription</a>
-              <hr>
-              <!-- Lessons -->
-              <table class="table table-vcenter">
-                <thead>
-                  <tr class="active">
-                    <th>1. Introduction</th>
-                    <th class="text-right"><small><em>1 hour</em></small>
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td><del>1.1 <a href="page_ready_elearning_course_lesson.html">What is HTML?</a></del>
-                    </td>
-                    <td class="text-right"><a href="page_ready_elearning_course_lesson.html" class="btn btn-xs btn-success"
-                      data-toggle="tooltip" title="Done!"><i class="fa fa-check"></i></a>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-              <table class="table table-vcenter">
-                <thead>
-                  <tr class="active">
-                    <th>2. Basics</th>
-                    <th class="text-right"><small><em>2 hours</em></small>
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td><del>2.1 <a href="page_ready_elearning_course_lesson.html">HTML Structure</a></del>
-                    </td>
-                    <td class="text-right"><a href="page_ready_elearning_course_lesson.html" class="btn btn-xs btn-success"
-                      data-toggle="tooltip" title="Done!"><i class="fa fa-check"></i></a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>2.2 <a href="page_ready_elearning_course_lesson.html">HTML Basic Elements</a>
-                    </td>
-                    <td class="text-right">
-                      <a href="page_ready_elearning_course_lesson.html" class="btn btn-xs btn-primary"><i class="fa fa-play"></i> Start</a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>2.3 <a href="page_ready_elearning_course_lesson.html">New Elements in HTML5</a>
-                    </td>
-                    <td class="text-right">
-                      <a href="page_ready_elearning_course_lesson.html" class="btn btn-xs btn-primary"><i class="fa fa-play"></i> Start</a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>2.4 <a href="page_ready_elearning_course_lesson.html">HTML5 Semantics</a>
-                    </td>
-                    <td class="text-right">
-                      <a href="page_ready_elearning_course_lesson.html" class="btn btn-xs btn-primary"><i class="fa fa-play"></i> Start</a>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-              <table class="table table-vcenter">
-                <thead>
-                  <tr class="active">
-                    <th>3. Advanced</th>
-                    <th class="text-right"><small><em>3 hours</em></small>
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>3.1 <a href="page_ready_elearning_course_lesson.html">HTML5 Forms</a>
-                    </td>
-                    <td class="text-right">
-                      <a href="page_ready_elearning_course_lesson.html" class="btn btn-xs btn-primary"><i class="fa fa-play"></i> Start</a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>3.2 <a href="page_ready_elearning_course_lesson.html">HTML5 Media</a>
-                    </td>
-                    <td class="text-right">
-                      <a href="page_ready_elearning_course_lesson.html" class="btn btn-xs btn-primary"><i class="fa fa-play"></i> Start</a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>3.3 <a href="page_ready_elearning_course_lesson.html">HTMl5 APIs</a>
-                    </td>
-                    <td class="text-right">
-                      <a href="page_ready_elearning_course_lesson.html" class="btn btn-xs btn-primary"><i class="fa fa-play"></i> Start</a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>3.4 <a href="page_ready_elearning_course_lesson.html">HTML5 Graphics</a>
-                    </td>
-                    <td class="text-right">
-                      <a href="page_ready_elearning_course_lesson.html" class="btn btn-xs btn-primary"><i class="fa fa-play"></i> Start</a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>3.5 <a href="page_ready_elearning_course_lesson.html">HTML5 Examples</a>
-                    </td>
-                    <td class="text-right">
-                      <a href="page_ready_elearning_course_lesson.html" class="btn btn-xs btn-primary"><i class="fa fa-play"></i> Start</a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>3.6 <a href="page_ready_elearning_course_lesson.html">HTML5 References</a>
-                    </td>
-                    <td class="text-right">
-                      <a href="page_ready_elearning_course_lesson.html" class="btn btn-xs btn-primary"><i class="fa fa-play"></i> Start</a>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-              <table class="table table-vcenter">
-                <thead>
-                  <tr class="active">
-                    <th>4. Final Project</th>
-                    <th class="text-right"><small><em>2 hours</em></small>
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>4.1 <a href="page_ready_elearning_course_lesson.html">Your Project</a>
-                    </td>
-                    <td class="text-right">
-                      <a href="page_ready_elearning_course_lesson.html" class="btn btn-xs btn-primary"><i class="fa fa-play"></i> Start</a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>4.2 <a href="page_ready_elearning_course_lesson.html">How to Start</a>
-                    </td>
-                    <td class="text-right">
-                      <a href="page_ready_elearning_course_lesson.html" class="btn btn-xs btn-primary"><i class="fa fa-play"></i> Start</a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>4.3 <a href="page_ready_elearning_course_lesson.html">Getting Things Together</a>
-                    </td>
-                    <td class="text-right">
-                      <a href="page_ready_elearning_course_lesson.html" class="btn btn-xs btn-primary"><i class="fa fa-play"></i> Start</a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>4.4 <a href="page_ready_elearning_course_lesson.html">Finishing Up</a>
-                    </td>
-                    <td class="text-right">
-                      <a href="page_ready_elearning_course_lesson.html" class="btn btn-xs btn-primary"><i class="fa fa-play"></i> Start</a>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-              <!-- END Lessons -->
+              <!-- lesson content -->
+              <div class="margin-left-10 margin-right-10">
+                <div >
+                  <div>
+                    <center><h4><b><%= @lesson.name %></b></h4></center>
+                  </div>
+
+                  <br>
+
+                  <div>
+                    <%= raw @lesson.content %>
+                  </div>
+                </div>
+              </div>
+              <!-- end -->
             </div>
             <!-- END Widget Main -->
           </div>
         </div>
         <!-- END Course Widget -->
       </div>
+
+
+      <!-- block-lesson -->
       <div class="col-md-4">
         <!-- About Block -->
         <div class="block">
