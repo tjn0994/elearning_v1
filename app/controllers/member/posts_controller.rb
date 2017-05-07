@@ -27,7 +27,9 @@ class Member::PostsController < ApplicationController
 
   def show
     @comment = @post.comments.new
-    @comments = @post.comments
+    @comments = @post.comments.recent.page(params[:page])
+      .per Settings.per_page.member.post
+    @posts = current_user.posts
   end
 
   def edit

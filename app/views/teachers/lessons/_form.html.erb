@@ -7,7 +7,8 @@
       <%= form_for [:teachers, @course, @lesson] do |f| %>
 
         <div class="row form-group">
-          <%= f.label :name, value: "Tên", class: "col-md-1 col-md-offset-1  control-label" %>
+          <%= f.label :name, value: "Tên",
+            class: "col-md-1 col-md-offset-1 control-label text-custom-form" %>
           <div class="col-md-7">
             <%= f.text_field :name, class: "form-control" %>
           </div>
@@ -15,14 +16,15 @@
 
         <% f.object.errors[:name].each do |error| %>
           <div class="row form-group">
-            <div class="col-md-offset-2 color-red text-center-form padding-left-15">
+            <div class="col-md-offset-2 color-red text-custom-form padding-left-15">
               Tên <%= error %>
             </div>
           </div>
         <% end %>
 
         <div class="row form-group">
-          <%= f.label :description, value: "Mô tả", class: "col-md-1 col-md-offset-1 control-label" %>
+          <%= f.label :description, value: "Mô tả",
+            class: "col-md-1 col-md-offset-1 control-label text-custom-form" %>
           <div class="col-md-7">
             <%= f.text_field :description, class: "form-control" %>
           </div>
@@ -30,7 +32,7 @@
 
         <% f.object.errors[:description].each do |error| %>
           <div class="row form-group">
-            <div class="col-md-offset-2 color-red text-center-form">
+            <div class="col-md-offset-2 color-red text-custom-form">
               <%= error %>
             </div>
           </div>

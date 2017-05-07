@@ -1,25 +1,24 @@
 <div class="panel panel-info">
   <div class="panel-heading">
-    <h3 class="panel-title"><%= t ".detail_information" %></h3>
+    <center><h3 class="panel-title">Chi tiết bài học</h3></center>
   </div>
-  <div class="panel-body">
-    <div class="row">
-      <table class="table table-user-information">
-        <tbody>
-          <tr>
-            <td>name</td>
-            <td><%= @lesson.name %></td>
-          </tr>
-          <tr>
-            <td>description</td>
-            <td><%= @lesson.description %></td>
-          </tr>
-          <tr>
-            <td>content</td>
-            <td><%= @lesson.content %></td>
-          </tr>
-        </tbody>
-      </table>
+  <div class="panel-body row">
+    <div class="panel-content col-md-offset-1 col-md-10 row maigin-bottom-20">
+      <div class="row">
+        <center><h4>Tên bài học: <%= @lesson.name %></h4></center>
+      </div>
+
+      <div class="row">
+        <h5><i>Mô tả: <%= @lesson.description %></i></h5>
+      </div>
+
+      <div class="row">
+        <h4>Nội dung</h4>
+      </div>
+
+      <div class="row">
+        <%= raw @lesson.content %>
+      </div>
     </div>
   </div>
 </div>
