@@ -43,9 +43,6 @@
 // gem "chartkick"
 //= require chartkick
 
-// gem
-//= require simplemde.min
-
 //= require ./member/posts.js
 //= require ./member/comments.js
 

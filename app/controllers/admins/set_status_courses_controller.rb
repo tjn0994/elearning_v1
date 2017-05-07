@@ -1,6 +1,8 @@
 require "opentok"
 
 class Admins::SetStatusCoursesController < DashboardController
+  before_action :authenticate_admin!
+
   def index
     course = Course.find_by id: params[:id]
     if course.present?

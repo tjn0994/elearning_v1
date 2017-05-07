@@ -302,7 +302,6 @@ GEM
     paranoia (2.3.0)
       activerecord (>= 4.0, < 5.1)
     pg (0.18.4)
-    posix-spawn (0.3.13)
     pry (0.10.4)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -314,9 +313,6 @@ GEM
       railties (>= 3.0.0)
     public_suffix (2.0.5)
     puma (3.8.1)
-    pygments.rb (0.6.3)
-      posix-spawn (~> 0.3.6)
-      yajl-ruby (~> 1.2.0)
     rack (2.0.1)
     rack-protection (1.5.3)
       rack
@@ -355,7 +351,6 @@ GEM
       json (>= 1.8)
       nokogiri (~> 1.5)
       trollop (~> 2.1)
-    redcarpet (3.4.0)
     redis (3.3.3)
     ref (2.0.0)
     responders (2.3.0)
@@ -375,7 +370,6 @@ GEM
     simple_form (3.4.0)
       actionpack (> 4, < 5.1)
       activemodel (> 4, < 5.1)
-    simplemde-rails (1.10.2)
     slop (3.6.0)
     social-share-button (0.10.0)
       coffee-rails
@@ -418,7 +412,6 @@ GEM
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.2)
     xml-simple (1.1.5)
-    yajl-ruby (1.2.2)
 
 PLATFORMS
   ruby
@@ -458,15 +451,12 @@ DEPENDENCIES
   pry (~> 0.10.4)
   public_activity
   puma (~> 3.0)
-  pygments.rb (~> 0.6.3)
   rails (~> 5.0.0, >= 5.0.0.1)
   ratyrate
-  redcarpet (~> 3.3, >= 3.3.4)
   redis
   sass-rails (~> 5.0)
   sidekiq
   simple_form
-  simplemde-rails
   social-share-button
   spring
   spring-watcher-listen (~> 2.0.0)

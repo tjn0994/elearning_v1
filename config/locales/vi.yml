@@ -2,20 +2,27 @@ vi:
   exam:
     not_completed: "Chưa hoàn thành"
     completed: "Hoàn thành"
+  ckeditor:
+    buttons:
+      upload: "Tải ảnh"
+  devise:
+    failure:
+      already_authenticated: "Bạn không có quyền truy cập trang này!"
+  user:
+    gender:
+      female: "Nữ"
+      male: "Nam"
+      other: "Khác"
   date:
     formats:
       default: "%m/%d/%Y"
       month_year: "%m/%Y"
       date_month_year: "%d/%m/%Y"
-
   time:
     formats:
       long: "%d/%m/%Y %H:%M"
-      default: "%H:%M:%S %-d %B %Y"
       date_month_year: "%d/%m/%Y"
-      birthday: "%d/%m/%Y"
       time: "%H:%M"
-      time_request: "%d/%m/%Y"
-      compenation: "%d/%m/%Y"
       format_datetime_picker: "YYYY/MM/DD HH:mm"
       format_datetime_picker_rb: "%Y/%m/%d %H:%M"
+      short: "%d/%m/%Y"

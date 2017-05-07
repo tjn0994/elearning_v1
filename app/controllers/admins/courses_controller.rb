@@ -1,4 +1,6 @@
 class Admins::CoursesController < DashboardController
+  before_action :authenticate_admin!
+
   def index
     @courses = Course.recent.page(params[:page])
       .per Settings.per_page.admins.course

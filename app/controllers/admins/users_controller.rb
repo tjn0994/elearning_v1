@@ -1,7 +1,8 @@
 class Admins::UsersController < DashboardController
-   # load_and_authorize_resource
   before_action :load_user, except: [:index, :new, :create]
   before_action :valid_image_avatar, only: [:create, :update]
+  load_and_authorize_resource
+  before_action :authenticate_admin!
 
   def index
     @users = User.recent.page(params[:page])

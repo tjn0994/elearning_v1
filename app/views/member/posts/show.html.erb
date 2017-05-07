@@ -8,13 +8,13 @@
      <div style="color: #9b9b9b; float: right">
         <i class="fa fa-eye"></i> 72 &nbsp;&nbsp;&nbsp;
         <i class="fa fa-comment"></i> 72 &nbsp;&nbsp;&nbsp;
-        <%= link_to edit_publish_post_path(@post), class: "btn btn-sm btn-info" do %>
+        <%= link_to edit_member_post_path(@post), class: "btn btn-sm btn-info" do %>
           Edit
         <% end %>
       </div>
     </div>
-    <div class="clear-float row markdown">
-      <%= markdown @post.content %>
+    <div class="clear-float row">
+      <%= @post.content %>
     </div>
     <%= form_for [:member, @post, @comment], remote: true do |f| %>
       <div class="form-group">

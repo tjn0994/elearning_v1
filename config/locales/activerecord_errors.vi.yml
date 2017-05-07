@@ -17,6 +17,9 @@ vi:
         date_from: "Từ ngày"
         date_to: "Đến ngày"
         description: "Mô tả"
+      post:
+        title: "Tiêu đề"
+        content: "Nội dung"
     errors:
       models:
         question:
@@ -54,3 +57,11 @@ vi:
               too_long: "Không quá 255 ký tự"
             timesheets:
               blank: "Thời gian đăng lý phải ít nhất 1 ngày trong tuần"
+        post:
+          attributes:
+            title:
+              blank: *blank
+              too_short: "ít nhất 2 ký tự"
+              too_long: "Không quá 255 ký tự"
+            content:
+              blank: *blank

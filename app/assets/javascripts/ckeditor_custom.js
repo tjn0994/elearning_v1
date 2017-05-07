@@ -5,4 +5,6 @@ $(document).ready(function(){
       CKEDITOR.replace(data[i].id)
     });
   }
+
+  CKEDITOR.config.height = 400;
 });

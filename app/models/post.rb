@@ -8,6 +8,7 @@ class Post < ApplicationRecord
 
   scope :recent, ->{order created_at: :desc}
 
-  validates :title, presence: true, length: {maximum: 255, minimum: 2}
+  validates :title, presence: true
+  validates :title, length: {maximum: 255, minimum: 2}, if: ->{title.present?}
   validates :content, presence: true
 end

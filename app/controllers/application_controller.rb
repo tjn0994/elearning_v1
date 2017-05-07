@@ -75,4 +75,10 @@ class ApplicationController < ActionController::Base
       render json: JsonResponse.send(status, message, content)
     end
   end
+
+  def authenticate_admin!
+    return if current_user.admin?
+    flash[:error] = "Bạn không có quyền truy cập trang này"
+    redirect_to root_path
+  end
 end

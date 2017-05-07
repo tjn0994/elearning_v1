@@ -1,10 +1,12 @@
-<% provide :title, "Thông tin người dùng" %>
+<% provide :title, "Thông tin cá nhân" %>
 <div class="panel-content">
   <div class="panel panel-info">
     <div class="panel-heading">
-      <h3 class="panel-title">
-        Thông tin người dùng
-      </h3>
+      <center>
+        <h3 class="panel-title">
+          Thông tin cá nhân
+        </h3>
+      </center>
     </div>
     <br>
     <br>
@@ -43,7 +45,7 @@
                     Giới tính
                   </strong>
                 </td>
-                <td><%= @user.gender %></td>
+                <td><%= I18n.t "user.gender.#{@user.gender}" %></td>
               </tr>
               <tr>
                 <td>
@@ -80,9 +82,9 @@
             </tbody>
           </table>
           <% if @user.is_user? current_user %>
-            <%= link_to t("dashboard.users.edit_password"), edit_user_registration_path,
+            <%= link_to "Thay đổi mật khẩu", edit_user_registration_path,
               class: "btn btn-primary" %>
-            <%= link_to t("dashboard.users.edit_profile"),
+            <%= link_to "Chỉnh sửa thông tin",
               edit_admins_user_path(current_user), class: "btn btn-primary" %>
           <% end %>
         </div>
