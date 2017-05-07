@@ -15,7 +15,7 @@ $(document).ready(function() {
   });
 
   // user seting
-  $('#student_notification_setting').on('change', function(e) {
+  $('#member_notification_setting').on('change', function(e) {
     $.ajax({
       dataType: 'json',
       url: location.pathname,
@@ -27,7 +27,7 @@ $(document).ready(function() {
     })
   });
 
-  $('#student_email_setting').on('change', function(e) {
+  $('#member_email_setting').on('change', function(e) {
     $.ajax({
       dataType: 'json',
       url: location.pathname,

@@ -3,6 +3,14 @@
 <div class="row">
   <div class="col-md-9" style="box-shadow: 0 10px 10px 10px rgba(0, 0, 0, 0.3)">
     <br>
+    <div class="row">
+      <%= link_to new_members_user_post_path(@user),
+        class: "btn btn-md btn-success col-md-offset-1" do %>
+        <i class="gi gi-plus"></i> add post
+      <% end %>
+    </div>
+    <br>
+    <br>
     <ul style="list-style-type: none">
       <%= render(@posts, posts: @posts) || "Dữ liệu không tồn tại" %>
     </ul>
@@ -18,6 +26,10 @@
     </div>
     <br>
     <br>
+    POSTS TENDENCY
+    <div>
+      <%= pie_chart  @posts.joins(:type).group('types.name').count %>
+    </div>
   </div>
 </div>
 <br>

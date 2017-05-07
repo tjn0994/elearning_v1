@@ -21,8 +21,8 @@ User.create!( name:  "Teacher",
   role: 1
 )
 
-User.create!( name:  "Student",
-  email: "student@gmail.com",
+User.create!( name:  "Member",
+  email: "member@gmail.com",
   password: "123456",
   password_confirmation: "123456",
   number_of_phone: "0969304641",

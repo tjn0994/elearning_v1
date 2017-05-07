@@ -1,12 +1,11 @@
 <li>
-  <div class="row col-md-12" style=" padding-bottom: 5px;
-    padding-top: 5px; padding-right: 20px;border-bottom: solid 1px #a79f9f;">
+  <div class="row col-md-12 margin-bottom-20">
     <div class="col-md-1">
       <%= image_tag current_user.avatar.url,
         style: "width: 60px; height: 60px;", class: "img-circle" %>
     </div>
     <div class="col-md-8">
-      <div><b style="color: #5488c7"><%= link_to post.title, member_post_path(post) %></b></div>
+      <div><b style="color: #5488c7"><%= link_to post.title, members_user_post_path(post.user_id, post) %></b></div>
       <div>
         Date: <%= l post.created_at, format: :date_month_year_v1 %>
       </div>
@@ -17,3 +16,6 @@
     </div>
   </div>
 </li>
+<% unless @posts.last.id == post.id %>
+  <hr class="clear-fix">
+<% end %>
