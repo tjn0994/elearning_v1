@@ -10,9 +10,13 @@ Rails.application.routes.draw do
   mount ActionCable.server => '/cable'
 
   get 'home' => 'static_pages#home'
-  namespace :students do
+  namespace :members do
     root 'static_pages#home'
-    resources :users
+    resources :users do
+      resources :posts do
+        resources :comments
+      end
+    end
     resources :user_courses
     resources :courses do
       resources :lessons do
@@ -55,11 +59,11 @@ Rails.application.routes.draw do
     resources :rooms
   end
 
-  namespace :member do
-    resources :posts do
-      resources :comments
-    end
-  end
+  # namespace :member do
+  #   resources :posts do
+  #     resources :comments
+  #   end
+  # end
 
 
     # resources :workspaces do

@@ -1,0 +1,7 @@
+<tr>
+  <td>
+    <%= current_index @activities.current_page, Settings.per_page.members.activity,
+      activity_counter %>
+  </td>
+  <td><%= activity.trackable_type %></td>
+</tr>

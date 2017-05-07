@@ -27,7 +27,7 @@ class ApplicationController < ActionController::Base
 
 
   def after_sign_in_path_for _resource
-    students_users_path
+    members_users_path
   end
 
   def layout

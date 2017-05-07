@@ -88,19 +88,19 @@
             <a href="javascript:void(0)" class="site-nav-sub"><i class="fa fa-angle-down site-nav-arrow"></i>Account</a>
             <ul>
               <li>
-                <%= link_to "Thông tin cá nhân", students_user_path(current_user) %>
+                <%= link_to "Thông tin cá nhân", members_user_path(current_user) %>
               </li>
               <li>
-                <%= link_to "Hoạt động", students_activities_path %>
+                <%= link_to "Hoạt động", members_activities_path %>
               </li>
               <li>
-                <%= link_to "Danh sách khóa học", students_user_courses_path %>
+                <%= link_to "Danh sách khóa học", members_user_courses_path %>
               </li>
               <li>
-                <%= link_to "Cài đặt", students_user_settings_path %>
+                <%= link_to "Cài đặt", members_user_settings_path %>
               </li>
               <li>
-                <%= link_to "Bài viết", member_posts_path %>
+                <%= link_to "Bài viết", members_user_posts_path(current_user) %>
               </li>
             </ul>
           </li>
@@ -114,7 +114,7 @@
             <%= link_to "Post", publish_posts_path %>
           </li>
           <li>
-            <%= link_to "Manager", students_users_path%>
+            <%= link_to "Manager", members_users_path%>
           </li>
           <% if user_signed_in?%>
             <li>

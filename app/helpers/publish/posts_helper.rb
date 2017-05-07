@@ -1,2 +1,0 @@
-module Publish::PostsHelper
-end

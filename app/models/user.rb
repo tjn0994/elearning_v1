@@ -26,7 +26,7 @@ class User < ApplicationRecord
   mount_uploader :avatar, AvatarUploader
 
   enum gender: {female: 0, male: 1, other: 2}
-  enum role: {admin: 0, teacher: 1, student: 2}
+  enum role: {admin: 0, teacher: 1, member: 2}
 
   validates :name, :number_of_phone, presence: true, on: :update
   validate :image_size

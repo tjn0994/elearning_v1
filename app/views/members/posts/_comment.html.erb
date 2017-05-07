@@ -1,0 +1,22 @@
+
+  <div class="comment-content-<%= comment.id %> row">
+    <div class="col-md-1">
+      <%= image_tag comment.user.avatar.url, class: "width-50 height-50 img-circle" %>
+    </div>
+    <div class="col-md-10">
+      <div>
+        <%= link_to comment.user.name, members_user_path(comment.user_id) %>
+      </div>
+      <div>
+        <%= comment.content if comment.content.present? %>
+        <% if current_user.is_user?(comment.user) %>
+          <%= link_to members_user_post_comment_path(@user, @post, comment),
+            method: :delete, remote: :true, class: "btn btn-default btn-xs",
+            data: {confirm: "Bạn có chắc chắn muốn xóa không ?"} do %>
+            Xóa
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
