@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  function group(class_name){
+  function validate_post(class_name){
     $(class_name).validate({
       errorClass: 'help-block animation-slideDown',
       errorElement: 'div',
@@ -15,25 +15,61 @@ $(document).ready(function() {
         e.closest('.help-block').remove();
       },
       rules: {
-        'group[name]': {
+        'post[title]': {
           required: true,
-          minlength: 2
+          minlength: 2,
+          maxlength: 255
         },
-        'location_type[name]': {
-          required: true,
-          minlength: 2
+        'post[content]': {
+          required: true
+        }
+      },
+      messages: {
+        'post[title]': {
+          required: "Tiêu đề không được để trống",
+          minlength: "Tiêu đề ít nhất 2 ký tự",
+          maxlength: "Tiêu đề tối đa 255 ký tự"
         },
-        'location_type[default_width]': {
+        'post[content]': {
+          required: "Nội dung không được để trống"
+        }
+      }
+    });
+  }
+
+  function validate_lesson(class_name){
+    $(class_name).validate({
+      errorClass: 'help-block animation-slideDown',
+      errorElement: 'div',
+      errorPlacement: function(error, e) {
+        e.parents('.form-group > div').append(error);
+      },
+      highlight: function(e) {
+        $(e).closest('.form-group').removeClass('has-success has-error').addClass('has-error');
+        $(e).closest('.help-block').remove();
+      },
+      success: function(e) {
+        e.closest('.form-group').removeClass('has-success has-error');
+        e.closest('.help-block').remove();
+      },
+      rules: {
+        'lesson[name]': {
           required: true,
-          min: 50
+          minlength: 2,
+          maxlength: 255
         },
-        'location_type[default_height]': {
-          required: true,
-          min: 50
+        'lesson[description]': {
+          maxlength: 255
+        }
+      },
+      messages: {
+        'lesson[name]': {
+          required: "Tên không được để trống",
+          minlength: "Tên ít nhất 2 ký tự",
+          maxlength: "Tên tối đa 255 ký tự"
         },
-        'workspace[name]': {
-          required: true,
-          minlength: 2
+        'lesson[description]': {
+          maxlength: "Mô tả tối đa 255 ký tự"
         }
       }
     });
@@ -139,6 +175,14 @@ $(document).ready(function() {
             }
           }
         });
+
+        // validate post
+        validate_post(".edit_post");
+        validate_post(".new_post");
+
+        //validate lesson
+        validate_lesson(".edit_lesson");
+        validate_lesson(".new_lesson");
       }
     };
   }();

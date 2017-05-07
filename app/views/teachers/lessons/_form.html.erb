@@ -3,36 +3,55 @@
     <center><h3 class="panel-title"><%= yield(:title) %></h3></center>
   </div>
   <div class="panel-body">
-    <div class="container form-horizontal">
+    <div class="container">
       <%= form_for [:teachers, @course, @lesson] do |f| %>
-        <div class="form-group">
-          <div class="col-md-offset-3">
-            <%= render "shared/error_messages", object: f.object %>
-          </div>
-        </div>
 
-        <div class="form-group">
-          <%= f.label :name, value: "Tên", class: "col-md-2 control-label" %>
-          <div class="col-md-8">
+        <div class="row form-group">
+          <%= f.label :name, value: "Tên", class: "col-md-1 col-md-offset-1  control-label" %>
+          <div class="col-md-7">
             <%= f.text_field :name, class: "form-control" %>
           </div>
         </div>
 
-        <div class="form-group">
-          <%= f.label :description, value: "Mô tả", class: "col-md-2 control-label" %>
-          <div class="col-md-8">
+        <% f.object.errors[:name].each do |error| %>
+          <div class="row form-group">
+            <div class="col-md-offset-2 color-red text-center-form padding-left-15">
+              Tên <%= error %>
+            </div>
+          </div>
+        <% end %>
+
+        <div class="row form-group">
+          <%= f.label :description, value: "Mô tả", class: "col-md-1 col-md-offset-1 control-label" %>
+          <div class="col-md-7">
             <%= f.text_field :description, class: "form-control" %>
           </div>
         </div>
 
-        <div class="form-group">
-          <%= f.label :content, value: "Nội dung", class: "col-md-2 control-label" %>
-          <div class="col-md-8">
+        <% f.object.errors[:description].each do |error| %>
+          <div class="row form-group">
+            <div class="col-md-offset-2 color-red text-center-form">
+              <%= error %>
+            </div>
+          </div>
+        <% end %>
+
+        <div class="row form-group">
+          <%= f.label :content, value: "Nội dung", class: "col-md-1 col-md-offset-1 control-label" %>
+          <% if f.object.errors[:content].present? %>
+            <span class="color-red col-md-5">
+              Nội dung <%= f.object.errors[:content].first %>
+            </span>
+          <% end %>
+        </div>
+
+        <div class="row form-group">
+          <div class="col-md-8 col-md-offset-1">
             <%= f.text_area :content, class: "form-control ckeditor" %>
           </div>
         </div>
 
-        <div class="form-group" >
+        <div class="row form-group" >
           <div class="col-md-5 col-md-offset-3">
             <%= f.submit yield(:button_text),
               class: "btn btn-primary form-control" %>

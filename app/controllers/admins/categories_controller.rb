@@ -1,5 +1,7 @@
 class Admins::CategoriesController < DashboardController
   before_action :load_category, except: [:index, :new, :create]
+  load_and_authorize_resource
+  before_action :authenticate_admin!, only: [:index, :new, :edit, :update, :destroy]
 
   def index
     @categories = Category.recent.page(params[:page])

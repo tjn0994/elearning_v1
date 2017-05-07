@@ -1,6 +1,6 @@
-<div class="form-group">
-  <label class="col-md-3 control-label" for="course_type">Type</label>
-  <div class="col-md-5">
+<div class="clear-fix row form-group">
+  <label class="col-md-1 col-md-offset-2 text-custom-form control-label" for="course_type">Loại</label>
+  <div class="col-md-6">
     <select class="form-control" name="post[type_id]" id="post_type_id">
       <% @category.types.each do |type|  %>
         <option value="<%= type.id %>"><%= type.name %></option>

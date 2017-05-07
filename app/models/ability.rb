@@ -14,6 +14,9 @@ class Ability
   end
 
   def student_permission user
+    can :read, Category
+    cannot :manage, TimeForExam
+    cannot :manage, RegisterCourse
     can :create, Post
     cannot [:read, :update], User
     can [:read, :update], User, id: user.id
@@ -29,7 +32,8 @@ class Ability
   end
 
   def teacher_permission user
-    # cannot [:read, :update], User
+    can :read, Category
+    cannot [:read, :update], User
     can [:read, :update], User, id: user.id
     can :manage, Course, owner_id: user.id
     can :manage, Lesson
