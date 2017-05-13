@@ -128,14 +128,5 @@
 
 
 <!-- Scroll to top link, initialized in js/app.js - scrollToTop() -->
-        <a href="#" id="to-top"><i class="fa fa-angle-up"></i></a>
-<div class="row">
-  <% @courses.each do |course| %>
-    <div class="col-md-4">
-      <% if course.register_course.present? && course.register_course.active? %>
-        <%= course.name %>
-        <%= course.register_course.date_open %>
-      <% end %>
-    </div>
-  <% end %>
-</div>
+
+

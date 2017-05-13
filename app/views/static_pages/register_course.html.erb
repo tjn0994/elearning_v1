@@ -1,0 +1,51 @@
+<div class="row margin-top-20">
+  <% @courses.each do |course| %>
+    <div class="col-md-4">
+      <!-- You can add the class 'table-featured' to feature the best plan. In this case, make sure to remove the hover functionality from js/pages/pricing.js -->
+      <table class="table table-borderless table-pricing animation-fadeIn table-featured">
+        <thead>
+          <tr>
+              <th class="table-featured"><%= course.name %></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><%= image_tag course.image.url, style: "width: 100%",
+            class: "height-300" %></td>
+          </tr>
+          <% if course.description.present? %>
+            <tr>
+              <td><%= course.description %></td>
+            </tr>
+          <% end %>
+          <tr>
+            <td>
+              Khóa học: <%= l course.date_from, format: :date_month_year %> ->
+              <%= l course.date_to, format: :date_month_year %>
+            </td>
+          </tr>
+          <tr>
+            <td>
+             Giáo viên: <%= course.owner_name %>
+            </td>
+          </tr>
+          <tr>
+            <td class="table-price">
+                <h1>$9<br><small>per month</small></h1>
+            </td>
+          </tr>
+          <tr>
+            <td>
+               Thời gian còn lại đăng ký
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <%= link_to "Đăng ký", register_course_path(course), class: "btn btn-info" %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  <% end %>
+</div>

@@ -1,19 +1,13 @@
 <% provide :title, "Danh sách người dùng" %>
-<div class="row manage_user">
-  <div class="col-md-12">
-    <div class="table-responsive">
-    <table class="table table-bordered table-hover">
-      <thead>
-        <tr class="table-center">
-          <th>Stt</th>
-          <th>trackable_type</th>
-        </tr>
-      </thead>
-      <tbody class="table-center">
-        <%= render(@activities, activities: @activities) || t(".data_not_find") %>
-      </tbody>
-    </table>
+
+<div class = "row activity-block-title activities col-md-12">
+  <div class = "col-md-12">
+    <h2 class="timeline-title">
+      <strong><%= t "dashboard.activity.timeline" %></strong>
+    </h2>
+    <div class = "row activities-layout">
+      <%= render "shared/activities" %>
     </div>
-    <center><%= paginate @activities %></center>
   </div>
+  <center id = "pag"><%= paginate @activities %></center>
 </div>

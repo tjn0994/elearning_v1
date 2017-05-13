@@ -18,9 +18,9 @@
       <div class="thumbnail product">
         <div class="caption">
           <div class="img-caption" >
-            <%= link_to image_tag(course.image.url, style: "height:300px; width: 300px"),
+            <%= link_to image_tag(course.image.url, style: "height:300px; width: 100%"),
               teachers_course_lessons_path(course),
-              class: "widget widget-hover-effect4 themed-background height-300 width-300" %>
+              class: "widget widget-hover-effect4 themed-background height-300" %>
           </div>
           <div class="desc">
             <div class="color-blue"><%= course.name %></div>

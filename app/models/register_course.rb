@@ -1,6 +1,6 @@
 class RegisterCourse < ApplicationRecord
-  # after_create :create_time_register_course
-  # after_update :create_time_register_course
+  after_create :create_time_register_course
+  after_update :create_time_register_course
 
   belongs_to :course
 
@@ -8,10 +8,11 @@ class RegisterCourse < ApplicationRecord
 
   enum status: {active: 0, not_active: 1}
 
-  private
+  def open_time_register_course
+    self.update status: :active
+  end
 
   def create_time_register_course
-    RegisterCourseJob.set(wait_until: self.date_open)
-      .perform_now(self)
+    # delay(run_at: 1.minutes.from_now).open_time_register_course
   end
 end

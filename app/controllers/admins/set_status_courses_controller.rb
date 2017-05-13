@@ -7,8 +7,8 @@ class Admins::SetStatusCoursesController < DashboardController
     course = Course.find_by id: params[:id]
     if course.present?
       if course.update status: params[:status].to_i, approver_id: current_user.id
-        create_activity_accept_course course, "#{course.status} #{Course.name}"
-        create_notification_for_member Course.name, course, "#{course.status} #{Course.name}", course.owner_id
+        create_activity Course.name, course, "register_course.create"
+        create_notification_for_member Course.name, course, "#{course.status}.#{Course.name}", course.owner_id
         # if course.active?
         #   create_room course
         # end

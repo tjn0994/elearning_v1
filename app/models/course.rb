@@ -18,6 +18,10 @@ class Course < ApplicationRecord
   scope :recent, ->{order created_at: :desc}
   scope :by_author, ->(owner_id){where owner_id: owner_id}
   scope :by_active, ->{where status: :active}
+  scope :by_register_course_active, -> do
+    joins(:register_course)
+      .where("'register_course.status' = 0")
+  end
 
   mount_uploader :image, ImageUploader
 

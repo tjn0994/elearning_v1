@@ -249,8 +249,9 @@ ActiveRecord::Schema.define(version: 20170503062123) do
   create_table "user_courses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "user_id"
     t.integer  "course_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "status",     default: 0
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
     t.index ["course_id"], name: "index_user_courses_on_course_id", using: :btree
     t.index ["user_id"], name: "index_user_courses_on_user_id", using: :btree
   end

@@ -1,0 +1,14 @@
+<div class = "col-md-12">
+  <h3 class = "col-md-12 date-now-avtivities">
+    <small>
+      <strong><%= l Date.today, format: :date_month_year_v1 %></strong>
+    </small>
+  </h3>
+</div>
+<div class = "col-md-12 content-activities">
+  <ul class = "list-group avatar timeline-list area-activities">
+    <% @activities.each do |activity| %>
+      <%= render_activity activity %>
+    <% end %>
+  </ul>
+</div>
