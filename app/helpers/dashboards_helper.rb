@@ -54,4 +54,8 @@ module DashboardsHelper
   def button_submit_f object
     object.present? ? "Cập nhật" : "Tạo"
   end
+
+  def time_do_exam time
+    time.min + (time.hour * 60)
+  end
 end

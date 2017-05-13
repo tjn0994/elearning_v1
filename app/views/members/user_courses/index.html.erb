@@ -3,7 +3,8 @@
   <h3 class="text-center">Danh sách khóa học</h3>
   <div class="row">
     <% if @user_courses.blank? %>
-      Bạn chưa đăng ký khóa học nào. Bạn có thể vào đây để đắng ký khóa học mà bạn mong muốn
+      <span>Bạn chưa đăng ký khóa học nào. Bạn có thể vào đây để
+      <%= link_to "đăng ký khóa học", register_courses_path %> mà bạn mong muốn </span>
     <% else %>
       <% @user_courses.each do |course| %>
         <div class="col-sm-6 col-md-4 ">

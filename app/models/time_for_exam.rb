@@ -2,7 +2,7 @@ class TimeForExam < ApplicationRecord
   belongs_to :lesson
 
   validates :number_question, numericality: {greater_than: 0, only_integer: true}
-  validate :valid_number_question, if: ->{number_question > 0}
+  validate :valid_number_question, if: ->{self.number_question.present?}
 
   private
 

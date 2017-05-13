@@ -75,6 +75,68 @@ $(document).ready(function() {
     });
   }
 
+  function validate_register_course(class_name){
+    $(class_name).validate({
+      errorClass: 'help-block animation-slideDown',
+      errorElement: 'div',
+      errorPlacement: function(error, e) {
+        e.parents('.form-group > div').append(error);
+      },
+      highlight: function(e) {
+        $(e).closest('.form-group').removeClass('has-success has-error').addClass('has-error');
+        $(e).closest('.help-block').remove();
+      },
+      success: function(e) {
+        e.closest('.form-group').removeClass('has-success has-error');
+        e.closest('.help-block').remove();
+      },
+      rules: {
+        'register_course[date_open]': {
+          required: true
+        },
+        'register_course[date_close]': {
+          required: true
+        }
+      },
+      messages: {
+        'register_course[date_open]': {
+          required: "Ngày bắt đầu không được để trống"
+        },
+        'register_course[date_close]': {
+          required: "Ngày kết thúc không được để trống"
+        }
+      }
+    });
+  }
+
+  function validate_time_for_exam(class_name){
+    $(class_name).validate({
+      errorClass: 'help-block animation-slideDown',
+      errorElement: 'div',
+      errorPlacement: function(error, e) {
+        e.parents('.form-group > div').append(error);
+      },
+      highlight: function(e) {
+        $(e).closest('.form-group').removeClass('has-success has-error').addClass('has-error');
+        $(e).closest('.help-block').remove();
+      },
+      success: function(e) {
+        e.closest('.form-group').removeClass('has-success has-error');
+        e.closest('.help-block').remove();
+      },
+      rules: {
+        'time_for_exam[number_question]': {
+          required: true
+        }
+      },
+      messages: {
+        'time_for_exam[number_question]': {
+          required: "Số câu hỏi không được để trống"
+        }
+      }
+    });
+  }
+
   var Login = function() {
     return {
       init: function() {
@@ -183,6 +245,12 @@ $(document).ready(function() {
         //validate lesson
         validate_lesson(".edit_lesson");
         validate_lesson(".new_lesson");
+
+        validate_register_course(".edit_register_course");
+        validate_register_course(".new_register_course");
+
+        validate_time_for_exam(".new_time_for_exam");
+        validate_time_for_exam(".edit_time_for_exam");
       }
     };
   }();

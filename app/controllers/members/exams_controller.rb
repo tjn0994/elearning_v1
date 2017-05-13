@@ -19,6 +19,7 @@ class Members::ExamsController < ApplicationController
       @exam = @lesson.exams.create(name: @lesson.name, user_id: current_user.id)
       @exam.save
       @exam.question_ids = @lesson.questions.limit( @lesson.time_for_exam.number_question).pluck(:id)
+      gon.time = @lesson.time_for_exam.time.strftime("%Y-%m-%d %H:%M:%S")
     else
       flash[:error] = "Chưa có đề kiểm tra"
       redirect_to members_course_lesson_path(@course, @lesson)

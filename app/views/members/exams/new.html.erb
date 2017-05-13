@@ -14,7 +14,14 @@
     }
 }
 </script>
+<%= javascript_include_tag "members/exams", "data-turbolinks-track": true %>
 
+<div id="time-exam-of-member" class="exam-time">
+</div>
+<br>
+<br>
+<br>
+<br>
 <div class="row margin-top-20 margin-bottom-20">
   <div class="col-md-10 col-md-offset-1">
     <div class="panel panel-info">
@@ -28,7 +35,7 @@
             <div class="form-group">
               <center>
                 <span><h4>Chủ đề: <%= @exam.name %></h4></span>&nbsp;&nbsp;&nbsp;
-                <span><i>Thời gian: <%= l @exam.lesson.time_for_exam.time, format: :format_time %></i></span>
+                <span><i>Thời gian: <%= time_do_exam(@exam.lesson.time_for_exam.time) %> phút</i></span>
               </center>
             </div>
 
@@ -67,7 +74,7 @@
             <div class="form-group" >
               <div class="col-md-4 col-md-offset-4">
                 <%= f.submit "Nộp bài",
-                  class: "btn btn-primary form-control" %>
+                  class: "btn btn-primary form-control auto-submit-exam" %>
               </div>
             </div>
           <% end %>

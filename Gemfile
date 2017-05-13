@@ -41,7 +41,7 @@ gem "chartkick"
 gem "activerecord-import", "~> 0.15.0"
 gem "delayed_job_active_record"
 gem "validates_serialized"
-
+gem "gon"
 # Use Capistrano for deployment
 # gem "capistrano-rails", group: :development
 

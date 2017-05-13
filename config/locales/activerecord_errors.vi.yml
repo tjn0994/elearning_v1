@@ -20,6 +20,9 @@ vi:
       post:
         title: "Tiêu đề"
         content: "Nội dung"
+      register_course:
+        date_open: "Ngày bắt đầu"
+        date_close: "Ngày kết thúc"
     errors:
       models:
         question:
@@ -64,4 +67,10 @@ vi:
               too_short: "ít nhất 2 ký tự"
               too_long: "Không quá 255 ký tự"
             content:
+              blank: *blank
+        register_course:
+          attributes:
+            date_open:
+              blank: *blank
+            date_close:
               blank: *blank
