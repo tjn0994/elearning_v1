@@ -1,0 +1,20 @@
+<li class = "list-group-item row activity">
+  <div class = "timeline-icon import-activity">
+    <i class = "fa fa-file-text"></i>
+  </div>
+  <div class = "timeline-time">
+    <small class = "text-muted">
+      <%= l activity.created_at, format: :date_month_year_v1 %>
+    </small><br/>
+  </div>
+  <div class = "timeline-content content">
+    <strong>
+      <%= activity.user ? activity.user.name : t("activity.someone") %>
+    </strong><br/>
+    <% if activity.trackable %>
+      <span class = "action-activity">
+        ss
+      </span>
+    <% end %>
+  </div>
+</li>

@@ -1,9 +1,10 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-  #skip_before_filter  :verify_authenticity_token
+  # skip_before_filter  :verify_authenticity_token
   layout :layout
 
   include ApplicationHelper
+  # include PublicActivity::StoreController
 
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :load_notifications, if: :user_signed_in?
@@ -26,9 +27,9 @@ class ApplicationController < ActionController::Base
   end
 
 
-  def after_sign_in_path_for _resource
-    members_users_path
-  end
+  # def after_sign_in_path_for _resource
+  #   members_users_path
+  # end
 
   def layout
     if current_user.present? && is_a?(Devise::RegistrationsController)

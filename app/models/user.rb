@@ -20,7 +20,7 @@ class User < ApplicationRecord
 
   scope :recent, ->{order created_at: :desc}
   scope :not_in_course, ->course_id do
-    where "id NOT IN (select user_id from user_courses where course_id = ?)", course_id
+    where "id NOT IN (select user_id from user_courses where course_id = ? and status = 1)", course_id
   end
 
   mount_uploader :avatar, AvatarUploader

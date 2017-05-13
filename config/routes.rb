@@ -10,6 +10,9 @@ Rails.application.routes.draw do
   mount ActionCable.server => '/cable'
 
   get 'home' => 'static_pages#home'
+  get 'register_courses' => 'static_pages#register_course'
+  resources :register_courses, only: :show
+
   namespace :members do
     root 'static_pages#home'
     resources :users do

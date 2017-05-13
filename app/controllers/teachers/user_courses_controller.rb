@@ -12,7 +12,7 @@ class Teachers::UserCoursesController < DashboardController
     user_ids = params[:courses][:list_user].reject(&:blank?).map(&:to_i)
     array_user_id_temp = []
     user_ids.each do |user_id|
-      array_user_id_temp << UserCourse.new(course_id: @course.id, user_id: user_id)
+      array_user_id_temp << UserCourse.new(course_id: @course.id, user_id: user_id, status: :active)
     end
     begin
       UserCourse.import array_user_id_temp
