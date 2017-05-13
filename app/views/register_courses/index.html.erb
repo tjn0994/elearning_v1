@@ -1,4 +1,5 @@
-<div class="row margin-top-20">
+<%= javascript_include_tag "register_courses", "data-turbolinks-track": true %>
+<div class="row margin-top-20" onload="load_time()">
   <% @courses.each do |course| %>
     <div class="col-md-4">
       <!-- You can add the class 'table-featured' to feature the best plan. In this case, make sure to remove the hover functionality from js/pages/pricing.js -->
@@ -11,7 +12,7 @@
         <tbody>
           <tr>
             <td><%= image_tag course.image.url, style: "width: 100%",
-            class: "height-300" %></td>
+            class: "height-200" %></td>
           </tr>
           <% if course.description.present? %>
             <tr>
@@ -36,7 +37,7 @@
           </tr>
           <tr>
             <td>
-               Thời gian còn lại đăng ký
+               Thời gian còn lại đăng ký: <span id="time-<%= course.id %>"></span>
             </td>
           </tr>
           <tr>

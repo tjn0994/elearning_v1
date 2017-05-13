@@ -89,7 +89,7 @@
 
                           <div class="form-group row">
                             <%= f.label :number_question, value: "Số câu hỏi", class: "col-md-4  control-label" %>
-                            <div class="col-md-5">
+                            <div class="col-md-6">
                               <%= f.number_field :number_question,
                                 value: (@time_for_exam.number_question if @time_for_exam.present?),
                                 class: "form-control", min: 0 %>

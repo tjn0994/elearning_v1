@@ -638,3 +638,16 @@ ol.upper-alpha {list-style-type: upper-alpha;}
    pointer-events: none;
    cursor: default;
 }
+
+.exam-time {
+  position: fixed;
+  z-index: 1 !important;
+  font-size: 20px;
+  line-height: 50px;
+  top: 100px;
+  right: 50px;
+  width: 100px;
+  height: 50px;
+  border: 1px blue solid;
+  text-align: center;
+}

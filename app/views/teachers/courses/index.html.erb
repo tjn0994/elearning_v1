@@ -63,25 +63,25 @@
                       <div class="clear-float row">
                         <%= form_for [:teachers, course, load_register_course(course)], remote: true do |f| %>
                           <div class="col-md-10 col-md-offset-1">
-                            <%= render "shared/error_messages", object: load_register_course(course) %>
+                            <div id="add-message-errors-register-course-<%= course.id %>"></div>
                             <div class="form-group">
                               <%= f.label :date_open, value: "Ngày bắt đầu", class: "field-compulsory-before" %>
                               <div>
                                 <%= f.text_field :date_open,
-                                  value: (l @register_course.date_open, format: :format_datetime_picker_rb if @register_course.date_open.present?),
-                                  class: "form-control datetimepicker", required: true %>
+                                  value: (l course.register_course.date_open, format: :date_month_year_v1 if course.register_course.present?),
+                                  class: "form-control datepicker" %>
                               </div>
                             </div>
                             <div class="form-group">
                               <%= f.label :date_close, value: "Ngày kết thúc", class: "field-compulsory-before" %>
                               <div>
-                                 <%= f.text_field :date_close,
-                                  value: (l @register_course.date_close, format: :format_datetime_picker_rb if @register_course.date_close.present?),
-                                  class: "form-control datetimepicker", required: true %>
+                                <%= f.text_field :date_close,
+                                  value: (l course.register_course.date_close, format: :date_month_year_v1 if course.register_course.present?),
+                                  class: "form-control datepicker" %>
                               </div>
                             </div>
                             <div class="form-group">
-                              <center><%= f.submit  button_submit_f(@register_course.date_close),
+                              <center><%= f.submit button_submit_f(@register_course.date_open),
                                 class: "btn btn-primary" %></center>
                             </div>
                           </div>
