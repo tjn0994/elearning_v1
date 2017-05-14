@@ -33,6 +33,8 @@
 //= require custom_dashboard.js
 //= require date.js
 //= require ./teachers/questions.js
+//= require ./teachers/lessons.js
+//= require ./teachers/courses.js
 //= require ./teachers/user_courses.js
 
 // gem validate

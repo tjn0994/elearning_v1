@@ -6,7 +6,7 @@ class Teachers::QuestionsController < DashboardController
   load_and_authorize_resource
 
   def index
-    init_variable
+    init_variable_search
     @question = @lesson.questions.new
     @answer = @question.answers.build
   end
@@ -18,7 +18,7 @@ class Teachers::QuestionsController < DashboardController
       flash[:success] = "Tạo câu hỏi thành công"
       redirect_to teachers_course_lesson_questions_path(@course, @lesson)
     else
-      init_variable
+      init_variable_search
       @answer = @question.answers.present? ? @question.answers : @question.answers.build
       render :index
     end
@@ -87,5 +87,16 @@ class Teachers::QuestionsController < DashboardController
   def init_variable
     @questions = @lesson.questions.recent.page(params[:page])
       .per Settings.per_page.teachers.question
+  end
+
+  def init_variable_search
+    @search = @lesson.questions.ransack(params[:q])
+    @questions = @search.result.recent.page(params[:page])
+      .per Settings.per_page.teachers.question
+    if request.xhr?
+      respond_to do |format|
+        format.js{}
+      end
+    end
   end
 end

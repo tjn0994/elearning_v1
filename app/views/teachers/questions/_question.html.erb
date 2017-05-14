@@ -1,10 +1,10 @@
 <tr>
-  <td>
+  <td class="col-center">
     <%= current_index @questions.current_page, Settings.per_page.teachers.question,
       question_counter %>
   </td>
   <td><%= question.name %></td>
-  <td>
+  <td class="col-center">
     <div class="btn-group btn-group-xs">
       <%= render "shared/btn_show", object: question %>
       <%= link_to edit_teachers_course_lesson_question_path(course, lesson, question),

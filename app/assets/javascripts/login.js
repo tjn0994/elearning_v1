@@ -173,6 +173,20 @@ $(document).ready(function() {
               minlength: 6,
               equalTo: '#user_password'
             }
+          },
+          messages: {
+            'user[email]': {
+              required: "Email không được để trống"
+            },
+            'user[password]': {
+              required: "Mật khẩu không được để trống"
+            },
+            'user[name]': {
+              required: "Tên không được để trống"
+            },
+            'user[password_confirmation]': {
+              required: "Nhập lại mật khẩu không được để trống"
+            }
           }
         });
 

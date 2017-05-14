@@ -66,21 +66,34 @@
     </div>
   </div>
   <div class="col-md-7">
-    <div class="table-responsive">
-    <table class="table table-bordered table-hover">
-      <thead>
-        <tr class="table-center">
-          <th> Stt </th>
-          <th> Tên </th>
-          <th> Thao tác </th>
-        </tr>
-      </thead>
-      <tbody class="table-center">
-        <%= render(@questions, course: @course, lesson: @lesson, questions: @questions) || "Dữ liệu không tồn tại" %>
-      </tbody>
-    </table>
+    <div class="clear-fix col-md-12 row btn-group">
+      <%= search_form_for [:teachers, @course, @lesson, @search], remote: :true, class: "row"  do |f| %>
+        <div class="form-group col-md-10">
+          <%= f.text_field :name_cont,
+            placeholder: "Nhập tên câu hỏi",
+            class: "form-control" %>
+        </div>
+        <div class="col-md-1 btn btn-success" id="refresh-page"><i class=" fa fa-refresh"></i></div>
+      <% end %>
     </div>
-    <center><%= paginate @questions %></center>
+
+    <div class="clear-fix row col-center color-red" id="not-exist-question">
+    </div>
+    <div class="clear-fix table-responsive row">
+      <table class="table table-bordered table-hover">
+        <thead>
+          <tr class="table-center">
+            <th class=" width-5-pc"> Stt </th>
+            <th> Tên </th>
+            <th class="width-15-pc"> Thao tác </th>
+          </tr>
+        </thead>
+        <tbody id="list-question-search">
+          <%= render(@questions, course: @course, lesson: @lesson, questions: @questions) || "Dữ liệu không tồn tại" %>
+        </tbody>
+      </table>
+    </div>
+    <center id="load-page-question"><%= paginate @questions %></center>
   </div>
 </div>
 

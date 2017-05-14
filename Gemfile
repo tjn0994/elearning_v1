@@ -42,6 +42,7 @@ gem "activerecord-import", "~> 0.15.0"
 gem "delayed_job_active_record"
 gem "validates_serialized"
 gem "gon"
+gem "ransack"
 # Use Capistrano for deployment
 # gem "capistrano-rails", group: :development
 

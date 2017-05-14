@@ -1,14 +1,7 @@
 <div class="login-title text-center">
   <h1>
     <i class="gi gi-flash"></i>
-    <strong><%= t "workspace"%> </strong>
-    <br>
-    <small>
-      <%= t "please" %>
-      <strong><%= t "login" %></strong>
-      <%= t "or" %>
-      <strong><%= t "register" %></strong>
-    </small>
+    <strong>Đăng ký</strong>
   </h1>
 </div>
 <!-- END Login Title -->
@@ -16,18 +9,18 @@
 <!-- Login Block -->
 <div class="block push-bit">
 <!-- Login Form -->
-  <%= form_for(resource, html: {class: "form-bordered form-control-borderless" },
+  <%= form_for(resource, html: {class: "form-horizontal login-title  bg-white" },
     as: resource_name, url: registration_path(resource_name)) do |f| %>
     <%= devise_error_messages! %>
     <div class="form-group">
       <div class="col-xs-12">
         <div class="input-group">
           <span class="input-group-addon">
-            <i class="gi gi-envelope"></i>
+            <i class="gi gi-user"></i>
           </span>
           <div>
           <%= f.text_field :name, autofocus: true,
-            class: "form-control", placeholder: "name" %>
+            class: "form-control", placeholder: "Nhập tên" %>
           </div>
         </div>
       </div>
@@ -40,7 +33,7 @@
           </span>
           <div>
           <%= f.email_field :email, autofocus: true,
-            class: "form-control", placeholder: t("email") %>
+            class: "form-control", placeholder: "Nhập email" %>
           </div>
         </div>
       </div>
@@ -51,10 +44,8 @@
           <span class="input-group-addon">
             <i class="gi gi-asterisk"></i>
           </span>
-          <% if @minimum_password_length %>
           <%= f.password_field :password, autocomplete: "off",
-            class: "form-control", placeholder: "Password (#{@minimum_password_length} characters minimum)" %>
-           <% end %><br />
+            class: "form-control", placeholder: "Nhập mật khẩu" %>
         </div>
       </div>
     </div>
@@ -65,25 +56,23 @@
             <i class="gi gi-asterisk"></i>
           </span>
           <%= f.password_field :password_confirmation, autocomplete: "off",
-            class: "form-control", placeholder: "Password confirmation" %>
+            class: "form-control", placeholder: "Nhập lại mật khẩu" %>
         </div>
       </div>
     </div>
     <div>
-      <div class="col-xs-4">
-        <label class="switch switch-primary" data-toggle="tooltip" title="Remember Me?">
-          <%= f.check_box :remember_me %>
-          <span></span>
-        </label>
-      </div>
-      <div class="col-xs-8 text-right">
-        <%= f.submit "Sign up", class: "btn btn-sm btn-primary" %>
+      <div class="form-group">
+        <div class="col-xs-12">
+          <div class="col-md-offset-5">
+            <%= f.submit "Đăng ký", class: "btn btn-sm btn-primary" %>
+          </div>
+        </div>
       </div>
     </div>
     <div class="form-group">
-      <div class="col-xs-12 text-center">
+      <div class="col-xs-12 text-right">
         <%= link_to new_user_session_path() do %>
-          <small><%= t "login" %></small>
+          <small>Đăng nhập</small>
         <% end %>
       </div>
     </div>

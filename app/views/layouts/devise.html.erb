@@ -14,13 +14,10 @@
       <%= image_tag "framgia.jpg", class: "animation-pulseSlow" %>
     </div>
 
-    <div id="login-container" class="animation-fadeIn">
+    <div id="login-container" class="animation-fadeIn" style="border: 1px solid rgba(6, 6, 6, 0.31);">
       <%= render "shared/flash" if flash[:alert] || flash[:notice] %>
       <%=  yield %>
       <!-- Footer -->
-      <footer class="text-muted text-center">
-        <small><%= t "year" %><%= t "inc_all_rights_reserved" %></small>
-      </footer>
       <!-- END Footer -->
     </div>
   </body>

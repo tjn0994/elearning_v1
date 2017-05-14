@@ -38,6 +38,14 @@
   width: 250px;
 }
 
+.width-15-pc {
+  width: 15%;
+}
+
+.width-5-pc {
+  width: 5%;
+}
+
 .color-blue {
   color: blue;
 }
@@ -62,13 +70,23 @@
   margin-bottom: 20px;
 }
 
+.margin-bottom-0 {
+  margin-bottom: 0px;
+}
+
 .margin-left-10 {
   margin-left: 10px;
+}
+
+.margin-left-5 {
+  margin-left: 5px;
 }
 
 .margin-right-10 {
   margin-right: 10px;
 }
+
+
 
 .font-weight-default {
   font-weight: inherit !important;

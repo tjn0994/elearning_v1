@@ -12,105 +12,22 @@
     <i class="gi gi-plus"></i> Thêm bài học
   <% end %>
 </div>
-
 <br>
-<div class="modal_show_details">
-  <%= render "shared/model_show" %>
-</div>
-
-<div class="row">
-  <% @lessons.each_with_index do |lesson, index| %>
-    <% if index%3 == 0 %>
-      <div class="clear-fix"> </div>
-    <% end %>
-    <div class="col-sm-6 col-md-4 lesson-frame">
-      <div class="thumbnail product">
-        <div class="caption">
-          <div>
-            <!-- Widget -->
-            <%= link_to teachers_course_lesson_path(@course, lesson), class: "widget widget-hover-effect3" do %>
-              <div class="widget-simple">
-                <div class="widget-icon pull-left themed-background-autumn animation-fadeIn">
-                  <i class="fa fa-file-text"></i>
-                </div>
-                <span>Bài <%= index + 1 %>: <%= lesson.name %></span>
-              </div>
-            <% end %>
-            <!-- END Widget -->
-          </div>
-          <div>
-            <span class="color-red-brick">Thao tác:</span>
-            <div class="btn-group btn-group-sm">
-              <%= link_to edit_teachers_course_lesson_path(@course, lesson), class: "btn btn-warning" do %>
-                <i class="fa fa-pencil"></i>
-              <% end %>
-              <%= link_to teachers_course_lesson_path(@course, lesson),
-                method: :delete, class: "btn btn-danger btn-sm", data: {confirm: "Bạn có chắc chắn muốn xóa không ?"} do %>
-                <i class="fa fa-trash"></i>
-              <% end %>
-            </div>
-            <div class="row" style="margin-left: 0; margin-top: 5px">
-              <%= link_to teachers_course_lesson_questions_path(@course, lesson),
-                class: "btn btn-info btn-sm col-md-5 widget widget-hover-effect1" do %>
-                <i class="fa fa-plus"></i>Danh sách câu hỏi
-              <% end %>
-              <span class="col-md-1"></span>
-              <a class="widget widget-hover-effect1">
-                <button type="button" class="add-time-exam btn btn-warning col-md-5 btn-sm"
-                  data-toggle="modal" data-target="#add-time-exam-<%= lesson.id %>"
-                  data-backdrop="static" data-keyboard="false">
-                  <i class="gi gi-plus"></i>
-                  Tạo đề kiểm tra
-                </button>
-              </a>
-            </div>
-            <!-- modal -->
-              <div id="add-time-exam-<%= lesson.id %>" class="modal fade" role="dialog">
-                <div class="modal-dialog">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <button type="button" class="close" data-dismiss="modal">&times;
-                      </button>
-                      <center><h4 class="modal-title">Đề kiểm tra</h4></center>
-                    </div>
-                    <br>
-                    <div class="clear-float row btn-submit-time-for-exam-<%= lesson.id %>">
-                      <%= form_for [:teachers, @course, lesson, load_time_for_exam(lesson)], remote: true do |f| %>
-                        <div class="col-md-10 col-md-offset-1">
-                          <div class="form-group row">
-                            <div class="add-time-for-exam-<%= lesson.id %>"></div>
-                          </div>
-                          <div class="form-group row">
-                              <%= f.label :time, value: "Thời gian", class: "col-md-4 control-label" %>
-                              <div class="col-md-4 form-inline">
-                                <%= f.time_select :time, {ignore_date: true}, {class: "form-control"} %>
-                              </div>
-                          </div>
-
-                          <div class="form-group row">
-                            <%= f.label :number_question, value: "Số câu hỏi", class: "col-md-4  control-label" %>
-                            <div class="col-md-6">
-                              <%= f.number_field :number_question,
-                                value: (@time_for_exam.number_question if @time_for_exam.present?),
-                                class: "form-control", min: 0 %>
-                            </div>
-                          </div>
-                          <div class="form-group">
-                            <center>
-                              <%= f.submit button_submit_f(@time_for_exam.number_question),
-                                class: "btn btn-primary" %>
-                            </center>
-                          </div>
-                        </div>
-                      <% end %>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            <!-- end -->
-          </div>
-        </div>
-      </div>
+<div class="clear-fix row">
+  <%= search_form_for [:teachers, @course, @search], remote: :true, class: "row col-md-offset-2"  do |f| %>
+    <div class="form-group col-md-8">
+      <%= f.text_field :name_cont,
+        placeholder: "Nhập tên bài học",
+        class: "form-control" %>
     </div>
+    <div class="col-md-1 btn btn-success" id="refresh-page-lesson"><i class=" fa fa-refresh"></i></div>
   <% end %>
 </div>
+
+<br>
+<div class="row clear-fix col-center color-red" id="not-exist-lesson">
+</div>
+<div class="row clear-fix" id="list-lesson-search">
+  <%= render "lesson" %>
+</div>
+<center id="load-page-lesson"><%= paginate @lessons %></center>
