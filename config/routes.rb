@@ -3,10 +3,10 @@ Rails.application.routes.draw do
   mount Ckeditor::Engine => '/ckeditor'
   devise_for :users
   #scope "(:locale)", locale: /en|vi|ja/ do
-  devise_scope :user do
-    root to: "devise/sessions#new"
-  end
-
+  # devise_scope :user do
+  #   root to: "devise/sessions#new"
+  # end
+  root 'static_pages#home'
   mount ActionCable.server => '/cable'
 
   get 'home' => 'static_pages#home'

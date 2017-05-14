@@ -4,7 +4,8 @@ class Admins::CategoriesController < DashboardController
   before_action :authenticate_admin!, only: [:index, :new, :edit, :update, :destroy]
 
   def index
-    @categories = Category.recent.page(params[:page])
+    @search = Category.ransack(params[:q])
+    @categories =  @search.result.recent.page(params[:page])
       .per Settings.per_page.admins.category
   end
 

@@ -9,11 +9,13 @@
       </div>
       <div>
         <%= comment.content if comment.content.present? %>
-        <% if current_user.is_user?(comment.user) %>
-          <%= link_to members_user_post_comment_path(@user, @post, comment),
-            method: :delete, remote: :true, class: "btn btn-default btn-xs",
-            data: {confirm: "Bạn có chắc chắn muốn xóa không ?"} do %>
-            Xóa
+        <% if current_user.present? %>
+          <% if current_user.is_user?(comment.user) %>
+            <%= link_to members_user_post_comment_path(@user, @post, comment),
+              method: :delete, remote: :true, class: "btn btn-default btn-xs",
+              data: {confirm: "Bạn có chắc chắn muốn xóa không ?"} do %>
+              Xóa
+            <% end %>
           <% end %>
         <% end %>
       </div>

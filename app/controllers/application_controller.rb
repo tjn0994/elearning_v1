@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   layout :layout
 
   include ApplicationHelper
-  # include PublicActivity::StoreController
+  include PublicActivity::StoreController
 
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :load_notifications, if: :user_signed_in?
@@ -80,6 +80,6 @@ class ApplicationController < ActionController::Base
   def authenticate_admin!
     return if current_user.admin?
     flash[:error] = "Bạn không có quyền truy cập trang này"
-    redirect_to root_path
+    redirect_to :back
   end
 end

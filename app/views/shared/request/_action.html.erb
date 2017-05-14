@@ -1,12 +1,12 @@
 <% if request.pending? %>
-  <%= link_to "active", admins_set_status_courses_path(id: request.id, status: 1),
+  <%= link_to "Chấp nhận", admins_set_status_courses_path(id: request.id, status: 1),
     class: "btn btn-success btn-xs" %>
-  <%= link_to "block", admins_set_status_courses_path(id: request.id, status: 2),
+  <%= link_to "Từ chối", admins_set_status_courses_path(id: request.id, status: 2),
     class: "btn btn-danger btn-xs" %>
 <% elsif request.active? %>
-  <%= link_to "block", admins_set_status_courses_path(id: request.id, status: 2),
+  <%= link_to "Từ chối", admins_set_status_courses_path(id: request.id, status: 2),
     class: "btn btn-danger btn-xs" %>
 <% elsif request.block? %>
-  <%= link_to "active", admins_set_status_courses_path(id: request.id, status: 1),
+  <%= link_to "Chấp nhận", admins_set_status_courses_path(id: request.id, status: 1),
     class: "btn btn-success btn-xs" %>
 <% end %>

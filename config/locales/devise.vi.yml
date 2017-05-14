@@ -6,3 +6,5 @@ vi:
     passwords:
       user:
         send_instructions: "Vui lòng vào email để kiểm tra để lấy lại mật khẩu"
+    registrations:
+      updated: "Cập nhật thành công"

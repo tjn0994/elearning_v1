@@ -6,14 +6,14 @@
     <div class="thumbnail product">
       <div class="caption">
         <div class="img-caption" >
-          <%= link_to image_tag(course.image.url, style: "height:300px; width: 100%"),
+          <%= link_to image_tag(course.image.url, style: "height:200px; width: 100%"),
             teachers_course_lessons_path(course),
-            class: "widget widget-hover-effect4 themed-background height-300" %>
+            class: "widget widget-hover-effect4 themed-background height-200" %>
         </div>
         <div class="desc">
           <div class="color-blue"><%= course.name %></div>
           <span class="color-red-brick">Thao tác:</span>
-          <div class="btn-group btn-group-sm">
+          <div class="btn-group btn-group-xs">
             <%= render "shared/btn_show", object: course %>
             <%= link_to edit_teachers_course_path(course), class: "btn btn-warning" do %>
               <i class="fa fa-pencil"></i>

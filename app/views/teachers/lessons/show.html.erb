@@ -1,3 +1,10 @@
+<div>
+  <%= link_to teachers_course_lessons_path(@course),
+    class: "btn btn-default" do %>
+    <i class="fa fa-chevron-left"></i> Danh sách bài học
+  <% end %>
+</div>
+<br>
 <div class="panel panel-info">
   <div class="panel-heading">
     <center><h3 class="panel-title">Chi tiết bài học</h3></center>
@@ -5,7 +12,7 @@
   <div class="panel-body row">
     <div class="panel-content col-md-offset-1 col-md-10 row maigin-bottom-20">
       <div class="row">
-        <center><h4>Tên bài học: <%= @lesson.name %></h4></center>
+        <center><h4>Bài <%= @lesson.name %></h4></center>
       </div>
 
       <div class="row">

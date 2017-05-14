@@ -1,26 +1,53 @@
 <% provide :title, t("list_user") %>
-<div class="row manage_user">
+<div class="clear-fix panel panel-default">
+  <div class="panel-heading">Tìm kiếm</div>
+  <div class="panel-body">
+    <%= search_form_for [:admins, @search], class: "row col-md-offset-1" do |f| %>
+      <div class="form-group col-md-6">
+        <%= f.text_field :name_or_description_or_owner_name_cont,
+          placeholder: "Nhập tên khóa học hoặc mô tả hoặc tên giáo viên để tìm kiếm",
+          class: "form-control" %>
+      </div>
+      <div class="form-group col-md-2">
+        <%= f.select :status_eq,
+          @statuses.collect {
+            |value| [I18n.t("admin.courses.#{value[0]}"), value[1]]
+          }, {include_blank: "Trạng thái"},
+          class: "form-control" %>
+      </div>
+      <%= f.submit "Tìm kiếm", class: "btn btn-primary col-md-1" %>
+      &nbsp;&nbsp;
+      <%= link_to admins_courses_path do %>
+        <i class="fa fa-refresh btn btn-success"></i>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+
+<div class="row">
   <div class="col-md-12">
+    <div class="row clear-fix col-center color-red" id="not-exist-course-approve">
+    </div>
     <div class="table-responsive">
     <table class="table table-bordered table-hover">
       <thead>
-        <tr class="active">
-          <th> index </th>
-          <th> name </th>
-          <th> description</th>
-           <th> image </th>
-          <th> owner </th>
-          <th> approve </th>
-          <th> status </th>
-          <th> action </th>
+        <tr class="table-center">
+          <th class="font-size-15">Stt</th>
+          <th class="font-size-15"><%= sort_link @search, :name, "Tên" %></th>
+          <th class="font-size-15">Mô tả</th>
+          <th class="font-size-15">Ảnh</th>
+          <th class="font-size-15"><%= sort_link @search, :owner_name, "Giáo viên" %></th>
+          <th class="font-size-15">Người xác nhận</th>
+          <th class="font-size-15">Trạng thái</th>
+          <th class="font-size-15">Thao tác</th>
         </tr>
       </thead>
-      <tbody>
-        <%= render(@courses, courses: @courses) || "data_not_find" %>
+      <tbody id="list-course-approve-search">
+        <%= render(@courses, courses: @courses) || "Dữ liệu không tồn tại" %>
       </tbody>
     </table>
     </div>
-    <center><%= paginate @courses %></center>
+    <center id="load-page-course-approve"><%= paginate @courses %></center>
   </div>
 </div>
 <div class="modal_show_details">

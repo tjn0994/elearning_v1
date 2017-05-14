@@ -69,7 +69,7 @@
                     <i class="gi gi-group"></i> Quyền
                   </strong>
                 </td>
-                <td><%= @user.role %></td>
+                <td><%= I18n.t "user.role.#{@user.role}" %></td>
               </tr>
               <tr>
                 <td>
@@ -81,11 +81,13 @@
               </tr>
             </tbody>
           </table>
-          <% if @user.is_user? current_user %>
-            <%= link_to "Thay đổi mật khẩu", edit_user_registration_path,
-              class: "btn btn-primary" %>
-            <%= link_to "Chỉnh sửa thông tin",
-              edit_members_user_path(current_user), class: "btn btn-primary" %>
+          <% if current_user.present? %>
+            <% if @user.is_user? current_user %>
+              <%= link_to "Thay đổi mật khẩu", edit_user_registration_path,
+                class: "btn btn-primary" %>
+              <%= link_to "Chỉnh sửa thông tin",
+                edit_members_user_path(current_user), class: "btn btn-primary" %>
+            <% end %>
           <% end %>
         </div>
       </div>

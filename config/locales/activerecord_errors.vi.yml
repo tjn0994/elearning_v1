@@ -25,6 +25,7 @@ vi:
         date_close: "Ngày kết thúc"
       user:
         email: "Email"
+        password: "Mật khẩu"
     errors:
       models:
         question:
@@ -80,3 +81,5 @@ vi:
           attributes:
             email:
               not_found: "Không tìm thấy"
+            password:
+              blank: *blank

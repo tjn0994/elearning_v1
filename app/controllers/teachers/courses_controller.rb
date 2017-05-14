@@ -10,11 +10,12 @@ class Teachers::CoursesController < DashboardController
     @courses = @search.result.by_author(current_user.id).recent.page(params[:page])
       .per Settings.per_page.teachers.course
     @register_course = RegisterCourse.new
-    if request.xhr?
-      respond_to do |format|
-        format.js{}
-      end
-    end
+    @types = Type.all
+    # if request.xhr?
+    #   respond_to do |format|
+    #     format.js{}
+    #   end
+    # end
   end
 
   def new

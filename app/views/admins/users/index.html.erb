@@ -1,20 +1,53 @@
 <% provide :title, "Danh sách người dùng" %>
+
+<%= link_to new_admins_user_path,
+  class: "btn btn-sm btn-success" do %>
+  <i class="gi gi-plus"></i>Thêm thành viên
+<% end %>
+<br>
+<br>
+
+<div class="clear-fix panel panel-default">
+  <div class="panel-heading">Tìm kiếm</div>
+  <div class="panel-body">
+    <%= search_form_for [:admins, @search], class: "row col-md-offset-1" do |f| %>
+      <div class="form-group col-md-6">
+        <%= f.text_field :name_or_email_cont,
+          placeholder: "Nhập tên hoặc email để tìm kiếm",
+          class: "form-control" %>
+      </div>
+      <div class="form-group col-md-2">
+        <%= f.select :role_eq,
+          @roles.collect {
+            |value| [I18n.t("admin.roles.#{value[0]}"), value[1]]
+          }, {include_blank: "Trạng thái"},
+          class: "form-control" %>
+      </div>
+      <%= f.submit "Tìm kiếm", class: "btn btn-primary col-md-1" %>
+      &nbsp;&nbsp;
+      <%= link_to admins_users_path do %>
+        <i class="fa fa-refresh btn btn-success"></i>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+
 <div class="row manage_user">
   <div class="col-md-12">
     <div class="table-responsive">
     <table class="table table-bordered table-hover">
       <thead>
         <tr class="table-center">
-          <th>Stt</th>
-          <th>Tên</th>
-          <th>Email</th>
-          <th>Số điện thoại</th>
-          <th>Quyền</th>
-          <th class="text-center">Thao tác</th>
+          <th class="font-size-15">Stt</th>
+          <th class="font-size-15"><%= sort_link @search, :name, "Tên" %></th>
+          <th class="font-size-15">Email</th>
+          <th class="font-size-15">Số điện thoại</th>
+          <th class="font-size-15">Quyền</th>
+          <th class="text-center font-size-15">Thao tác</th>
         </tr>
       </thead>
       <tbody class="table-center">
-        <%= render(@users, users: @users) || t(".data_not_find") %>
+        <%= render(@users, users: @users) || "Dữ liệu không tồn tại" %>
       </tbody>
     </table>
     </div>

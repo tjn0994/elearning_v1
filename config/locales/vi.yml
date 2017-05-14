@@ -11,6 +11,15 @@ vi:
   devise:
     failure:
       already_authenticated: "Bạn không có quyền truy cập trang này!"
+  admin:
+    courses:
+      pending: "Đang chờ"
+      active: "Chấp nhận"
+      block: "Từ chối"
+    roles:
+      teacher: "Giáo viên"
+      member: "Thành viên"
+      admin: "Quản trị viên"
   user:
     gender:
       female: "Nữ"
