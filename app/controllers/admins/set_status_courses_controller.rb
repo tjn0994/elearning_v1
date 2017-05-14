@@ -32,6 +32,7 @@ class Admins::SetStatusCoursesController < DashboardController
   def create_room course
     config_opentok
     session =  @opentok.create_session
+    # session = @opentok.create_session :media_mode => :routed
     @room = Room.create owner_id: course.owner.id, course_id: course.id,
       name: course.name, session_id: session.session_id, status: 0
     if @room.blank?

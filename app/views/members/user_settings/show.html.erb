@@ -5,7 +5,7 @@
   <div class="panel-body">
     <div class="container form-horizontal">
       <div>
-        <label>notification setting</label>
+        <label>Cài đặt nhận thông báo</label>
         <label class="switch switch-primary height-22" data-toggle="tooltip" title="remember">
           <% if @user_setting.notify_on? %>
             <%= check_box_tag :member_notification_setting, "", :checked %>
@@ -16,7 +16,7 @@
         </label>
       </div>
       <div>
-        <label>email setting</label>
+        <label>Cài đặt nhận email</label>
         <label class="switch switch-primary height-22" data-toggle="tooltip" title="remember">
           <% if @user_setting.email_on? %>
             <%= check_box_tag :member_email_setting, "", :checked %>

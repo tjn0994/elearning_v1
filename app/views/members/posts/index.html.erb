@@ -1,12 +1,12 @@
 <%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
 <br>
 <div class="row">
-  <div class="col-md-9" style="box-shadow: 0 10px 10px 10px rgba(0, 0, 0, 0.3)">
+  <div class="col-md-8">
     <br>
-    <div class="row">
+    <div class="row col-md-offset-1">
       <%= link_to new_members_user_post_path(@user),
-        class: "btn btn-md btn-success col-md-offset-1" do %>
-        <i class="gi gi-plus"></i> add post
+        class: "btn btn-sm btn-success col-md-offset-1" do %>
+        <i class="fa fa-pencil-square-o fa-fw"></i>Tạo bài viết
       <% end %>
     </div>
     <br>
@@ -16,20 +16,46 @@
     </ul>
     <center><%= paginate @posts %></center>
   </div>
+
+  <div class="col-md-1"></div>
+
   <div class="col-md-3">
-    <div style="border: solid 1px #a79f9f; border-radius: 5px">
-      <div class="container" style="padding-top: 5px; padding-bottom: 5px">
-        <div>Posts: <b>12</b></div>
-        <div>Following users: <b>15</b></div>
-        <div>Following: <b>5</b></div>
+    <div class="border-profile-post row">
+      <div class="row">
+        <div class="col-md-6 margin-top-20 margin-left-10">
+          <div>
+            <%= image_tag @user.avatar.url, class: "width-100-pc border-radius-5" %>
+          </div>
+          <div class="clear-fix row margin-left-10">
+            <%= link_to "Chỉnh sửa", edit_members_user_path(current_user),
+              class: "col-md-10 btn btn-info btn-sm" %>
+          </div>
+        </div>
+        <div class="col-md-5 margin-top-80">
+          <div><%= link_to @user.name, members_user_posts_path(@user) %></div>
+          <br>
+          <div>
+            <span><i class="fa fa-star"></i>20</span>&nbsp;
+            <span><i class="fa fa-users"></i>10</span>&nbsp;
+            <span><i class="fa fa-pencil"></i><%= @user.posts.count %></span>
+          </div>
+        </div>
       </div>
+
     </div>
+
     <br>
+    <hr>
+    <div class="margin-top-20"><h3>Xu hướng<h3></div>
     <br>
-    POSTS TENDENCY
-    <div>
-      <%= pie_chart  @posts.joins(:type).group('types.name').count %>
-    </div>
+    <% Category.all.each do |category| %>
+      <% if @posts.joins(:type, type: :category).where('types.category_id = ?', category.id).count > 0 %>
+        <div class="row">
+          <i class="color-blue margin-left-10"><%= category.name  %></i>
+          <%= pie_chart @posts.joins(:type, type: :category).where('types.category_id = ?', category.id).group("types.name").count %>
+        </div>
+      <% end %>
+    <% end %>
   </div>
 </div>
 <br>

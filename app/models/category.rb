@@ -1,7 +1,5 @@
 class Category < ApplicationRecord
 
-  has_many :posts, dependent: :destroy
-  has_many :courses, dependent: :destroy
   has_many :types, dependent: :destroy
 
   accepts_nested_attributes_for :types, allow_destroy: true,

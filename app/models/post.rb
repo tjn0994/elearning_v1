@@ -12,4 +12,7 @@ class Post < ApplicationRecord
   validates :title, presence: true
   validates :title, length: {maximum: 255, minimum: 2}, if: ->{title.present?}
   validates :content, presence: true
+
+  delegate :avatar, :name, :email, to: :user, prefix: true, allow_nil: true
+
 end

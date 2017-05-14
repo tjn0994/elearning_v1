@@ -460,7 +460,7 @@ DEPENDENCIES
   mini_magick (= 4.5.1)
   momentjs-rails
   mysql2 (>= 0.3.18, < 0.5)
-  opentok
+  opentok (~> 2.3)
   paranoia (~> 2.2)
   pg (= 0.18.4)
   pry (~> 0.10.4)

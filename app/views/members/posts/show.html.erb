@@ -13,7 +13,7 @@
           <span><i class="fa fa-calendar fa-fw"></i>
             <%= l @post.created_at, format: :date_month_year_v1 %>
           </span>
-          <span class="pull-right">
+          <span class="pull-right padding-right-50">
             <i class="fa fa-comment">&nbsp;</i>
             <span class="comment-count"><%= @post.comments.count %></span>
             &nbsp;&nbsp;&nbsp;
@@ -50,7 +50,7 @@
         </div>
       </div>
     <% end %>
-
+    <br>
     <div class="row form-group margin-left-10">
       <div id="comments">
         <%= render partial: "comment", collection: @comments %>
@@ -59,26 +59,47 @@
     </div>
   </div>
   <div class="col-md-3">
-    <br>
-    <br>
+    <div class="border-profile-post row">
+      <div class="row">
+        <div class="col-md-6 margin-top-20 margin-left-10">
+          <div>
+            <%= image_tag @post.user_avatar.url, class: "width-100-pc border-radius-5" %>
+          </div>
+          <div class="clear-fix row margin-left-10">
+            <button class="col-md-10 btn btn-info btn-sm">Theo dõi</button>
+          </div>
+        </div>
+        <div class="col-md-5 margin-top-80">
+          <div><%= link_to @post.user_name, members_user_posts_path(@post.user) %></div>
+          <br>
+          <div>
+            <span><i class="fa fa-star"></i>20</span>&nbsp;
+            <span><i class="fa fa-users"></i>10</span>&nbsp;
+            <span><i class="fa fa-pencil"></i><%= @post.user.posts.count %></span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
     <br>
     <div>
       Đánh giá:<%= rating_for @post, "visual_effects", enable_half: true, star: 5 %>
     </div>
-    <br>
+    <hr>
     <div>
       Chia sẻ: <%= social_share_button_tag(@post.title) %>
     </div>
-
-    <div>
-      <span>Ngoại ngữ</span>
-      <%= pie_chart @posts.joins(:type).group('types.name').count %>
-    </div>
-
-    <div>
-      <span>Ngoại ngữ</span>
-      <%= pie_chart @posts.joins(:type).group('types.name').count %>
-    </div>
-
+    <hr>
+    <div class="margin-top-20"><h3>Xu hướng<h3></div>
+    <br>
+    <% Category.all.each do |category| %>
+      <% if @posts.joins(:type, type: :category).where('types.category_id = ?', category.id).count > 0 %>
+        <div class="row">
+          <i class="color-blue margin-left-10"><%= category.name  %></i>
+          <%= pie_chart @posts.joins(:type, type: :category).where('types.category_id = ?', category.id).group("types.name").count %>
+        </div>
+      <% end %>
+    <% end %>
   </div>
 </div>
