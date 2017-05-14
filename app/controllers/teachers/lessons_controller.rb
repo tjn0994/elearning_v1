@@ -5,10 +5,17 @@ class Teachers::LessonsController < DashboardController
   before_action :load_lesson, except: [:index, :new, :create]
   load_and_authorize_resource
 
+
   def index
-    @lessons = @course.lessons.page(params[:page])
+    @search = @course.lessons.ransack(params[:q])
+    @lessons = @search.result.page(params[:page])
       .per Settings.per_page.teachers.lesson
     @time_for_exam = TimeForExam.new
+    if request.xhr?
+      respond_to do |format|
+        format.js{}
+      end
+    end
   end
 
   def new

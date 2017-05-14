@@ -1,4 +1,7 @@
 vi:
+  answers:
+    true_: "Đúng"
+    false_: "Sai"
   exam:
     not_completed: "Chưa hoàn thành"
     completed: "Hoàn thành"
@@ -13,6 +16,10 @@ vi:
       female: "Nữ"
       male: "Nam"
       other: "Khác"
+    role:
+      teacher: "Giáo viên"
+      member: "Thành viên"
+      admin: "Quản trị viên"
   date:
     formats:
       default: "%m/%d/%Y"

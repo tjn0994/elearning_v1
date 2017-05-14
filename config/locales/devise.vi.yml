@@ -1,0 +1,8 @@
+vi:
+  devise:
+    sessions:
+      user:
+        signed_in: "Bạn đã đăng nhập thành công"
+    passwords:
+      user:
+        send_instructions: "Vui lòng vào email để kiểm tra để lấy lại mật khẩu"

@@ -2,8 +2,8 @@ image_format_accept: "image/jpeg,image/gif,image/png"
 per_page:
   admins:
     user: 10
-    category: 10
-    course: 10
+    category: 8
+    course: 8
   members:
     user: 10
     exam: 10
@@ -14,8 +14,8 @@ per_page:
     notification: 10
   teachers:
     user: 10
-    course: 10
-    lesson: 10
+    course: 6
+    lesson: 9
     question: 10
     user_course: 10
   publish:

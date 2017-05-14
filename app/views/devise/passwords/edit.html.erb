@@ -11,7 +11,7 @@
 </div>
 
 <div class="block push-bit">
-  <%= form_for resource, html: {class: "form-horizontal form-bordered form-control-borderless",
+  <%= form_for resource, html: {class: "form-horizontal login-title bg-white",
     method: :put},as: resource_name,
     url: password_path(resource_name) do |f| %>
     <%= f.hidden_field :reset_password_token %>

@@ -1,14 +1,7 @@
 <div class="login-title text-center">
   <h1>
     <i class="gi gi-flash"></i>
-    <strong><%= t "workspace"%> </strong>
-    <br>
-    <small>
-      <%= t "please" %>
-      <strong><%= t "login" %></strong>
-      <%= t "or" %>
-      <strong><%= t "register" %></strong>
-    </small>
+    <strong>Đăng nhập</strong>
   </h1>
 </div>
 <!-- END Login Title -->
@@ -16,7 +9,7 @@
 <!-- Login Block -->
 <div class="block push-bit">
     <!-- Login Form -->
-  <%= form_for resource, html: {class: "form-horizontal login-title", style: "background: white" },as: resource_name,
+  <%= form_for resource, html: {class: "form-horizontal login-title bg-white"},as: resource_name,
     url: session_path(resource_name) do |f| %>
     <div class="form-group">
       <div class="col-xs-12">
@@ -38,7 +31,7 @@
             <i class="gi gi-asterisk"></i>
           </span>
           <%= f.password_field :password, autocomplete: "off",
-            class: "form-control", placeholder: "password" %>
+            class: "form-control", placeholder: "Mật khẩu" %>
         </div>
       </div>
     </div>
@@ -48,21 +41,20 @@
           <%= f.check_box :remember_me %>
           <span></span>
         </label>
-        remember
+        Ghi nhớ đăng nhập
       </div>
-      <div class="col-xs-3 text-right">
-        <%= f.submit "login", class: "btn btn-sm btn-primary" %>
-      </div>
-      <div class="col-xs-3 text-right">
-        <%= link_to "" do %>
-          <small><%= link_to "Sign up", new_registration_path(resource_name) %></small>
-        <% end %>
+      <div class="col-xs-2 text-right">
+        <%= f.submit "Đăng nhập", class: "btn btn-sm btn-primary" %>
       </div>
     </div>
     <div class="form-group">
       <div class="col-xs-12 text-center">
         <%= link_to "" do %>
-          <small><%= link_to t("forgot_password"), new_password_path(resource_name) %></small>
+          <small><%= link_to "Đăng ký", new_registration_path(resource_name) %></small>
+        <% end %>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <%= link_to "" do %>
+          <small><%= link_to "Quên mật khẩu?", new_password_path(resource_name) %></small>
         <% end %>
       </div>
     </div>

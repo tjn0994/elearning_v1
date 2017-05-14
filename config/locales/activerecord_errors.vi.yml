@@ -23,6 +23,8 @@ vi:
       register_course:
         date_open: "Ngày bắt đầu"
         date_close: "Ngày kết thúc"
+      user:
+        email: "Email"
     errors:
       models:
         question:
@@ -74,3 +76,7 @@ vi:
               blank: *blank
             date_close:
               blank: *blank
+        user:
+          attributes:
+            email:
+              not_found: "Không tìm thấy"

@@ -5,11 +5,11 @@
     </div>
     <div class="panel-body">
       <div class="row">
-        <table class="table" style="margin-bottom: 0">
+        <table class="table margin-bottom-0">
           <tbody>
             <tr>
               <td>Câu hỏi</td>
-              <td><%= @question.name %></td>
+              <td colspan="2"><%= @question.name %></td>
             </tr>
 
             <% if @question.answers.present? %>
@@ -17,6 +17,7 @@
                 <tr>
                   <td>Đáp án <%= index + 1 %></td>
                   <td><%= answer.name %></td>
+                  <td><%= t("answers.#{answer.is_correct?}_") %></td>
                 </tr>
               <% end %>
             <% end %>

@@ -10,13 +10,15 @@ class Teachers::TimeForExamsController < DashboardController
   end
 
   def create
-    @time_for_exam = TimeForExam.new time_for_exam_params.merge!(lesson_id: @lesson.id)
-    if @time_for_exam.save
-      respond_to do |format|
-        format.js{}
+    if @lesson.time_for_exam.blank?
+      @time_for_exam = TimeForExam.new time_for_exam_params.merge!(lesson_id: @lesson.id)
+      if @time_for_exam.save
+        respond_to do |format|
+          format.js{}
+        end
+      else
+        render :new
       end
-    else
-      render :new
     end
   end
 

@@ -1,0 +1,4 @@
+$('#list-lesson-search')
+  .html('<%= j render "lesson" %>');
+$('#not-exist-lesson').html('<%= "Dữ liệu không tìm thấy" if @search.result.blank? %>');
+$('#load-page-lesson').html('<%= paginate @lessons %>');

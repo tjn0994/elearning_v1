@@ -5,96 +5,22 @@
 <br>
 <br>
 
-<div class="modal_show_details">
-  <%= render "shared/model_show" %>
-</div>
-
-<div class="row">
-  <% @courses.each_with_index do |course, index| %>
-    <% if index%3 == 0 %>
-      <div class="clear-fix"> </div>
-    <% end %>
-    <div class="col-md-4">
-      <div class="thumbnail product">
-        <div class="caption">
-          <div class="img-caption" >
-            <%= link_to image_tag(course.image.url, style: "height:300px; width: 100%"),
-              teachers_course_lessons_path(course),
-              class: "widget widget-hover-effect4 themed-background height-300" %>
-          </div>
-          <div class="desc">
-            <div class="color-blue"><%= course.name %></div>
-            <span class="color-red-brick">Thao tác:</span>
-            <div class="btn-group btn-group-sm">
-              <%= render "shared/btn_show", object: course %>
-              <%= link_to edit_teachers_course_path(course), class: "btn btn-warning" do %>
-                <i class="fa fa-pencil"></i>
-              <% end %>
-              <%= link_to teachers_course_path(course),
-                method: :delete, class: "btn btn-danger", data: {confirm: "Bạn có chắc chắn muốn xóa không ?"} do %>
-                <i class="fa fa-trash"></i>
-              <% end %>
-            </div>
-          </div>
-          <% if course.active? %>
-            <div class="row" style="margin-left: 0; margin-top: 5px">
-              <%= link_to "Danh sách học viên",
-                teachers_course_user_courses_path(course),
-                class: "btn btn-primary btn-sm col-md-5 widget widget-hover-effect1" %>
-              <span class="col-md-1"></span>
-              <a class="widget widget-hover-effect1">
-                <button type="button" class="register-course btn btn-warning col-md-5 btn-sm"
-                  data-toggle="modal" data-target="#add-time-register-course-<%= course.id %>"
-                  data-backdrop="static" data-keyboard="false">
-                  <i class="gi gi-plus"></i>
-                  Thời gian mở lớp
-                </button>
-              </a>
-              <!-- modal -->
-                <div id="add-time-register-course-<%= course.id %>" class="modal fade" role="dialog">
-                  <div class="modal-dialog">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">&times;
-                        </button>
-                        <h4 class="modal-title"><center>Thời gian đăng ký</center></h4>
-                      </div>
-                      <br>
-                      <div class="clear-float row">
-                        <%= form_for [:teachers, course, load_register_course(course)], remote: true do |f| %>
-                          <div class="col-md-10 col-md-offset-1">
-                            <div id="add-message-errors-register-course-<%= course.id %>"></div>
-                            <div class="form-group">
-                              <%= f.label :date_open, value: "Ngày bắt đầu", class: "field-compulsory-before" %>
-                              <div>
-                                <%= f.text_field :date_open,
-                                  value: (l course.register_course.date_open, format: :date_month_year_v1 if course.register_course.present?),
-                                  class: "form-control datepicker" %>
-                              </div>
-                            </div>
-                            <div class="form-group">
-                              <%= f.label :date_close, value: "Ngày kết thúc", class: "field-compulsory-before" %>
-                              <div>
-                                <%= f.text_field :date_close,
-                                  value: (l course.register_course.date_close, format: :date_month_year_v1 if course.register_course.present?),
-                                  class: "form-control datepicker" %>
-                              </div>
-                            </div>
-                            <div class="form-group">
-                              <center><%= f.submit button_submit_f(@register_course.date_open),
-                                class: "btn btn-primary" %></center>
-                            </div>
-                          </div>
-                        <% end %>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              <!-- modal end -->
-            </div>
-          <% end %>
-        </div>
-      </div>
+<div class="clear-fix row">
+  <%= search_form_for [:teachers, @search], remote: :true, class: "row col-md-offset-2"  do |f| %>
+    <div class="form-group col-md-8">
+      <%= f.text_field :name_cont,
+        placeholder: "Nhập tên bài học",
+        class: "form-control" %>
     </div>
+    <div class="col-md-1 btn btn-success" id="refresh-page-course"><i class=" fa fa-refresh"></i></div>
   <% end %>
 </div>
+
+<div class="row clear-fix col-center color-red" id="not-exist-course">
+</div>
+
+<div class="row" id="list-course-search">
+  <%= render "course" %>
+</div>
+
+<center id="load-page-course"><%= paginate @courses %></center>
