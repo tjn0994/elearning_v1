@@ -84,26 +84,28 @@
               </li>
             </ul>
           </li>
-          <li>
-            <a href="javascript:void(0)" class="site-nav-sub"><i class="fa fa-angle-down site-nav-arrow"></i>Account</a>
-            <ul>
-              <li>
-                <%= link_to "Thông tin cá nhân", members_user_path(current_user) %>
-              </li>
-              <li>
-                <%= link_to "Hoạt động", members_activities_path %>
-              </li>
-              <li>
-                <%= link_to "Danh sách khóa học", members_user_courses_path %>
-              </li>
-              <li>
-                <%= link_to "Cài đặt", members_user_settings_path %>
-              </li>
-              <li>
-                <%= link_to "Bài viết", members_user_posts_path(current_user) %>
-              </li>
-            </ul>
-          </li>
+          <% if current_user.present? %>
+            <li>
+              <a href="javascript:void(0)" class="site-nav-sub"><i class="fa fa-angle-down site-nav-arrow"></i>Account</a>
+              <ul>
+                <li>
+                  <%= link_to "Thông tin cá nhân", members_user_path(current_user) %>
+                </li>
+                <li>
+                  <%= link_to "Hoạt động", members_activities_path %>
+                </li>
+                <li>
+                  <%= link_to "Danh sách khóa học", members_user_courses_path %>
+                </li>
+                <li>
+                  <%= link_to "Cài đặt", members_user_settings_path %>
+                </li>
+                <li>
+                  <%= link_to "Bài viết", members_user_posts_path(current_user) %>
+                </li>
+              </ul>
+            </li>
+            <% end %>
           <li>
             <a href="#">Features</a>
           </li>

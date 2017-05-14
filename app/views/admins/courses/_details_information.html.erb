@@ -1,26 +1,34 @@
 <div class="panel panel-info">
   <div class="panel-heading">
-    <h3 class="panel-title"><%= t ".detail_information" %></h3>
+    <center><h3 class="panel-title">Chi tiết khóa học</h3></center>
   </div>
   <div class="panel-body">
     <div class="row">
-      <table class="table table-user-information">
+      <table class="table margin-bottom-0">
         <tbody>
           <tr>
-            <td>name</td>
+            <td>Tên</td>
             <td><%= @course.name %></td>
           </tr>
           <tr>
-            <td>description</td>
+            <td>Mô tả</td>
             <td><%= @course.description %></td>
           </tr>
           <tr>
-            <td>approve</td>
-            <td><%= @course.approver_id %></td>
+            <td>Người xác nhận</td>
+            <td><%= @course.approver_name %></td>
           </tr>
           <tr>
-            <td>owner</td>
-            <td><%= @course.owner_id %></td>
+            <td>Giáo viên</td>
+            <td><%= @course.owner_name %></td>
+          </tr>
+          <tr>
+            <td>Từ ngày</td>
+            <td><%= l @course.date_from, format: :date_month_year_v1 %></td>
+          </tr>
+          <tr>
+            <td>Đến ngày</td>
+            <td><%= l @course.date_to, format: :date_month_year_v1 %></td>
           </tr>
         </tbody>
       </table>

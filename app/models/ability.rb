@@ -17,7 +17,7 @@ class Ability
     can :read, Category
     cannot :manage, TimeForExam
     cannot :manage, RegisterCourse
-    can :create, Post
+    can :manage, Post
     can :read, User
     can :update, User, id: user.id
     can :read, UserCourse, user_id: user.id

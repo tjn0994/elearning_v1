@@ -5,8 +5,10 @@ class Admins::UsersController < DashboardController
   before_action :authenticate_admin!
 
   def index
-    @users = User.recent.page(params[:page])
+    @search = User.ransack(params[:q])
+    @users = @search.result.recent.page(params[:page])
       .per Settings.per_page.admins.user
+    @roles = User.roles
   end
 
   def new
@@ -14,10 +16,10 @@ class Admins::UsersController < DashboardController
   end
 
   def create
-    @user = User.new user_params
+    @user = User.new user_params.merge!(password: "123456")
     if @user.save
       create_activity_for_user
-      flash[:success] = t "devise.registrations.signed_up"
+      flash[:success] = "Thêm thành viên thành công"
       redirect_to admins_users_path
     else
       render :new
@@ -33,7 +35,7 @@ class Admins::UsersController < DashboardController
   def update
     if @user.update_attributes user_params
       create_activity_for_user
-      flash[:success] = t "devise.registrations.updated"
+      flash[:success] = "Cập nhật thành viên thành công"
       redirect_to admins_users_path
     else
       render :edit
@@ -43,9 +45,9 @@ class Admins::UsersController < DashboardController
   def destroy
     if @user.destroy
       create_activity_for_user
-      flash[:success] = t "devise.registrations.destroyed"
+      flash[:success] = "Xóa thành viên thành công"
     else
-      flash[:warning] = t "delete_not_success"
+      flash[:warning] = "Xóa thành viên không thành công"
     end
     redirect_to admins_users_path
   end
@@ -64,9 +66,8 @@ class Admins::UsersController < DashboardController
 
 
   def user_params
-    params.require(:user)
-    .permit(:email, :name, :employee_code, :gender, :avatar, :birthday,
-      :role, :account_creation_date, :address, :number_of_phone)
+    params.require(:user).permit(:email, :name, :gender, :avatar,
+      :birthday, :role, :address, :number_of_phone)
   end
 
   def load_user

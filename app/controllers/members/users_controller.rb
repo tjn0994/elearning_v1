@@ -1,5 +1,5 @@
 class Members::UsersController < ApplicationController
-  before_action :authenticate_user!
+  # before_action :authenticate_user!
   before_action :load_user, except: [:index, :new]
   before_action :valid_image_avatar, only: [:create, :update]
   load_and_authorize_resource

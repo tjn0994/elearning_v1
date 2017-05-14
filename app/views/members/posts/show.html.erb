@@ -17,9 +17,11 @@
             <i class="fa fa-comment">&nbsp;</i>
             <span class="comment-count"><%= @post.comments.count %></span>
             &nbsp;&nbsp;&nbsp;
-            <% if current_user.is_user?(@post.user) %>
-              <%= link_to edit_members_user_post_path(@user, @post) do %>
-                 <i class="fa fa-pencil-square-o fa-fw"></i>Chỉnh sửa
+            <% if current_user.present? %>
+              <% if current_user.is_user?(@post.user) %>
+                <%= link_to edit_members_user_post_path(@user, @post) do %>
+                   <i class="fa fa-pencil-square-o fa-fw"></i>Chỉnh sửa
+                <% end %>
               <% end %>
             <% end %>
           </span>

@@ -1,30 +1,32 @@
 <div>
   <%= link_to teachers_courses_path,
     class: "btn btn-default" do %>
-    <i class="fa fa-chevron-left"></i> Khóa học
+    <i class="fa fa-chevron-left"></i> Danh sách khóa học
   <% end %>
 </div>
 <br>
 
 <div>
   <%= link_to new_teachers_course_lesson_path,
-    class: "btn btn-md btn-success" do %>
+    class: "btn btn-sm btn-success" do %>
     <i class="gi gi-plus"></i> Thêm bài học
   <% end %>
 </div>
 <br>
-<div class="clear-fix row">
-  <%= search_form_for [:teachers, @course, @search], remote: :true, class: "row col-md-offset-2"  do |f| %>
-    <div class="form-group col-md-8">
-      <%= f.text_field :name_cont,
-        placeholder: "Nhập tên bài học",
-        class: "form-control" %>
-    </div>
-    <div class="col-md-1 btn btn-success" id="refresh-page-lesson"><i class=" fa fa-refresh"></i></div>
-  <% end %>
+<div class="clear-fix panel panel-default">
+  <div class="panel-heading">Tìm kiếm</div>
+  <div class="panel-body">
+    <%= search_form_for [:teachers, @course, @search], remote: :true, class: "row col-md-offset-2"  do |f| %>
+      <div class="form-group col-md-8">
+        <%= f.text_field :name_cont,
+          placeholder: "Nhập tên bài học",
+          class: "form-control" %>
+      </div>
+      <div class="col-md-1 btn btn-success" id="refresh-page-lesson"><i class=" fa fa-refresh"></i></div>
+    <% end %>
+  </div>
 </div>
 
-<br>
 <div class="row clear-fix col-center color-red" id="not-exist-lesson">
 </div>
 <div class="row clear-fix" id="list-lesson-search">

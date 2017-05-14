@@ -1,21 +1,21 @@
 <tr>
-  <td>
+  <td class="width-5-pc col-center">
     <%= current_index @courses.current_page, Settings.per_page.teachers.course,
       course_counter %>
   </td>
   <td><%= course.name %></td>
   <td><%= course.description %></td>
-  <td>
+  <td class="width-10-pc col-center">
     <%= image_tag course.image.url, class: "height-80" %>
   </td>
-  <td><%= course.owner_name %></td>
-  <td><%= course.approver_name %></td>
-  <td>
+  <td class="width-10-pc col-center"><%= course.owner_name %></td>
+  <td class="width-10-pc col-center"><%= course.approver_name %></td>
+  <td class="width-10-pc col-center">
     <span class="label <%= label_css(course) %>">
-      <%= course.status %>
+      <%= t "admin.courses.#{course.status}" %>
     </span>
   </td>
-  <td>
+  <td class="width-20-pc col-center">
     <div class="btn-group btn-group-xs">
       <%= render "shared/request/action", request: course %>
       <%= render "shared/btn_show", object: course %>

@@ -2,8 +2,10 @@ class Admins::CoursesController < DashboardController
   before_action :authenticate_admin!
 
   def index
-    @courses = Course.recent.page(params[:page])
+    @search = Course.ransack(params[:q])
+    @courses = @search.result.page(params[:page])
       .per Settings.per_page.admins.course
+    @statuses = Course.statuses
   end
 
   def show

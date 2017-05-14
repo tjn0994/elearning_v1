@@ -5,7 +5,7 @@
     <%= form_for [:admins, @user] do |f| %>
       <div class="col-md-offset-1 col-md-3 row">
         <div class="text-center col-md-12">
-          <%= image_tag @user.avatar.url, class: "height-250 width-250", id: "img_prev" %>
+          <%= image_tag @user.avatar.url, class: "height-250 width-250" %>
           <%= f.file_field :avatar, accept: Settings.image_format_accept %>
         </div>
       </div>

@@ -1,20 +1,38 @@
-<% provide :title, t("list_user") %>
+<% provide :title, "Danh sách danh mục" %>
 <%= link_to new_admins_category_path,
-  class: "btn btn-md btn-success" do %>
-  <i class="gi gi-plus"></i> add category
+  class: "btn btn-sm btn-success" do %>
+  <i class="gi gi-plus"></i> Thêm danh mục
 <% end %>
 <br>
 <br>
-<div class="row manage_user">
+<div class="clear-fix panel panel-default">
+  <div class="panel-heading">Tìm kiếm</div>
+  <div class="panel-body">
+    <%= search_form_for [:admins, @search], class: "row col-md-offset-1" do |f| %>
+      <div class="form-group col-md-6">
+        <%= f.text_field :name_or_description_cont,
+          placeholder: "Nhập tên danh mục hoặc mô tả",
+          class: "form-control" %>
+      </div>
+      <%= f.submit "Tìm kiếm", class: "btn btn-primary col-md-1" %>
+      &nbsp;&nbsp;
+      <%= link_to admins_categories_path do %>
+        <i class="fa fa-refresh btn btn-success"></i>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+
+<div class="row">
   <div class="col-md-12">
     <div class="table-responsive">
     <table class="table table-bordered table-hover">
       <thead>
         <tr class="table-center">
-          <th> Stt </th>
-          <th> Tên </th>
-          <th style="min-width: 250px; max-width: 300px"> Mô tả </th>
-          <th> Thao tác </th>
+          <th class="font-size-15"> Stt </th>
+          <th class="font-size-15"> Tên </th>
+          <th class="font-size-15" style="min-width: 250px; max-width: 300px"> Mô tả </th>
+          <th class="font-size-15"> Thao tác </th>
         </tr>
       </thead>
       <tbody class="table-center">
