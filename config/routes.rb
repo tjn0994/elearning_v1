@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   #   root to: "devise/sessions#new"
   # end
   root 'static_pages#home'
-  mount ActionCable.server => '/cable'
+  # mount ActionCable.server => '/cable'
 
   get 'home' => 'static_pages#home'
   resources :register_courses, only: [:index, :show]
