@@ -11,7 +11,7 @@ class Publish::PostsController < ApplicationController
   def load_category
     @category = Category.find_by id: params[:category_id]
     return if @post
-    flash[:error] = t "dashboard.users.not_found"
+    flash[:error] = "Không tìm thấy danh mục"
     redirect_to publish_posts_path
   end
 end

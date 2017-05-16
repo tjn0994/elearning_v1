@@ -13,16 +13,16 @@ class Members::UsersController < ApplicationController
     @user = User.new
   end
 
-  def create
-    @user = User.new user_params
-    if @user.save
-      create_activity_for_user
-      flash[:success] = t "devise.registrations.signed_up"
-      redirect_to students_users_path
-    else
-      render :new
-    end
-  end
+  # def create
+  #   @user = User.new user_params
+  #   if @user.save
+  #     create_activity_for_user
+  #     flash[:success] = t "devise.registrations.signed_up"
+  #     redirect_to members_users_path
+  #   else
+  #     render :new
+  #   end
+  # end
 
   def show
   end
@@ -32,22 +32,22 @@ class Members::UsersController < ApplicationController
   def update
     if @user.update_attributes user_params
       create_activity_for_user
-      flash[:success] = t "devise.registrations.updated"
-      redirect_to members_users_path
+      flash[:success] = "Cập nhật thành công"
+      redirect_to members_user_posts_path(current_user)
     else
       render :edit
     end
   end
 
-  def destroy
-    if @user.destroy
-      create_activity_for_user
-      flash[:success] = t "devise.registrations.destroyed"
-    else
-      flash[:warning] = t "delete_not_success"
-    end
-    redirect_to members_users_path
-  end
+  # def destroy
+  #   if @user.destroy
+  #     create_activity_for_user
+  #     flash[:success] = t "devise.registrations.destroyed"
+  #   else
+  #     flash[:warning] = t "delete_not_success"
+  #   end
+  #   redirect_to members_users_path
+  # end
 
   private
 
@@ -55,7 +55,7 @@ class Members::UsersController < ApplicationController
     if params[:user][:avatar].present?
       unless Settings.image_types.to_h.values.include? File.extname(
         params[:user][:avatar].original_filename).split(".").last.downcase
-        flash[:error] = t "dashboard.users.format_type_image_invalid"
+        flash[:error] = "Ảnh quá lớn"
         redirect_to :back
       end
     end
@@ -70,7 +70,7 @@ class Members::UsersController < ApplicationController
   def load_user
     @user = User.find_by id: params[:id]
     return if @user
-    flash[:error] = t "dashboard.users.not_found"
+    flash[:error] = "Không tìm thấy người dùng"
     redirect_to members_users_path
   end
 end
