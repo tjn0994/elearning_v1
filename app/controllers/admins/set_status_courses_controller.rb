@@ -1,4 +1,6 @@
 require "opentok"
+# require "rubygems"
+# require "sinatra"
 
 class Admins::SetStatusCoursesController < DashboardController
   before_action :authenticate_admin!
@@ -7,11 +9,11 @@ class Admins::SetStatusCoursesController < DashboardController
     course = Course.find_by id: params[:id]
     if course.present?
       if course.update status: params[:status].to_i, approver_id: current_user.id
-        create_activity Course.name, course, "register_course.create"
-        create_notification_for_member Course.name, course, "#{course.status}.#{Course.name}", course.owner_id
-        # if course.active?
-        #   create_room course
-        # end
+        # create_activity Course.name, course, "register_course.create"
+        # create_notification_for_member Course.name, course, "#{course.status}.#{Course.name}", course.owner_id
+        if course.active?
+          create_room course
+        end
       else
         flash[:errors] = "errors"
       end
@@ -23,15 +25,16 @@ class Admins::SetStatusCoursesController < DashboardController
 
   private
 
-  def config_opentok
-    if @opentok.nil?
-     @opentok = OpenTok::OpenTok.new(ENV["KEY_OPENTOK"], ENV["TOKEN"])
-    end
-  end
+  # def config_opentok
+  #   if @opentok.nil?
+  #     @opentok = OpenTok::OpenTok.new(ENV["KEY_OPENTOK"], ENV["TOKEN"])
+  #   end
+  # end
 
   def create_room course
-    config_opentok
-    session =  @opentok.create_session
+    # config_opentok
+    @opentok = OpenTok::OpenTok.new(ENV["KEY_OPENTOK"], ENV["TOKEN"])
+    session = @opentok.create_session :media_mode => :routed
     @room = Room.create owner_id: course.owner.id, course_id: course.id,
       name: course.name, session_id: session.session_id, status: 0
     if @room.blank?

@@ -1,5 +1,5 @@
 class Notification < PublicActivity::Activity
-  after_create :send_notification
+  # after_create :send_notification
 
   belongs_to :user
 
