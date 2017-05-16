@@ -3,8 +3,12 @@ vi:
     sessions:
       user:
         signed_in: "Bạn đã đăng nhập thành công"
+        signed_out: "Đăng xuất thành công"
     passwords:
       user:
         send_instructions: "Vui lòng vào email để kiểm tra để lấy lại mật khẩu"
     registrations:
       updated: "Cập nhật thành công"
+    failure:
+      user:
+        unauthenticated: "Vui lòng đăng nhập!"

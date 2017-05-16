@@ -1,4 +1,5 @@
 class Members::PostsController < ApplicationController
+  before_action :authenticate_user!
   before_action :load_user
   before_action :load_post, except: [:index, :new, :create]
   before_action :load_category

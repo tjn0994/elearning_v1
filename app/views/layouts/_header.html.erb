@@ -1,10 +1,10 @@
 <div id="page-container">
   <!-- Site Header -->
-  <header>
+  <header class="header-scroll">
     <div class="container">
       <!-- Site Logo -->
       <a href="index.html" class="site-logo">
-          <i class="gi gi-flash"></i> <strong>Pro</strong>UI
+          <i class="gi gi-flash"></i> <strong>E-Learning</strong>
       </a>
       <!-- Site Logo -->
 
@@ -27,109 +27,72 @@
           </li>
           <!-- END Menu Toggle -->
           <li>
-            <a href="javascript:void(0)" class="site-nav-sub active"><i class="fa fa-angle-down site-nav-arrow" ></i >Home</a>
-            <ul>
-              <li>
-                <a href="index.html">Full Width</a>
-              </li>
-              <li>
-                <a href="index_alt.html">Full Width (Dark)</a>
-              </li>
-              <li>
-                <a href="index_parallax.html">Full Width Parallax</a>
-              </li>
-              <li>
-                <a href="index_boxed.html">Boxed</a>
-              </li>
-              <li>
-                <a href="index_boxed_alt.html">Boxed (Dark)</a>
-              </li>
-              <li>
-                <a href="index_boxed_parallax.html">Boxed Parallax</a>
-              </li>
-            </ul>
+            <%= link_to "Trang chủ", root_path %>
           </li>
           <li>
-            <a href="javascript:void(0)" class="site-nav-sub"><i class="fa fa-angle-down site-nav-arrow"></i>Pages</a>
-            <ul>
-              <li>
-                <a href="blog.html">Blog</a>
-              </li>
-              <li>
-                <a href="blog_post.html">Blog Post</a>
-              </li>
-              <li>
-                <a href="portfolio_4.html">Portfolio 4 Columns</a>
-              </li>
-              <li>
-                <a href="portfolio_3.html">Portfolio 3 Columns</a>
-              </li>
-              <li>
-                <a href="portfolio_2.html">Portfolio 2 Columns</a>
-              </li>
-              <li>
-                <a href="portfolio_single.html">Portfolio Single</a>
-              </li>
-              <li>
-                <a href="team.html">Team</a>
-              </li>
-              <li>
-                <a href="helpdesk.html">Helpdesk</a>
-              </li>
-              <li>
-                <a href="jobs.html">Jobs</a>
-              </li>
-              <li>
-                <a href="how_it_works.html">How it works</a>
-              </li>
-            </ul>
-          </li>
-          <% if current_user.present? %>
-            <li>
-              <a href="javascript:void(0)" class="site-nav-sub"><i class="fa fa-angle-down site-nav-arrow"></i>Account</a>
-              <ul>
-                <li>
-                  <%= link_to "Thông tin cá nhân", members_user_path(current_user) %>
-                </li>
-                <li>
-                  <%= link_to "Hoạt động", members_activities_path %>
-                </li>
-                <li>
-                  <%= link_to "Danh sách khóa học", members_user_courses_path %>
-                </li>
-                <li>
-                  <%= link_to "Cài đặt", members_user_settings_path %>
-                </li>
-                <li>
-                  <%= link_to "Bài viết", members_user_posts_path(current_user) %>
-                </li>
-              </ul>
-            </li>
-            <% end %>
-          <li>
-            <a href="#">Features</a>
+            <%= link_to "Khóa học", register_courses_path %>
           </li>
           <li>
-            <a href="#">Pricing</a>
-          </li>
-          <li>
-            <%= link_to "Post", publish_posts_path %>
+            <%= link_to "Bài viết", publish_posts_path %>
           </li>
           <li>
             <%= link_to "Manager", members_users_path%>
           </li>
-          <% if user_signed_in?%>
+          <% if current_user.present? %>
             <li>
-              <%= link_to destroy_user_session_path,method: :delete,
-              data: {toggle: "tooltip", placement: "bottom"} do %>
-              <i class="gi gi-exit"></i>
-            <% end %>
+              <%= image_tag current_user.avatar.url, class: "width-40 height-40 img-circle" %>
+              <ul>
+                <li>
+                  <%= link_to members_user_path(current_user) do %>
+                    <i class="gi gi-user"></i>&nbsp;&nbsp; Thông tin cá nhân
+                  <% end %>
+                </li>
+                <% if current_user.teacher? %>
+                  <li>
+                    <%= link_to teachers_courses_path do %>
+                      <i class="gi gi-user"></i>&nbsp;&nbsp; Giáo viên
+                    <% end %>
+                  </li>
+                <% elsif current_user.admin? %>
+                  <li>
+                    <%= link_to admins_courses_path do %>
+                      <i class="gi gi-user"></i>&nbsp;&nbsp; Quản trị viên
+                    <% end %>
+                  </li>
+                <% end %>
+                <li>
+                  <%= link_to members_user_courses_path do %>
+                    <i class="fa fa-book"></i>&nbsp;&nbsp; Danh sách khóa học
+                  <% end %>
+                </li>
+                <li>
+                  <%= link_to members_activities_path do %>
+                    <i class="fa fa-signal fa-fw"></i>&nbsp;&nbsp; Hoạt động
+                  <% end %>
+                </li>
+                <li>
+                  <%= link_to members_user_settings_path do %>
+                    <i class="gi gi-asterisk"></i>&nbsp;&nbsp; Cài đặt
+                  <% end %>
+                </li>
+                <li>
+                  <%= link_to members_user_posts_path(current_user) do %>
+                    <i class="fa fa-pencil-square-o fa-fw"></i>&nbsp;&nbsp; Bài viết
+                  <% end %>
+                </li>
+                <li>
+                  <%= link_to destroy_user_session_path,method: :delete,
+                    data: {toggle: "tooltip", placement: "bottom"} do %>
+                    <i class="gi gi-exit"></i>&nbsp;&nbsp; Đăng xuất
+                  <% end %>
+                </li>
+              </ul>
             </li>
           <% else %>
             <li>
-              <%= link_to t(".btn_sign_in"), "#", class: "btn-lines dark light wow
-            fadeInUp animated smooth-scroll btn btn-default btn-green",
-            data: {toggle: "modal", target: "#signin_modal"} %>
+              <%= link_to new_user_session_path do %>
+                Đăng nhập
+              <% end %>
             </li>
           <% end %>
 

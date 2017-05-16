@@ -1,9 +1,7 @@
 <li>
-  <div class="row col-md-12" style=" padding-bottom: 5px;
-    padding-top: 5px; padding-right: 20px;border-bottom: solid 1px #a79f9f;">
-    <div class="col-md-1">
-      <%= image_tag post.user.avatar.url,
-        style: "width: 60px; height: 60px;", class: "img-circle" %>
+  <div class="row col-md-12">
+    <div class="col-md-2">
+      <%= image_tag post.user.avatar.url, class: "width-100-pc img-circle" %>
     </div>
     <div class="col-md-8">
       <div><b style="color: #5488c7"><%= link_to post.title, members_user_post_path(@user, post) %></b></div>
@@ -14,7 +12,7 @@
         <i class="fa fa-eye"></i> 72 &nbsp;&nbsp;&nbsp;
         <i class="fa fa-comment"></i> 72
       </div>
-      <div class="btn-group-sm">
+      <div class="btn-group-xs">
         <%= link_to edit_members_user_post_path(@user, post), class: "btn btn-info" do %>
           Edit
         <% end %>
@@ -25,4 +23,9 @@
       </div>
     </div>
   </div>
+  <div class="row">&nbsp;
+  </div>
 </li>
+<% unless @user.posts.last.id == post.id %>
+  <div class="fix-clear row"><hr class="clear-fix"></div>
+<% end %>

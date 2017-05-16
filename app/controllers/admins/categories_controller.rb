@@ -18,7 +18,7 @@ class Admins::CategoriesController < DashboardController
     @category = Category.new category_params
     if @category.save
       create_activity_for_category
-      flash[:success] = t "devise.registrations.signed_up"
+      flash[:success] = "Tạo danh mục thành công"
       redirect_to admins_categories_path
     else
       render :new
@@ -30,7 +30,7 @@ class Admins::CategoriesController < DashboardController
     if params[:name].eql? Course.name
       render partial: "teachers/courses/type", local: {types: @category.types}
     elsif  params[:name].eql? Post.name
-      render partial: "member/posts/type", local: {types: @category.types}
+      render partial: "members/posts/type", local: {types: @category.types}
     else
       respond_to do |format|
         format.html{render partial: "details_information", local: {category: @category}}
@@ -43,7 +43,7 @@ class Admins::CategoriesController < DashboardController
   def update
     if @category.update_attributes category_params
       create_activity_for_category
-      flash[:success] = t "devise.registrations.updated"
+      flash[:success] = "Cập nhật danh mục thành công"
       redirect_to admins_categories_path
     else
       render :edit
@@ -51,11 +51,21 @@ class Admins::CategoriesController < DashboardController
   end
 
   def destroy
-    if @category.destroy
-      create_activity_for_category
-      flash[:success] = t "devise.registrations.destroyed"
+    @category.types.each do |type|
+      if type.courses.present? || type.posts.present?
+        @destroy = true
+        break
+      end
+    end
+    if @destroy.blank?
+      if @category.destroy
+        create_activity_for_category
+        flash[:success] = "Xóa danh mục thành công"
+      else
+        flash[:error] = "Xóa danh mục không thành công"
+      end
     else
-      flash[:warning] = t "delete_not_success"
+      flash[:error] = "Không thể xóa danh mục này"
     end
     redirect_to admins_categories_path
   end
@@ -69,7 +79,7 @@ class Admins::CategoriesController < DashboardController
   def load_category
     @category = Category.find_by id: params[:id]
     return if @category
-    flash[:error] = t "dashboard.users.not_found"
+    flash[:error] = "Không tìm thấy danh mục"
     redirect_to admins_categories_path
   end
 

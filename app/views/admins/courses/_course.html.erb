@@ -22,7 +22,7 @@
       <% if course.pending? %>
         <%= link_to teachers_course_path(course),
           method: :delete, class: "btn btn-danger",
-          data: {confirm: t("are_you_sure")} do %>
+          data: {confirm: "Bạn có chắc chắn muốn xóa không?"} do %>
           <i class="fa fa-trash"></i>
         <% end %>
       <% end %>
