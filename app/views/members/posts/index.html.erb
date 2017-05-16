@@ -3,12 +3,15 @@
 <div class="row">
   <div class="col-md-8">
     <br>
-    <div class="row col-md-offset-1">
-      <%= link_to new_members_user_post_path(@user),
-        class: "btn btn-sm btn-success col-md-offset-1" do %>
-        <i class="fa fa-pencil-square-o fa-fw"></i>Tạo bài viết
-      <% end %>
-    </div>
+    <% if @user.is_user? current_user %>
+      <div class="row pull-right">
+        <%= link_to new_members_user_post_path(@user),
+          class: "btn btn-sm btn-success" do %>
+          <i class="fa fa-pencil-square-o fa-fw"></i>Tạo bài viết
+        <% end %>
+      </div>
+    <% end %>
+    <br>
     <br>
     <br>
     <ul style="list-style-type: none">
@@ -27,8 +30,16 @@
             <%= image_tag @user.avatar.url, class: "width-100-pc border-radius-5" %>
           </div>
           <div class="clear-fix row margin-left-10">
-            <%= link_to "Chỉnh sửa", edit_members_user_path(current_user),
-              class: "col-md-10 btn btn-info btn-sm" %>
+            <% if current_user.present? %>
+              <% if @user.is_user? current_user %>
+                <%= link_to "Chỉnh sửa", edit_members_user_path(@user),
+                  class: "col-md-10 btn btn-info btn-sm" %>
+              <% else %>
+                 <button class="col-md-10 btn btn-info btn-sm">Theo dõi</button>
+              <% end %>
+            <% else %>
+              <button class="col-md-10 btn btn-info btn-sm">Theo dõi</button>
+            <% end %>
           </div>
         </div>
         <div class="col-md-5 margin-top-80">

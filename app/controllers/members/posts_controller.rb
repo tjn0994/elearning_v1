@@ -1,5 +1,5 @@
 class Members::PostsController < ApplicationController
-  before_action :authenticate_user!
+  # before_action :authenticate_user!
   before_action :load_user
   before_action :load_post, except: [:index, :new, :create]
   before_action :load_category
@@ -18,7 +18,7 @@ class Members::PostsController < ApplicationController
     @post = @user.posts.new post_params
     if @post.save
       create_activity Post.name, @post, "post.create"
-      flash[:success] = t "devise.registrations.signed_up"
+      flash[:success] = "Tạo bài viết thành công"
       redirect_to members_user_posts_path
     else
       @types = @post.type.category.types
