@@ -1,0 +1,25 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="row clear-fix col-center color-red" id="not-exist-course-approve">
+    </div>
+    <div class="table-responsive">
+    <table class="table table-bordered table-hover">
+      <thead>
+        <tr class="table-center">
+          <th class="font-size-15">Stt</th>
+          <th class="font-size-15">Tên</th>
+          <th class="font-size-15">Email</th>
+          <th class="font-size-15">Tên khóa học</th>
+          <th class="font-size-15">Trạng thái</th>
+          <th class="font-size-15">Thao tác</th>
+        </tr>
+      </thead>
+      <tbody>
+        <%= render(partial: "registered_course", collection: @registered_courses, as: :registered_course) || "Dữ liệu không tồn tại" %>
+      </tbody>
+    </table>
+    </div>
+
+    <center id="load-page-course-approve"><%= paginate @registered_courses %></center>
+  </div>
+</div>

@@ -62,13 +62,14 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for _resource
-    if current_user.admin?
-      admins_users_path
-    elsif current_user.teacher?
-      teachers_courses_path
-    else
-      "/home"
-    end
+    # if current_user.admin?
+    #   admins_users_path
+    # elsif current_user.teacher?
+    #   teachers_courses_path
+    # else
+    #   "/home"
+    # end
+    root_path
   end
 
   JsonResponse::STATUS_CODE.keys.each do |status|

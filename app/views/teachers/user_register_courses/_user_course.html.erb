@@ -1,0 +1,19 @@
+<tr>
+  <td class="width-5-pc col-center">
+    <%= current_index @user_courses.current_page, Settings.per_page.teachers.course,
+      user_course_counter %>
+  </td>
+  <td><%= user_course.user_name %></td>
+  <td><%= user_course.user_email%></td>
+  <td><%= user_course.course_name %></td>
+  <td class="width-10-pc col-center">
+    <span class="label <%= label_css(user_course) %>">
+      <%= t "teacher.user_courses.#{user_course.status}" %>
+    </span>
+  </td>
+  <td class="width-20-pc col-center">
+    <div class="btn-group btn-group-xs">
+      <%= render "shared/request_register_courses/action", request: user_course %>
+    </div>
+  </td>
+</tr>

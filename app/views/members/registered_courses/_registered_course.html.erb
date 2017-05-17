@@ -1,0 +1,29 @@
+<tr>
+  <td class="width-5-pc col-center">
+    <%= current_index @registered_courses.current_page,
+      Settings.per_page.members.registered_course, registered_course_counter %>
+  </td>
+  <td><%= registered_course.user_name %></td>
+  <td><%= registered_course.user_email%></td>
+  <td><%= registered_course.course_name %></td>
+  <td class="width-10-pc col-center">
+    <span class="label <%= label_css(registered_course) %>">
+      <%= t "teacher.user_courses.#{registered_course.status}" %>
+    </span>
+  </td>
+  <td class="width-20-pc col-center">
+    <div class="btn-group btn-group-xs">
+      <% if registered_course.pending? %>
+        <%= link_to members_user_course_path(registered_course),
+          method: :delete, class: "btn btn-danger",
+          data: {confirm: "Bạn có chắc chắn muốn xóa không?"} do %>
+          <i class="fa fa-trash"></i>
+        <% end %>
+      <% else %>
+        <%= link_to "", class: "btn btn-default" do %>
+          <i class="fa fa-eye"></i>
+        <% end %>
+      <% end %>
+    </div>
+  </td>
+</tr>

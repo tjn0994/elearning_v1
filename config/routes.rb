@@ -10,7 +10,6 @@ Rails.application.routes.draw do
   mount ActionCable.server => '/cable'
 
   get 'home' => 'static_pages#home'
-  resources :register_courses, only: [:index, :show]
 
   namespace :members do
     root 'static_pages#home'
@@ -27,10 +26,12 @@ Rails.application.routes.draw do
     end
     resources :activities
     resource :user_settings, only: :show
+    resources :register_courses, only: [:index, :show, :create]
+    resources :registered_courses, only: :index
   end
 
   namespace :teachers do
-    root 'courses#index'
+    # root 'courses#index'
     resources :users, only: [:show, :edit, :update]
     resources :courses do
       resources :lessons do
@@ -42,6 +43,8 @@ Rails.application.routes.draw do
       resources :register_courses
     end
     resource :user_settings, only: :show
+    resources :user_register_courses, only: :index
+    resources :set_status_user_register_courses, only: :index
   end
 
   namespace :admins do

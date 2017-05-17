@@ -1,0 +1,38 @@
+<div class="row margin-top-20">
+  <div class="col-md-4">
+    <table class="table table-borderless table-pricing animation-fadeIn table-featured">
+      <thead>
+        <tr>
+          <th class="table-featured"><%= @course.name %></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><%= image_tag @course.image.url, style: "width: 100%",
+          class: "height-200" %></td>
+        </tr>
+        <% if @course.description.present? %>
+          <tr>
+            <td><%= @course.description %></td>
+          </tr>
+        <% end %>
+        <tr>
+          <td>
+            Khóa học: <%= l @course.date_from, format: :date_month_year %> ->
+            <%= l @course.date_to, format: :date_month_year %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+           Giáo viên: <%= @course.owner_name %>
+          </td>
+        </tr>
+        <tr>
+          <td class="table-price">
+              <h1>$9<br><small>per month</small></h1>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

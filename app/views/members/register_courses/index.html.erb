@@ -1,0 +1,91 @@
+<%= javascript_include_tag "register_courses", "data-turbolinks-track": true %>
+<div class="row margin-top-20">
+  <% @courses.each do |course| %>
+    <div class="col-md-4">
+      <!-- You can add the class 'table-featured' to feature the best plan. In this case, make sure to remove the hover functionality from js/pages/pricing.js -->
+        <table class="table table-borderless table-pricing animation-fadeIn table-featured">
+          <thead>
+            <tr>
+                <th class="table-featured"><%= course.name %></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><%= image_tag course.image.url, style: "width: 100%",
+              class: "height-200" %></td>
+            </tr>
+            <% if course.description.present? %>
+              <tr>
+                <td><%= course.description %></td>
+              </tr>
+            <% end %>
+            <tr>
+              <td>
+                Khóa học: <%= l course.date_from, format: :date_month_year %> ->
+                <%= l course.date_to, format: :date_month_year %>
+              </td>
+            </tr>
+            <tr>
+              <td>
+               Giáo viên: <%= course.owner_name %>
+              </td>
+            </tr>
+            <tr>
+              <td class="table-price">
+                  <h1>$9<br><small>per month</small></h1>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                 Thời gian còn lại đăng ký: <span id="time-<%= course.id %>"></span>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <button type="button" class="btn btn-primary"
+                  data-toggle="modal" data-target="#sign-up-register-course-<%= course.id %>"
+                  data-backdrop="static" data-keyboard="false">
+                  Đăng ký
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      <!-- modal -->
+        <div class="modal fade" role="dialog" id="sign-up-register-course-<%= course.id %>">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;
+                </button>
+                <h4 class="modal-title"><center>Bạn có chắc chắn muốn đăng ký</center></h4>
+              </div>
+              <br>
+              <div class="">
+                <%= form_tag(url: "members/register_courses") do |f| %>
+                  <%= hidden_field_tag :id, course.id  %>
+                  <div class="row">
+                    <div>
+                      <center>Khóa học: <%= course.name %></center>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div>
+                      <center>Thời gian: <%= course.date_from %> -> <%= course.date_to %></center>
+                    </div>
+                  </div>
+                  <br>
+                  <br>
+                  <div class="form-group">
+                    <center><%= submit_tag "Đăng ký", class: "btn btn-primary" %></center>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      <!-- modal end -->
+    </div>
+  <% end %>
+</div>
+

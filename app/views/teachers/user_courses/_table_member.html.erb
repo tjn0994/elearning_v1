@@ -4,7 +4,7 @@
     <table class="table table-bordered table-hover checkbox-member">
       <thead>
         <tr class="table-center">
-          <th class="font-size-15">#</th>
+          <th class="font-size-15">Stt</th>
           <th class="font-size-15">Tên</th>
           <th class="font-size-15">Email</th>
           <th class="font-size-15">Số điện thoại</th>
@@ -13,7 +13,7 @@
       </thead>
       <tbody class="table-center">
         <%= render partial: "list_member", collection: @user_inside_courses,
-          as: :user %>
+          as: :user_course %>
       </tbody>
     </table>
     </div>

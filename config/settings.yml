@@ -12,6 +12,7 @@ per_page:
     post: 10
     comment: 10
     notification: 10
+    registered_course: 10
   teachers:
     user: 10
     course: 6

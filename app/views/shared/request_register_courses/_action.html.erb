@@ -1,0 +1,12 @@
+<% if request.pending? %>
+  <%= link_to "Chấp nhận", teachers_set_status_user_register_courses_path(id: request.id, status: 1),
+    class: "btn btn-success btn-xs" %>
+  <%= link_to "Từ chối", teachers_set_status_user_register_courses_path(id: request.id, status: 2),
+    class: "btn btn-danger btn-xs" %>
+<% elsif request.active? %>
+  <%= link_to "Từ chối", teachers_set_status_user_register_courses_path(id: request.id, status: 2),
+    class: "btn btn-danger btn-xs" %>
+<% elsif request.block? %>
+  <%= link_to "Chấp nhận", teachers_set_status_user_register_courses_path(id: request.id, status: 1),
+    class: "btn btn-success btn-xs" %>
+<% end %>

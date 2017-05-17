@@ -1,12 +1,12 @@
 <tr>
   <td>
     <%= current_index @user_inside_courses.current_page,
-      Settings.per_page.teachers.user, user_counter %>
+      Settings.per_page.teachers.user, user_course_counter %>
   </td>
-  <td><%= user.name %></td>
-  <td><%= user.email %></td>
-  <td><%= user.number_of_phone %></td>
+  <td><%= user_course.user_name %></td>
+  <td><%= user_course.user_email %></td>
+  <td><%= user_course.user_number_of_phone %></td>
   <td class="text-center">
-    <%= check_box_tag "courses[list_user][]", user.id %>
+    <%= check_box_tag "courses[list_user][]", user_course.user_id %>
   </td>
 </tr>

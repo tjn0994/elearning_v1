@@ -1,21 +1,23 @@
 <% provide :title, t(".title") %>
 <div class="container custom_width">
   <h3 class="text-center">Danh sách khóa học</h3>
+  <br>
+  <br>
   <div class="row">
     <% if @user_courses.blank? %>
       <span>Bạn chưa đăng ký khóa học nào. Bạn có thể vào đây để
-      <%= link_to "đăng ký khóa học", register_courses_path %> mà bạn mong muốn </span>
+      <%= link_to "đăng ký khóa học", members_register_courses_path %> mà bạn mong muốn </span>
     <% else %>
-      <% @user_courses.each do |course| %>
+      <% @user_courses.each do |user_course| %>
         <div class="col-sm-6 col-md-4 ">
           <div class="thumbnail product">
             <div class="caption">
               <div class="img-caption">
-                  <%= link_to image_tag(course.image.url, style: "height:300px; width: 300px"),
-                    members_course_lessons_path(course),
+                  <%= link_to image_tag(user_course.course.image.url, style: "height:300px; width: 300px"),
+                    members_course_lessons_path(user_course.course),
                     class: "widget widget-hover-effect4 themed-background height-300 width-300" %>
                 <p class="desc">
-                  <%= course.name %>
+                  <%= user_course.course.name %>
                 </p>
               </div>
             </div>
