@@ -13,10 +13,10 @@ class Admins::SetStatusCoursesController < DashboardController
         #   create_room course
         # end
       else
-        flash[:errors] = "errors"
+        flash[:errors] = "Cập nhật khóa học không thành công"
       end
     else
-      flash[:danger] = "not found"
+      flash[:errors] = "Không tìm thấy khóa học"
     end
     redirect_to admins_courses_path
   end
@@ -37,10 +37,10 @@ class Admins::SetStatusCoursesController < DashboardController
       name: course.name, session_id: session.session_id, status: 0
     if @room.blank?
       course.update status: 2
-      flash[:errors] = "create room not success"
+      flash[:errors] = "Tạo phòng không thành công"
     else
       UserNotifierMailer.send_email_after_approver(course.owner).deliver_later
-      flash[:success] = "success"
+      flash[:success] = "Tạo phòng thành công"
     end
   end
 

@@ -176,16 +176,21 @@ $(document).ready(function() {
           },
           messages: {
             'user[email]': {
-              required: "Email không được để trống"
+              required: "Email không được để trống",
+              email: "Email không hợp lệ"
             },
             'user[password]': {
-              required: "Mật khẩu không được để trống"
+              required: "Mật khẩu không được để trống",
+              minlength: "Mật khẩu ít nhất 6 ký tự"
             },
             'user[name]': {
-              required: "Tên không được để trống"
+              required: "Tên không được để trống",
+              minlength: "Tên ít nhất 2 ký tự"
             },
             'user[password_confirmation]': {
-              required: "Nhập lại mật khẩu không được để trống"
+              required: "Nhập lại mật khẩu không được để trống",
+              minlength: "Mật khẩu ít nhất 6 ký tự",
+              equalTo: "Xác nhận mật khẩu không đúng với mật khẩu"
             }
           }
         });
@@ -218,6 +223,21 @@ $(document).ready(function() {
             'user[current_password]': {
               required: true,
               minlength: 6
+            }
+          },
+          messages: {
+            'user[password]': {
+              required: "Mật khẩu không được để trống",
+              minlength: "Mật khẩu ít nhất 6 ký tự"
+            },
+            'user[current_password]': {
+              required: "Mật khẩu không được để trống",
+              minlength: "Mật khẩu ít nhất 6 ký tự"
+            },
+            'user[password_confirmation]': {
+              required: "Nhập lại mật khẩu không được để trống",
+              minlength: "Mật khẩu ít nhất 6 ký tự",
+              equalTo: "Xác nhận mật khẩu không đúng với mật khẩu"
             }
           }
         });

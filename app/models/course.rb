@@ -22,6 +22,10 @@ class Course < ApplicationRecord
     joins(:register_course)
       .where("register_courses.status = 0 and register_courses.date_close >= Date(?)", date)
   end
+  # scope :by_user_course_active, -> do
+  #   joins(:user_course)
+  #     .where("user_courses.status = 1")
+  # end
 
   mount_uploader :image, ImageUploader
 

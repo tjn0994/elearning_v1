@@ -20,6 +20,11 @@ vi:
       teacher: "Giáo viên"
       member: "Thành viên"
       admin: "Quản trị viên"
+  teacher:
+    user_courses:
+      pending: "Đang chờ"
+      active: "Chấp nhận"
+      block: "Từ chối"
   user:
     gender:
       female: "Nữ"

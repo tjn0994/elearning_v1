@@ -12,3 +12,4 @@ vi:
     failure:
       user:
         unauthenticated: "Vui lòng đăng nhập!"
+        not_found_in_database: "Email hoặc mật khẩu không đúng"

@@ -42,8 +42,8 @@ class Teachers::UserCoursesController < DashboardController
 
   def init_variables
     @user_outside_courses = User.not_in_course(@course.id)
-    @user_inside_courses = @course.users.recent.page(params[:page])
-      .per Settings.per_page.teachers.user
+    @user_inside_courses = @course.user_courses.where("user_courses.status = 1")
+      .recent.page(params[:page]).per Settings.per_page.teachers.user
     @user_course = @course.user_courses.build
   end
 

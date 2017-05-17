@@ -30,7 +30,7 @@
             <%= link_to "Trang chủ", root_path %>
           </li>
           <li>
-            <%= link_to "Đăng ký khóa học", register_courses_path %>
+            <%= link_to "Đăng ký khóa học", members_register_courses_path %>
           </li>
           <li>
             <%= link_to "Bài viết", publish_posts_path %>
@@ -63,6 +63,11 @@
                 <li>
                   <%= link_to members_user_courses_path do %>
                     <i class="fa fa-book"></i>&nbsp;&nbsp; Danh sách khóa học
+                  <% end %>
+                </li>
+                <li>
+                  <%= link_to members_registered_courses_path do %>
+                    <i class="fa fa-book"></i>&nbsp;&nbsp; Danh sách khóa học đang đăng ký
                   <% end %>
                 </li>
                 <li>
