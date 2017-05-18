@@ -1,41 +1,57 @@
-<!-- Footer -->
-<footer class="site-footer site-section">
-  <div class="container">
-      <!-- Footer Links -->
-    <div class="row">
-      <div class="col-sm-6 col-md-3">
-        <h4 class="footer-heading"></h4>
-        <ul class="footer-nav list-inline">
-          <li><a></a></li>
-          <li><a></a></li>
-          <li><a></a></li>
-        </ul>
-      </div>
-      <div class="col-sm-6 col-md-3">
-        <h4 class="footer-heading"></h4>
-        <ul class="footer-nav list-inline">
-          <li><a href="javascript:void(0)"></a></li>
-          <li><a href="javascript:void(0)"></a></li>
-        </ul>
-      </div>
-      <div class="col-sm-6 col-md-3">
-        <h4 class="footer-heading">Theo dõi</h4>
-        <ul class="footer-nav footer-nav-social list-inline">
-          <li><a href="javascript:void(0)"><i class="fa fa-facebook"></i></a></li>
-          <li><a href="javascript:void(0)"><i class="fa fa-twitter"></i></a></li>
-          <li><a href="javascript:void(0)"><i class="fa fa-google-plus"></i></a></li>
-          <li><a href="javascript:void(0)"><i class="fa fa-dribbble"></i></a></li>
-          <li><a href="javascript:void(0)"><i class="fa fa-rss"></i></a></li>
-        </ul>
-      </div>
-      <div class="col-sm-6 col-md-3">
-        <!-- <h4 class="footer-heading"><span id="year-copy">2017</span> &copy; <a href="http://goo.gl/TDOSuC">ProUI Frontend</a></h4> -->
-       <!--  <ul class="footer-nav list-inline">
-          <li>Crafted with <i class="fa fa-heart text-danger"></i> by <a href="http://goo.gl/vNS3I">pixelcave</a></li>
-        </ul> -->
-      </div>
+<footer class="footer-distributed">
+  <div class="footer-left">
+    <h3><span><%= t "company" %></span></h3>
+    <p class="footer-links">
+      <%= link_to t("footer.menu.home"), "#" %>
+      <%= link_to t("footer.menu.blog"), "#" %>
+      <%= link_to t("footer.menu.about"), "#" %>
+      <%= link_to t("footer.menu.faq"), "#" %>
+      <%= link_to t("footer.menu.contact"), "#" %>
+    </p>
+    <p class="footer-company-name">
+      <%= t "footer.company-name" %>
+    </p>
+  </div>
+  <div class="footer-center">
+    <div class="footer-icon">
+      <span>
+        <i class="fa fa-map-marker"></i>
+      </span>
+      <p>
+        <span>
+          <%= t "footer.address" %>
+        </span>
+      </p>
     </div>
-    <!-- END Footer Links -->
+    <div>
+      <i class="fa fa-phone"></i>
+      <p><%= t "footer.phone" %></p>
+    </div>
+    <div>
+      <i class="fa fa-envelope"></i>
+      <p>
+        <%= link_to t("footer.email"), "#" %>
+      </p>
+    </div>
+  </div>
+  <div class="footer-right">
+    <p class="footer-company-about">
+      <span><%= t "footer.introduce" %></span>
+      <%= t "footer.description" %>
+    </p>
+    <div class="footer-icons">
+      <%= link_to t "social.facebook", target: "_blank" do %>
+        <i class="fa fa-facebook"></i>
+      <% end %>
+      <%= link_to "#", target: "_blank" do %>
+        <i class="fa fa-twitter"></i>
+      <% end %>
+      <%= link_to t "social.github", target: "_blank" do %>
+        <i class="fa fa-github"></i>
+      <% end %>
+      <%= link_to t "social.link", target: "_blank" do %>
+        <i class="fa fa-linkedin"></i>
+      <% end %>
+    </div>
   </div>
 </footer>
-<!-- END Footer -->
