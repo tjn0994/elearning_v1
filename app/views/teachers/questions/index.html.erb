@@ -79,21 +79,9 @@
 
     <div class="clear-fix row col-center color-red" id="not-exist-question">
     </div>
-    <div class="clear-fix table-responsive row">
-      <table class="table table-bordered table-hover">
-        <thead>
-          <tr class="table-center">
-            <th class="width-5-pc font-size-15"> Stt </th>
-            <th class="font-size-15"> Tên </th>
-            <th class="width-15-pc font-size-15"> Thao tác </th>
-          </tr>
-        </thead>
-        <tbody id="list-question-search">
-          <%= render(@questions, course: @course, lesson: @lesson, questions: @questions) || "Dữ liệu không tồn tại" %>
-        </tbody>
-      </table>
+    <div id="list-question-search">
+      <%= render "table_question" %>
     </div>
-    <center id="load-page-question"><%= paginate @questions %></center>
   </div>
 </div>
 

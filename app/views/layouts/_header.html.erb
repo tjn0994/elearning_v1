@@ -35,9 +35,9 @@
           <li>
             <%= link_to "Bài viết", publish_posts_path %>
           </li>
-          <li>
-            <%= link_to "Manager", members_users_path%>
-          </li>
+          <!-- <li>
+            link_to "Manager", members_users_path
+          </li> -->
           <% if current_user.present? %>
             <li>
               <%= image_tag current_user.avatar.url, class: "width-40 height-40 img-circle" %>

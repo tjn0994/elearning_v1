@@ -16,12 +16,12 @@ class Members::RegisterCoursesController < ApplicationController
   def create
     if @course.user_courses.pluck(:user_id).include?(current_user.id)
       flash[:success] = "Bạn đã đăng ký khóa học này"
-      redirect_to :back
+      redirect_to members_register_courses_path
     else
       @user_course = @course.user_courses.new user_id: current_user.id
       if @user_course.save
         flash[:success] = "Đăng ký khóa học thành công"
-        redirect_to members_register_course_path(@course)
+        redirect_to members_register_courses_path
       else
         flash[:error] = "Đăng ký khóa học không thành công"
         redirect_to members_register_courses_path

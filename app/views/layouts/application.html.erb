@@ -14,15 +14,23 @@
       <br>
       <br>
       <br>
-      <div>
-        <%= render "shared/flash" %>
-        <%= yield %>
-      </div>
+      <% if @home.present? %>
+         <div>
+          <%= render "shared/flash" %>
+          <%= yield %>
+        </div>
+      <% else %>
+        <div class="container" style="min-height: 500px">
+          <%= render "shared/flash" %>
+          <%= yield %>
+        </div>
+      <% end %>
     <% unless user_signed_in? %>
       <%= render "layouts/sign_in_modal" %>
     <% end %>
     <a style="background: #1bbae1; opacity: 0.7" href="#" id="to-top"><i class="fa fa-angle-up"></i></a>
 
     <%= render "layouts/footer" %>
+    <script type='text/javascript'>window._sbzq||function(e){e._sbzq=[];var t=e._sbzq;t.push(["_setAccount",65191]);var n=e.location.protocol=="https:"?"https:":"http:";var r=document.createElement("script");r.type="text/javascript";r.async=true;r.src=n+"//static.subiz.com/public/js/loader.js";var i=document.getElementsByTagName("script")[0];i.parentNode.insertBefore(r,i)}(window);</script>
   </body>
 </html>

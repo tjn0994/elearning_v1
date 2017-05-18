@@ -290,143 +290,6 @@
   margin-left: -3px;
 }
 
-/* line 217, /home/sony/Documents/tmg_70/app/assets/stylesheets/custom.css.scss */
-.footer-distributed {
-  background-color: #292c2f;
-  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
-  box-sizing: border-box;
-  width: 100%;
-  text-align: left;
-  font: bold 16px sans-serif;
-  padding: 55px 50px;
-}
-
-/* line 226, /home/sony/Documents/tmg_70/app/assets/stylesheets/custom.css.scss */
-.footer-distributed .footer-left {
-  width: 35%;
-  display: inline-block;
-  vertical-align: top;
-  margin-left: 20px;
-}
-
-/* line 232, /home/sony/Documents/tmg_70/app/assets/stylesheets/custom.css.scss */
-.footer-distributed .footer-center {
-  width: 35%;
-  display: inline-block;
-  vertical-align: top;
-}
-
-/* line 237, /home/sony/Documents/tmg_70/app/assets/stylesheets/custom.css.scss */
-.footer-distributed .footer-right {
-  width: 20%;
-  display: inline-block;
-  vertical-align: top;
-  margin-left: 60px;
-}
-
-/* line 243, /home/sony/Documents/tmg_70/app/assets/stylesheets/custom.css.scss */
-.footer-distributed h3 span {
-  color: #5383d3;
-}
-
-/* line 246, /home/sony/Documents/tmg_70/app/assets/stylesheets/custom.css.scss */
-.footer-distributed h3 {
-  color: #ffffff;
-  font: normal 36px 'Cookie', cursive;
-  margin: 0;
-}
-
-/* line 251, /home/sony/Documents/tmg_70/app/assets/stylesheets/custom.css.scss */
-.footer-distributed .footer-links {
-  color: #ffffff;
-  margin: 20px 0 12px;
-  padding: 0;
-}
-
-/* line 256, /home/sony/Documents/tmg_70/app/assets/stylesheets/custom.css.scss */
-.footer-distributed .footer-links a {
-  display: inline-block;
-  line-height: 1.8;
-  text-decoration: none;
-  color: inherit;
-}
-
-/* line 262, /home/sony/Documents/tmg_70/app/assets/stylesheets/custom.css.scss */
-.footer-distributed .footer-company-name {
-  color: #8f9296;
-  font-size: 14px;
-  font-weight: normal;
-  margin: 0;
-}
-
-/* line 268, /home/sony/Documents/tmg_70/app/assets/stylesheets/custom.css.scss */
-.footer-distributed .footer-center i {
-  background-color: #33383b;
-  color: #ffffff;
-  font-size: 25px;
-  width: 38px;
-  height: 38px;
-  border-radius: 50%;
-  text-align: center;
-  line-height: 42px;
-  margin: 10px 15px;
-  vertical-align: middle;
-}
-
-/* line 280, /home/sony/Documents/tmg_70/app/assets/stylesheets/custom.css.scss */
-.footer-distributed .footer-center p span {
-  display: block;
-  font-weight: normal;
-  font-size: 14px;
-  line-height: 2;
-  width: 310px;
-}
-
-/* line 287, /home/sony/Documents/tmg_70/app/assets/stylesheets/custom.css.scss */
-.footer-distributed .footer-center p {
-  display: inline-block;
-  color: #ffffff;
-  vertical-align: middle;
-  margin: 0;
-}
-
-/* line 293, /home/sony/Documents/tmg_70/app/assets/stylesheets/custom.css.scss */
-.footer-distributed .footer-company-about {
-  line-height: 20px;
-  color: #92999f;
-  font-size: 13px;
-  font-weight: normal;
-}
-
-/* line 299, /home/sony/Documents/tmg_70/app/assets/stylesheets/custom.css.scss */
-.footer-distributed .footer-icons {
-  margin-top: 25px;
-}
-
-/* line 302, /home/sony/Documents/tmg_70/app/assets/stylesheets/custom.css.scss */
-.footer-distributed .footer-company-about span {
-  display: block;
-  color: #ffffff;
-  font-size: 14px;
-  font-weight: bold;
-  margin-bottom: 20px;
-}
-
-/* line 309, /home/sony/Documents/tmg_70/app/assets/stylesheets/custom.css.scss */
-.footer-distributed .footer-icons a {
-  display: inline-block;
-  width: 35px;
-  height: 35px;
-  cursor: pointer;
-  background-color: #33383b;
-  border-radius: 2px;
-  font-size: 20px;
-  color: #ffffff;
-  text-align: center;
-  line-height: 35px;
-  margin-right: 3px;
-  margin-bottom: 5px;
-}
 
 
 </style>
@@ -502,23 +365,20 @@
         <div class="row">
           <div class="text-center">
             <h2 class="title">
-              Developing Developers
+             Hệ thống Đào tạo trực tuyến
             </h2>
-            <h3 class="content">
-              Master new skills in programming, design and product building.
-            </h3>
           </div>
           <div class="col-md-4 col-sm-4">
             <div class="counters-v2">
               <i class="counters-v2-icon fa fa-book"></i>
               <figure class="counter color-base counters-v2-no">
-                37
+                <%= @courses.count  %>
               </figure>
               <h4 class="counters-v2-title">
-                Courses
+                KHÓA HỌC
               </h4>
               <span class="counters-v2-subtitle">
-              Completed
+
               </span>
             </div>
           </div>
@@ -526,13 +386,12 @@
             <div class="counters-v2">
               <i class="counters-v2-icon fa fa-mortar-board"></i>
               <figure class="counter color-base counters-v2-no">
-                37
+                <%= @teachers.count %>
               </figure>
               <h4 class="counters-v2-title">
-                Trainees
+                GIÁO VIÊN
               </h4>
               <span class="counters-v2-subtitle">
-              Learning
               </span>
             </div>
           </div>
@@ -540,13 +399,12 @@
             <div class="counters-v2">
               <i class="counters-v2-icon fa fa-users"></i>
               <figure class="counter color-base counters-v2-no">
-                37
+                <%= @members.count %>
               </figure>
               <h4 class="counters-v2-title">
-                Learning
+                THÀNH VIÊN
               </h4>
               <span class="counters-v2-subtitle">
-              Manage
               </span>
             </div>
           </div>
@@ -555,131 +413,6 @@
     </section>
   </div>
 </div>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<section class="site-content site-section">
-                <div class="container">
-                    <!-- Portfolio Filter Links -->
-                    <!-- Custom Portfolio functionality is initialized in js/pages/portfolio.js -->
-                    <!-- Add the category value you want each link in .portfolio-filter to filter out in its data-category attribute. Add the value 'all' to show all items -->
-                    <div class="site-block text-center">
-                        <div class="btn-group portfolio-filter">
-                            <a href="javascript:void(0)" class="btn btn-primary active" data-category="all">All</a>
-                            <a href="javascript:void(0)" class="btn btn-primary" data-category="design">Design</a>
-                            <a href="javascript:void(0)" class="btn btn-primary" data-category="development">Development</a>
-                            <a href="javascript:void(0)" class="btn btn-primary" data-category="logo">Logo</a>
-                        </div>
-                    </div>
-                    <!-- END Portfolio Filter Links -->
-
-                    <!-- Portfolio Items -->
-                    <!-- Add the category value for each item in its data-category attribute (for the filter functionality) -->
-                    <div class="row portfolio">
-                        <div class="col-sm-3 portfolio-item animation-fadeInQuick" data-category="design">
-                            <a href="portfolio_single.html">
-                                <img src="" alt="Image" class="img-responsive">
-                                <span class="portfolio-item-info"><strong>Project #1</strong></span>
-                            </a>
-                        </div>
-                        <div class="col-sm-3 portfolio-item animation-fadeInQuick" data-category="logo">
-                            <a href="portfolio_single.html">
-                                <img src="" alt="Image" class="img-responsive">
-                                <span class="portfolio-item-info"><strong>Project #2</strong></span>
-                            </a>
-                        </div>
-                        <div class="col-sm-3 portfolio-item animation-fadeInQuick" data-category="logo">
-                            <a href="portfolio_single.html">
-                                <img src="" alt="Image" class="img-responsive">
-                                <span class="portfolio-item-info"><strong>Project #3</strong></span>
-                            </a>
-                        </div>
-                        <div class="col-sm-3 portfolio-item animation-fadeInQuick" data-category="design">
-                            <a href="portfolio_single.html">
-                                <img src="" alt="Image" class="img-responsive">
-                                <span class="portfolio-item-info"><strong>Project #4</strong></span>
-                            </a>
-                        </div>
-                        <div class="col-sm-3 portfolio-item animation-fadeInQuick" data-category="logo">
-                            <a href="portfolio_single.html">
-                                <img src="" alt="Image" class="img-responsive">
-                                <span class="portfolio-item-info"><strong>Project #5</strong></span>
-                            </a>
-                        </div>
-                        <div class="col-sm-3 portfolio-item animation-fadeInQuick" data-category="design">
-                            <a href="portfolio_single.html">
-                                <img src="" alt="Image" class="img-responsive">
-                                <span class="portfolio-item-info"><strong>Project #6</strong></span>
-                            </a>
-                        </div>
-                        <div class="col-sm-3 portfolio-item animation-fadeInQuick" data-category="development">
-                            <a href="portfolio_single.html">
-                                <img src="" alt="Image" class="img-responsive">
-                                <span class="portfolio-item-info"><strong>Project #7</strong></span>
-                            </a>
-                        </div>
-                        <div class="col-sm-3 portfolio-item animation-fadeInQuick" data-category="development">
-                            <a href="portfolio_single.html">
-                                <img src="" alt="Image" class="img-responsive">
-                                <span class="portfolio-item-info"><strong>Project #8</strong></span>
-                            </a>
-                        </div>
-                        <div class="col-sm-3 portfolio-item animation-fadeInQuick" data-category="logo">
-                            <a href="portfolio_single.html">
-                                <img src="" alt="Image" class="img-responsive">
-                                <span class="portfolio-item-info"><strong>Project #9</strong></span>
-                            </a>
-                        </div>
-                        <div class="col-sm-3 portfolio-item animation-fadeInQuick" data-category="logo">
-                            <a href="portfolio_single.html">
-                                <img src="" alt="Image" class="img-responsive">
-                                <span class="portfolio-item-info"><strong>Project #10</strong></span>
-                            </a>
-                        </div>
-                        <div class="col-sm-3 portfolio-item animation-fadeInQuick" data-category="development">
-                            <a href="portfolio_single.html">
-                                <img src="" alt="Image" class="img-responsive">
-                                <span class="portfolio-item-info"><strong>Project #11</strong></span>
-                            </a>
-                        </div>
-                        <div class="col-sm-3 portfolio-item animation-fadeInQuick" data-category="design">
-                            <a href="portfolio_single.html">
-                                <img src="" alt="Image" class="img-responsive">
-                                <span class="portfolio-item-info"><strong>Project #12</strong></span>
-                            </a>
-                        </div>
-                        <div class="col-sm-3 portfolio-item animation-fadeInQuick" data-category="development">
-                            <a href="portfolio_single.html">
-                                <img src="" alt="Image" class="img-responsive">
-                                <span class="portfolio-item-info"><strong>Project #13</strong></span>
-                            </a>
-                        </div>
-                        <div class="col-sm-3 portfolio-item animation-fadeInQuick" data-category="logo">
-                            <a href="portfolio_single.html">
-                                <img src="" alt="Image" class="img-responsive">
-                                <span class="portfolio-item-info"><strong>Project #14</strong></span>
-                            </a>
-                        </div>
-                        <div class="col-sm-3 portfolio-item animation-fadeInQuick" data-category="development">
-                            <a href="portfolio_single.html">
-                                <img src="" alt="Image" class="img-responsive">
-                                <span class="portfolio-item-info"><strong>Project #15</strong></span>
-                            </a>
-                        </div>
-                        <div class="col-sm-3 portfolio-item animation-fadeInQuick" data-category="design">
-                            <a href="portfolio_single.html">
-                                <img src="" alt="Image" class="img-responsive">
-                                <span class="portfolio-item-info"><strong>Project #16</strong></span>
-                            </a>
-                        </div>
-                    </div>
-                    <!-- END Portfolio Items -->
-                </div>
-            </section>
-            <!-- END Content -->
 
 
 <!-- Scroll to top link, initialized in js/app.js - scrollToTop() -->

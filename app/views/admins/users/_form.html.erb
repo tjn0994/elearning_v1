@@ -86,7 +86,7 @@
           <div class="col-md-7 select-container">
             <% User.genders.keys.each do |key| %>
               <%= f.radio_button :gender, key %>
-              <%= t "dashboard.users.#{key}" %>
+              <%= t "admin.users.gender.#{key}" %>
               &nbsp;&nbsp;&nbsp;&nbsp;
             <% end %>
           </div>
@@ -97,7 +97,7 @@
           <div class="col-md-7 select-container">
             <% User.roles.keys.each do |key| %>
               <%= f.radio_button :role, key %>
-              <%= t "dashboard.users.#{key}" %>
+              <%= t "admin.users.role.#{key}" %>
               &nbsp;&nbsp;&nbsp;&nbsp;
             <% end %>
           </div>

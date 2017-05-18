@@ -647,7 +647,7 @@ a[data-toggle="lightbox-image"]:hover img {
     display: none;
     position: fixed;
     right: 20px;
-    bottom: 30px;
+    bottom: 50px;
     border-radius: 3px;
     padding: 0 12px 3px;
     font-size: 28px;
@@ -2104,4 +2104,158 @@ a.widget.widget-hover-effect4:hover {
 a.widget.widget-hover-effect4:active {
     -webkit-transform: rotate(-1deg) scale(0.95);
     transform: rotate(-1deg) scale(0.95);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* line 217, /home/sony/Documents/tmg_70/app/assets/stylesheets/custom.css.scss */
+.footer-distributed {
+  background-color: #292c2f;
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+  box-sizing: border-box;
+  width: 100%;
+  text-align: left;
+  font: bold 16px sans-serif;
+  padding: 20px 20px;
+}
+
+/* line 226, /home/sony/Documents/tmg_70/app/assets/stylesheets/custom.css.scss */
+.footer-distributed .footer-left {
+  width: 35%;
+  display: inline-block;
+  vertical-align: top;
+  margin-left: 20px;
+}
+
+/* line 232, /home/sony/Documents/tmg_70/app/assets/stylesheets/custom.css.scss */
+.footer-distributed .footer-center {
+  width: 35%;
+  display: inline-block;
+  vertical-align: top;
+}
+
+/* line 237, /home/sony/Documents/tmg_70/app/assets/stylesheets/custom.css.scss */
+.footer-distributed .footer-right {
+  width: 20%;
+  display: inline-block;
+  vertical-align: top;
+  margin-left: 60px;
+}
+
+/* line 243, /home/sony/Documents/tmg_70/app/assets/stylesheets/custom.css.scss */
+.footer-distributed h3 span {
+  color: #5383d3;
+}
+
+/* line 246, /home/sony/Documents/tmg_70/app/assets/stylesheets/custom.css.scss */
+.footer-distributed h3 {
+  color: #ffffff;
+  font: normal 36px 'Cookie', cursive;
+  margin: 0;
+}
+
+/* line 251, /home/sony/Documents/tmg_70/app/assets/stylesheets/custom.css.scss */
+.footer-distributed .footer-links {
+  color: #ffffff;
+  margin: 20px 0 12px;
+  padding: 0;
+}
+
+/* line 256, /home/sony/Documents/tmg_70/app/assets/stylesheets/custom.css.scss */
+.footer-distributed .footer-links a {
+  display: inline-block;
+  line-height: 1.8;
+  text-decoration: none;
+  color: inherit;
+}
+
+/* line 262, /home/sony/Documents/tmg_70/app/assets/stylesheets/custom.css.scss */
+.footer-distributed .footer-company-name {
+  color: #8f9296;
+  font-size: 14px;
+  font-weight: normal;
+  margin: 0;
+}
+
+/* line 268, /home/sony/Documents/tmg_70/app/assets/stylesheets/custom.css.scss */
+.footer-distributed .footer-center i {
+  background-color: #33383b;
+  color: #ffffff;
+  font-size: 25px;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 42px;
+  margin: 10px 15px;
+  vertical-align: middle;
+}
+
+/* line 280, /home/sony/Documents/tmg_70/app/assets/stylesheets/custom.css.scss */
+.footer-distributed .footer-center p span {
+  display: block;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 2;
+  width: 310px;
+}
+
+/* line 287, /home/sony/Documents/tmg_70/app/assets/stylesheets/custom.css.scss */
+.footer-distributed .footer-center p {
+  display: inline-block;
+  color: #ffffff;
+  vertical-align: middle;
+  margin: 0;
+}
+
+/* line 293, /home/sony/Documents/tmg_70/app/assets/stylesheets/custom.css.scss */
+.footer-distributed .footer-company-about {
+  line-height: 20px;
+  color: #92999f;
+  font-size: 13px;
+  font-weight: normal;
+}
+
+/* line 299, /home/sony/Documents/tmg_70/app/assets/stylesheets/custom.css.scss */
+.footer-distributed .footer-icons {
+  margin-top: 25px;
+}
+
+/* line 302, /home/sony/Documents/tmg_70/app/assets/stylesheets/custom.css.scss */
+.footer-distributed .footer-company-about span {
+  display: block;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+/* line 309, /home/sony/Documents/tmg_70/app/assets/stylesheets/custom.css.scss */
+.footer-distributed .footer-icons a {
+  display: inline-block;
+  width: 35px;
+  height: 35px;
+  cursor: pointer;
+  background-color: #33383b;
+  border-radius: 2px;
+  font-size: 20px;
+  color: #ffffff;
+  text-align: center;
+  line-height: 35px;
+  margin-right: 3px;
+  margin-bottom: 5px;
 }

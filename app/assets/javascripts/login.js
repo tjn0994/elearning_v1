@@ -280,11 +280,12 @@ $(document).ready(function() {
         validate_lesson(".edit_lesson");
         validate_lesson(".new_lesson");
 
-        validate_register_course(".edit_register_course");
-        validate_register_course(".new_register_course");
+        //validate_register_course(".edit_register_course");
+        //validate_register_course(".new_register_course");
 
-        validate_time_for_exam(".new_time_for_exam");
-        validate_time_for_exam(".edit_time_for_exam");
+        //validate_time_for_exam("#new_time_for_exam");
+        //validate_time_for_exam(".edit_time_for_exam");
+
       }
     };
   }();

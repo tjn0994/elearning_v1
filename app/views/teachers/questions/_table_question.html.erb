@@ -1,0 +1,17 @@
+<% if @questions.present? %>
+  <div class="clear-fix">
+    <table class="table table-bordered table-hover">
+      <thead>
+        <tr class="table-center">
+          <th class="width-5-pc font-size-15"> Stt </th>
+          <th class="font-size-15"> Tên </th>
+          <th class="width-15-pc font-size-15"> Thao tác </th>
+        </tr>
+      </thead>
+      <tbody>
+        <%= render(@questions, course: @course, lesson: @lesson, questions: @questions) %>
+      </tbody>
+    </table>
+    <center class="clear-fix row"><%= paginate @questions, remote: true %> </center>
+  </div>
+<% end %>

@@ -1,13 +1,7 @@
 <div class="login-title text-center">
   <h1>
     <i class="gi gi-flash"></i>
-    <strong><%= t "workspace"%> </strong>
-    <br>
-    <small>
-      <%= t "please" %>
-      <strong><%= t "enter_password_new" %></strong>
-    </small>
-  </h1>
+    <strong>Vui lòng nhập mật khâu mới</strong>
 </div>
 
 <div class="block push-bit" style="margin-bottom: 0 !important">
@@ -25,7 +19,7 @@
           </span>
           <div>
             <%= f.password_field :password, autofocus: true,
-              class: "form-control", placeholder: t("new_password") %>
+              class: "form-control", placeholder: "Nhập mật khẩu mới" %>
           </div>
         </div>
       </div>
@@ -38,14 +32,14 @@
           </span>
           <div>
             <%= f.password_field :password_confirmation, autofocus: true,
-              class: "form-control", placeholder: t("password_confirmation") %>
+              class: "form-control", placeholder: "Xác nhận mật khẩu" %>
           </div>
         </div>
       </div>
     </div>
     <div class="form-group form-actions" style="margin-left: 15px; margin-right: 15px">
       <div class="col-xs-8 text-right">
-        <%= f.submit t("reset_password"), class: "btn btn-sm btn-primary" %>
+        <%= f.submit "Cập nhật mật khẩu", class: "btn btn-sm btn-primary" %>
       </div>
     </div>
   <% end %>

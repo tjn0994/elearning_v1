@@ -1,25 +1,41 @@
+<%= javascript_include_tag "teachers/user_register_courses", "data-turbolinks-track": true %>
+<div class="clear-fix panel panel-default">
+  <div class="panel-heading">Tìm kiếm</div>
+  <div class="panel-body">
+    <%= search_form_for @search, url: teachers_user_register_courses_path,
+      class: "row col-md-offset-1" do |f| %>
+      <div class="form-group col-md-6">
+        <%= f.text_field :user_name_or_course_name_cont,
+          placeholder: "Nhập tên thành viên hoặc tên khóa học",
+          class: "form-control" %>
+      </div>
+      <div class="form-group col-md-2">
+        <%= f.select :course_id_eq,
+          @courses.collect {|value| [value.name, value.id]}, {include_blank: "Khóa học"},
+          class: "form-control", data:{toggle: "tooltip"}, id: "tooltip-course" %>
+      </div>
+      <div class="form-group col-md-2">
+        <%= f.select :status_eq,
+          @statuses.collect {
+            |value| [I18n.t("teacher.user_register_courses.#{value[0]}"), value[1]]
+          }, {include_blank: "Trạng thái"},
+          class: "form-control" %>
+      </div>
+      &nbsp;&nbsp;
+      <%= link_to teachers_user_register_courses_path do %>
+        <i class="fa fa-refresh btn btn-success"></i>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+
 <div class="row">
   <div class="col-md-12">
-    <div class="row clear-fix col-center color-red" id="not-exist-course-approve">
-    </div>
-    <div class="table-responsive">
-    <table class="table table-bordered table-hover">
-      <thead>
-        <tr class="table-center">
-          <th class="font-size-15">Stt</th>
-          <th class="font-size-15">Tên</th>
-          <th class="font-size-15">Email</th>
-          <th class="font-size-15">Tên khóa học</th>
-          <th class="font-size-15">Trạng thái</th>
-          <th class="font-size-15">Thao tác</th>
-        </tr>
-      </thead>
-      <tbody>
-        <%= render(partial: "user_course", collection: @user_courses, as: :user_course) || "Dữ liệu không tồn tại" %>
-      </tbody>
-    </table>
+    <div class="row clear-fix col-center color-red" id="not-exist-user-register-course">
     </div>
 
-    <center id="load-page-course-approve"><%= paginate @user_courses %></center>
+    <div id="list-user-register-course-search">
+      <%= render "table_user_register_course" %>
+    </div>
   </div>
 </div>

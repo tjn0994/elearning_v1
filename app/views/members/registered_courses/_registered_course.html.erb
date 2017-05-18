@@ -3,9 +3,7 @@
     <%= current_index @registered_courses.current_page,
       Settings.per_page.members.registered_course, registered_course_counter %>
   </td>
-  <td><%= registered_course.user_name %></td>
-  <td><%= registered_course.user_email%></td>
-  <td><%= registered_course.course_name %></td>
+  <td class="col-center"><%= registered_course.course_name %></td>
   <td class="width-10-pc col-center">
     <span class="label <%= label_css(registered_course) %>">
       <%= t "teacher.user_courses.#{registered_course.status}" %>
