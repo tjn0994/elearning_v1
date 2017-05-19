@@ -19,6 +19,8 @@ class User < ApplicationRecord
   has_one :user_setting, dependent: :destroy
 
   scope :recent, ->{order created_at: :desc}
+  scope :by_member, ->{where role: :member}
+  scope :by_teacher, ->{where role: :teacher}
   scope :not_in_course, ->course_id do
     where "id NOT IN (select user_id from user_courses where course_id = ? and status = 1)", course_id
   end

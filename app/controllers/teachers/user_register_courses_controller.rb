@@ -1,6 +1,14 @@
 class Teachers::UserRegisterCoursesController < DashboardController
   def index
-    @user_courses = UserCourse.by_not_active.by_author(current_user.id).page(params[:page])
-      .per Settings.per_page.admins.course
+    @search = UserCourse.by_author(current_user.id).joins(:user, :course).ransack(params[:q])
+    @user_courses = @search.result.page(params[:page])
+      .per Settings.per_page.teachers.user_register_course
+    @statuses = UserCourse.statuses
+    @courses = Course.by_author(current_user.id)
+    if request.xhr?
+      respond_to do |format|
+        format.js{}
+      end
+    end
   end
 end

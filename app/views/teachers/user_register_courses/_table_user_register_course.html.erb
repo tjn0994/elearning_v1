@@ -1,0 +1,21 @@
+<% if @user_courses.present? %>
+  <div class="table-responsive">
+    <table class="table table-bordered table-hover">
+      <thead>
+        <tr class="table-center">
+          <th class="font-size-15">Stt</th>
+          <th class="font-size-15">Tên</th>
+          <th class="font-size-15">Email</th>
+          <th class="font-size-15">Tên khóa học</th>
+          <th class="font-size-15">Trạng thái</th>
+          <th class="font-size-15">Thao tác</th>
+        </tr>
+      </thead>
+      <tbody>
+        <%= render(partial: "user_course", collection: @user_courses, as: :user_course) %>
+      </tbody>
+    </table>
+  </div>
+
+  <center><%= paginate @user_courses, remote: true %></center>
+<% end %>

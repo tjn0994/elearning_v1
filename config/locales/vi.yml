@@ -1,4 +1,10 @@
 vi:
+  views:
+    pagination:
+      next: "Kế tiếp"
+      last: "Cuối cùng"
+      previous: "Trước"
+      first: "Đầu tiên"
   answers:
     true_: "Đúng"
     false_: "Sai"
@@ -20,8 +26,21 @@ vi:
       teacher: "Giáo viên"
       member: "Thành viên"
       admin: "Quản trị viên"
+    users:
+      gender:
+        female: "Nữ"
+        male: "Nam"
+        other: "Khác"
+      role:
+        teacher: "Giáo viên"
+        member: "Thành viên"
+        admin: "Quản trị viên"
   teacher:
     user_courses:
+      pending: "Đang chờ"
+      active: "Chấp nhận"
+      block: "Từ chối"
+    user_register_courses:
       pending: "Đang chờ"
       active: "Chấp nhận"
       block: "Từ chối"
@@ -34,6 +53,11 @@ vi:
       teacher: "Giáo viên"
       member: "Thành viên"
       admin: "Quản trị viên"
+  members:
+    registered_courses:
+      pending: "Đang chờ"
+      active: "Chấp nhận"
+      block: "Từ chối"
   date:
     formats:
       default: "%m/%d/%Y"
@@ -69,3 +93,4 @@ vi:
     link: "https://www.linkedin.com/company/3341218?trk=tyah&amp;
       trkInfo=clickedVertical%3Acompany%2CclickedEntityId%
       3A3341218%2Cidx%3A2-1-2%2CtarId%3A1465497556522%2Ctas%3Aframgia%20vietnam"
+

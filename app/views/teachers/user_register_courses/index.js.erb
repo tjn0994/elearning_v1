@@ -1,0 +1,3 @@
+$('#list-user-register-course-search')
+  .html('<%= j render("table_user_register_course") %>');
+$('#not-exist-user-register-course').html('<%= "Dữ liệu không tìm thấy" if @search.result.blank? %>');

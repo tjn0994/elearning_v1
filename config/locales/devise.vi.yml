@@ -9,6 +9,8 @@ vi:
         send_instructions: "Vui lòng vào email để kiểm tra để lấy lại mật khẩu"
     registrations:
       updated: "Cập nhật thành công"
+      user:
+        signed_up: "Đăng ký tài khoản thành công"
     failure:
       user:
         unauthenticated: "Vui lòng đăng nhập!"

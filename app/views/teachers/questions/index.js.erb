@@ -1,4 +1,3 @@
 $('#list-question-search')
-  .html('<%= j render(@questions, course: @course, lesson: @lesson, questions: @questions) %>');
-$('#load-page-question').html('<%= paginate @questions %>');
+  .html('<%= j render("table_question") %>');
 $('#not-exist-question').html('<%= "Dữ liệu không tìm thấy" if @search.result.blank? %>');

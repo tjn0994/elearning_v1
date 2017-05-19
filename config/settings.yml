@@ -19,6 +19,7 @@ per_page:
     lesson: 9
     question: 10
     user_course: 10
+    user_register_course: 10
   publish:
     post: 8
     room: 8

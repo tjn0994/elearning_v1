@@ -101,14 +101,27 @@ class Course < ApplicationRecord
     courses = Course.by_author(self.owner_id).by_active
     courses.each do |course|
       if id.present?
-        next if course.id == id
-      end
-      course.timesheets.each do |k|
-        timesheets.each_with_index do |timesheet, index|
-          if k.day_name == timesheet.day_name
-            unless timesheet.time_from.strftime("%H:%M") >= k.time_to.strftime("%H:%M") ||
-              timesheet.time_to.strftime("%H:%M") <= k.time_from.strftime("%H:%M")
-              return errors.add :time_register, ["Thời gian bị trùng ở khóa học #{course.name}, bạn nên sắp xếp lại thời gian", index]
+        unless course.id == id
+          course.timesheets.each do |k|
+            timesheets.each_with_index do |timesheet, index|
+              if k.day_name == timesheet.day_name
+                binding.pry
+                unless timesheet.time_from.strftime("%H:%M") >= k.time_to.strftime("%H:%M") ||
+                  timesheet.time_to.strftime("%H:%M") <= k.time_from.strftime("%H:%M")
+                  return errors.add :time_register, ["Thời gian bị trùng ở khóa học #{course.name}, bạn nên sắp xếp lại thời gian", index]
+                end
+              end
+            end
+          end
+        end
+      else
+        course.timesheets.each do |k|
+          timesheets.each_with_index do |timesheet, index|
+            if k.day_name == timesheet.day_name
+              unless timesheet.time_from.strftime("%H:%M") >= k.time_to.strftime("%H:%M") ||
+                timesheet.time_to.strftime("%H:%M") <= k.time_from.strftime("%H:%M")
+                return errors.add :time_register, ["Thời gian bị trùng ở khóa học #{course.name}, bạn nên sắp xếp lại thời gian", index]
+              end
             end
           end
         end

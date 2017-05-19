@@ -164,3 +164,7 @@
   border: 1px solid rgba(0, 0, 0, 0.32);
   border-radius: 5px;
 }
+
+.bottom-50 {
+  bottom: 50px;
+}

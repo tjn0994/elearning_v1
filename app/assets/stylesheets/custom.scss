@@ -516,6 +516,81 @@ a.list-group-item.active > .badge {
   overflow-y: auto;
 }
 
+
+/* Labels, Badges */
+.label,
+.badge {
+    font-weight: normal;
+    font-size: 90%;
+}
+
+.label {
+    padding: 1px 4px;
+}
+
+.badge {
+    background: url('../img/template/ie8_opacity_dark_30.png') repeat;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 3px 6px;
+}
+
+.label-danger {
+    background-color: #e74c3c;
+}
+
+.label-danger[href]:hover,
+.label-danger[href]:focus {
+    background-color: #9c3428;
+}
+
+.label-warning {
+    background-color: #f39c12;
+}
+
+.label-warning[href]:hover,
+.label-warning[href]:focus {
+    background-color: #ff8b26;
+}
+
+.label-success {
+    background-color: #7db831;
+}
+
+.label-success[href]:hover,
+.label-success[href]:focus {
+    background-color: #aad178;
+}
+
+.label-info {
+    background-color: #2980b9;
+}
+
+.label-info[href]:hover,
+.label-info[href]:focus {
+    background-color: #2f92d4;
+}
+
+.label-primary {
+    background-color: #1bbae1;
+}
+
+.label-primary[href]:hover,
+.label-primary[href]:focus {
+    background-color: #5ac5e0;
+}
+
+.label-default {
+    background-color: #999999;
+}
+
+.label-default[href]:hover,
+.label-default[href]:focus {
+    background-color: #777777;
+}
+
+
+
+
 /* user setting */
 
 .onoffswitch {
@@ -664,4 +739,8 @@ ol.upper-alpha {list-style-type: upper-alpha;}
   border: 1px solid rgba(0, 0, 0, 0.32);
   border-radius: 5px;
   height: 200px
+}
+
+#error_explanation ul {
+  list-style-type: none
 }

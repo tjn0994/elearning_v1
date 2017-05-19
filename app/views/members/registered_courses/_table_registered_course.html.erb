@@ -1,0 +1,16 @@
+<% if @registered_courses.present? %>
+  <table class="table table-bordered table-hover">
+    <thead>
+      <tr class="table-center">
+        <th class="font-size-15">Stt</th>
+        <th class="font-size-15">Tên khóa học</th>
+        <th class="font-size-15">Trạng thái</th>
+        <th class="font-size-15">Thao tác</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= render(partial: "registered_course", collection: @registered_courses, as: :registered_course) %>
+    </tbody>
+  </table>
+  <center><%= paginate @registered_courses, remote: true %></center>
+<% end %>

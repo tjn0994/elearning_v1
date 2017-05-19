@@ -9,7 +9,7 @@ class Teachers::RegisterCoursesController < ApplicationController
   end
 
   def create
-    ovrride_params params[:register_course][:date_open], params[:register_course][:date_close]
+    override_params params[:register_course][:date_open], params[:register_course][:date_close]
     @register_course = RegisterCourse.new register_course_params.merge!(course_id: @course.id)
     if @register_course.save
       respond_to do |format|
@@ -27,7 +27,7 @@ class Teachers::RegisterCoursesController < ApplicationController
   end
 
   def update
-    ovrride_params params[:register_course][:date_open], params[:register_course][:date_close]
+    override_params params[:register_course][:date_open], params[:register_course][:date_close]
     if @register_course.update_attributes register_course_params
       respond_to do |format|
         format.js{}
@@ -57,8 +57,10 @@ class Teachers::RegisterCoursesController < ApplicationController
     redirect_to teachers_courses_path
   end
 
-  def ovrride_params date_open, date_close
-    params[:register_course][:date_open] =  DateTime.parse(date_open).beginning_of_day.to_s
-    params[:register_course][:date_close] = DateTime.parse(date_close).end_of_day.to_s
+  def override_params date_open, date_close
+    if date_open.present? && date_close.present?
+      params[:register_course][:date_open] =  DateTime.parse(date_open).beginning_of_day.to_s
+      params[:register_course][:date_close] = DateTime.parse(date_close).end_of_day.to_s
+    end
   end
 end

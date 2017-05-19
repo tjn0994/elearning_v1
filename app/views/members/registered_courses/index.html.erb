@@ -1,25 +1,34 @@
+<%= javascript_include_tag "members/registered_courses", "data-turbolinks-track": true %>
 <div class="row">
-  <div class="col-md-12">
-    <div class="row clear-fix col-center color-red" id="not-exist-course-approve">
+  <div class="col-md-10 col-md-offset-1">
+    <div class="clear-fix panel panel-default">
+      <div class="panel-heading">Tìm kiếm</div>
+      <div class="panel-body">
+        <%= search_form_for @search, url: members_registered_courses_path,
+          class: "row col-md-offset-1" do |f| %>
+          <div class="form-group col-md-7">
+            <%= f.text_field :course_name_cont,
+              placeholder: "Nhập tên khóa học",
+              class: "form-control" %>
+          </div>
+          <div class="form-group col-md-3">
+            <%= f.select :status_eq,
+              @statuses.collect {
+                |value| [I18n.t("members.registered_courses.#{value[0]}"), value[1]]
+              }, {include_blank: "Trạng thái"},
+              class: "form-control" %>
+          </div>
+          &nbsp;&nbsp;
+          <%= link_to members_registered_courses_path do %>
+            <i class="fa fa-refresh btn btn-success"></i>
+          <% end %>
+        <% end %>
+      </div>
     </div>
-    <div class="table-responsive">
-    <table class="table table-bordered table-hover">
-      <thead>
-        <tr class="table-center">
-          <th class="font-size-15">Stt</th>
-          <th class="font-size-15">Tên</th>
-          <th class="font-size-15">Email</th>
-          <th class="font-size-15">Tên khóa học</th>
-          <th class="font-size-15">Trạng thái</th>
-          <th class="font-size-15">Thao tác</th>
-        </tr>
-      </thead>
-      <tbody>
-        <%= render(partial: "registered_course", collection: @registered_courses, as: :registered_course) || "Dữ liệu không tồn tại" %>
-      </tbody>
-    </table>
+    <div class="row clear-fix col-center color-red" id="not-exist-registered-course">
     </div>
-
-    <center id="load-page-course-approve"><%= paginate @registered_courses %></center>
+    <div class="table-responsive" id="registered-course-search">
+      <%= render "table_registered_course" %>
+    </div>
   </div>
 </div>
