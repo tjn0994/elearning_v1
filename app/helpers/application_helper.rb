@@ -33,4 +33,51 @@ module ApplicationHelper
   def bg_unread notification
     "unread" unless notification.read
   end
+
+
+  def activity_of_member activity
+    case activity.trackable_type
+    when "Post"
+      activity.trackable.title
+    when "User"
+      activity.trackable.name
+    when "Course"
+      activity.trackable.name
+    when "Category"
+      activity.trackable.name
+    when "Lesson"
+      activity.trackable.name
+    end
+  end
+
+  def event_model key
+    case key
+    when "create"
+      "Tạo"
+    when "update"
+      "Cập nhật"
+    when "destroy"
+      "Xóa"
+    when "active"
+      "Chấp nhận"
+    when "block"
+      "Từ chối"
+    end
+  end
+
+  def activity_name_of_member trackable_type
+    case trackable_type
+    when "Post"
+      "bài viết"
+    when "User"
+      "thành viên"
+    when "Course"
+      "khóa học"
+    when "Category"
+      "danh mục"
+    when "Lesson"
+      "bài học"
+    end
+  end
 end
+

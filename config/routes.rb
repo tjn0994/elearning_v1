@@ -24,7 +24,7 @@ Rails.application.routes.draw do
         resources :exams
       end
     end
-    resources :activities
+    resources :activities, only: :index
     resource :user_settings, only: :show
     resources :register_courses, only: [:index, :show, :create]
     resources :registered_courses, only: :index
@@ -45,6 +45,7 @@ Rails.application.routes.draw do
     resource :user_settings, only: :show
     resources :user_register_courses, only: :index
     resources :set_status_user_register_courses, only: :index
+    resources :activities, only: :index
   end
 
   namespace :admins do
@@ -55,6 +56,7 @@ Rails.application.routes.draw do
     resources :courses
     resources :set_status_courses, only: :index
     resource :user_settings, only: :show
+    resources :activities, only: :index
   end
 
   namespace :publish do

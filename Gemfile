@@ -43,6 +43,7 @@ gem "delayed_job_active_record"
 gem "validates_serialized"
 gem "gon"
 gem "ransack"
+gem "acts_as_paranoid", "~> 0.5.0"
 # Use Capistrano for deployment
 # gem "capistrano-rails", group: :development
 

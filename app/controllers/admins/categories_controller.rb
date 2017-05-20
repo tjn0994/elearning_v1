@@ -7,6 +7,11 @@ class Admins::CategoriesController < DashboardController
     @search = Category.ransack(params[:q])
     @categories =  @search.result.recent.page(params[:page])
       .per Settings.per_page.admins.category
+    if request.xhr?
+      respond_to do |format|
+        format.js{}
+      end
+    end
   end
 
   def new
@@ -59,7 +64,7 @@ class Admins::CategoriesController < DashboardController
     end
     if @destroy.blank?
       if @category.destroy
-        create_activity_for_category
+        # create_activity_for_category
         flash[:success] = "Xóa danh mục thành công"
       else
         flash[:error] = "Xóa danh mục không thành công"
