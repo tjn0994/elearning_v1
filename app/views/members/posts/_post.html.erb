@@ -4,7 +4,7 @@
       <%= image_tag post.user.avatar.url, class: "width-100-pc img-circle" %>
     </div>
     <div class="col-md-8">
-      <div><b><%= post.title %></b></div>
+      <div><b><%= link_to post.title, members_user_post_path(@user, post) %></b></div>
       <div>
         Ngày: <%= l post.created_at, format: :date_month_year_v1 %>
       </div>

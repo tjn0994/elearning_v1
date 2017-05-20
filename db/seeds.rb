@@ -21,19 +21,23 @@ User.create!( name:  "Teacher",
   role: 1
 )
 
-User.create!( name:  "Member",
-  email: "member@gmail.com",
-  password: "123456",
-  password_confirmation: "123456",
-  number_of_phone: "0969304641",
-  role: 2
-)
+(0..20).each do |i|
+  User.create!( name:  "Member#{i+1}",
+    email: "member#{i+1}@gmail.com",
+    password: "123456",
+    password_confirmation: "123456",
+    number_of_phone: "0969304641",
+    role: 2
+  )
+end
 
 Category.create!(name: "Ngoại ngữ",
   types_attributes: [{name: "Tiếng Anh"}, {name: "Tiếng Nhật"}, {name: "Tiếng Hàn"}, {name: "Tiếng Trung"}]
 )
 
 Category.create!(name: "Ngôn ngữ lập trình",
-  types_attributes: [{name: "C ++"}, {name: "JAVA"}, {name: "PHP"}, {name: "RUBY"}, {name: ".NET"}]
+  types_attributes: [{name: "C #"}, {name: "JAVA"}, {name: "PHP"}, {name: "RUBY"}, {name: ".NET"}]
 )
+
+
 

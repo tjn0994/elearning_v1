@@ -4,6 +4,7 @@
   var sessionId = "<%= @room.session_id %>";
   var token = "<%= @tok_token %>";
   var session;
+  var role = <%= @room.owner_id == current_user.id %>;
 
 //  TB.addEventListener('exception', exceptionHandler);
 
@@ -24,7 +25,11 @@ TB.setLogLevel(TB.DEBUG);
     };
  var publisher;
     function sessionConnectedHandler(event) {
-      publisher = TB.initPublisher(apiKey, 'videobox', publisherOptions);
+      if(role == true){
+        publisher = TB.initPublisher(apiKey, 'owner', publisherOptions);
+      } else {
+        publisher = TB.initPublisher(apiKey, 'member');
+      }
       session.publish(publisher);
       // Subscribe to streams that were in the session when we connected
       subscribeToStreams(event.streams);
@@ -40,7 +45,9 @@ TB.setLogLevel(TB.DEBUG);
         }
         var div = document.createElement('div');
         div.setAttribute('id', 'stream' + streams[i].streamId);
-        document.body.appendChild(div);
+        div.setAttribute('class', "col-md-3");
+        // document.body.appendChild(div);
+        $('.kasansan').append(div);
         session.subscribe(streams[i], div.id);
       }
     }
@@ -49,8 +56,12 @@ TB.setLogLevel(TB.DEBUG);
 <div id="invitation"></div>
 <div class="row">
   <div class="col-md-8 col-md-offset-2 height-500">
-    <div id="videobox"></div>
+    <div id="owner"></div>
   </div>
+</div>
+<br>
+<div class="row kasansan" id="member">
+
 </div>
 <br>
 
