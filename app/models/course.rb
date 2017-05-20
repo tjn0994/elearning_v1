@@ -105,7 +105,6 @@ class Course < ApplicationRecord
           course.timesheets.each do |k|
             timesheets.each_with_index do |timesheet, index|
               if k.day_name == timesheet.day_name
-                binding.pry
                 unless timesheet.time_from.strftime("%H:%M") >= k.time_to.strftime("%H:%M") ||
                   timesheet.time_to.strftime("%H:%M") <= k.time_from.strftime("%H:%M")
                   return errors.add :time_register, ["Thời gian bị trùng ở khóa học #{course.name}, bạn nên sắp xếp lại thời gian", index]
