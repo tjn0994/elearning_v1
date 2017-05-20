@@ -9,6 +9,11 @@ class Admins::UsersController < DashboardController
     @users = @search.result.recent.page(params[:page])
       .per Settings.per_page.admins.user
     @roles = User.roles
+    if request.xhr?
+      respond_to do |format|
+        format.js{}
+      end
+    end
   end
 
   def new

@@ -1,0 +1,24 @@
+<% if @courses.present? %>
+  <table class="table table-bordered table-hover">
+    <thead>
+      <tr class="table-center">
+        <th class="font-size-15">Stt</th>
+        <th class="font-size-15"><%= sort_link @search, :name, "Tên", {},
+          {:remote => true} %>
+        </th>
+        <th class="font-size-15">Mô tả</th>
+        <th class="font-size-15">Ảnh</th>
+        <th class="font-size-15"><%= sort_link @search, :owner_name, "Giáo viên", {},
+          {:remote => true} %>
+        </th>
+        <th class="font-size-15">Người xác nhận</th>
+        <th class="font-size-15">Trạng thái</th>
+        <th class="font-size-15">Thao tác</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= render(@courses, courses: @courses) %>
+    </tbody>
+  </table>
+  <center><%= paginate @courses, remote: true %></center>
+<% end %>
