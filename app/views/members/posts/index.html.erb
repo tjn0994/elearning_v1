@@ -1,23 +1,50 @@
 <%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
-<br>
+<%= javascript_include_tag "members/posts", "data-turbolinks-track": true %>
 <div class="row">
   <div class="col-md-8">
     <br>
-    <% if @user.is_user? current_user %>
-      <div class="row pull-right">
-        <%= link_to new_members_user_post_path(@user),
-          class: "btn btn-sm btn-success" do %>
-          <i class="fa fa-pencil-square-o fa-fw"></i>Tạo bài viết
-        <% end %>
-      </div>
+    <% if current_user.present? %>
+      <% if @user.is_user? current_user %>
+        <div class="row pull-right">
+          <%= link_to new_members_user_post_path(@user),
+            class: "btn btn-sm btn-success" do %>
+            <i class="fa fa-pencil-square-o fa-fw"></i>Tạo bài viết
+          <% end %>
+        </div>
+      <% end %>
     <% end %>
     <br>
     <br>
+
+    <div class="clear-fix row panel panel-default col-md-offset-1">
+      <div class="panel-heading">Tìm kiếm</div>
+      <div class="panel-body">
+        <%= search_form_for [:members, @user, @search], remote: true,
+          class: "row col-md-offset-1" do |f| %>
+          <div class="form-group col-md-7">
+            <%= f.text_field :title_cont,
+              placeholder: "Nhập tên bài viết",
+              class: "form-control" %>
+          </div>
+          <div class="form-group col-md-3">
+            <%= f.select :type_id_eq,
+              @types.collect {|value| [value.name, value.id]}, {include_blank: "Loại"},
+              class: "form-control" %>
+          </div>
+          &nbsp;&nbsp;
+          <%= link_to members_user_posts_path(@user) do %>
+            <i class="fa fa-refresh btn btn-success"></i>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+
     <br>
-    <ul style="list-style-type: none">
-      <%= render(@posts, posts: @posts) || "Chưa có dữ liệu" %>
-    </ul>
-    <center><%= paginate @posts %></center>
+    <div class="row clear-fix col-center color-red" id="not-exist-ul-post">
+    </div>
+    <div id="ul-post-search">
+      <%= render "ul_post" %>
+    </div>
   </div>
 
   <div class="col-md-1"></div>

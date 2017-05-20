@@ -121,6 +121,34 @@
                     <% end %>
                   </li>
                   <li>
+                    <%= link_to "", class: "sidebar-nav-menu" do %>
+                      <i class="fa fa-home sidebar-nav-icon"></i>
+                      <i class="fa fa-angle-left sidebar-nav-indicator sidebar-nav-mini-hide"></i> <span class="sidebar-nav-mini-hide">Phòng học</span>
+                    <% end %>
+
+                    <ul>
+                      <% Course.by_author(current_user).by_active.each do |course| %>
+                        <li>
+                          <a href="#" class="sidebar-nav-submenu"><i class="fa fa-angle-left sidebar-nav-indicator"></i><%= course.name %></a>
+                          <ul>
+                            <li>
+                              <% if course.room.present? && course.room.active? %>
+                                <%= link_to "Phòng #{course.room_id}", publish_room_path(course.room) %>
+                              <% else %>
+                                <a>Chưa có phòng</a>
+                              <% end %>
+                            </li>
+                          </ul>
+                        </li>
+                      <% end %>
+                    </ul>
+                  </li>
+
+
+
+
+
+                  <li>
                     <%= link_to teachers_activities_path do %>
                       <i class="fa fa-signal fa-fw sidebar-nav-icon"></i>Hoạt động
                     <% end %>
@@ -154,7 +182,6 @@
                     </li>
                   </ul>
                 </li>
-
                 <li>
                   <a href="#" class="sidebar-nav-menu"><i class="fa fa-angle-left sidebar-nav-indicator sidebar-nav-mini-hide"></i><i class="gi gi-brush sidebar-nav-icon"></i> <span class="sidebar-nav-mini-hide">Ready Pages</span></a>
                   <ul>

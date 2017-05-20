@@ -9,9 +9,17 @@ class Admins::SetStatusCoursesController < DashboardController
       if course.update status: params[:status].to_i, approver_id: current_user.id
         create_activity_confirm_course(course)
         create_notification_for_member Course.name, course, "#{course.status}.#{Course.name}", course.owner_id
-        # if course.active?
-        #   create_room course
-        # end
+        if course.active?
+          if course.room.blank?
+            create_room course
+          else
+            course.room.update(status: :active) if course.room.not_active?
+          end
+        elsif course.block?
+          if course.room.present? && course.room.active?
+            course.room.update status: :not_active
+          end
+        end
       else
         flash[:errors] = "Cập nhật khóa học không thành công"
       end

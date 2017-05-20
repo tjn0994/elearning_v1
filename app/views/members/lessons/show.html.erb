@@ -62,10 +62,15 @@
         <div class="block">
           <!-- About Content -->
           <div class="block-section">
-            <!-- publish_room_path(@course.room) -->
-            <%= link_to "#",
-                class: "btn btn-lg btn-info btn-block" do %>
-              <i class="fa fa-play"></i>  Vào phòng học</a>
+            <% if @course.room.present? %>
+              <%= link_to publish_room_path(@course.room),
+                  class: "btn btn-lg btn-info btn-block" do %>
+                <i class="fa fa-play"></i>  Vào phòng học</a>
+              <% end %>
+            <% else %>
+              <%= link_to "#",class: "btn btn-lg btn-info btn-block" do %>
+                <i class="fa fa-play"></i>  Vào phòng học</a>
+              <% end %>
             <% end %>
 
             <!-- btn  exam-->

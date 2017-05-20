@@ -4,6 +4,7 @@ class Room < ApplicationRecord
 
   scope :recent, ->{order created_at: :desc}
   scope :by_author, ->(owner_id){where owner_id: owner_id}
+  scope :by_active, ->{where status: :active}
 
   enum status: {active: 0, not_active: 1}
 end

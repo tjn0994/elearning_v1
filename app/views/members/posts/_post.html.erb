@@ -4,23 +4,27 @@
       <%= image_tag post.user.avatar.url, class: "width-100-pc img-circle" %>
     </div>
     <div class="col-md-8">
-      <div><b style="color: #5488c7"><%= link_to post.title, members_user_post_path(@user, post) %></b></div>
+      <div><b><%= post.title %></b></div>
       <div>
-        Date: <%= l post.created_at, format: :date_month_year_v1 %>
+        Ngày: <%= l post.created_at, format: :date_month_year_v1 %>
       </div>
       <div style="color: #9b9b9b">
         <i class="fa fa-eye"></i> 72 &nbsp;&nbsp;&nbsp;
-        <i class="fa fa-comment"></i> 72
+        <i class="fa fa-comment"></i> <%= post.comments.count %>
       </div>
-      <div class="btn-group-xs">
-        <%= link_to edit_members_user_post_path(@user, post), class: "btn btn-info" do %>
-          Chỉnh sửa
+      <% if current_user.present? %>
+        <% if @user.is_user? current_user %>
+          <div class="btn-group-xs">
+            <%= link_to edit_members_user_post_path(@user, post), class: "btn btn-info" do %>
+              Chỉnh sửa
+            <% end %>
+            <%= link_to members_user_post_path(@user, post),
+              method: :delete, class: "btn btn-default", data: {confirm: "Bạn có chắc chắn muốn xóa không?"} do %>
+              Xóa
+            <% end %>
+          </div>
         <% end %>
-        <%= link_to members_user_post_path(@user, post),
-          method: :delete, class: "btn btn-default", data: {confirm: "Bạn có chắc chắn muốn xóa không?"} do %>
-          Xóa
-        <% end %>
-      </div>
+      <% end %>
     </div>
   </div>
   <div class="row">&nbsp;

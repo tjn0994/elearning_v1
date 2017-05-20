@@ -2,12 +2,12 @@
   <div class="row col-md-12 margin-bottom-20">
     <div class="col-md-1">
       <%= image_tag post.user.avatar.url,
-        style: "width: 60px; height: 60px;", class: "img-circle" %>
+        style: "width: 50px; height: 50px;", class: "img-circle" %>
     </div>
     <div class="col-md-8">
       <div><b style="color: #5488c7"><%= link_to post.title, members_user_post_path(post.user_id, post) %></b></div>
       <div>
-        Date: <%= l post.created_at, format: :date_month_year_v1 %>
+        Ngày: <%= l post.created_at, format: :date_month_year_v1 %>
       </div>
       <div style="color: #9b9b9b">
         <i class="fa fa-eye"></i> 72 &nbsp;&nbsp;&nbsp;

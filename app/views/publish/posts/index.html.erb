@@ -1,17 +1,44 @@
 <%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
+<%= javascript_include_tag "publish/posts", "data-turbolinks-track": true %>
 <br>
 <div class="row">
-  <div class="col-md-9">
+
+  <div class="col-md-8 row">
+    <div class="clear-fix row panel panel-default col-md-offset-1">
+      <div class="panel-heading">Tìm kiếm</div>
+      <div class="panel-body">
+         <%= search_form_for @search, url: publish_posts_path,
+          class: "row col-md-offset-1" do |f| %>
+          <div class="form-group col-md-7">
+            <%= f.text_field :title_or_user_name_cont,
+              placeholder: "Nhập tên bài viết hoặc tác giả",
+              class: "form-control" %>
+          </div>
+          <div class="form-group col-md-3">
+            <%= f.select :type_id_eq,
+              @types.collect {|value| [value.name, value.id]}, {include_blank: "Loại"},
+              class: "form-control" %>
+          </div>
+          &nbsp;&nbsp;
+          <%= link_to publish_posts_path do %>
+            <i class="fa fa-refresh btn btn-success"></i>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+    <div class="row clear-fix col-center color-red" id="not-exist-ul-post-publish">
+    </div>
     <br>
-    <ul style="list-style-type: none">
-      <%= render(@posts, posts: @posts) || "Dữ liệu không tồn tại" %>
-    </ul>
-    <center><%= paginate @posts %></center>
+    <div class="clear-fix row" id="ul-post-publish-search">
+      <%= render "ul_post" %>
+    </div>
+  </div>
+  <div class="col-md-1">
   </div>
   <div class="col-md-3">
     <h4>Bài viết có nhiều lượt xem nhất</h4>
     <hr>
-    <h4>Tác giả có nhiều bài viết nhất</h4>
+    <h4>Tác giả được đánh giá cao nhất</h4>
   </div>
 </div>
 <br>
