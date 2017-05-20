@@ -1,3 +1,4 @@
 $('#list-course-search')
   .html('<%= j render "course" %>');
 $('#not-exist-course').html('<%= "Dữ liệu không tìm thấy" if @search.result.blank? %>');
+$('#load-page-course').html('<%= paginate @courses %>');

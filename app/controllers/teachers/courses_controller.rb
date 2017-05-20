@@ -11,11 +11,11 @@ class Teachers::CoursesController < DashboardController
       .per Settings.per_page.teachers.course
     @register_course = RegisterCourse.new
     @types = Type.all
-    if request.xhr?
-      respond_to do |format|
-        format.js{}
-      end
-    end
+    # if request.xhr?
+    #   respond_to do |format|
+    #     format.js{}
+    #   end
+    # end
   end
 
   def new
