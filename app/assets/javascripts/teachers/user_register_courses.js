@@ -14,11 +14,11 @@ $(document).on('change', "#q_course_id_eq", function() {
 });
 
 $(document).ready(function(){
-  $('#tooltip-course').hover(function(e) {
-    this.title = $("#tooltip-course option:selected").text();
+  $('.tooltip-course').hover(function(e) {
+    this.title = $(".tooltip-course option:selected").text();
   });
 
-  $("#tooltip-course").tooltip({
+  $(".tooltip-course").tooltip({
     left: 25
   });
 });

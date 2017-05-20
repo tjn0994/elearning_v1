@@ -12,7 +12,7 @@
       <div class="form-group col-md-2">
         <%= f.select :course_id_eq,
           @courses.collect {|value| [value.name, value.id]}, {include_blank: "Khóa học"},
-          class: "form-control", data:{toggle: "tooltip"}, id: "tooltip-course" %>
+          class: "form-control tooltip-course", data:{toggle: "tooltip"} %>
       </div>
       <div class="form-group col-md-2">
         <%= f.select :status_eq,

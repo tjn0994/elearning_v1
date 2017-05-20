@@ -61,7 +61,7 @@
                       <i class="gi gi-user"></i>
                     <% end %>
                   <% end %>
-                  <a href="page_ready_inbox.html" data-toggle="tooltip" data-placement="bottom" title="Messages"><i class="gi gi-envelope"></i>
+                  <a href="" data-toggle="tooltip" data-placement="bottom" title="Messages"><i class="gi gi-envelope"></i>
                   </a>
                   <!-- Opens the user settings modal that can be found at the bottom of each page (page_footer.html in PHP version) -->
                   <% if current_user.admin? %>
@@ -104,6 +104,11 @@
                       <i class="fa fa-book sidebar-nav-icon"></i>Danh sách khóa học
                     <% end %>
                   </li>
+                  <li>
+                    <%= link_to admins_activities_path do %>
+                      <i class="fa fa-signal fa-fw sidebar-nav-icon"></i>Hoạt động
+                    <% end %>
+                  </li>
                 <% elsif current_user.teacher? %>
                   <li>
                     <%= link_to teachers_user_register_courses_path do %>
@@ -115,15 +120,15 @@
                       <i class="fa fa-book sidebar-nav-icon"></i>Danh sách khóa học
                     <% end %>
                   </li>
+                  <li>
+                    <%= link_to teachers_activities_path do %>
+                      <i class="fa fa-signal fa-fw sidebar-nav-icon"></i>Hoạt động
+                    <% end %>
+                  </li>
                 <% end %>
                 <li>
                   <%= link_to members_user_posts_path(current_user) do %>
                     <i class="fa fa-pencil-square-o fa-fw sidebar-nav-icon"></i>Bài viết
-                  <% end %>
-                </li>
-                <li>
-                  <%= link_to members_activities_path do %>
-                    <i class="fa fa-signal fa-fw sidebar-nav-icon"></i>Hoạt động
                   <% end %>
                 </li>
                 <!-- <li>

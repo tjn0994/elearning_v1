@@ -1,0 +1,2 @@
+$('#list-user-search').html('<%= j render "table_user" %>');
+$('#not-exist-list-user').html('<%= "Dữ liệu không tìm thấy" if @search.result.blank? %>');
