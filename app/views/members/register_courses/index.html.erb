@@ -14,11 +14,6 @@
               <td><%= image_tag course.image.url, style: "width: 100%",
               class: "height-200" %></td>
             </tr>
-            <% if course.description.present? %>
-              <tr>
-                <td><%= course.description %></td>
-              </tr>
-            <% end %>
             <tr>
               <td>
                 Khóa học: <%= l course.date_from, format: :date_month_year %> ->
@@ -63,24 +58,21 @@
                     <div>
                       <center>Khóa học: <%= course.name %></center>
                     </div>
-                  </div>
-                  <div class="row">
-                    <div>
-                      <center>Thời gian: <%= course.date_from %> -> <%= course.date_to %></center>
+                    <br>
+                    <br>
+                    <div class="form-group">
+                      <center><%= submit_tag "Đăng ký", class: "btn btn-primary" %></center>
                     </div>
-                  </div>
-                  <br>
-                  <br>
-                  <div class="form-group">
-                    <center><%= submit_tag "Đăng ký", class: "btn btn-primary" %></center>
-                  </div>
-                <% end %>
+                  <% end %>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      <!-- modal end -->
-    </div>
+        <!-- modal end -->
+      </div>
+    <% end %>
+  <% else %>
+    <center>Chưa có dữ liệu</center>
   <% end %>
 </div>
 

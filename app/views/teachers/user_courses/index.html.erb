@@ -31,7 +31,11 @@
     <div class="panel-body">
       <div class="row">
         <div id="list-users-workspaces">
-          <%= render "table_member" %>
+          <% if @user_inside_courses.present? %>
+            <%= render "table_member" %>
+          <% else %>
+            <center>Chưa có dữ liệu</center>
+          <% end %>
         </div>
         <% end %>
       </div>

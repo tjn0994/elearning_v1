@@ -1,13 +1,9 @@
-<% provide :title, "Danh sách người dùng" %>
+<% provide :title, "Danh sách hoạt động" %>
 
-<div class = "row activity-block-title activities col-md-12">
-  <div class = "col-md-12">
-    <h2 class="timeline-title">
-      <strong><%= t "dashboard.activity.timeline" %></strong>
-    </h2>
-    <div class = "row activities-layout">
-      <%= render "shared/activities" %>
-    </div>
+<div class="row">
+  <div class="row clear-fix col-center color-red" id="not-exist-list-activity">
   </div>
-  <center id = "pag"><%= paginate @activities %></center>
+  <div class="col-md-10 col-md-offset-1" id="list-activity">
+    <%= render "table_activity" %>
+  </div>
 </div>

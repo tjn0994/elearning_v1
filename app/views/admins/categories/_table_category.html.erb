@@ -1,0 +1,20 @@
+<% if @categories.present? %>
+  <table class="table table-bordered table-hover">
+    <thead>
+      <tr class="table-center">
+        <th class="font-size-15"> Stt </th>
+        <th class="font-size-15"><%= sort_link @search, :name, "Tên", {},
+          {:remote => true} %>
+        </th>
+        <th class="font-size-15" style="min-width: 250px; max-width: 300px"> Mô tả </th>
+        <th class="font-size-15"> Thao tác </th>
+      </tr>
+    </thead>
+    <tbody class="table-center">
+      <%= render(@categories, categories: @categories) %>
+    </tbody>
+  </table>
+  <center><%= paginate @categories, remote: true %></center>
+<% else %>
+  Chưa có dữ liệu
+<% end %>

@@ -11,11 +11,11 @@ class Teachers::CoursesController < DashboardController
       .per Settings.per_page.teachers.course
     @register_course = RegisterCourse.new
     @types = Type.all
-    # if request.xhr?
-    #   respond_to do |format|
-    #     format.js{}
-    #   end
-    # end
+    if request.xhr?
+      respond_to do |format|
+        format.js{}
+      end
+    end
   end
 
   def new
@@ -63,7 +63,7 @@ class Teachers::CoursesController < DashboardController
 
   def destroy
     if @course.destroy
-      create_activity_for_course
+      # create_activity_for_course
       flash[:success] = "Xóa khóa học thành công"
     else
       flash[:warning] = "Xóa khóa học không thành công"
