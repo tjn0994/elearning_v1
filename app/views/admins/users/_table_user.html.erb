@@ -1,0 +1,24 @@
+<% if @users.present? %>
+  <div class="table-responsive">
+    <table class="table table-bordered table-hover">
+      <thead>
+        <tr class="table-center">
+          <th class="font-size-15">Stt</th>
+          <th class="font-size-15"><%= sort_link @search, :name, "Tên", {},
+            {:remote => true} %>
+          </th>
+          <th class="font-size-15">Email</th>
+          <th class="font-size-15">Số điện thoại</th>
+          <th class="font-size-15">Quyền</th>
+          <th class="text-center font-size-15">Thao tác</th>
+        </tr>
+      </thead>
+      <tbody class="table-center">
+        <%= render(@users, users: @users) %>
+      </tbody>
+    </table>
+  </div>
+  <center><%= paginate @users, remote: true %></center>
+<% else %>
+  Chưa có dữ liệu
+<% end %>

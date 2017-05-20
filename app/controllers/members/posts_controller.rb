@@ -17,7 +17,7 @@ class Members::PostsController < ApplicationController
   def create
     @post = @user.posts.new post_params
     if @post.save
-      create_activity Post.name, @post, "post.create"
+      create_activity_for_post
       flash[:success] = "Tạo bài viết thành công"
       redirect_to members_user_posts_path
     else
@@ -41,6 +41,7 @@ class Members::PostsController < ApplicationController
 
   def update
     if @post.update_attributes post_params
+      create_activity_for_post
       flash[:success] = "Cập nhật bài viết thành công "
       redirect_to members_user_posts_path
     else
@@ -81,5 +82,9 @@ class Members::PostsController < ApplicationController
 
   def load_category
     @categories = Category.all
+  end
+
+  def create_activity_for_post
+    create_activity Post.name, @post, @_action_name
   end
 end

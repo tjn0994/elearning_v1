@@ -9,6 +9,11 @@ class Admins::UsersController < DashboardController
     @users = @search.result.recent.page(params[:page])
       .per Settings.per_page.admins.user
     @roles = User.roles
+    if request.xhr?
+      respond_to do |format|
+        format.js{}
+      end
+    end
   end
 
   def new
@@ -44,7 +49,7 @@ class Admins::UsersController < DashboardController
 
   def destroy
     if @user.destroy
-      create_activity_for_user
+      # create_activity_for_user
       flash[:success] = "Xóa thành viên thành công"
     else
       flash[:warning] = "Xóa thành viên không thành công"
@@ -58,7 +63,7 @@ class Admins::UsersController < DashboardController
     if params[:user][:avatar].present?
       unless Settings.image_types.to_h.values.include? File.extname(
         params[:user][:avatar].original_filename).split(".").last.downcase
-        flash[:error] = t "dashboard.users.format_type_image_invalid"
+        flash[:error] = "Ảnh không đúng định dạng"
         redirect_to :back
       end
     end
@@ -73,7 +78,11 @@ class Admins::UsersController < DashboardController
   def load_user
     @user = User.find_by id: params[:id]
     return if @user
-    flash[:error] = t "dashboard.users.not_found"
+    flash[:error] = "Không tìm thấy thành viên"
     redirect_to admins_users_path
+  end
+
+  def create_activity_for_user
+    create_activity User.name, @user, @_action_name
   end
 end
