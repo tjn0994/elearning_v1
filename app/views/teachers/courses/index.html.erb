@@ -8,7 +8,7 @@
 <div class="clear-fix panel panel-default">
   <div class="panel-heading">Tìm kiếm</div>
   <div class="panel-body">
-    <%= search_form_for [:teachers, @search], class: "row col-md-offset-1" do |f| %>
+    <%= search_form_for [:teachers, @search], class: "row col-md-offset-1", remote: true do |f| %>
       <div class="form-group col-md-6">
         <%= f.text_field :name_cont,
           placeholder: "Nhập tên bài học",
@@ -16,9 +16,8 @@
       </div>
       <div class="form-group col-md-2">
         <%= f.select :type_id_eq, @types.collect {|c| [c.name, c.id]},
-          {include_blank: "Thể loại"}, {class: "form-control"} %>
+          {include_blank: "Thể loại"}, {class: "form-control tooltip-teacher-course"} %>
       </div>
-      <%= f.submit "Tìm kiếm", class: "btn btn-primary col-md-1" %>
       &nbsp;&nbsp;
       <%= link_to teachers_courses_path do %>
         <i class="fa fa-refresh btn btn-success"></i>
@@ -33,5 +32,3 @@
 <div class="row clear-fix" id="list-course-search">
   <%= render "course" %>
 </div>
-
-<center id="load-page-course"><%= paginate @courses %></center>
