@@ -14,6 +14,11 @@
               <td><%= image_tag course.image.url, style: "width: 100%",
               class: "height-200" %></td>
             </tr>
+            <% if course.description.present? %>
+              <tr>
+                <td><%= course.description %></td>
+              </tr>
+            <% end %>
             <tr>
               <td>
                 Khóa học: <%= l course.date_from, format: :date_month_year %> ->

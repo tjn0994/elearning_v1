@@ -6,11 +6,6 @@ class Admins::CoursesController < DashboardController
     @courses = @search.result.page(params[:page])
       .per Settings.per_page.admins.course
     @statuses = Course.statuses
-    if request.xhr?
-      respond_to do |format|
-        format.js{}
-      end
-    end
   end
 
   def show
