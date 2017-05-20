@@ -1,0 +1,4 @@
+<ul style="list-style-type: none">
+  <%= render(@posts, posts: @posts) %>
+</ul>
+<center><%= paginate @posts, remote: true %></center>

@@ -14,5 +14,4 @@ class Post < ApplicationRecord
   validates :content, presence: true
 
   delegate :avatar, :name, :email, to: :user, prefix: true, allow_nil: true
-
 end

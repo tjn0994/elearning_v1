@@ -1,12 +1,19 @@
 class Members::PostsController < ApplicationController
-  # before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:index, :show]
   before_action :load_user
   before_action :load_post, except: [:index, :new, :create]
   before_action :load_category
 
   def index
-    @posts = @user.posts.page(params[:page])
+    @search = @user.posts.ransack(params[:q])
+    @posts = @search.result.page(params[:page])
       .per Settings.per_page.member.post
+    @types = Type.all
+    if request.xhr?
+      respond_to do |format|
+        format.js{}
+      end
+    end
   end
 
   def new
@@ -42,7 +49,7 @@ class Members::PostsController < ApplicationController
   def update
     if @post.update_attributes post_params
       create_activity_for_post
-      flash[:success] = "Cập nhật bài viết thành công "
+      flash[:success] = "Cập nhật bài viết thành công"
       redirect_to members_user_posts_path
     else
       @types = @post.type.category.types

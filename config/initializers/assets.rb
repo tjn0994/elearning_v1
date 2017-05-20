@@ -23,3 +23,5 @@ Rails.application.config.assets.precompile += %w(ckeditor/filebrowser/images/gal
 Rails.application.config.assets.precompile += %w(teachers/user_register_courses.js)
 Rails.application.config.assets.precompile += %w(members/registered_courses.js)
 Rails.application.config.assets.precompile += %w(admins/courses.js)
+Rails.application.config.assets.precompile += %w(publish/posts.js)
+Rails.application.config.assets.precompile += %w(members/posts.js)

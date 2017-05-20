@@ -30,9 +30,5 @@
 <div class="row clear-fix col-center color-red" id="not-exist-lesson">
 </div>
 <div class="row clear-fix" id="list-lesson-search">
-  <% if @lessons.present? %>
-    <%= render "lesson" %>
-  <% else %>
-    <center>Chưa có dữ liệu</center>
-  <% end %>
+  <%= render "lesson" %>
 </div>

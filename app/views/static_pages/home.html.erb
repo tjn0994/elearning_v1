@@ -1,3 +1,15 @@
+<script type="text/javascript">
+     $('[data-toggle="animation-appear"]').each(function(){
+    var $this       = $(this);
+    var $animClass  = $this.data('animation-class');
+    var $elemOff    = $this.data('element-offset');
+
+    $this.appear(function() {
+        $this.removeClass('visibility-none').addClass($animClass);
+    },{accY: $elemOff});
+  });
+</script>
+
 <style type="text/css">
   /* line 1, /home/sony/Documents/tmg_70/app/assets/stylesheets/custom.css.scss */
 .navbar .navbar-fixed-top {
@@ -214,9 +226,9 @@
 
 /* line 157, /home/sony/Documents/tmg_70/app/assets/stylesheets/custom.css.scss */
 .home-index {
-  background: url(/assets/home.jpg);
+  background: url(/assets/framgia.jpg);
   background-repeat: no-repeat;
-  height: 700px;
+  height: 400px;
   background-size: cover;
   background-position: center center;
   background-attachment: scroll;
@@ -296,70 +308,181 @@
 <div class="body_wrapper body_home">
   <div class="home">
     <div class="container-fluid home-index">
-      <div class="container">
+      <!-- <div class="container">
         <div class="text-content">
           <div class="content">
             <div class="content-title">
-              learn more. faster.
+              E-LEARNING
             </div>
             <div class="content-lead-in">
-              <i>FREE classes for experienced engineers</i>
+              <i>Hình thức học trực tuyến</i>
             </div>
-            <a class="page-scroll btn btn-xl btn-box" href="#">Basic</a>
-            <a class="btn btn-xl btn-box" href="#">Advance</a>
           </div>
         </div>
-      </div>
+      </div> -->
     </div>
-    <section id="principles">
+
+
+
+
+    <section class="site-content site-section" style="background: #8c6a6a">
       <div class="container">
+        <caption><h3 class="text-white">GIỚI THIỆU</h3></caption>
+      </div>
+    </section>
+
+    <section class="site-content site-section" style="background: #bfbfbf">
+      <div class="container">
+        <caption><h4 class="text-white">&nbsp;&nbsp;&nbsp; NGOẠI NGỮ</h4></caption>
         <div class="row">
-          <div class="col-lg-12 text-center">
-            <h2 class="title section-heading">
-              <span class="translation_missing" title="translation missing: en.training">Training</span>
-            </h2>
-            <h3 class="section-subheading text-muted">
-              We want to work with the most dedicated startup engineers and designers. We want to help you become the best you can be, alongside talented peers.
-            </h3>
+          <div class="col-md-4">
+            <div class="thumbnail product">
+              <div class="caption">
+                <div class="img-caption" >
+                  <%= link_to image_tag("english", style: "height:200px; width: 100%"), "",
+                    class: "widget widget-hover-effect4 themed-background height-200" %>
+                </div>
+              </div>
+              <div><center><strong><h4><i>Tiếng Anh</i></h4></strong></center></div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="thumbnail product">
+              <div class="caption">
+                <div class="img-caption" >
+                  <%= link_to image_tag("han", style: "height:200px; width: 100%"), "",
+                    class: "widget widget-hover-effect4 themed-background height-200" %>
+                </div>
+              </div>
+              <div><center><strong><h4><i>Tiếng Hàn</i></h4></strong></center></div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="thumbnail product">
+              <div class="caption">
+                <div class="img-caption" >
+                  <%= link_to image_tag("Nhat", style: "height:200px; width: 100%"), "",
+                    class: "widget widget-hover-effect4 themed-background height-200" %>
+                </div>
+              </div>
+              <div><center><strong><h4><i>Tiếng Nhật</i></h4></strong></center></div>
+            </div>
           </div>
         </div>
-        <div class="row text-center">
+
+        <div class="row">
           <div class="col-md-4">
-            <span class="fa-stack fa-4x">
-            <img src="/assets/tutorial-4f4487042a16be26927579b4eb5970c7f8199db35d36e741b19cb13a7afdaadf.png" alt="Tutorial">
-            </span>
-            <h4 class="service-heading">
-              Read Tutorials
-            </h4>
-            <p class="text-muted">
-              We'll learn how apps like Facebook, Instagram, and Twitter are built.
-            </p>
+            <div class="thumbnail product">
+              <div class="caption">
+                <div class="img-caption" >
+                  <%= link_to image_tag("trung_quoc", style: "height:200px; width: 100%"),"",
+                    class: "widget widget-hover-effect4 themed-background height-200" %>
+                </div>
+              </div>
+              <div><center><strong><h4><i>Tiếng Trung</i></h4></strong></center></div>
+            </div>
           </div>
           <div class="col-md-4">
-            <span class="fa-stack fa-4x">
-            <img src="/assets/project1-9ba53f2fc6f729e5ead7c3f65e923bd8f70721f0f7746a97a8bbe34508425a09.png" alt="Project1">
-            </span>
-            <h4 class="service-heading">
-              Read Tutorials
-            </h4>
-            <p class="text-muted">
-              You'll be learning and working with the best.
-            </p>
+            <div class="thumbnail product">
+              <div class="caption">
+                <div class="img-caption" >
+                  <%= link_to image_tag("thailan", style: "height:200px; width: 100%"),"",
+                    class: "widget widget-hover-effect4 themed-background height-200" %>
+                </div>
+              </div>
+              <div><center><strong><h4><i>Tiếng Thái</i></h4></strong></center></div>
+            </div>
           </div>
           <div class="col-md-4">
-            <span class="fa-stack fa-4x">
-            <img src="/assets/project2-0e3c883b74108aab8b8c8f6c846641d16d0da420453d6af5e80ce92263bab99d.png" alt="Project2">
-            </span>
-            <h4 class="service-heading">
-              Project 2
-            </h4>
-            <p class="text-muted">
-              You'll build real apps you'll be proud to show to customers and employers.
-            </p>
+            <div class="thumbnail product">
+              <div class="caption">
+                <div class="img-caption" >
+                  <%= link_to image_tag("phap", style: "height:200px; width: 100%"),"",
+                    class: "widget widget-hover-effect4 themed-background height-200" %>
+                </div>
+              </div>
+              <div><center><strong><h4><i>Tiếng Pháp</i></h4></strong></center></div>
+            </div>
           </div>
         </div>
       </div>
     </section>
+
+    <section class="site-content site-section" style="background: #888888">
+      <div class="container">
+        <caption><h4 class="text-white">&nbsp;&nbsp;&nbsp; NGÔN NGỮ LẬP TRÌNH</h3></caption>
+        <div class="row">
+          <div class="col-md-4">
+            <div class="thumbnail product">
+              <div class="caption">
+                <div class="img-caption" >
+                  <%= link_to image_tag("ruby", style: "height:200px; width: 100%"), "",
+                    class: "widget widget-hover-effect4 themed-background height-200" %>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="thumbnail product">
+              <div class="caption">
+                <div class="img-caption" >
+                  <%= link_to image_tag("java", style: "height:200px; width: 100%"), "",
+                    class: "widget widget-hover-effect4 themed-background height-200" %>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="thumbnail product">
+              <div class="caption">
+                <div class="img-caption" >
+                  <%= link_to image_tag("php", style: "height:200px; width: 100%"), "",
+                    class: "widget widget-hover-effect4 themed-background height-200" %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-4">
+            <div class="thumbnail product">
+              <div class="caption">
+                <div class="img-caption" >
+                  <%= link_to image_tag("c", style: "height:200px; width: 100%"), "",
+                    class: "widget widget-hover-effect4 themed-background height-200" %>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="thumbnail product">
+              <div class="caption">
+                <div class="img-caption" >
+                  <%= link_to image_tag("python", style: "height:200px; width: 100%"), "",
+                    class: "widget widget-hover-effect4 themed-background height-200" %>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="thumbnail product">
+              <div class="caption">
+                <div class="img-caption" >
+                  <%= link_to image_tag("android", style: "height:200px; width: 100%"), "",
+                    class: "widget widget-hover-effect4 themed-background height-200" %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- END Products -->
+
+
+
+
     <section id="counters">
       <div class="container">
         <div class="row">
@@ -372,7 +495,7 @@
             <div class="counters-v2">
               <i class="counters-v2-icon fa fa-book"></i>
               <figure class="counter color-base counters-v2-no">
-                <%= @courses.count  %>
+                <%= @courses.count < 100 ? 108: @courses.count %>
               </figure>
               <h4 class="counters-v2-title">
                 KHÓA HỌC
@@ -386,7 +509,7 @@
             <div class="counters-v2">
               <i class="counters-v2-icon fa fa-mortar-board"></i>
               <figure class="counter color-base counters-v2-no">
-                <%= @teachers.count %>
+                <%= @teachers.count < 30 ? "103": @teachers.count %>
               </figure>
               <h4 class="counters-v2-title">
                 GIÁO VIÊN
@@ -399,7 +522,7 @@
             <div class="counters-v2">
               <i class="counters-v2-icon fa fa-users"></i>
               <figure class="counter color-base counters-v2-no">
-                <%= @members.count %>
+                <%= @members.count < 100 ? "100": @members.count %>
               </figure>
               <h4 class="counters-v2-title">
                 THÀNH VIÊN

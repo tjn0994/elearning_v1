@@ -269,6 +269,19 @@ $(document).ready(function() {
             'user[number_of_phone]': {
               required: true
             }
+          },
+          messages: {
+            'user[name]': {
+              required: "Tên không được để trống",
+              minlength: "Tênít nhất 2 ký tự"
+            },
+            'user[email]': {
+              required: "Email không được để trống",
+              email: "Email không hợp lệ"
+            },
+            'user[number_of_phone]': {
+              required: "Số điện thoại không được để trống"
+            }
           }
         });
 

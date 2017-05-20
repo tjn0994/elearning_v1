@@ -44,6 +44,7 @@ class Course < ApplicationRecord
 
   delegate :name, to: :owner, prefix: true, allow_nil: true
   delegate :name, to: :approver, prefix: true, allow_nil: true
+  delegate :name, :id, to: :room, prefix: true, allow_nil: true
 
   private
 
