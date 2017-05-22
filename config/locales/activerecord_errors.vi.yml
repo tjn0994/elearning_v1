@@ -26,6 +26,7 @@ vi:
       user:
         email: "Email"
         password: "Mật khẩu"
+        reset_password_token: "Mã xác nhận"
     errors:
       models:
         question:
@@ -83,3 +84,9 @@ vi:
               not_found: "Không tìm thấy"
             password:
               blank: *blank
+            name:
+              blank: *blank
+            number_of_phone:
+              blank: *blank
+            reset_password_token:
+              invalid: "Không hợp lệ"
