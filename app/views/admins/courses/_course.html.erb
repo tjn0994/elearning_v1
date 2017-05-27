@@ -26,6 +26,11 @@
           <i class="fa fa-trash"></i>
         <% end %>
       <% end %>
+      <% if course.room.blank? && course.active? %>
+        <%= link_to admins_set_status_course_path(course), class: "btn btn-info" do %>
+          <i class="gi gi-plus"></i>Tạo phòng
+        <% end %>
+      <% end %>
     </div>
   </td>
 </tr>

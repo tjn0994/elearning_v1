@@ -1,10 +1,18 @@
 class User < ApplicationRecord
+
+  # attr_accessor :validate_other
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
   ratyrate_rater
+
+  # def initialize *args
+  #   self.validate_other ||= true
+  #   super(*args)
+  # end
 
   after_create :create_user_setting
 
@@ -21,6 +29,7 @@ class User < ApplicationRecord
   scope :recent, ->{order created_at: :desc}
   scope :by_member, ->{where role: :member}
   scope :by_teacher, ->{where role: :teacher}
+  scope :by_admin, ->{where role: :admin}
   scope :not_in_course, ->course_id do
     where "id NOT IN (select user_id from user_courses where course_id = ? and status = 1)", course_id
   end

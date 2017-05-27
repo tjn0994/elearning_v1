@@ -43,6 +43,8 @@
 // gem "chartkick"
 //= require chartkick
 
+//= require cable
+
 //= require ./member/posts.js
 //= require ./member/comments.js
 
@@ -51,5 +53,3 @@ $(document).ready(function() {
     $(this).remove();
   });
 });
-
-

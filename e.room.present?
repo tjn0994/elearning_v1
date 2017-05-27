@@ -1,0 +1,33 @@
+
+[1mFrom:[0m /home/tin/elearning_v1/app/controllers/admins/set_status_courses_controller.rb @ line 21 Admins::SetStatusCoursesController#index:
+
+     [1;34m6[0m: [32mdef[0m [1;34mindex[0m
+     [1;34m7[0m:   course = [1;34;4mCourse[0m.find_by [35mid[0m: params[[33m:id[0m]
+     [1;34m8[0m:   [32mif[0m course.present?
+     [1;34m9[0m:     [32mif[0m course.update_attributes [35mstatus[0m: params[[33m:status[0m].to_i, [35mapprover_id[0m: current_user.id
+    [1;34m10[0m:       create_activity_confirm_course(course)
+    [1;34m11[0m:       create_notification_for_member [1;34;4mCourse[0m.name, course, [31m[1;31m"[0m[31m#{course.status}[0m[31m.#{Course.name}[0m[31m[1;31m"[0m[31m[0m, course.owner_id
+    [1;34m12[0m:       [32mif[0m course.active?
+    [1;34m13[0m:         [32mif[0m course.room.blank?
+    [1;34m14[0m:           create_room course
+    [1;34m15[0m:         [32melse[0m
+    [1;34m16[0m:           course.room.update([35mstatus[0m: [33m:active[0m) [32mif[0m course.room.not_active?
+    [1;34m17[0m:           binding.pry
+    [1;34m18[0m:           flash[[33m:success[0m] = [31m[1;31m"[0m[31mCập nhật khóa học thành công[1;31m"[0m[31m[0m
+    [1;34m19[0m:         [32mend[0m
+    [1;34m20[0m:       [32melsif[0m course.block?
+ => [1;34m21[0m:         binding.pry
+    [1;34m22[0m:         [32mif[0m course.room.present? && course.room.active?
+    [1;34m23[0m:           course.room.update [35mstatus[0m: [33m:not_active[0m
+    [1;34m24[0m:           flash[[33m:success[0m] = [31m[1;31m"[0m[31mCập nhật khóa học thành công[1;31m"[0m[31m[0m
+    [1;34m25[0m:         [32mend[0m
+    [1;34m26[0m:       [32mend[0m
+    [1;34m27[0m:     [32melse[0m
+    [1;34m28[0m:       flash[[33m:error[0m] = [31m[1;31m"[0m[31mCập nhật khóa học không thành công[1;31m"[0m[31m[0m
+    [1;34m29[0m:     [32mend[0m
+    [1;34m30[0m:   [32melse[0m
+    [1;34m31[0m:     flash[[33m:error[0m] = [31m[1;31m"[0m[31mKhông tìm thấy khóa học[1;31m"[0m[31m[0m
+    [1;34m32[0m:   [32mend[0m
+    [1;34m33[0m:   redirect_to admins_courses_path
+    [1;34m34[0m: [32mend[0m
+

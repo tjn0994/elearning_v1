@@ -7,6 +7,7 @@ class Notification < PublicActivity::Activity
   scope :by_notification, ->(type){where activity_type: type}
   scope :unread, ->{where read: false}
   scope :all_notify, ->{where activity_type: 1}
+  scope :load_notify, ->{where activity_type: :notice}
 
   enum activity_type: {active: 0, notice: 1}
 

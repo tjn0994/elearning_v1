@@ -20,7 +20,8 @@ class Course < ApplicationRecord
   scope :by_active, ->{where status: :active}
   scope :by_register_course_active, ->(date)do
     joins(:register_course)
-      .where("register_courses.status = 0 and register_courses.date_close >= Date(?)", date)
+      .where("register_courses.status = 0 and register_courses.date_open <= Date(?) and
+        register_courses.date_close >= Date(?)", date, date)
   end
   # scope :by_user_course_active, -> do
   #   joins(:user_course)

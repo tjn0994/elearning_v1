@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
   before_action :load_notifications, if: :user_signed_in?
 
   rescue_from CanCan::AccessDenied do
-    flash[:alert] = "sdsadasdsa"
+    flash[:alert] = "Không có quyền truy cập"
     redirect_to root_path
   end
 
@@ -22,10 +22,9 @@ class ApplicationController < ActionController::Base
     end
 
     devise_parameter_sanitizer.permit(:account_update) do |user_params|
-      user_params.permit :password, :password_confirmation, :current_password
+      user_params.permit(:password, :password_confirmation, :current_password)
     end
   end
-
 
   # def after_sign_in_path_for _resource
   #   members_users_path

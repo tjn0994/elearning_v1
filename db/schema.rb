@@ -189,8 +189,8 @@ ActiveRecord::Schema.define(version: 20170503062123) do
 
   create_table "register_courses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "course_id"
-    t.datetime "date_open"
-    t.datetime "date_close"
+    t.date     "date_open"
+    t.date     "date_close"
     t.integer  "status",     default: 1
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false

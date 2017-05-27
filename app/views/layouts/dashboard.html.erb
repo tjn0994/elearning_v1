@@ -282,13 +282,25 @@
 
               <!-- notice -->
               <li class="dropdown notifications-menu">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  <i class="fa fa-bell-o"></i>
-                  <span class="label label-warning" id="notification-counter">
-                    <%= render partial: "layouts/count_notification",
-                      locals: {count_notification: @count_unread_notification} %>
-                  </span>
-                </a>
+                <!-- <a href="#" class="dropdown-toggle" data-toggle="dropdown"> -->
+                <% if current_user.admin? %>
+                  <%= link_to admins_notifies_path do  %>
+                    <i class="fa fa-bell-o"></i>
+                    <span class="label label-warning" id="notification-counter">
+                      <%= render partial: "layouts/count_notification",
+                        locals: {count_notification: @count_unread_notification} %>
+                    </span>
+                  <% end %>
+                <% else %>
+                  <%= link_to teachers_notifies_path do  %>
+                    <i class="fa fa-bell-o"></i>
+                    <span class="label label-warning" id="notification-counter">
+                      <%= render partial: "layouts/count_notification",
+                        locals: {count_notification: @count_unread_notification} %>
+                    </span>
+                  <% end %>
+                <% end %>
+                <!-- </a> -->
                 <ul class="dropdown-menu notifications" role="menu" aria-labelledby="dLabel">
                   <div class="notification-heading">
                     <span class="menu-title">

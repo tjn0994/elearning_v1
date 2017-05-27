@@ -9,7 +9,7 @@ class Teachers::RegisterCoursesController < ApplicationController
   end
 
   def create
-    override_params params[:register_course][:date_open], params[:register_course][:date_close]
+    # override_params params[:register_course][:date_open], params[:register_course][:date_close]
     @register_course = RegisterCourse.new register_course_params.merge!(course_id: @course.id)
     if @register_course.save
       respond_to do |format|
@@ -27,7 +27,7 @@ class Teachers::RegisterCoursesController < ApplicationController
   end
 
   def update
-    override_params params[:register_course][:date_open], params[:register_course][:date_close]
+    # override_params params[:register_course][:date_open], params[:register_course][:date_close]
     if @register_course.update_attributes register_course_params
       respond_to do |format|
         format.js{}
