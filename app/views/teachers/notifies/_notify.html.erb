@@ -1,0 +1,8 @@
+<% if notify.trackable.present? %>
+  <tr>
+    <td class="width-20-pc"><%= l notify.created_at, format: :date_month_year_v1 %></td>
+    <td>
+     <%= "#{event_model(notify.key)} #{activity_name_of_member(notify.trackable_type)} #{activity_of_member(notify)}".capitalize %>
+    </td>
+  </tr>
+<% end %>

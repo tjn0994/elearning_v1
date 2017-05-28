@@ -1,0 +1,17 @@
+<% if @notifies.present? %>
+  <div class="table-responsive">
+    <table class="table table-bordered table-hover">
+      <thead>
+        <tr class="table-center">
+          <th class="font-size-15">Ngày
+          </th>
+          <th class="font-size-15">Thông báo</th>
+        </tr>
+      </thead>
+      <tbody class="table-center">
+        <%= render(partial: "notify", collection: @notifies, as: :notify) %>
+      </tbody>
+    </table>
+  </div>
+  <center><%= paginate @notifies %></center>
+<% end %>

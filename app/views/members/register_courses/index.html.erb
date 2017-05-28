@@ -2,7 +2,7 @@
 <div class="row margin-top-20">
   <% if @courses.present? %>
     <% @courses.each do |course| %>
-      <div class="col-md-4">
+      <div class="col-md-4" id="table-<%= course.id %>">
         <!-- You can add the class 'table-featured' to feature the best plan. In this case, make sure to remove the hover functionality from js/pages/pricing.js -->
           <table class="table table-borderless table-pricing animation-fadeIn table-featured">
             <thead>
@@ -80,4 +80,3 @@
     <% end %>
   <% end %>
 </div>
-

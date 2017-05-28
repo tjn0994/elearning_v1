@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   post '/rate' => 'rater#create', :as => 'rate'
   mount Ckeditor::Engine => '/ckeditor'
   devise_for :users
+  # :controllers => {:registrations => "users/registrations"}
   #scope "(:locale)", locale: /en|vi|ja/ do
   # devise_scope :user do
   #   root to: "devise/sessions#new"
@@ -28,6 +29,7 @@ Rails.application.routes.draw do
     resource :user_settings, only: :show
     resources :register_courses, only: [:index, :show, :create]
     resources :registered_courses, only: :index
+    resources :notifies
   end
 
   namespace :teachers do
@@ -46,6 +48,7 @@ Rails.application.routes.draw do
     resources :user_register_courses, only: :index
     resources :set_status_user_register_courses, only: :index
     resources :activities, only: :index
+    resources :notifies
   end
 
   namespace :admins do
@@ -54,9 +57,10 @@ Rails.application.routes.draw do
       resources :types
     end
     resources :courses
-    resources :set_status_courses, only: :index
+    resources :set_status_courses, only: [:index, :show]
     resource :user_settings, only: :show
     resources :activities, only: :index
+    resources :notifies
   end
 
   namespace :publish do

@@ -36,9 +36,27 @@
   <div class="col-md-1">
   </div>
   <div class="col-md-3">
-    <h4>Bài viết có nhiều lượt xem nhất</h4>
-    <hr>
-    <h4>Tác giả được đánh giá cao nhất</h4>
+    <h4>Bài viết được đánh giá cao nhất</h4>
+    <br>
+    <% @posts_top.each do |post| %>
+      <div class="row">
+        <div class="row col-md-12">
+          <div class="col-md-3">
+            <%= image_tag Post.find_by(id: post.id).user_avatar.url,
+              style: "width: 60px; height: 60px;", class: "img-circle" %>
+          </div>
+          <div class="col-md-9">
+            <div><b style="color: #5488c7"><%= link_to post.title, members_user_post_path(Post.find_by(id: post.id).user_id, post.id) %></b></div>
+            <div><%= rating_for Post.find_by(id: post.id), "visual_effects",
+              enable_half: true, star: 5 %></div>
+            <div>
+              Ngày: <%= l post.created_at, format: :date_month_year_v1 %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr>
+    <% end %>
   </div>
 </div>
 <br>

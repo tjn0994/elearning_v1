@@ -6,7 +6,7 @@ class Members::RegisterCoursesController < ApplicationController
     @courses = Course.by_active.by_register_course_active(Date.today).includes(:register_course)
     gon.courses = []
     @courses.each do |course|
-      gon.courses << {date_close: course.register_course.date_close.strftime("%Y-%m-%d %H:%M:%S"), course_id: course.id}
+      gon.courses << {date_close: course.register_course.date_close, course_id: course.id}
     end
   end
 
@@ -19,7 +19,7 @@ class Members::RegisterCoursesController < ApplicationController
       redirect_to members_register_courses_path
     else
       @user_course = @course.user_courses.new user_id: current_user.id
-      if @user_course.save
+      if @course.register_course.date_close >= Date.today &&  @user_course.save
         flash[:success] = "Đăng ký khóa học thành công"
         redirect_to members_register_courses_path
       else

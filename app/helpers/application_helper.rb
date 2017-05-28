@@ -47,6 +47,8 @@ module ApplicationHelper
       activity.trackable.name
     when "Lesson"
       activity.trackable.name
+    when "UserCourse"
+      activity.trackable.course_name
     end
   end
 
@@ -62,6 +64,10 @@ module ApplicationHelper
       "Chấp nhận"
     when "block"
       "Từ chối"
+    when "add_course"
+      "Thêm"
+    when "remove_course"
+      "Xóa"
     end
   end
 
@@ -77,6 +83,8 @@ module ApplicationHelper
       "danh mục"
     when "Lesson"
       "bài học"
+    when "UserCourse"
+      "thành viên trong khóa học"
     end
   end
 end

@@ -29,6 +29,10 @@ class Teachers::CoursesController < DashboardController
     if @course.save
       create_activity_for_course
       flash[:success] = "Tạo khóa học thành công"
+      @users_admin = User.by_admin
+      @users_admin.each do |user|
+        create_notification_for_member Course.name, @course, "#{@course.status}", user.id
+      end
       redirect_to teachers_courses_path
     else
       @types = @course.type.category.types

@@ -15,5 +15,9 @@ App.notify = App.cable.subscriptions.create "NotifyChannel",
     $counter
     .text(val)
     .css({top: '-10px'})
-
-
+    $counter_member = $('#notification-counter-member')
+    val_member = parseInt $counter_member.text()
+    val_member++
+    $counter_member
+    .text(val_member)
+    .css({top: '-10px'})
