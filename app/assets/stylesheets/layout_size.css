@@ -176,3 +176,8 @@
 .text-white {
   color: white;
 }
+
+.float-left-r {
+  float: left;
+  padding-right: 10px;
+}
