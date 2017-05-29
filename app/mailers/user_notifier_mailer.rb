@@ -1,6 +1,7 @@
 class UserNotifierMailer < ApplicationMailer
-  def send_email_after_approver user
+  def send_email_after_approver user, course
      @user = user
-     mail to: user.email, subject: t("mailer.subject", name: @user.name)
+     @course = course
+     mail to: user.email, subject: "Xác nhận khóa học #{@course.name}"
   end
 end

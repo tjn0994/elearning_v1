@@ -12,6 +12,7 @@ class Admins::SetStatusCoursesController < DashboardController
         if course.active?
           if course.room.blank?
             create_room course
+            UserNotifierMailer.send_email_after_approver(course.owner, course).deliver_now
           else
             course.room.update(status: :active) if course.room.not_active?
             flash[:success] = "Cập nhật khóa học thành công"

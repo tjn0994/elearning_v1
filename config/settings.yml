@@ -51,3 +51,4 @@ roles:
   admin: "admin"
   teacher: "teacher"
   member: "member"
+user_roles: [{name: "member", id: "member"}, {name: "teacher", id: "teacher"}]

@@ -16,3 +16,14 @@ vi:
       user:
         unauthenticated: "Vui lòng đăng nhập!"
         not_found_in_database: "Email hoặc mật khẩu không đúng"
+        invalid: "Email hoặc mật khẩu không đúng"
+  errors:
+    messages:
+      not_saved: ""
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              taken: "đã tồn tại"

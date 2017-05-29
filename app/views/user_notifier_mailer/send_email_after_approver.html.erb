@@ -2,24 +2,12 @@
   <div class="container-body-mailer">
     <div class="backgroup-mailer">
       <div class="body-mailer">
-        <h2><%= @user.name %></h2>
+        <h2>Xin chào <%= @user.name %></h2>
         <br>
-        <p><h3><%= t "mailer.title" %></h3></p>
+        <p><h3>Đăng ký khóa học thành công</h3></p>
         <div>
-          <center>
-            <table>
-              <tr>
-                <td><strong><%= t "mailer.email" %></strong></td>
-                <td><%= @user.email %></td>
-              </tr>
-              <tr>
-                <td><strong><%= t "mailer.password" %></strong></td>
-              </tr>
-            </table>
-          </center>
           <h3>
-            <%= t "mailer.link" %>
-            <%= link_to ENV["ADDRESS_WEB"], ENV["ADDRESS_WEB"] %>
+            Link <%= link_to "Khóa học #{@course.name}", ENV["ADDRESS_WEB"] %>
           </h3>
         </div>
       </div>

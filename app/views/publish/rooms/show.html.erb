@@ -4,7 +4,6 @@
   var sessionId = "<%= @room.session_id %>";
   var token = "<%= @tok_token %>";
   var session;
-  var role = <%= @room.owner_id == current_user.id %>;
 
 //  TB.addEventListener('exception', exceptionHandler);
 
@@ -12,7 +11,8 @@
   //session.addEventListener('sessionConnected', sessionConnectedHandler);
   //session.addEventListener('streamCreated', streamCreatedHandler);
     //session.addEventListener('streamDestroyed', streamDestroyedHandler);
-TB.setLogLevel(TB.DEBUG);
+try {
+  TB.setLogLevel(TB.DEBUG);
 //session.connect(apiKey, token);
    var session = TB.initSession(sessionId);
     session.addEventListener('sessionConnected', sessionConnectedHandler);
@@ -20,16 +20,15 @@ TB.setLogLevel(TB.DEBUG);
     session.connect(apiKey, token);
     var publisherOptions = {
       insertMode: 'append',
-      width: '100%',
-      height: '500px'
+      width: '33%'
     };
+} catch(err) {
+  alert("Kết nối không thành công");
+}
+
  var publisher;
     function sessionConnectedHandler(event) {
-      if(role == true){
-        publisher = TB.initPublisher(apiKey, 'owner', publisherOptions);
-      } else {
-        publisher = TB.initPublisher(apiKey, 'member');
-      }
+      publisher = TB.initPublisher(apiKey, 'kasansan');
       session.publish(publisher);
       // Subscribe to streams that were in the session when we connected
       subscribeToStreams(event.streams);
@@ -45,23 +44,16 @@ TB.setLogLevel(TB.DEBUG);
         }
         var div = document.createElement('div');
         div.setAttribute('id', 'stream' + streams[i].streamId);
-        div.setAttribute('class', "col-md-3");
+        div.setAttribute('class', 'float-left-r');
         // document.body.appendChild(div);
-        $('.kasansan').append(div);
+        $('.videobox').append(div);
         session.subscribe(streams[i], div.id);
       }
     }
 </script>
 
 <div id="invitation"></div>
-<div class="row">
-  <div class="col-md-8 col-md-offset-2 height-500">
-    <div id="owner"></div>
-  </div>
+<div class="row videobox" >
+  <div id="kasansan" class="float-left-r"></div>
 </div>
-<br>
-<div class="row kasansan" id="member">
-
-</div>
-<br>
 
